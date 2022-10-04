@@ -1,4 +1,4 @@
-baseURL = "https://example.org"
+baseURL = "https://anh-portio-test.web.app/"
 languageCode = "en-us"
 paginate = 6
 theme = "portio"

@@ -28,3 +28,7 @@ When deploying to services like Netlify or Vercel, use the following command for
 `npm i && HUGO_ENVIRONMENT=production hugo --gc`
 
 [Deploy with Firebase](https://gohugo.io/hosting-and-deployment/hosting-on-firebase/)
+
+`hugo && firebase deploy`
+
+`firebase hosting:channel:deploy portio-preview3` 
