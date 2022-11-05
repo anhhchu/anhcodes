@@ -1,8 +1,7 @@
-baseURL = "https://anh-portio-test.web.app/"
+baseURL = "https://anh-portio-test.web.app"
 languageCode = "en-us"
 paginate = 6
 theme = "portio"
-themesDir = "./themes"
 title = "Portio"
 # Main Menu
 [[menu.main]]

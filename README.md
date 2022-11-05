@@ -15,6 +15,7 @@ visit `http://localhost:1313/` to view site
 4. Set theme = 'blist' in config.toml
 5. Run npm start to start your local server
 
+
 ## Deploy options
 
 [Deploy with Github pages](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
@@ -27,8 +28,17 @@ When deploying to services like Netlify or Vercel, use the following command for
 
 `npm i && HUGO_ENVIRONMENT=production hugo --gc`
 
+### Deploy with Firebase
+
 [Deploy with Firebase](https://gohugo.io/hosting-and-deployment/hosting-on-firebase/)
+
+`npm install -g firebase-tools`
+
+`firebase init`
 
 `hugo && firebase deploy`
 
 `firebase hosting:channel:deploy portio-preview3` 
+
+Reinstall nvm for frebase: `nvm install 16.4.0`
+
