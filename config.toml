@@ -59,11 +59,11 @@ weight = 4
 blogPageURL = "blog"
 contactLink = "contact"
 copyright = "All right reserved copyright © Portio 2020"
-footerLogo = "images/contact/widget-logo.png"
+footerLogo = "images/site-navigation/logo-new.png"
 # We're using formspree.io for form handling, paste your formspree url below
 fabformURL  = "https://fabform.io/f/JpTXRUa"
 googleAnalytics = "YOUR GOOGLE ANALYTICS CODE"
-logo = "images/site-navigation/logo.png"
+logo = "images/site-navigation/logo-new.png"
 
 [params.address]
 address = "Test"
