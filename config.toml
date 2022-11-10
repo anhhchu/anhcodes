@@ -13,10 +13,6 @@ name = "About"
 url = "#about"
 weight = 2
 [[menu.main]]
-name = "Portfolio"
-url = "#portfolio"
-weight = 4
-[[menu.main]]
 name = "Resume"
 url = "#resume"
 weight = 5
@@ -28,10 +24,6 @@ weight = 6
 name = "Blog"
 url = "#blog"
 weight = 7
-[[menu.main]]
-name = "Testimonials"
-url = "#testimonals"
-weight = 8
 
 [params]
 blogPageURL = "blog"

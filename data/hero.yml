@@ -5,8 +5,10 @@ content: >
   # Hello, I'm **Anh**
 
   I'm Software Engineer working at Microsoft in Seattle, WA, USA. 
-buttonName: My Blog
-buttonURL: blog
+button1Name: My Blog
+button1URL: blog
+button2Name: Download Resume
+button2URL: https://registry.jsonresume.org/anhhchu
 image: images/hero/chicago.jpg
 # videoThumb: images/hero/popup-thumb.png
 # videoURL: images/hero/signatureupdate.gif

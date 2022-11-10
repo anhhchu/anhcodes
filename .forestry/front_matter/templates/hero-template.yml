@@ -15,11 +15,17 @@ fields:
   name: description
   label: description
 - type: text
-  name: buttonName
-  label: buttonName
+  name: button1Name
+  label: button1Name
 - type: text
-  name: buttonURL
-  label: buttonURL
+  name: button2URL
+  label: button2URL
+- type: text
+  name: button2Name
+  label: button2Name
+- type: text
+  name: button2URL
+  label: button2URL
 - type: file
   name: image
   label: image
