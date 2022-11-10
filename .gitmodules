@@ -1,3 +1,4 @@
 [submodule "themes/portio"]
 	path = themes/portio
 	url = git@github.com:anhhchu/portio-hugo.git
+	ignore = dirty
