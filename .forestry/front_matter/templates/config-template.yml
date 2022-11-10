@@ -54,6 +54,9 @@ fields:
   - type: text
     name: blogPageURL
     label: blogPageURL
+  - type: text
+    name: resumeURL
+    label: resumeURL
   - type: file
     name: logo
     label: logo

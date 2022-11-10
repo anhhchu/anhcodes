@@ -5,15 +5,15 @@ title: >
   ## What People Say About Me?
 
 testimonial:
-  - name: Ryan Cook
-    comment: Takimata sanctus est lorem ipsum dolor sit amet lorem ipsum dolor sit amet consetur sad ipscing elitr sed diam nonumy eirmod tempor invidunt labore dolore magna.
-    time: Jan 20, 2020
-    star: 5
-  - name: Justin Trudo
-    comment: Takimata sanctus est lorem ipsum dolor sit amet lorem ipsum dolor sit amet consetur sad ipscing elitr sed diam nonumy eirmod tempor invidunt labore dolore magna.
-    time: Jan 16, 2020
-    star: 4
-  - name: Franky Filth
-    comment: Takimata sanctus est lorem ipsum dolor sit amet lorem ipsum dolor sit amet consetur sad ipscing elitr sed diam nonumy eirmod tempor invidunt labore dolore magna.
-    time: Mar 08, 2020
-    star: 3
+  - name: Anthony Dellavecchia | Staff Develop Evangelist @ Twillio
+    comment: Anh is an extremely hard-working, intelligent software & data engineer. In just 2 years, she went from being in supply-chain and having a business background to becoming a software engineer at Microsoft! Her deliverables are high-quality and I've seen her lead teams as well. Any company would be lucky to have her as an employee!
+    time: 2022
+    # star: 4
+  - name: Ted Nguyen | Software Engineer @ Microsoft
+    comment: Anh is one of my greatest leaders. I joined BusinessLink and had a chance to work with her there in 2013. Not only did Anh well play her role as a leader, she also inspired everyone in the team with her determination and kindness. Leading a voluntary team has never been easy, where one in charge does not have actual authorities over the others. They can only lead with their bright mind and a warm heart. Anh has successfully lead our team that way and helped delivering many many awesome projects on time, on budget, at the highest quality as possible. Anh is one of my greatest leaders. I joined BusinessLink and had a chance to work with her there in 2013. Not only did Anh well play her role as a leader, she also inspired everyone in the team with her determination and kindness. Leading a voluntary team has never been easy, where one in charge does not have actual authorities over the others. They can only lead with their bright mind and a warm heart. Anh has successfully lead our team that way and helped delivering many many awesome projects on time, on budget, at the highest quality as possible. 
+    time: 2019
+
+  - name: Sudy Bharadwaj (SudyB) | VP Strategic Engagements @ SAP
+    comment: Anh is a accomplished professional who very quickly became a "go-to" member of a new team. Anh exhibits a tremendous combination of aptitude, team-work, work-ethic, professionalism, leadership, supply-chain knowledge and technical acumen. Anh took-on very critical tasks within the team and never disappointed, only over-achieved. While Anh is interested in BI and Supply-chain business problems, I am 100% confident, that anyone can throw any task at her and she will deliver better-than-expected. I cannot recommend Anh enough.
+    time: 2017
+    # star: 5

@@ -4,14 +4,32 @@ topTitle: My Skills
 content: >
   ## Why hire me for your next project?
 
-  My goal is to build a strong supportive professional network among all freelancers and startups in order to improve their performance.
+  I'm passionate about working with data, and bringing data insights closer to business users through the help of technology.
 
-image: images/skill/skill_image.jpg
+image: images/skill/skills.png
 
 skill:
-  - title: HTML
-    percent: 69
-  - title: CSS
+  - title: Data Pipeline
+    percent: 90
+  - title: SQL
+    percent: 90
+  - title: Python
+    percent: 90
+  - title: Spark
+    percent: 80
+  - title: Data Lakehouse
+    percent: 80
+  - title: Databases
+    percent: 80
+  - title: Analytics & Data Viz
+    percent: 80
+  - title: Azure Data Platform
+    percent: 70
+  - title: Kafka
+    percent: 70
+  - title: Data Streaming
+    percent: 70
+  - title: Machine Learning
     percent: 60
-  - title: Javascript
-    percent: 85
+  - title: ElasticSearch
+    percent: 60

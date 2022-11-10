@@ -1,13 +1,12 @@
 ---
 enable: true
-topTitle: Hello, I am Anh
+topTitle: Xin chào & Hello
 content: >
-  # I am here for your personal business
+  # Hello, I'm **Anh**
 
-  Enjoy team diversity and increase their networks among others people
-  in various fields by
-buttonName: Contact me
-buttonURL: contact
-image: images/hero/bkp.jpg
-videoThumb: images/hero/popup-thumb.png
-videoURL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+  I'm Software Engineer working at Microsoft in Seattle, WA, USA. 
+buttonName: My Blog
+buttonURL: blog
+image: images/hero/chicago.jpg
+# videoThumb: images/hero/popup-thumb.png
+# videoURL: images/hero/signatureupdate.gif

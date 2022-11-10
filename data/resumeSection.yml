@@ -4,55 +4,45 @@ topTitle: My Resume
 title: >
   ## My Expertises
 
-  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore  
-
-
-  Magna aliquyam erat, sed diam voluptua. At vero eos accusam justo.
-tab1Name: Education
-tab2Name: Experiences
-tab1Target: education
-tab2Target: experience
+  I have 6 years of experience working with Data Analytics Services, and Distributed Data on premises and on the Cloud (Azure, GCP, AWS). Throughout my career, I have worked in data engineering, big data, data science, data warehouse, back-end databases for web application. My tech stacks are Python, SQL, Linux, PySpark, Kafka, Airflow, Tableau, Kubernetes, BigQuery, Redshift, ElasticSearch, and Azure Synapse Analytics
+# button1Name: Contact
+tab1Name: Experiences
+tab1Target: experience
+tab2Name: Education
+tab2Target: education
 
 education:
   - content: >
-      #### Master in Arts
+      #### Software Engineer | Microsoft
 
-      Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-    time: 2008-2010
+      Build and manage back-end data flatform on Azure and AWS for Flip, a video-powered social learning platform owned by Microsoft
+
+    time: 2022-Present
   - content: >
-      #### Master in Arts
+      #### Software Engineer | Walmart Global Tech
 
-      Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-    time: 2008-2010
+      Build and maintain back-end data solution for an end-to-end analytical Supply Chain web application to track inventory and transportation from Suppliers to Stores for international markets
+    time: 2019-2022
   - content: >
-      #### Master in Arts
+      #### Tableau Systems Analyst | NTT Data Services
 
-      Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-    time: 2008-2010
+      Delivered analytical projects to provide data democratization to the healthcare account IT service team. Designed and distributed ~50 operations and financial KPI reports to executives and leadership team
+    time: 2017-2019
   - content: >
-      #### Master in Arts
+      #### Business Analyst | E2Open Inc
 
-      Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-    time: 2008-2010
+      Developed financial and supply chain KPI dashboards using Excel (VBA) and QlikView for sales consultants in the USA and EU to leverage the service quality and product offerings to potential and existing clients
+    time: 2017-2017
 
 experience:
   - content: >
-      #### Umbrella co. 
+      #### Master's in Computer Science
 
-      Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-    time: 2016-Present
+      Harrisburg University, USA
+    time: 2020-2022
   - content: >
-      #### Aperture Science 
+      #### Master's in Supply Chain Management
 
-      Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-    time: 2010-2016
-  - content: >
-      #### ACME Inc. 
+      University of Texas at Dallas, USA
+    time: 2015-2017
 
-      Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-    time: 2005-2010
-  - content: >
-      #### LexCorp 
-
-      Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-    time: 2001-2005

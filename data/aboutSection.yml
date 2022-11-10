@@ -2,18 +2,14 @@
 enable: true
 topTitle: About
 title: >
-  ## About me
+  ## About me 
+  
+  A girl who loves to code and talk about Data
 
-  TEST TEST TEST.
 content: >
-  ### I design and build ultimate things.
-
-  I love to work in User Experience & User Interface designing. Because I love
-  to solve the design problem and find easy and better solutions to solve it. I always
-  try my best to make good user interface with the best user experience. I have been
-  working as a Visual designer from.
-button1Name: Hire me
-button2Name: Download CV
-button1Target: contact
-button2Target: contact
-image: images/about/about-img.jpg
+  I'm a self-taught developer who enjoy the ongoing pursuit of knowledge and skills outside of the formal education system. I enjoy collaborating with people from different background and experience in order to achieve organizational goals. Besides programming, I love cooking, gardening, hiking, blogging, and playing boardgames
+# button1Name: Skills
+# button2Name: Resume
+# button1Target: skills
+# button2Target: resume
+image: images/about/chicago.png
