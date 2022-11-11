@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on AnhCodes</title>
-    <link>https://anhcodes-6ca2b.web.app/tags/</link>
-    <description>Recent content in Tags on AnhCodes</description>
+    <title>Tags on AnhCodes2</title>
+    <link>https://anhcodes.dev/tags/</link>
+    <description>Recent content in Tags on AnhCodes2</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 13 Sep 2020 12:49:27 +0600</lastBuildDate><atom:link href="https://anhcodes-6ca2b.web.app/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 13 Sep 2020 12:49:27 +0600</lastBuildDate><atom:link href="https://anhcodes.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>website</title>
-      <link>https://anhcodes-6ca2b.web.app/tags/website/</link>
+      <link>https://anhcodes.dev/tags/website/</link>
       <pubDate>Sun, 13 Sep 2020 12:49:27 +0600</pubDate>
       
-      <guid>https://anhcodes-6ca2b.web.app/tags/website/</guid>
+      <guid>https://anhcodes.dev/tags/website/</guid>
       <description></description>
     </item>
     
     <item>
       <title>mobile</title>
-      <link>https://anhcodes-6ca2b.web.app/tags/mobile/</link>
+      <link>https://anhcodes.dev/tags/mobile/</link>
       <pubDate>Mon, 13 Jul 2020 13:06:26 +0600</pubDate>
       
-      <guid>https://anhcodes-6ca2b.web.app/tags/mobile/</guid>
+      <guid>https://anhcodes.dev/tags/mobile/</guid>
       <description></description>
     </item>
     
     <item>
       <title>fun</title>
-      <link>https://anhcodes-6ca2b.web.app/tags/fun/</link>
+      <link>https://anhcodes.dev/tags/fun/</link>
       <pubDate>Mon, 13 Jul 2020 12:49:27 +0600</pubDate>
       
-      <guid>https://anhcodes-6ca2b.web.app/tags/fun/</guid>
+      <guid>https://anhcodes.dev/tags/fun/</guid>
       <description></description>
     </item>
     
