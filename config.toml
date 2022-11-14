@@ -1,8 +1,8 @@
-baseURL = "https://anhcodes.dev"
+baseURL = "https://anhcodesdev.web.app/"
 languageCode = "en-us"
 paginate = 6
 theme = "portio"
-title = "AnhCodes2"
+title = "AnhCodes"
 # Main Menu
 [[menu.main]]
 name = "Home"
