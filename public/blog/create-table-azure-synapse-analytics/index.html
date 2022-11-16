@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Best Practices in creating tables in Azure Synapse Analytics</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <!-- Slick Carousel -->
+  <link rel="stylesheet" href="https://anhcodesdev.web.app/plugins/slick/slick.css" />
+  <link rel="stylesheet" href="https://anhcodesdev.web.app/plugins/slick/slick-theme.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://anhcodesdev.web.app/plugins/font-awesome/css/font-awesome.min.css" />
+
+  <!-- Magnific Popup -->
+  <link rel="stylesheet" href="https://anhcodesdev.web.app/plugins/magnafic-popup/magnific-popup.css" />
+
+  <!-- Stylesheets -->
+  
+  <link href="https://anhcodesdev.web.app/scss/style.min.css" rel="stylesheet" />
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="https://anhcodesdev.web.app/images/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="https://anhcodesdev.web.app/images/favicon.png" type="image/x-icon" />
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR%20GOOGLE%20ANALYTICS%20CODE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'YOUR GOOGLE ANALYTICS CODE');
+  </script>
+  
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a href="https://anhcodesdev.web.app/" class="navbar-brand">
+      <img src="https://anhcodesdev.web.app/images/site-navigation/logo-new.png" alt="site-logo">
+    </a>
+    <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+      <ul class="nav navbar-nav main-navigation my-0 mx-auto">
+        
+        
+        <li class="nav-item">
+          <a href="https://anhcodesdev.web.app/#home"
+            class="nav-link text-dark text-sm-center p-2 ">Home</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodesdev.web.app/#about"
+            class="nav-link text-dark text-sm-center p-2 ">About</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodesdev.web.app/#resume"
+            class="nav-link text-dark text-sm-center p-2 ">Resume</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodesdev.web.app/#skills"
+            class="nav-link text-dark text-sm-center p-2 ">Skills</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodesdev.web.app/#blog"
+            class="nav-link text-dark text-sm-center p-2 ">Blog</a>
+        </li>
+        
+      </ul>
+      <div class="navbar-nav">
+        <a href="https://anhcodesdev.web.app/contact" class="btn btn-primary btn-zoom hire_button">Contact Me</a>
+      </div>
+    </div>
+  </div>
+</nav>
+  <div id="content">
+    
+
+<header class="breadCrumb">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 text-center">
+        <h3 class="breadCrumb__title">Best Practices in creating tables in Azure Synapse Analytics</h3>
+        <nav aria-label="breadcrumb" class="d-flex justify-content-center">
+          <ol class="breadcrumb align-items-center">
+            <li class="breadcrumb-item"><a href=https://anhcodesdev.web.app/>Home</a></li>
+            <li class="breadcrumb-item"><a href=https://anhcodesdev.web.app/blog>All Post</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Best Practices in creating tables in Azure Synapse Analytics</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <ul class="post-meta">
+      <li>
+        <i class="fa fa-calendar"></i>
+        November 15, 2022
+      </li>
+      <li>
+        <i class="fa fa-clock-o"></i>
+        4 mins read
+      </li>
+      
+      <li>
+        <i class="fa fa-tag"></i>
+        
+          <a class="text-capitalize" href="https://anhcodesdev.web.app/tags/azure-synapse-analytics/">azure-synapse-analytics</a>
+        
+      </li>
+      
+      
+      <li>
+        <i class="fa fa-folder-open"></i>
+        
+          <a class="text-capitalize" href="https://anhcodesdev.web.app/categories/data-lakehouse/">data-lakehouse</a>
+        
+      </li>
+      
+    </ul>
+  </div>
+  </div>
+  </div>
+  </div>
+</header>
+
+<section class="section singleBlog">
+  <div class="svg-img">
+    <img src=https://anhcodesdev.web.app/images/hero/hero-background-svg.svg alt="">
+  </div>
+  <div class="animate-shape">
+    <img src=https://anhcodesdev.web.app/images/skill/skill-background-shape.svg alt="">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 600">
+      <defs>
+        <linearGradient id="d" x1="0.929" y1="0.111" x2="0.263" y2="0.935" gradientUnits="objectBoundingBox">
+          <stop offset="0" stop-color="#f4cccc" />
+          <stop offset="1" stop-color="#f4cccc" stop-opacity="0" />
+        </linearGradient>
+      </defs>
+      <g data-name="blob-shape (3)">
+        <path class="blob" fill="url(#d)"
+          d="M455.4 151.1c43.1 36.7 73.4 92.8 60.8 136.3-12.7 43.5-68.1 74.4-111.3 119.4-43.1 45-74 104.1-109.8 109-35.9 5-76.7-44.2-111.8-89.2-35.2-45-64.7-85.8-70.8-132.6-6-46.8 11.6-99.6 46.7-136.3 35.2-36.6 88-57.2 142.4-58.8 54.5-1.7 110.6 15.6 153.8 52.2z" />
+      </g>
+    </svg>
+  </div>
+  <div class="animate-pattern">
+    <img src=https://anhcodesdev.web.app/images/service/background-pattern.svg alt="background-shape">
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="singleBlog__feature">
+          <img src=https://anhcodesdev.web.app/images/single-blog/feature-image.jpg alt="feature-image">
+        </div>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-lg-12">
+        <div class="singleBlog__content">
+
+          
+
+          <p>As Dedicated SQL pool uses a scaled-out node based architecture, when creating tables in Dedicated SQL Pool, remember to specify the distribution (sharding strategy) and index for your tables.
+<em>Reference: <a href="https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/massively-parallel-processing-mpp-architecture">Dedicated SQL Pool Architecture</a></em></p>
+<h4 id="choosing-distribution">Choosing Distribution:</h4>
+<p>The data is sharded into distributions to optimize the performance of the system. You can choose which sharding pattern to use to distribute the data when you define the table. These sharding patterns are supported:</p>
+<ul>
+<li><strong>Hash</strong>: deliver the highest query performance for joins and aggregations on large tables. This is most relevant to analytics tables.</li>
+<li><strong>Round Robin</strong>: delivers fast performance when used as a staging table for loads, not relevant to analytics queries</li>
+<li><strong>Replicate</strong>: provides the fastest query performance for small tables.A table that is replicated caches a full copy of the table on each compute node. Consequently, replicating a table removes the need to transfer data among compute nodes before a join or aggregation. Replicated tables are best utilized with small tables. Extra storage is required and there is additional overhead that is incurred when writing data, which make large tables impractical.</li>
+</ul>
+<h4 id="choosing-index">Choosing Index</h4>
+<p>Besides, you will need to specify the index for your table, there are 3 options:</p>
+<ul>
+<li><strong>CLUSTERED COLUMNSTORE INDEX</strong> &ndash; default for Synapse Analytics: if table is created without index option specified. Clustered columnstore tables offer both the highest level of data compression and the best overall query performance. Clustered columnstore tables will generally outperform clustered index or heap tables and are usually the best choice for large tables (it&rsquo;s recommended to use CCI for tables with more than 60 million rows).</li>
+<li><strong>CLUSTERED COLUMNSTORE INDEX ORDER</strong>(column [,&hellip;n]) : this is a more advanced option for further query tuning (refer: <a href="https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/performance-tuning-ordered-cci?view=azure-sqldw-latest#query-performance">performance tuning with ordered CCI</a>)</li>
+<li><strong>HEAP</strong>: it&rsquo;s best for staging table to load data to dedicated SQL Pool</li>
+<li><strong>CLUSTERED INDEX</strong> ( { index_column_name [ ASC | DESC ] } [ ,&hellip;n ] ) &ndash; default order is ASC: Clustered indexes may outperform clustered columnstore tables when a single row needs to be quickly retrieved. For queries where a single or very few row lookup is required to perform with extreme speed, consider a clustered index or nonclustered secondary index. The disadvantage of using a clustered index is that only queries that benefit are the ones that use a highly selective filter on the clustered index column. To improve filter on other columns, a nonclustered index can be added to other columns. However, each index that is added to a table adds both space and processing time to loads.</li>
+</ul>
+<h4 id="update-stats-on-the-table">Update Stats on the table</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">declare</span> <span style="color:#f92672">@</span>minRows int<span style="color:#f92672">=</span><span style="color:#ae81ff">1000000</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">declare</span> <span style="color:#f92672">@</span>minSkewPercent decimal<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>.<span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">declare</span> <span style="color:#f92672">@</span>missingStatCtlRowCount int<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">declare</span> <span style="color:#f92672">@</span>CtlCmpRowDifferencePercentageForOutdatedStats decimal<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span>.<span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> cmp_details <span style="color:#66d9ef">as</span>
+</span></span><span style="display:flex;"><span>(
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">select</span> tm.object_id, ps.index_id, ps.distribution_id, <span style="color:#66d9ef">count</span>(ps.partition_number) [partitions], <span style="color:#66d9ef">sum</span>(ps.<span style="color:#66d9ef">row_count</span>) cmp_row_count
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">from</span> sys.dm_pdw_nodes_db_partition_stats ps
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">join</span> sys.pdw_nodes_tables nt <span style="color:#66d9ef">on</span> nt.object_id<span style="color:#f92672">=</span>ps.object_id <span style="color:#66d9ef">and</span> ps.distribution_id<span style="color:#f92672">=</span>nt.distribution_id
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">join</span> sys.pdw_table_mappings tm <span style="color:#66d9ef">on</span> tm.physical_name<span style="color:#f92672">=</span>nt.name
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">where</span> ps.index_id<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> tm.object_id, ps.index_id, ps.distribution_id
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>, cmp_summary <span style="color:#66d9ef">as</span>
+</span></span><span style="display:flex;"><span>(
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">select</span> object_id, index_id, <span style="color:#66d9ef">sum</span>(cmp_row_count) cmp_row_count
+</span></span><span style="display:flex;"><span>              , (<span style="color:#66d9ef">max</span>(cmp_row_count)<span style="color:#f92672">-</span><span style="color:#66d9ef">min</span>(cmp_row_count)) highest_skew_rows_difference
+</span></span><span style="display:flex;"><span>              , <span style="color:#66d9ef">convert</span>(decimal(<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">2</span>),((<span style="color:#66d9ef">max</span>(cmp_row_count) <span style="color:#f92672">-</span> <span style="color:#66d9ef">min</span>(cmp_row_count))<span style="color:#f92672">*</span><span style="color:#ae81ff">100</span>.<span style="color:#ae81ff">0</span> <span style="color:#f92672">/</span> <span style="color:#66d9ef">nullif</span>(<span style="color:#66d9ef">sum</span>(cmp_row_count),<span style="color:#ae81ff">0</span>))) skew_percent
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">from</span> cmp_details
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> object_id, index_id
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>, ctl_summary <span style="color:#66d9ef">as</span>
+</span></span><span style="display:flex;"><span>(
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">select</span> t.object_id, i.index_id, s.name [<span style="color:#66d9ef">schema_name</span>], t.name <span style="color:#66d9ef">table_name</span>, i.type_desc table_type, dp.distribution_policy_desc distribution_type, <span style="color:#66d9ef">count</span>(p.partition_number) [partitions], <span style="color:#66d9ef">sum</span>(p.<span style="color:#66d9ef">rows</span>) ctl_row_count
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">from</span> sys.schemas s
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">join</span> sys.tables t <span style="color:#66d9ef">on</span> t.schema_id<span style="color:#f92672">=</span>s.schema_id
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">join</span> sys.pdw_table_distribution_properties dp <span style="color:#66d9ef">on</span> dp.object_id<span style="color:#f92672">=</span>t.object_id
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">join</span> sys.indexes i <span style="color:#66d9ef">on</span> i.object_id<span style="color:#f92672">=</span>t.object_id <span style="color:#66d9ef">and</span> i.index_id<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">join</span> sys.partitions p <span style="color:#66d9ef">on</span> p.object_id<span style="color:#f92672">=</span>t.object_id <span style="color:#66d9ef">and</span> p.index_id<span style="color:#f92672">=</span>i.index_id
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> t.object_id, i.index_id, s.name, t.name, i.type_desc, dp.distribution_policy_desc
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>, [all_results] <span style="color:#66d9ef">as</span>
+</span></span><span style="display:flex;"><span>(
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">select</span> ctl.object_id, ctl.index_id, ctl.[<span style="color:#66d9ef">schema_name</span>], ctl.<span style="color:#66d9ef">table_name</span>, ctl.table_type, ctl.distribution_type, ctl.[partitions]
+</span></span><span style="display:flex;"><span>              , ctl.ctl_row_count, cmp.cmp_row_count, <span style="color:#66d9ef">convert</span>(decimal(<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">2</span>),(<span style="color:#66d9ef">abs</span>(ctl.ctl_row_count <span style="color:#f92672">-</span> cmp.cmp_row_count)<span style="color:#f92672">*</span><span style="color:#ae81ff">100</span>.<span style="color:#ae81ff">0</span> <span style="color:#f92672">/</span> <span style="color:#66d9ef">nullif</span>(cmp.cmp_row_count,<span style="color:#ae81ff">0</span>))) ctl_cmp_difference_percent
+</span></span><span style="display:flex;"><span>              , cmp.highest_skew_rows_difference, cmp.skew_percent
+</span></span><span style="display:flex;"><span>              , <span style="color:#66d9ef">case</span>
+</span></span><span style="display:flex;"><span>                     <span style="color:#66d9ef">when</span> (ctl.ctl_row_count <span style="color:#f92672">=</span> <span style="color:#f92672">@</span>missingStatCtlRowCount) <span style="color:#66d9ef">then</span> <span style="color:#e6db74">&#39;missing stats&#39;</span>
+</span></span><span style="display:flex;"><span>                     <span style="color:#66d9ef">when</span> ((ctl.ctl_row_count <span style="color:#f92672">&lt;&gt;</span> cmp.cmp_row_count) <span style="color:#66d9ef">and</span> ((<span style="color:#66d9ef">abs</span>(ctl.ctl_row_count <span style="color:#f92672">-</span> cmp.cmp_row_count)<span style="color:#f92672">*</span><span style="color:#ae81ff">100</span>.<span style="color:#ae81ff">0</span> <span style="color:#f92672">/</span> <span style="color:#66d9ef">nullif</span>(cmp.cmp_row_count,<span style="color:#ae81ff">0</span>)) <span style="color:#f92672">&gt;</span> <span style="color:#f92672">@</span>CtlCmpRowDifferencePercentageForOutdatedStats)) <span style="color:#66d9ef">then</span> <span style="color:#e6db74">&#39;outdated stats&#39;</span>
+</span></span><span style="display:flex;"><span>                     <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">end</span> stat_info
+</span></span><span style="display:flex;"><span>              , <span style="color:#66d9ef">case</span> <span style="color:#66d9ef">when</span> (cmp.skew_percent <span style="color:#f92672">&gt;=</span> <span style="color:#f92672">@</span>minSkewPercent) <span style="color:#66d9ef">then</span> <span style="color:#e6db74">&#39;data skew&#39;</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">null</span> <span style="color:#66d9ef">end</span> skew_info
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">from</span> ctl_summary ctl
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">join</span> cmp_summary cmp <span style="color:#66d9ef">on</span> ctl.object_id<span style="color:#f92672">=</span>cmp.object_id <span style="color:#66d9ef">and</span> ctl.index_id<span style="color:#f92672">=</span>cmp.index_id
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">from</span> [all_results]
+</span></span><span style="display:flex;"><span><span style="color:#75715e">--where cmp_row_count&gt;@minRows and
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">where</span> (stat_info <span style="color:#66d9ef">is</span> <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">null</span> <span style="color:#66d9ef">or</span> skew_info <span style="color:#66d9ef">is</span> <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">and</span> [<span style="color:#66d9ef">schema_name</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;analytics&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> [<span style="color:#66d9ef">schema_name</span>], <span style="color:#66d9ef">table_name</span>;
+</span></span></code></pre></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  </div>
+  <section class="footer" id="contact">
+	<div class="footer__background_shape">
+		<svg viewBox="0 0 1920 79">
+			<path d="M0 0h1920v79L0 0z" data-name="Path 1450" />
+		</svg>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="footer__cta">
+					<div class="shape-1">
+						<svg xmlns="http://www.w3.org/2000/svg" width="357" height="315.029" viewBox="0 0 357 315.029">
+							<path data-name="Path 1449"
+								d="M76.1-157.222C91.746-135.8 87.2-94.273 99.993-61.945c12.7 32.328 42.661 55.459 39.248 73.282-3.318 17.823-40.007 30.337-65.6 43.325-25.5 12.988-39.912 26.545-60.01 42.566-20.1 16.116-46.074 34.6-63.328 27.682-17.349-6.921-25.976-39.153-59.915-59.82s-93.1-29.768-105.325-51.478 22.373-56.028 43.609-93.949c21.331-37.921 29.2-79.35 53.563-96.793 24.459-17.444 65.414-10.9 103.9-6.921 38.396 3.982 74.326 5.404 89.965 26.829z"
+								transform="translate(217.489 188.626)" />
+						</svg>
+					</div>
+					<div class="shape-2">
+						<svg xmlns="http://www.w3.org/2000/svg" width="357" height="315.029" viewBox="0 0 357 315.029">
+							<path data-name="Path 1449"
+								d="M76.1-157.222C91.746-135.8 87.2-94.273 99.993-61.945c12.7 32.328 42.661 55.459 39.248 73.282-3.318 17.823-40.007 30.337-65.6 43.325-25.5 12.988-39.912 26.545-60.01 42.566-20.1 16.116-46.074 34.6-63.328 27.682-17.349-6.921-25.976-39.153-59.915-59.82s-93.1-29.768-105.325-51.478 22.373-56.028 43.609-93.949c21.331-37.921 29.2-79.35 53.563-96.793 24.459-17.444 65.414-10.9 103.9-6.921 38.396 3.982 74.326 5.404 89.965 26.829z"
+								transform="translate(217.489 188.626)" />
+						</svg>
+					</div>
+					<div class="text-light footer__cta_content">
+						<span>Contact me</span>
+						<h2 class="mb-0">Let’s Start a Project</h2>
+					</div>
+					<div class="footer__cta_action">
+						<a class="btn btn-light btn-zoom" href="https://anhcodesdev.web.app/contact">Get in
+							touch</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+			
+			
+		<div class="row footer__footer">
+			<div class="col-lg-6">
+				<div class="footer__footer_copy text-light">
+					<p>Copyright 2022 - All Rights Reserved by <a class="text-light" href="https://staticmania.com/" target="_blank">AnhChu</a></p>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="footer__footer_social">
+					<ul class="unstyle-list">
+						
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://www.facebook.com/"><i
+									class="fa fa-facebook-official"></i></a>
+						</li>
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://www.linkedin.com/"><i
+									class="fa fa-linkedin-square"></i></a>
+						</li>
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://www.pinterest.com/"><i
+									class="fa fa-pinterest-square"></i></a>
+						</li>
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://twitter.com/"><i
+									class="fa fa-twitter-square"></i></a>
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR%20GOOGLE%20MAP%20API&libraries=geometry"></script>
+<script src="https://anhcodesdev.web.app/plugins/jQuery/jquery.min.js"></script>
+<script src="https://anhcodesdev.web.app/plugins/bootstrap/bootstrap.min.js"></script>
+<script src="https://anhcodesdev.web.app/plugins/slick/slick.min.js"></script>
+<script src="https://anhcodesdev.web.app/plugins/waypoint/jquery.waypoints.min.js"></script>
+<script src="https://anhcodesdev.web.app/plugins/magnafic-popup/jquery.magnific-popup.min.js"></script>
+<script src="https://anhcodesdev.web.app/plugins/tweenmax/TweenMax.min.js"></script>
+<script src="https://anhcodesdev.web.app/plugins/imagesloaded/imagesloaded.min.js"></script>
+<script src="https://anhcodesdev.web.app/plugins/masonry/masonry.min.js"></script>
+
+
+<script src="https://anhcodesdev.web.app/js/script.min.js"></script>
+
+</body>
+
+</html>

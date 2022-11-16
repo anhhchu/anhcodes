@@ -6,7 +6,16 @@
     <description>Recent content in Tags on AnhCodes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 13 Sep 2020 12:49:27 +0600</lastBuildDate><atom:link href="https://anhcodesdev.web.app/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 15 Nov 2022 23:30:13 +0000</lastBuildDate><atom:link href="https://anhcodesdev.web.app/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>azure-synapse-analytics</title>
+      <link>https://anhcodesdev.web.app/tags/azure-synapse-analytics/</link>
+      <pubDate>Tue, 15 Nov 2022 23:30:13 +0000</pubDate>
+      
+      <guid>https://anhcodesdev.web.app/tags/azure-synapse-analytics/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>website</title>
       <link>https://anhcodesdev.web.app/tags/website/</link>
@@ -17,20 +26,20 @@
     </item>
     
     <item>
-      <title>mobile</title>
-      <link>https://anhcodesdev.web.app/tags/mobile/</link>
-      <pubDate>Mon, 13 Jul 2020 13:06:26 +0600</pubDate>
-      
-      <guid>https://anhcodesdev.web.app/tags/mobile/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>fun</title>
       <link>https://anhcodesdev.web.app/tags/fun/</link>
       <pubDate>Mon, 13 Jul 2020 12:49:27 +0600</pubDate>
       
       <guid>https://anhcodesdev.web.app/tags/fun/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mobile</title>
+      <link>https://anhcodesdev.web.app/tags/mobile/</link>
+      <pubDate>Mon, 13 Jul 2020 12:49:27 +0600</pubDate>
+      
+      <guid>https://anhcodesdev.web.app/tags/mobile/</guid>
       <description></description>
     </item>
     

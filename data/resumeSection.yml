@@ -4,7 +4,7 @@ topTitle: My Resume
 title: >
   ## My Expertises
 
-  I have 6 years of experience working with Data Analytics Services, and Distributed Data on premises and on the Cloud (Azure, GCP, AWS). Throughout my career, I have worked in data engineering, big data, data science, data warehouse, back-end databases for web application. My tech stacks are Python, SQL, Linux, PySpark, Kafka, Airflow, Tableau, Kubernetes, BigQuery, Redshift, ElasticSearch, and Azure Synapse Analytics
+  I have experience working with Data Analytics Services, and Distributed Data on premises and on the Cloud (Azure, GCP, AWS). Throughout my career, I have worked in data engineering, big data, data science, data warehouse, back-end databases for web application.
 # button1Name: Contact
 tab1Name: Experiences
 tab1Target: experience
@@ -15,7 +15,7 @@ education:
   - content: >
       #### Software Engineer | Microsoft
 
-      Build and manage back-end data flatform on Azure and AWS for Flip, a video-powered social learning platform owned by Microsoft
+      Build and manage back-end data flatform (Data Lakehouse) on Azure and AWS for Flip, a video-powered social learning platform owned by Microsoft.
 
     time: 2022-Present
   - content: >
@@ -46,3 +46,4 @@ experience:
       University of Texas at Dallas, USA
     time: 2015-2017
 
+# buttonTarget: resume

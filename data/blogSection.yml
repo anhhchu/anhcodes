@@ -4,6 +4,6 @@ topTitle: Blog
 title: >
   ## Recent Article
 
-  I covered Data Technology and Tools on GCP and Azure Cloud such as PySpark, Azure Synapse Analytics, Azure Data Factory, GCP BigQuery, Azure Synapse Spark, Azure Databases
+  I blog about Data Processing, Data Storage, Data Analytics, and Distributed System on GCP and Azure Cloud such as Spark, Azure Synapse Analytics, Databases, and GCP BigQuery.
 
 buttonTarget: blog

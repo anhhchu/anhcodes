@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Designer Conference at Florida 2020</title>
+  <title>SQL Pools in Azure Synapse Analytics vs Redshift</title>
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -92,12 +92,12 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 text-center">
-        <h3 class="breadCrumb__title">Designer Conference at Florida 2020</h3>
+        <h3 class="breadCrumb__title">SQL Pools in Azure Synapse Analytics vs Redshift</h3>
         <nav aria-label="breadcrumb" class="d-flex justify-content-center">
           <ol class="breadcrumb align-items-center">
             <li class="breadcrumb-item"><a href=https://anhcodesdev.web.app/>Home</a></li>
             <li class="breadcrumb-item"><a href=https://anhcodesdev.web.app/blog>All Post</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Designer Conference at Florida 2020</li>
+            <li class="breadcrumb-item active" aria-current="page">SQL Pools in Azure Synapse Analytics vs Redshift</li>
           </ol>
         </nav>
       </div>
@@ -106,7 +106,7 @@
     <ul class="post-meta">
       <li>
         <i class="fa fa-calendar"></i>
-        July 13, 2020
+        November 15, 2022
       </li>
       <li>
         <i class="fa fa-clock-o"></i>
@@ -116,7 +116,7 @@
       <li>
         <i class="fa fa-tag"></i>
         
-          <a class="text-capitalize" href="https://anhcodesdev.web.app/tags/mobile/">mobile</a>
+          <a class="text-capitalize" href="https://anhcodesdev.web.app/tags/azure-synapse-analytics/">azure-synapse-analytics</a>
         
       </li>
       
@@ -124,7 +124,7 @@
       <li>
         <i class="fa fa-folder-open"></i>
         
-          <a class="text-capitalize" href="https://anhcodesdev.web.app/categories/documentation/">documentation</a>
+          <a class="text-capitalize" href="https://anhcodesdev.web.app/categories/data-lakehouse/">data-lakehouse</a>
         
       </li>
       
@@ -171,35 +171,59 @@
 
           
 
-          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-<blockquote>
-<p>&ldquo;The public is more familiar with bad design than good design. It is, in effect, conditioned to prefer bad design, because that is what it lives with. The new becomes threatening, the old reassuring.&rdquo;
-&ndash; <!-- raw HTML omitted -->Benjamin Franklin<!-- raw HTML omitted --></p>
-</blockquote>
-<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+          <h2 id="what-is-dedicated-sql-pool">What is Dedicated SQL Pool?</h2>
+<p>Dedicated SQL Pool (formerly SQL DW) to store data for analytics queries because it leverages a scale-out architecture (Massively Parallel Processing) to distribute computational processing of data across multiple nodes. Applications connect and issue T-SQL commands to a Control node. The Control node hosts the distributed query engine, which optimizes queries for parallel processing, and then passes operations to Compute nodes to do their work in parallel. The Compute nodes store all user data in Azure Storage and run the parallel queries. The Data Movement Service (DMS) is a system-level internal service that moves data across the nodes as necessary to run queries in parallel and return accurate results.</p>
+<p><img src="%22https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png%22" alt="Dedicated SQL pool (formerly SQL DW) architecture"></p>
+<p>Users can connect to Dedicated SQL Pool using Azure Data Studio (on Mac and Windows), SQL Server Management Studio (for Windows), and Azure Synapse Workspace web interface. Refer: <a href="/Data-Lakehouse/Authentication,-Authorization-and-Access-to-Data-Lakehouse">Authentication, Authorization and Access to Data Lakehouse</a>. Azure Synapse Workspace is not an option if you don&rsquo;t have OpenVPN connection, or if you don&rsquo;t need access to data in Azure Data lake storage.</p>
+<h2 id="what-is-serverless-sql-pool">What is Serverless SQL Pool?</h2>
 <ul>
-<li>ROFL means Rolling on floor laughing.</li>
-<li>STFU means Shut the <em>freak</em> up.</li>
-<li>LMK means Let me know.</li>
-<li>ILY means I love you.</li>
-<li>YOLO means You only live once.</li>
-<li>SMH means Shaking my head.</li>
+<li>In Serverless SQL pool, there is no need to set up infrastructure and maintain clusters. While in dedicated SQL Pool, we reserved a fixed number of Data Warehouse Units (DWU) which dictate the CPU, Memory and IO power for the data warehouse.</li>
+<li>Serverless SQL pool uses a pay-per-use model, so there is no charge for resources reserved, and the charges are made for the data processed by each query that you run. On the other hand, we provisioned our dedicated SQL Pool and pay by Data Warehouse Unit (DWU).</li>
+<li>When we query Serverless SQL Pool, we query the external tables, which are abstraction of data in data lake storage. As the result, dedicated SQL Pool doesn&rsquo;t support indexes for query optimization, or dynamic data masking or column level encryption for permission granting and data security, as well as materialized views. On the other hand, if we import data from the lake to regular tables in Dedicated SQL Pool, we can take advantage of these mentioned features. Dedicated SQL Pool support materialized views but LEFT, RIGHT, OUTER JOIN is not supported in materialized views query creation.</li>
+<li>Serverless SQL Pool is suitable for adhoc, simple queries when users must have access to data in our data lake storage account. While dedicated pool can be use for more complex queries suitable for analytics purpose, you also can connect to dedicated SQL pool using a SQL client like Azure Data Studio or SQL Server Management Studio.</li>
 </ul>
-<p>The company was previously known as Hingston + Co. but has been given a complete rebrand — including a new logo, tap badges, website and branded material — by London-based design studio &amp; Smith. The new identity is based on the Kandinsky abstract painting, Black Lines, and true to its name, is mostly black and white with a few flashes of colour. According to &amp; Smith, the identity brings together “art and science” and has been brought to life through collaborations with nine illustrators.</p>
-<div class="blog-section">
-    <h3>Creative Design</h3>
-    <img src="https://anhcodesdev.web.app/images/single-blog/blog-img.jpg"  alt="blog-img">
-    <p>
-        
-
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-
-
-    </p>
-</div>
-<p>sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</p>
-<p>Black Lines wants it to be as easy to serve a Negroni as it is a pint of lager. The drinks company is seeking to revolutionise the bar experience by serving cocktails by draught with a changing menu of drinks (as well as same favourite stand-bys). A pink grapefruit spritz was served through the summer while a new pear and white tea fizz joins the line-up for winter.</p>
+<h2 id="redshift-vs-dedicated-sql-pool-comparison">Redshift vs Dedicated SQL Pool Comparison</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Redshift</th>
+<th>Dedicated SQL Pool (Synapse Analytics)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Architecture</td>
+<td>clusters with nodes bundled of CPU, storage, memory and IOPS</td>
+<td>similar but compute and storage are scaled and billed separately, use Data Warehouse Units with only comprises of CPU, memory and IOPS. In the current setting, we provisioned 1000c DWU for our Synapse SQL Pool, but this can scale up and down depending on how much compute we need</td>
+</tr>
+<tr>
+<td>Massively Parallel Processing MPP</td>
+<td>available for easy scaling</td>
+<td>available for easy scaling</td>
+</tr>
+<tr>
+<td>Data Protection</td>
+<td>Redshift takes a snapshot about every eight hours or following every 5 GB per node of data changes, snapshot stores in AWS S3</td>
+<td>takes automatic snapshots of the data warehouse throughout the day to create restore points that are available for seven days</td>
+</tr>
+<tr>
+<td>SQL flavor</td>
+<td>PostgreSQL</td>
+<td>T-SQL</td>
+</tr>
+<tr>
+<td>Permission</td>
+<td>permissions apply to tables as a whole</td>
+<td>supports granular permissions on schemas, tables, views, individual columns, procedures, and other objects</td>
+</tr>
+<tr>
+<td>Data Masking</td>
+<td>not native</td>
+<td>native dynamic data masking solution for PII and PCI data</td>
+</tr>
+</tbody>
+</table>
 
         </div>
       </div>

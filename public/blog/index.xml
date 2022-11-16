@@ -1,12 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Recents Article on AnhCodes</title>
+    <title>Data &amp; More on AnhCodes</title>
     <link>https://anhcodesdev.web.app/blog/</link>
-    <description>Recent content in Recents Article on AnhCodes</description>
+    <description>Recent content in Data &amp; More on AnhCodes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 13 Sep 2020 12:49:27 +0600</lastBuildDate><atom:link href="https://anhcodesdev.web.app/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 15 Nov 2022 23:30:13 +0000</lastBuildDate><atom:link href="https://anhcodesdev.web.app/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SQL Pools in Azure Synapse Analytics vs Redshift</title>
+      <link>https://anhcodesdev.web.app/blog/sql-pools/</link>
+      <pubDate>Tue, 15 Nov 2022 23:30:13 +0000</pubDate>
+      
+      <guid>https://anhcodesdev.web.app/blog/sql-pools/</guid>
+      <description>What is Dedicated SQL Pool? Dedicated SQL Pool (formerly SQL DW) to store data for analytics queries because it leverages a scale-out architecture (Massively Parallel Processing) to distribute computational processing of data across multiple nodes. Applications connect and issue T-SQL commands to a Control node. The Control node hosts the distributed query engine, which optimizes queries for parallel processing, and then passes operations to Compute nodes to do their work in parallel.</description>
+    </item>
+    
+    <item>
+      <title>Best Practices in creating tables in Azure Synapse Analytics</title>
+      <link>https://anhcodesdev.web.app/blog/create-table-azure-synapse-analytics/</link>
+      <pubDate>Tue, 15 Nov 2022 23:24:30 +0000</pubDate>
+      
+      <guid>https://anhcodesdev.web.app/blog/create-table-azure-synapse-analytics/</guid>
+      <description>As Dedicated SQL pool uses a scaled-out node based architecture, when creating tables in Dedicated SQL Pool, remember to specify the distribution (sharding strategy) and index for your tables. Reference: Dedicated SQL Pool Architecture
+Choosing Distribution: The data is sharded into distributions to optimize the performance of the system. You can choose which sharding pattern to use to distribute the data when you define the table. These sharding patterns are supported:</description>
+    </item>
+    
     <item>
       <title>Markdown Formatting Demo</title>
       <link>https://anhcodesdev.web.app/blog/markdown-formatting-demo/</link>
@@ -23,24 +42,6 @@ Emphasis This is bold text
 This is bold text
 This is italic text
 This is italic text</description>
-    </item>
-    
-    <item>
-      <title>Designer Conference at Florida 2020</title>
-      <link>https://anhcodesdev.web.app/blog/designer-conference-at-florida-2020/</link>
-      <pubDate>Mon, 13 Jul 2020 13:06:26 +0600</pubDate>
-      
-      <guid>https://anhcodesdev.web.app/blog/designer-conference-at-florida-2020/</guid>
-      <description>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
-    </item>
-    
-    <item>
-      <title>Benjamin Franklins thoughts about new designers</title>
-      <link>https://anhcodesdev.web.app/blog/benjamin-franklins-thoughts-about-new-designers/</link>
-      <pubDate>Mon, 13 Jul 2020 12:49:27 +0600</pubDate>
-      
-      <guid>https://anhcodesdev.web.app/blog/benjamin-franklins-thoughts-about-new-designers/</guid>
-      <description>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
     </item>
     
     <item>
