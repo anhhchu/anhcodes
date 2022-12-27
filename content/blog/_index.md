@@ -1,3 +1,3 @@
 ---
-title: Data & More
+title: Data, Coding & More
 ---

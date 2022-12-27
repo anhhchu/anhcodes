@@ -1,6 +1,6 @@
 ---
 title: "How to recover lost files after a git reset --hard"
-date: 2020-07-13T12:49:27+06:00
+date: 2022-12-27 11:30:20
 featureImage: images/allpost/allPost-5.jpg
 postImage: images/single-blog/feature-image.jpg
 tags: how-to, git
@@ -9,7 +9,7 @@ categories: blog
 
 While working on a recent project, I accidentally committed some files. Instead of using `git reset --soft <prev-commit-id>` to unstage them, I used `git reset --hard HEAD` and all of my new changes gone with the wind. After panicking for a few minutes, I determined to learn how `git reset` works and how I can revert the damages. 
 
-# `git reset --hard` vs. `git reset --soft`
+# git reset --hard vs. git reset --soft
 
 `git reset --hard` resets the current branch tip, and also deletes any changes in the working directory and staging area (although files under `git stash` will not be affected). It resets index entries to a specified commit, or the HEAD location. `git reset --hard` should be used with caution, since it can lead to losing work in your staging area and working directory.
 
@@ -75,9 +75,9 @@ Untracked files:
         test2.txt
 ```
 
-# Recover lost files in 2 scenarios
+# Recover lost files in 3 scenarios
 
-## Changes committed
+## Scenario 1: Changes committed
 
 If you do a `git reset --hard` after `git add` and `git commit`
 
@@ -97,7 +97,7 @@ If you do a `git reset --hard` after `git add` and `git commit`
 
     `git merge <new-branch>`
 
-### Changes staged but not yet committed
+### Scenario 2: Changes staged but not yet committed
 
 If you do a `git reset --hard` after `git add` but before `git commit`
 
@@ -107,7 +107,7 @@ If you do a `git reset --hard` after `git add` but before `git commit`
 
 3. Another option is to use `git fsck --lost-found` to move all the dangling blobs to lost-found directory. Then, `cd .git/lost-found/other` to check all the dangling blob content
 
-### Changes not staged nor committed
+### Scenario 3: Changes not staged nor committed
 
 If you do a `git reset --hard` after `git add` and `git commit`, your new changes before staging will still be in your directory. 
 
