@@ -1,4 +1,4 @@
-baseURL = "https://anhcodesdev.web.app/"
+baseURL = "https://anhcodes.dev/"
 languageCode = "en-us"
 paginate = 6
 theme = "portio"

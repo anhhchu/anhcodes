@@ -2,46 +2,46 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>AnhCodes</title>
-    <link>https://anhcodesdev.web.app/</link>
+    <link>https://anhcodes.dev/</link>
     <description>Recent content on AnhCodes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Dec 2022 11:30:20 +0000</lastBuildDate><atom:link href="https://anhcodesdev.web.app/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 27 Dec 2022 11:30:20 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to recover lost files after a git reset --hard</title>
-      <link>https://anhcodesdev.web.app/blog/recover-lost-files-git-reset-hard/</link>
+      <link>https://anhcodes.dev/blog/recover-lost-files-git-reset-hard/</link>
       <pubDate>Tue, 27 Dec 2022 11:30:20 +0000</pubDate>
       
-      <guid>https://anhcodesdev.web.app/blog/recover-lost-files-git-reset-hard/</guid>
+      <guid>https://anhcodes.dev/blog/recover-lost-files-git-reset-hard/</guid>
       <description>While working on a recent project, I accidentally committed some files. Instead of using git reset --soft &amp;lt;prev-commit-id&amp;gt; to unstage them, I used git reset --hard HEAD and all of my new changes gone with the wind. After panicking for a few minutes, I determined to learn how git reset works and how I can revert the damages.
 git reset &amp;ndash;hard vs. git reset &amp;ndash;soft git reset --hard resets the current branch tip, and also deletes any changes in the working directory and staging area (although files under git stash will not be affected).</description>
     </item>
     
     <item>
       <title>SQL Pools in Azure Synapse Analytics vs Redshift</title>
-      <link>https://anhcodesdev.web.app/blog/sql-pools/</link>
+      <link>https://anhcodes.dev/blog/sql-pools/</link>
       <pubDate>Tue, 15 Nov 2022 23:30:13 +0000</pubDate>
       
-      <guid>https://anhcodesdev.web.app/blog/sql-pools/</guid>
+      <guid>https://anhcodes.dev/blog/sql-pools/</guid>
       <description>What is Dedicated SQL Pool? Dedicated SQL Pool (formerly SQL DW) to store data for analytics queries because it leverages a scale-out architecture (Massively Parallel Processing) to distribute computational processing of data across multiple nodes. Applications connect and issue T-SQL commands to a Control node. The Control node hosts the distributed query engine, which optimizes queries for parallel processing, and then passes operations to Compute nodes to do their work in parallel.</description>
     </item>
     
     <item>
       <title>Best Practices in creating tables in Azure Synapse Analytics</title>
-      <link>https://anhcodesdev.web.app/blog/create-table-azure-synapse-analytics/</link>
+      <link>https://anhcodes.dev/blog/create-table-azure-synapse-analytics/</link>
       <pubDate>Tue, 15 Nov 2022 23:24:30 +0000</pubDate>
       
-      <guid>https://anhcodesdev.web.app/blog/create-table-azure-synapse-analytics/</guid>
+      <guid>https://anhcodes.dev/blog/create-table-azure-synapse-analytics/</guid>
       <description>As Dedicated SQL pool uses a scaled-out node based architecture, when creating tables in Dedicated SQL Pool, remember to specify the distribution (sharding strategy) and index for your tables. Reference: Dedicated SQL Pool Architecture
 Choosing Distribution: The data is sharded into distributions to optimize the performance of the system. You can choose which sharding pattern to use to distribute the data when you define the table. These sharding patterns are supported:</description>
     </item>
     
     <item>
       <title>Markdown Formatting Demo</title>
-      <link>https://anhcodesdev.web.app/blog/markdown-formatting-demo/</link>
+      <link>https://anhcodes.dev/blog/markdown-formatting-demo/</link>
       <pubDate>Sun, 13 Sep 2020 12:49:27 +0600</pubDate>
       
-      <guid>https://anhcodesdev.web.app/blog/markdown-formatting-demo/</guid>
+      <guid>https://anhcodes.dev/blog/markdown-formatting-demo/</guid>
       <description>This example Markdown file compliments of markdown-it.github.io
 h1 Heading 8-) h2 Heading h3 Heading h4 Heading h5 Heading h6 Heading Horizontal Rules Typographic replacements Enable typographer option to see result.
 (c) (C) (r) (R) (tm) (TM) (p) (P) +-
@@ -56,82 +56,82 @@ This is italic text</description>
     
     <item>
       <title>UX Case Study for Agriculture App</title>
-      <link>https://anhcodesdev.web.app/portfolio/ux-case-study-for-agriculture-app/</link>
+      <link>https://anhcodes.dev/portfolio/ux-case-study-for-agriculture-app/</link>
       <pubDate>Wed, 12 Aug 2020 12:13:40 +0000</pubDate>
       
-      <guid>https://anhcodesdev.web.app/portfolio/ux-case-study-for-agriculture-app/</guid>
+      <guid>https://anhcodes.dev/portfolio/ux-case-study-for-agriculture-app/</guid>
       <description>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
     </item>
     
     <item>
       <title>How to become acreative designer</title>
-      <link>https://anhcodesdev.web.app/blog/how-to-become-acreative-designer/</link>
+      <link>https://anhcodes.dev/blog/how-to-become-acreative-designer/</link>
       <pubDate>Mon, 13 Jul 2020 12:49:27 +0600</pubDate>
       
-      <guid>https://anhcodesdev.web.app/blog/how-to-become-acreative-designer/</guid>
+      <guid>https://anhcodes.dev/blog/how-to-become-acreative-designer/</guid>
       <description>Introduction Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
     </item>
     
     <item>
       <title>New designers limitations</title>
-      <link>https://anhcodesdev.web.app/blog/new-designers-limitations/</link>
+      <link>https://anhcodes.dev/blog/new-designers-limitations/</link>
       <pubDate>Mon, 13 Jul 2020 12:49:27 +0600</pubDate>
       
-      <guid>https://anhcodesdev.web.app/blog/new-designers-limitations/</guid>
+      <guid>https://anhcodes.dev/blog/new-designers-limitations/</guid>
       <description>Introduction Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
     </item>
     
     <item>
       <title>Things you must know as a designer</title>
-      <link>https://anhcodesdev.web.app/blog/things-you-must-know-as-a-designer/</link>
+      <link>https://anhcodes.dev/blog/things-you-must-know-as-a-designer/</link>
       <pubDate>Mon, 13 Jul 2020 12:49:27 +0600</pubDate>
       
-      <guid>https://anhcodesdev.web.app/blog/things-you-must-know-as-a-designer/</guid>
+      <guid>https://anhcodes.dev/blog/things-you-must-know-as-a-designer/</guid>
       <description>Introduction Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
     </item>
     
     <item>
       <title>World&#39;s Most Famous App Developers and Designers</title>
-      <link>https://anhcodesdev.web.app/blog/world-most-famous-app-developers-and-designers/</link>
+      <link>https://anhcodes.dev/blog/world-most-famous-app-developers-and-designers/</link>
       <pubDate>Mon, 13 Jul 2020 12:49:27 +0600</pubDate>
       
-      <guid>https://anhcodesdev.web.app/blog/world-most-famous-app-developers-and-designers/</guid>
+      <guid>https://anhcodes.dev/blog/world-most-famous-app-developers-and-designers/</guid>
       <description>Introduction Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
     </item>
     
     <item>
       <title>You must know this before becoming a designer</title>
-      <link>https://anhcodesdev.web.app/blog/you-must-know-this-before-becoming-a-designer/</link>
+      <link>https://anhcodes.dev/blog/you-must-know-this-before-becoming-a-designer/</link>
       <pubDate>Mon, 13 Jul 2020 12:49:27 +0600</pubDate>
       
-      <guid>https://anhcodesdev.web.app/blog/you-must-know-this-before-becoming-a-designer/</guid>
+      <guid>https://anhcodes.dev/blog/you-must-know-this-before-becoming-a-designer/</guid>
       <description>Introduction Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
     </item>
     
     <item>
       <title>Flower Classifcation with Pytorch</title>
-      <link>https://anhcodesdev.web.app/portfolio/image-classifcation/</link>
+      <link>https://anhcodes.dev/portfolio/image-classifcation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://anhcodesdev.web.app/portfolio/image-classifcation/</guid>
+      <guid>https://anhcodes.dev/portfolio/image-classifcation/</guid>
       <description>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
     </item>
     
     <item>
       <title>Predict Churn of Music Hosting Service</title>
-      <link>https://anhcodesdev.web.app/portfolio/predict-churn/</link>
+      <link>https://anhcodes.dev/portfolio/predict-churn/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://anhcodesdev.web.app/portfolio/predict-churn/</guid>
+      <guid>https://anhcodes.dev/portfolio/predict-churn/</guid>
       <description>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
     </item>
     
     <item>
       <title>Python Stock Price Prediction</title>
-      <link>https://anhcodesdev.web.app/portfolio/stock-prediction/</link>
+      <link>https://anhcodes.dev/portfolio/stock-prediction/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://anhcodesdev.web.app/portfolio/stock-prediction/</guid>
+      <guid>https://anhcodes.dev/portfolio/stock-prediction/</guid>
       <description>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
     </item>
     

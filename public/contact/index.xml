@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Contact Me on AnhCodes</title>
-    <link>https://anhcodesdev.web.app/contact/</link>
+    <link>https://anhcodes.dev/contact/</link>
     <description>Recent content in Contact Me on AnhCodes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://anhcodesdev.web.app/contact/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="https://anhcodes.dev/contact/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
