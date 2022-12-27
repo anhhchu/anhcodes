@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>How to recover lost files after a git reset --hard</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <!-- Slick Carousel -->
+  <link rel="stylesheet" href="https://anhcodesdev.web.app/plugins/slick/slick.css" />
+  <link rel="stylesheet" href="https://anhcodesdev.web.app/plugins/slick/slick-theme.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://anhcodesdev.web.app/plugins/font-awesome/css/font-awesome.min.css" />
+
+  <!-- Magnific Popup -->
+  <link rel="stylesheet" href="https://anhcodesdev.web.app/plugins/magnafic-popup/magnific-popup.css" />
+
+  <!-- Stylesheets -->
+  
+  <link href="https://anhcodesdev.web.app/scss/style.min.css" rel="stylesheet" />
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="https://anhcodesdev.web.app/images/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="https://anhcodesdev.web.app/images/favicon.png" type="image/x-icon" />
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR%20GOOGLE%20ANALYTICS%20CODE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'YOUR GOOGLE ANALYTICS CODE');
+  </script>
+  
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a href="https://anhcodesdev.web.app/" class="navbar-brand">
+      <img src="https://anhcodesdev.web.app/images/site-navigation/logo-new.png" alt="site-logo">
+    </a>
+    <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+      <ul class="nav navbar-nav main-navigation my-0 mx-auto">
+        
+        
+        <li class="nav-item">
+          <a href="https://anhcodesdev.web.app/#home"
+            class="nav-link text-dark text-sm-center p-2 ">Home</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodesdev.web.app/#about"
+            class="nav-link text-dark text-sm-center p-2 ">About</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodesdev.web.app/#resume"
+            class="nav-link text-dark text-sm-center p-2 ">Resume</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodesdev.web.app/#skills"
+            class="nav-link text-dark text-sm-center p-2 ">Skills</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodesdev.web.app/#blog"
+            class="nav-link text-dark text-sm-center p-2 ">Blog</a>
+        </li>
+        
+      </ul>
+      <div class="navbar-nav">
+        <a href="https://anhcodesdev.web.app/contact" class="btn btn-primary btn-zoom hire_button">Contact Me</a>
+      </div>
+    </div>
+  </div>
+</nav>
+  <div id="content">
+    
+
+<header class="breadCrumb">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 text-center">
+        <h3 class="breadCrumb__title">How to recover lost files after a git reset --hard</h3>
+        <nav aria-label="breadcrumb" class="d-flex justify-content-center">
+          <ol class="breadcrumb align-items-center">
+            <li class="breadcrumb-item"><a href=https://anhcodesdev.web.app/>Home</a></li>
+            <li class="breadcrumb-item"><a href=https://anhcodesdev.web.app/blog>All Post</a></li>
+            <li class="breadcrumb-item active" aria-current="page">How to recover lost files after a git reset --hard</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <ul class="post-meta">
+      <li>
+        <i class="fa fa-calendar"></i>
+        December 27, 2022
+      </li>
+      <li>
+        <i class="fa fa-clock-o"></i>
+        5 mins read
+      </li>
+      
+      <li>
+        <i class="fa fa-tag"></i>
+        
+          <a class="text-capitalize" href="https://anhcodesdev.web.app/tags/how-to-git/">how-to, git</a>
+        
+      </li>
+      
+      
+      <li>
+        <i class="fa fa-folder-open"></i>
+        
+          <a class="text-capitalize" href="https://anhcodesdev.web.app/categories/blog/">blog</a>
+        
+      </li>
+      
+    </ul>
+  </div>
+  </div>
+  </div>
+  </div>
+</header>
+
+<section class="section singleBlog">
+  <div class="svg-img">
+    <img src=https://anhcodesdev.web.app/images/hero/hero-background-svg.svg alt="">
+  </div>
+  <div class="animate-shape">
+    <img src=https://anhcodesdev.web.app/images/skill/skill-background-shape.svg alt="">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 600">
+      <defs>
+        <linearGradient id="d" x1="0.929" y1="0.111" x2="0.263" y2="0.935" gradientUnits="objectBoundingBox">
+          <stop offset="0" stop-color="#f4cccc" />
+          <stop offset="1" stop-color="#f4cccc" stop-opacity="0" />
+        </linearGradient>
+      </defs>
+      <g data-name="blob-shape (3)">
+        <path class="blob" fill="url(#d)"
+          d="M455.4 151.1c43.1 36.7 73.4 92.8 60.8 136.3-12.7 43.5-68.1 74.4-111.3 119.4-43.1 45-74 104.1-109.8 109-35.9 5-76.7-44.2-111.8-89.2-35.2-45-64.7-85.8-70.8-132.6-6-46.8 11.6-99.6 46.7-136.3 35.2-36.6 88-57.2 142.4-58.8 54.5-1.7 110.6 15.6 153.8 52.2z" />
+      </g>
+    </svg>
+  </div>
+  <div class="animate-pattern">
+    <img src=https://anhcodesdev.web.app/images/service/background-pattern.svg alt="background-shape">
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="singleBlog__feature">
+          <img src=https://anhcodesdev.web.app/images/single-blog/feature-image.jpg alt="feature-image">
+        </div>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-lg-12">
+        <div class="singleBlog__content">
+
+          
+
+          <p>While working on a recent project, I accidentally committed some files. Instead of using <code>git reset --soft &lt;prev-commit-id&gt;</code> to unstage them, I used <code>git reset --hard HEAD</code> and all of my new changes gone with the wind. After panicking for a few minutes, I determined to learn how <code>git reset</code> works and how I can revert the damages.</p>
+<h1 id="git-reset---hard-vs-git-reset---soft">git reset &ndash;hard vs. git reset &ndash;soft</h1>
+<p><code>git reset --hard</code> resets the current branch tip, and also deletes any changes in the working directory and staging area (although files under <code>git stash</code> will not be affected). It resets index entries to a specified commit, or the HEAD location. <code>git reset --hard</code> should be used with caution, since it can lead to losing work in your staging area and working directory.</p>
+<p>Below is the demonstration of what happened to a new file <code>test2.txt</code> after a <code>git reset --hard</code></p>
+<pre tabindex="0"><code class="language-git" data-lang="git">$ git status
+On branch master
+Untracked files:
+  (use &#34;git add &lt;file&gt;...&#34; to include in what will be committed)
+        test2.txt
+
+$ git add test2.txt
+On branch master
+Changes to be committed:
+  (use &#34;git restore --staged &lt;file&gt;...&#34; to unstage)
+        new file:   test2.txt
+
+$ git commit -m &#34;Add test2&#34;
+[master 2d7949d] Add test2
+ 1 file changed, 10 insertions(+)
+ create mode 100644 test2.txt
+
+$ git reset --hard 6122c04
+HEAD is now at 6122c04 add test
+</code></pre><p>After doing the <code>get reset --hard</code> to commit id 6122c04, the file test2 will be removed from the working directory</p>
+<p>On the contrary, <code>git reset --soft</code> revert your commit without removing your files from the working directory. After that you can unstage the files you don&rsquo;t want to commit</p>
+<pre tabindex="0"><code class="language-git" data-lang="git">$ git status
+On branch master
+Untracked files:
+  (use &#34;git add &lt;file&gt;...&#34; to include in what will be committed)
+        test2.txt
+
+$ git add test2.txt
+On branch master
+Changes to be committed:
+  (use &#34;git restore --staged &lt;file&gt;...&#34; to unstage)
+        new file:   test2.txt
+
+$ git commit -m &#34;Add test2&#34;
+[master 2d7949d] Add test2
+ 1 file changed, 10 insertions(+)
+ create mode 100644 test2.txt
+
+$ git reset --soft 6122c04
+
+$ git status
+On branch master
+Changes to be committed:
+  (use &#34;git restore --staged &lt;file&gt;...&#34; to unstage)
+        new file:   test2.txt
+
+$ git restore --staged test2.txt 
+
+$ git status
+On branch master
+Untracked files:
+  (use &#34;git add &lt;file&gt;...&#34; to include in what will be committed)
+        test2.txt
+</code></pre><h1 id="recover-lost-files-in-3-scenarios">Recover lost files in 3 scenarios</h1>
+<h2 id="scenario-1-changes-committed">Scenario 1: Changes committed</h2>
+<p>If you do a <code>git reset --hard</code> after <code>git add</code> and <code>git commit</code></p>
+<ol>
+<li>
+<p>retrace the commit that you need to recover</p>
+<p><code>git reflog</code></p>
+</li>
+<li>
+<p>switch to the commit you want to recover, now your repo will be in &lsquo;detached HEAD&rsquo; state</p>
+<p><code>git checkout &lt;commit-id&gt;</code></p>
+</li>
+<li>
+<p>to fix the detached HEAD state, create a new branch and merge the branch back to master</p>
+<p><code>git branch &lt;new-branch&gt; &lt;commit-id&gt;</code></p>
+<p><code>git checkout master</code></p>
+<p><code>git merge &lt;new-branch&gt;</code></p>
+</li>
+</ol>
+<h3 id="scenario-2-changes-staged-but-not-yet-committed">Scenario 2: Changes staged but not yet committed</h3>
+<p>If you do a <code>git reset --hard</code> after <code>git add</code> but before <code>git commit</code></p>
+<ol>
+<li>
+<p>Use <code>git fsck</code> to check dangling blob hash id (blob that has no commits associated to it). This will help us retrieve the content of the files that were staged but not yet committed</p>
+</li>
+<li>
+<p><code>git show &lt;dangling blob id&gt; &gt; recover.txt</code> to send the content of the blob to a file</p>
+</li>
+<li>
+<p>Another option is to use <code>git fsck --lost-found</code> to move all the dangling blobs to lost-found directory. Then, <code>cd .git/lost-found/other</code> to check all the dangling blob content</p>
+</li>
+</ol>
+<h3 id="scenario-3-changes-not-staged-nor-committed">Scenario 3: Changes not staged nor committed</h3>
+<p>If you do a <code>git reset --hard</code> after <code>git add</code> and <code>git commit</code>, your new changes before staging will still be in your directory.</p>
+<h1 id="what-does-chatgpt-say">What does chatGPT say?</h1>
+<p>By the way, I asked chatGPT &ldquo;How to recover lost files after git reset &ndash;hard HEAD&rdquo;, and this is what it suggested</p>
+<blockquote>
+<p><em>&ldquo;It is generally not possible to recover lost files after a git reset &ndash;hard HEAD command. This command discards all commits, modifications, and additions made since the last commit, and resets the current branch to match the state of the repository at the commit specified by HEAD. This means that any changes `that have not been committed to the repository will be lost.</em></p>
+</blockquote>
+<blockquote>
+<p><em>If you made local changes to your repository and have not yet pushed them to a remote repository, you may be able to recover the lost files by using a tool like git reflog, which can show a log of the recent actions taken in the repository. You may be able to find a reference to a commit that includes the lost files, and use git cherry-pick to apply the changes from that commit to the current branch. However, this will only work if the lost files were staged or committed before the git reset &ndash;hard HEAD command was run.</em></p>
+</blockquote>
+<blockquote>
+<p><em>If you have pushed the lost commits to a remote repository, it may be possible to recover the lost files by cloning the repository from the remote and cherry-picking the lost commits. However, this will only work if the remote repository has not been pruned or garbage collected.</em></p>
+</blockquote>
+<blockquote>
+<p><em>In general, it is important to regularly commit your changes to the repository and push them to a remote repository as a backup, to avoid losing work due to actions like git reset &ndash;hard HEAD. It is also a good idea to regularly create backups of your work outside of the repository.&rdquo;</em></p>
+</blockquote>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  </div>
+  <section class="footer" id="contact">
+	<div class="footer__background_shape">
+		<svg viewBox="0 0 1920 79">
+			<path d="M0 0h1920v79L0 0z" data-name="Path 1450" />
+		</svg>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="footer__cta">
+					<div class="shape-1">
+						<svg xmlns="http://www.w3.org/2000/svg" width="357" height="315.029" viewBox="0 0 357 315.029">
+							<path data-name="Path 1449"
+								d="M76.1-157.222C91.746-135.8 87.2-94.273 99.993-61.945c12.7 32.328 42.661 55.459 39.248 73.282-3.318 17.823-40.007 30.337-65.6 43.325-25.5 12.988-39.912 26.545-60.01 42.566-20.1 16.116-46.074 34.6-63.328 27.682-17.349-6.921-25.976-39.153-59.915-59.82s-93.1-29.768-105.325-51.478 22.373-56.028 43.609-93.949c21.331-37.921 29.2-79.35 53.563-96.793 24.459-17.444 65.414-10.9 103.9-6.921 38.396 3.982 74.326 5.404 89.965 26.829z"
+								transform="translate(217.489 188.626)" />
+						</svg>
+					</div>
+					<div class="shape-2">
+						<svg xmlns="http://www.w3.org/2000/svg" width="357" height="315.029" viewBox="0 0 357 315.029">
+							<path data-name="Path 1449"
+								d="M76.1-157.222C91.746-135.8 87.2-94.273 99.993-61.945c12.7 32.328 42.661 55.459 39.248 73.282-3.318 17.823-40.007 30.337-65.6 43.325-25.5 12.988-39.912 26.545-60.01 42.566-20.1 16.116-46.074 34.6-63.328 27.682-17.349-6.921-25.976-39.153-59.915-59.82s-93.1-29.768-105.325-51.478 22.373-56.028 43.609-93.949c21.331-37.921 29.2-79.35 53.563-96.793 24.459-17.444 65.414-10.9 103.9-6.921 38.396 3.982 74.326 5.404 89.965 26.829z"
+								transform="translate(217.489 188.626)" />
+						</svg>
+					</div>
+					<div class="text-light footer__cta_content">
+						<span>Contact me</span>
+						<h2 class="mb-0">Let’s Start a Project</h2>
+					</div>
+					<div class="footer__cta_action">
+						<a class="btn btn-light btn-zoom" href="https://anhcodesdev.web.app/contact">Get in
+							touch</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+			
+			
+		<div class="row footer__footer">
+			<div class="col-lg-6">
+				<div class="footer__footer_copy text-light">
+					<p>Copyright 2022 - All Rights Reserved by <a class="text-light" href="https://staticmania.com/" target="_blank">AnhChu</a></p>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="footer__footer_social">
+					<ul class="unstyle-list">
+						
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://www.facebook.com/"><i
+									class="fa fa-facebook-official"></i></a>
+						</li>
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://www.linkedin.com/"><i
+									class="fa fa-linkedin-square"></i></a>
+						</li>
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://www.pinterest.com/"><i
+									class="fa fa-pinterest-square"></i></a>
+						</li>
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://twitter.com/"><i
+									class="fa fa-twitter-square"></i></a>
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR%20GOOGLE%20MAP%20API&libraries=geometry"></script>
+<script src="https://anhcodesdev.web.app/plugins/jQuery/jquery.min.js"></script>
+<script src="https://anhcodesdev.web.app/plugins/bootstrap/bootstrap.min.js"></script>
+<script src="https://anhcodesdev.web.app/plugins/slick/slick.min.js"></script>
+<script src="https://anhcodesdev.web.app/plugins/waypoint/jquery.waypoints.min.js"></script>
+<script src="https://anhcodesdev.web.app/plugins/magnafic-popup/jquery.magnific-popup.min.js"></script>
+<script src="https://anhcodesdev.web.app/plugins/tweenmax/TweenMax.min.js"></script>
+<script src="https://anhcodesdev.web.app/plugins/imagesloaded/imagesloaded.min.js"></script>
+<script src="https://anhcodesdev.web.app/plugins/masonry/masonry.min.js"></script>
+
+
+<script src="https://anhcodesdev.web.app/js/script.min.js"></script>
+
+</body>
+
+</html>

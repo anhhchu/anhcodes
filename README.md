@@ -12,6 +12,8 @@
 
 `firebase hosting:channel:deploy portio-preview3` 
 
+run `git-deploy.sh` to push the changes to git and deploy to firebase
+
 Reinstall nvm for frebase: `nvm install 16.4.0`
 
 [Use Custom Domain on Firebase](https://support.google.com/domains/answer/12081987?hl=en)

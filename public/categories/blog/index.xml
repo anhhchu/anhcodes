@@ -6,7 +6,17 @@
     <description>Recent content in blog on AnhCodes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 13 Sep 2020 12:49:27 +0600</lastBuildDate><atom:link href="https://anhcodesdev.web.app/categories/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 27 Dec 2022 11:30:20 +0000</lastBuildDate><atom:link href="https://anhcodesdev.web.app/categories/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to recover lost files after a git reset --hard</title>
+      <link>https://anhcodesdev.web.app/blog/recover-lost-files-git-reset-hard/</link>
+      <pubDate>Tue, 27 Dec 2022 11:30:20 +0000</pubDate>
+      
+      <guid>https://anhcodesdev.web.app/blog/recover-lost-files-git-reset-hard/</guid>
+      <description>While working on a recent project, I accidentally committed some files. Instead of using git reset --soft &amp;lt;prev-commit-id&amp;gt; to unstage them, I used git reset --hard HEAD and all of my new changes gone with the wind. After panicking for a few minutes, I determined to learn how git reset works and how I can revert the damages.
+git reset &amp;ndash;hard vs. git reset &amp;ndash;soft git reset --hard resets the current branch tip, and also deletes any changes in the working directory and staging area (although files under git stash will not be affected).</description>
+    </item>
+    
     <item>
       <title>Markdown Formatting Demo</title>
       <link>https://anhcodesdev.web.app/blog/markdown-formatting-demo/</link>
@@ -23,15 +33,6 @@ Emphasis This is bold text
 This is bold text
 This is italic text
 This is italic text</description>
-    </item>
-    
-    <item>
-      <title>Designers thoughts about mobile UI</title>
-      <link>https://anhcodesdev.web.app/blog/designers-thoughts-about-mobile-ui/</link>
-      <pubDate>Mon, 13 Jul 2020 12:49:27 +0600</pubDate>
-      
-      <guid>https://anhcodesdev.web.app/blog/designers-thoughts-about-mobile-ui/</guid>
-      <description>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
     </item>
     
     <item>
