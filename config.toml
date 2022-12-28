@@ -46,9 +46,20 @@ contactLink = "contact"
 copyright = "All right reserved copyright © Anh Chu 2022"
 footerLogo = "images/site-navigation/logo-new.png"
 # We're using formspree.io for form handling, paste your formspree url below
-fabformURL  = "https://fabform.io/f/JpTXRUa"
+getformURL  = "https://getform.io/f/a5b7b431-b84e-4ac4-b065-d82f4ae85ee9"
 googleAnalytics = "G-9145PR72NN"
 logo = "images/site-navigation/logo-new.png"
+
+[params.address]
+address = "Seattle, Washington"
+linkedin = "linkedin.com/in/anhhchu/"
+github = "github.com/anhhchu"
+
+[params.map]
+APIkey = "YOUR GOOGLE MAP API"
+latitude = "23.7783741"
+longitude = "90.3746808"
+pinImage = "images/pin.png"
 
 
 # Social icons
