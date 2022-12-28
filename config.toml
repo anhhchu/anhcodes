@@ -52,13 +52,17 @@ logo = "images/site-navigation/logo-new.png"
 
 [params.address]
 address = "Seattle, Washington"
-linkedin = "linkedin.com/in/anhhchu/"
-github = "github.com/anhhchu"
+linkedin = "Connect with me"
+github = "View my work"
+leetcode = "Practice DSA with me"
 
 [params.map]
-APIkey = "YOUR GOOGLE MAP API"
-latitude = "23.7783741"
-longitude = "90.3746808"
+# APIkey = "AIzaSyDnE0arfqtAgXq2ZMSr3uoN8JzG0wazTeM"
+APIkey = "AIzaSyBRwXsfdEDBGKI-JcVzIfRyKNF2QBWWa-g"
+latitude = "47.626952"
+longitude = "-122.336785"
+latitude1 = "32.776665"
+longitude1 = "-96.796989"
 pinImage = "images/pin.png"
 
 

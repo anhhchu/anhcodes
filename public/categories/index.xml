@@ -8,20 +8,20 @@
     <language>en-us</language>
     <lastBuildDate>Tue, 27 Dec 2022 11:30:20 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>blog</title>
-      <link>https://anhcodes.dev/categories/blog/</link>
+      <title>git</title>
+      <link>https://anhcodes.dev/categories/git/</link>
       <pubDate>Tue, 27 Dec 2022 11:30:20 +0000</pubDate>
       
-      <guid>https://anhcodes.dev/categories/blog/</guid>
+      <guid>https://anhcodes.dev/categories/git/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>data-lakehouse</title>
-      <link>https://anhcodes.dev/categories/data-lakehouse/</link>
+      <title>azure</title>
+      <link>https://anhcodes.dev/categories/azure/</link>
       <pubDate>Tue, 15 Nov 2022 23:30:13 +0000</pubDate>
       
-      <guid>https://anhcodes.dev/categories/data-lakehouse/</guid>
+      <guid>https://anhcodes.dev/categories/azure/</guid>
       <description></description>
     </item>
     

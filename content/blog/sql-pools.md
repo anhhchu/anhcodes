@@ -3,8 +3,8 @@ title: "SQL Pools in Azure Synapse Analytics vs Redshift"
 date: 2022-11-15 23:30:13
 featureImage: images/allpost/sql-pool-vertical.jpeg
 postImage: images/single-blog/sql-pool.jpeg
-tags: azure-synapse-analytics
-categories: data-lakehouse
+tags: [azure-synapse-analytics, data-lakehouse]
+categories: azure
 ---
 
 ## What is Dedicated SQL Pool?

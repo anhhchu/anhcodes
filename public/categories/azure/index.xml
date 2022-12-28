@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>azure on anhcodes</title>
+    <link>https://anhcodes.dev/categories/azure/</link>
+    <description>Recent content in azure on anhcodes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 15 Nov 2022 23:30:13 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/categories/azure/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SQL Pools in Azure Synapse Analytics vs Redshift</title>
+      <link>https://anhcodes.dev/blog/sql-pools/</link>
+      <pubDate>Tue, 15 Nov 2022 23:30:13 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/blog/sql-pools/</guid>
+      <description>What is Dedicated SQL Pool? Dedicated SQL Pool (formerly SQL DW) to store data for analytics queries because it leverages a scale-out architecture (Massively Parallel Processing) to distribute computational processing of data across multiple nodes. Applications connect and issue T-SQL commands to a Control node. The Control node hosts the distributed query engine, which optimizes queries for parallel processing, and then passes operations to Compute nodes to do their work in parallel.</description>
+    </item>
+    
+    <item>
+      <title>Best Practices in creating tables in Azure Synapse Analytics</title>
+      <link>https://anhcodes.dev/blog/create-table-azure-synapse-analytics/</link>
+      <pubDate>Tue, 15 Nov 2022 23:24:30 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/blog/create-table-azure-synapse-analytics/</guid>
+      <description>As Dedicated SQL pool uses a scaled-out node based architecture, when creating tables in Dedicated SQL Pool, remember to specify the distribution (sharding strategy) and index for your tables.
+Dedicated SQL Pool Architecture
+Choosing Distribution: The data is sharded into distributions to optimize the performance of the system. You can choose which sharding pattern to use to distribute the data when you define the table. These sharding patterns are supported:</description>
+    </item>
+    
+  </channel>
+</rss>
