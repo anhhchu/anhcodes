@@ -1,6 +1,6 @@
 ---
 label: Portfolio Template
-hide_body: false
+hide_body: true
 fields:
 - type: text
   name: title
@@ -30,7 +30,6 @@ fields:
   name: solution
   label: solution
 pages:
-- content/portfolio/UX-case-study-for-agriculture-app.md
 - content/portfolio/image-classification.md
 - content/portfolio/stock-prediction.md
 - content/portfolio/predict-churn.md

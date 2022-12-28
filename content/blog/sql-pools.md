@@ -1,8 +1,8 @@
 ---
 title: "SQL Pools in Azure Synapse Analytics vs Redshift"
 date: 2022-11-15 23:30:13
-featureImage: images/allpost/allPost-2.jpg
-postImage: images/single-blog/feature-image.jpg
+featureImage: images/allpost/sql-pool-vertical.jpeg
+postImage: images/single-blog/sql-pool.jpeg
 tags: azure-synapse-analytics
 categories: data-lakehouse
 ---
@@ -11,7 +11,7 @@ categories: data-lakehouse
 
  Dedicated SQL Pool (formerly SQL DW) to store data for analytics queries because it leverages a scale-out architecture (Massively Parallel Processing) to distribute computational processing of data across multiple nodes. Applications connect and issue T-SQL commands to a Control node. The Control node hosts the distributed query engine, which optimizes queries for parallel processing, and then passes operations to Compute nodes to do their work in parallel. The Compute nodes store all user data in Azure Storage and run the parallel queries. The Data Movement Service (DMS) is a system-level internal service that moves data across the nodes as necessary to run queries in parallel and return accurate results. 
 
-![Dedicated SQL pool (formerly SQL DW) architecture]("https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png")
+![Dedicated SQL pool (formerly SQL DW) architecture](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
 
 Users can connect to Dedicated SQL Pool using Azure Data Studio (on Mac and Windows), SQL Server Management Studio (for Windows), and Azure Synapse Workspace web interface. Refer: [Authentication, Authorization and Access to Data Lakehouse](/Data-Lakehouse/Authentication,-Authorization-and-Access-to-Data-Lakehouse). Azure Synapse Workspace is not an option if you don't have OpenVPN connection, or if you don't need access to data in Azure Data lake storage. 

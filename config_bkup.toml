@@ -2,7 +2,7 @@ baseURL = "https://anhcodes.dev"
 languageCode = "en-us"
 paginate = 6
 theme = "portio"
-title = "AnhCodes"
+title = "anhcodes"
 # Main Menu
 [[menu.main]]
 name = "Home"

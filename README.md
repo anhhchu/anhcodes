@@ -4,17 +4,17 @@
 
 [Deploy with Firebase](https://gohugo.io/hosting-and-deployment/hosting-on-firebase/)
 
+Reinstall nvm for frebase: `nvm install 16.4.0`
+
 `npm install -g firebase-tools`
 
 `firebase init`
 
-`hugo && firebase deploy`
+Run `firebase hosting:channel:deploy <preview-number>` to preview the deploy before 
 
-`firebase hosting:channel:deploy portio-preview3` 
+Run `sh git-deploy.sh "<commit message>"` to push the changes to git and deploy to firebase if github action is set up for CI/CD
 
-Reinstall nvm for frebase: `nvm install 16.4.0`
-
-run `sh git-deploy.sh <commit message>` to push the changes to git and deploy to firebase
+Or run `hugo && firebase deploy` to manually deploy the changes 
 
 [Use Custom Domain on Firebase](https://support.google.com/domains/answer/12081987?hl=en)
 
