@@ -22,7 +22,8 @@
       <pubDate>Tue, 15 Nov 2022 23:24:30 +0000</pubDate>
       
       <guid>https://anhcodes.dev/blog/create-table-azure-synapse-analytics/</guid>
-      <description>As Dedicated SQL pool uses a scaled-out node based architecture, when creating tables in Dedicated SQL Pool, remember to specify the distribution (sharding strategy) and index for your tables. Reference: Dedicated SQL Pool Architecture
+      <description>As Dedicated SQL pool uses a scaled-out node based architecture, when creating tables in Dedicated SQL Pool, remember to specify the distribution (sharding strategy) and index for your tables.
+Dedicated SQL Pool Architecture
 Choosing Distribution: The data is sharded into distributions to optimize the performance of the system. You can choose which sharding pattern to use to distribute the data when you define the table. These sharding patterns are supported:</description>
     </item>
     
