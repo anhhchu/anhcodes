@@ -11,25 +11,29 @@ image: images/skill/skills.png
 skill:
   - title: Data Pipeline
     percent: 90
-  - title: SQL & Tableau
-    percent: 90
   - title: Python & PySpark
     percent: 90
   - title: Azure Synapse Analytics
     percent: 90
+  - title: SQL & Tableau
+    percent: 90
   - title: Linux & Shell
-    percent: 80
-  - title: Data Lakehouse & Datbase
-    percent: 80
+    percent: 90
+  - title: Data Lakehouse & Database
+    percent: 90
   - title: Analytics & Data Viz
     percent: 80
-  - title: Kafka, CDC & Data Streaming
+  - title: Kafka/Event Hub/Stream Analytics
+    percent: 70
+  - title: Change Data Capture/Debezium
     percent: 70
   - title: Airflow 
     percent: 50
   - title: Machine Learning
     percent: 50
   - title: ElasticSearch
-    percent: 50
+    percent: 40
   - title: Docker & Kubernetes
+    percent: 40
+  - title: Terraform
     percent: 40
