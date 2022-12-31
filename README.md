@@ -1,4 +1,4 @@
-# anhcodes.dev Blog
+## anhcodes.dev Blog
 
 ### Deploy with Firebase
 
@@ -17,4 +17,10 @@ Run `sh git-deploy.sh "<commit message>"` to push the changes to git and deploy 
 Or run `hugo && firebase deploy` to manually deploy the changes 
 
 [Use Custom Domain on Firebase](https://support.google.com/domains/answer/12081987?hl=en)
+
+### Useful resources
+
+[hugo shortcodes](https://gohugo.io/content-management/shortcodes/#readout)
+
+
 

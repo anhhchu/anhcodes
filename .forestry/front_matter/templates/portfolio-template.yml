@@ -24,8 +24,8 @@ fields:
   name: shortDescription
   label: shortDescription
 - type: textarea
-  name: challenge
-  label: challenge
+  name: problemStatement
+  label: problemStatement
 - type: textarea
   name: solution
   label: solution

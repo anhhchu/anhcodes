@@ -64,11 +64,6 @@
         </li>
         
         <li class="nav-item">
-          <a href="https://anhcodes.dev/#portfolio"
-            class="nav-link text-dark text-sm-center p-2 ">Portfolio</a>
-        </li>
-        
-        <li class="nav-item">
           <a href="https://anhcodes.dev/#resume"
             class="nav-link text-dark text-sm-center p-2 ">Resume</a>
         </li>
@@ -198,41 +193,41 @@
 <table>
 <thead>
 <tr>
-<th></th>
-<th>Redshift</th>
-<th>Dedicated SQL Pool (Synapse Analytics)</th>
+<th style="text-align:left"></th>
+<th style="text-align:center">Redshift</th>
+<th style="text-align:center">Dedicated SQL Pool (Synapse Analytics)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Architecture</td>
-<td>clusters with nodes bundled of CPU, storage, memory and IOPS</td>
-<td>similar but compute and storage are scaled and billed separately, use Data Warehouse Units with only comprises of CPU, memory and IOPS. In the current setting, we provisioned 1000c DWU for our Synapse SQL Pool, but this can scale up and down depending on how much compute we need</td>
+<td style="text-align:left">Architecture</td>
+<td style="text-align:center">clusters with nodes bundled of CPU, storage, memory and IOPS</td>
+<td style="text-align:center">similar but compute and storage are scaled and billed separately, use Data Warehouse Units with only comprises of CPU, memory and IOPS.</td>
 </tr>
 <tr>
-<td>Massively Parallel Processing MPP</td>
-<td>available for easy scaling</td>
-<td>available for easy scaling</td>
+<td style="text-align:left">Massively Parallel Processing MPP</td>
+<td style="text-align:center">available for easy scaling</td>
+<td style="text-align:center">available for easy scaling</td>
 </tr>
 <tr>
-<td>Data Protection</td>
-<td>Redshift takes a snapshot about every eight hours or following every 5 GB per node of data changes, snapshot stores in AWS S3</td>
-<td>takes automatic snapshots of the data warehouse throughout the day to create restore points that are available for seven days</td>
+<td style="text-align:left">Data Protection</td>
+<td style="text-align:center">Redshift takes a snapshot about every eight hours or following every 5 GB per node of data changes, snapshot stores in AWS S3</td>
+<td style="text-align:center">takes automatic snapshots of the data warehouse throughout the day to create restore points that are available for seven days</td>
 </tr>
 <tr>
-<td>SQL flavor</td>
-<td>PostgreSQL</td>
-<td>T-SQL</td>
+<td style="text-align:left">SQL flavor</td>
+<td style="text-align:center">PostgreSQL</td>
+<td style="text-align:center">T-SQL</td>
 </tr>
 <tr>
-<td>Permission</td>
-<td>permissions apply to tables as a whole</td>
-<td>supports granular permissions on schemas, tables, views, individual columns, procedures, and other objects</td>
+<td style="text-align:left">Permission</td>
+<td style="text-align:center">permissions apply to tables as a whole</td>
+<td style="text-align:center">supports granular permissions on schemas, tables, views, individual columns, procedures, and other objects</td>
 </tr>
 <tr>
-<td>Data Masking</td>
-<td>not native</td>
-<td>native dynamic data masking solution for PII and PCI data</td>
+<td style="text-align:left">Data Masking</td>
+<td style="text-align:center">not native</td>
+<td style="text-align:center">native dynamic data masking solution for PII and PCI data</td>
 </tr>
 </tbody>
 </table>
@@ -271,7 +266,7 @@
 					</div>
 					<div class="text-light footer__cta_content">
 						<span>Contact me</span>
-						<h2 class="mb-0">Let’s Start a Project</h2>
+						<h2 class="mb-0">Let’s Connect</h2>
 					</div>
 					<div class="footer__cta_action">
 						<a class="btn btn-light btn-zoom" href="https://anhcodes.dev/contact">Get in
@@ -286,7 +281,7 @@
 		<div class="row footer__footer">
 			<div class="col-lg-6">
 				<div class="footer__footer_copy text-light">
-					<p>©2022 - Made with ☕, Hugo, Firebase by <a class="text-light" href="https://anhcodes.dev/" target="_blank">Anh Chu</a></p>
+					<p>©2022 - Made with ☕, Hugo, and Firebase by <a class="text-light" href="https://anhcodes.dev/" target="_blank">Anh Chu</a></p>
 				</div>
 			</div>
 			<div class="col-lg-6">

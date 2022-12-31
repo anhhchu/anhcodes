@@ -64,11 +64,6 @@
         </li>
         
         <li class="nav-item">
-          <a href="https://anhcodes.dev/#portfolio"
-            class="nav-link text-dark text-sm-center p-2 ">Portfolio</a>
-        </li>
-        
-        <li class="nav-item">
           <a href="https://anhcodes.dev/#resume"
             class="nav-link text-dark text-sm-center p-2 ">Resume</a>
         </li>
@@ -208,39 +203,39 @@ $ git reset --hard 6122c04
 HEAD is now at 6122c04 add test
 </code></pre><p>After doing the <code>get reset --hard</code> to commit id 6122c04, the file test2 will be removed from the working directory</p>
 <p>On the contrary, <code>git reset --soft</code> revert your commit without removing your files from the working directory. After that you can unstage the files you don&rsquo;t want to commit</p>
-<pre tabindex="0"><code class="language-git" data-lang="git">$ git status
-On branch master
-Untracked files:
-  (use &#34;git add &lt;file&gt;...&#34; to include in what will be committed)
-        test2.txt
-
-$ git add test2.txt
-On branch master
-Changes to be committed:
-  (use &#34;git restore --staged &lt;file&gt;...&#34; to unstage)
-        new file:   test2.txt
-
-$ git commit -m &#34;Add test2&#34;
-[master 2d7949d] Add test2
- 1 file changed, 10 insertions(+)
- create mode 100644 test2.txt
-
-$ git reset --soft 6122c04
-
-$ git status
-On branch master
-Changes to be committed:
-  (use &#34;git restore --staged &lt;file&gt;...&#34; to unstage)
-        new file:   test2.txt
-
-$ git restore --staged test2.txt 
-
-$ git status
-On branch master
-Untracked files:
-  (use &#34;git add &lt;file&gt;...&#34; to include in what will be committed)
-        test2.txt
-</code></pre><h1 id="recover-lost-files-in-3-scenarios">Recover lost files in 3 scenarios</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ git status
+</span></span><span style="display:flex;"><span>On branch master
+</span></span><span style="display:flex;"><span>Untracked files:
+</span></span><span style="display:flex;"><span>  (use &#34;git add &lt;file&gt;...&#34; to include in what will be committed)
+</span></span><span style="display:flex;"><span>        test2.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ git add test2.txt
+</span></span><span style="display:flex;"><span>On branch master
+</span></span><span style="display:flex;"><span>Changes to be committed:
+</span></span><span style="display:flex;"><span>  (use &#34;git restore --staged &lt;file&gt;...&#34; to unstage)
+</span></span><span style="display:flex;"><span>        new file:   test2.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ git commit -m &#34;Add test2&#34;
+</span></span><span style="display:flex;"><span>[master 2d7949d] Add test2
+</span></span><span style="display:flex;"><span> 1 file changed, 10 insertions(+)
+</span></span><span style="display:flex;"><span> create mode 100644 test2.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ git reset --soft 6122c04
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ git status
+</span></span><span style="display:flex;"><span>On branch master
+</span></span><span style="display:flex;"><span>Changes to be committed:
+</span></span><span style="display:flex;"><span>  (use &#34;git restore --staged &lt;file&gt;...&#34; to unstage)
+</span></span><span style="display:flex;"><span>        new file:   test2.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ git restore --staged test2.txt 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ git status
+</span></span><span style="display:flex;"><span>On branch master
+</span></span><span style="display:flex;"><span>Untracked files:
+</span></span><span style="display:flex;"><span>  (use &#34;git add &lt;file&gt;...&#34; to include in what will be committed)
+</span></span><span style="display:flex;"><span>        test2.txt
+</span></span></code></pre></div><h1 id="recover-lost-files-in-3-scenarios">Recover lost files in 3 scenarios</h1>
 <h2 id="scenario-1-changes-committed">Scenario 1: Changes committed</h2>
 <p>If you do a <code>git reset --hard</code> after <code>git add</code> and <code>git commit</code></p>
 <ol>
@@ -323,7 +318,7 @@ Untracked files:
 					</div>
 					<div class="text-light footer__cta_content">
 						<span>Contact me</span>
-						<h2 class="mb-0">Let’s Start a Project</h2>
+						<h2 class="mb-0">Let’s Connect</h2>
 					</div>
 					<div class="footer__cta_action">
 						<a class="btn btn-light btn-zoom" href="https://anhcodes.dev/contact">Get in
@@ -338,7 +333,7 @@ Untracked files:
 		<div class="row footer__footer">
 			<div class="col-lg-6">
 				<div class="footer__footer_copy text-light">
-					<p>©2022 - Made with ☕, Hugo, Firebase by <a class="text-light" href="https://anhcodes.dev/" target="_blank">Anh Chu</a></p>
+					<p>©2022 - Made with ☕, Hugo, and Firebase by <a class="text-light" href="https://anhcodes.dev/" target="_blank">Anh Chu</a></p>
 				</div>
 			</div>
 			<div class="col-lg-6">

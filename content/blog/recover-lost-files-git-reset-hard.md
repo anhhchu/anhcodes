@@ -40,7 +40,7 @@ After doing the `get reset --hard` to commit id 6122c04, the file test2 will be 
 
 On the contrary, `git reset --soft` revert your commit without removing your files from the working directory. After that you can unstage the files you don't want to commit
 
-```git
+```text
 $ git status
 On branch master
 Untracked files:

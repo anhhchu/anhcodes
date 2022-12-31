@@ -26,8 +26,8 @@ Users can connect to Dedicated SQL Pool using Azure Data Studio (on Mac and Wind
 ## Redshift vs Dedicated SQL Pool Comparison
 
 |  |Redshift  | Dedicated SQL Pool (Synapse Analytics) |
-|--|--|--|
-|Architecture | clusters with nodes bundled of CPU, storage, memory and IOPS | similar but compute and storage are scaled and billed separately, use Data Warehouse Units with only comprises of CPU, memory and IOPS. In the current setting, we provisioned 1000c DWU for our Synapse SQL Pool, but this can scale up and down depending on how much compute we need |
+|:--|:--:|:--:|
+|Architecture | clusters with nodes bundled of CPU, storage, memory and IOPS | similar but compute and storage are scaled and billed separately, use Data Warehouse Units with only comprises of CPU, memory and IOPS.|
 |Massively Parallel Processing MPP  | available for easy scaling| available for easy scaling  |
 | Data Protection | Redshift takes a snapshot about every eight hours or following every 5 GB per node of data changes, snapshot stores in AWS S3 | takes automatic snapshots of the data warehouse throughout the day to create restore points that are available for seven days |
 | SQL flavor | PostgreSQL  | T-SQL |
