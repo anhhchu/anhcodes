@@ -83,3 +83,18 @@ weight = 2
 icon = "fa-github-square"
 url = "https://github.com/anhhchu"
 weight = 3
+
+[markup]
+  [markup.highlight]
+    anchorLineNos = true
+    codeFences = true
+    guessSyntax = true
+    hl_Lines = ''
+    lineAnchors = ''
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    noHl = false
+    style = 'witchhazel'
+    tabWidth = 4

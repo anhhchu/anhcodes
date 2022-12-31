@@ -14,7 +14,7 @@
       
       <guid>https://anhcodes.dev/blog/recover-lost-files-git-reset-hard/</guid>
       <description>While working on a recent project, I accidentally committed some files. Instead of using git reset --soft &amp;lt;prev-commit-id&amp;gt; to unstage them, I used git reset --hard HEAD and all of my new changes gone with the wind. After panicking for a few minutes, I determined to learn how git reset works and how I can revert the damages.
-git reset &amp;ndash;hard vs. git reset &amp;ndash;soft git reset --hard resets the current branch tip, and also deletes any changes in the working directory and staging area (although files under git stash will not be affected).</description>
+1. What is git reset (hard vs soft) git reset --hard resets the current branch tip, and also deletes any changes in the working directory and staging area (although files under git stash will not be affected).</description>
     </item>
     
     <item>

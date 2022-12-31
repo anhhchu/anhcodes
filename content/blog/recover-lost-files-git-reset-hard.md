@@ -9,13 +9,13 @@ categories: git
 
 While working on a recent project, I accidentally committed some files. Instead of using `git reset --soft <prev-commit-id>` to unstage them, I used `git reset --hard HEAD` and all of my new changes gone with the wind. After panicking for a few minutes, I determined to learn how `git reset` works and how I can revert the damages. 
 
-# git reset --hard vs. git reset --soft
+### 1. What is git reset (hard vs soft)
 
 `git reset --hard` resets the current branch tip, and also deletes any changes in the working directory and staging area (although files under `git stash` will not be affected). It resets index entries to a specified commit, or the HEAD location. `git reset --hard` should be used with caution, since it can lead to losing work in your staging area and working directory.
 
 Below is the demonstration of what happened to a new file `test2.txt` after a `git reset --hard`
 
-```git
+{{< highlight shell "linenos=table,style=witchhazel" >}}
 $ git status
 On branch master
 Untracked files:
@@ -35,12 +35,13 @@ $ git commit -m "Add test2"
 
 $ git reset --hard 6122c04
 HEAD is now at 6122c04 add test
-```
+{{< /highlight >}}
+
 After doing the `get reset --hard` to commit id 6122c04, the file test2 will be removed from the working directory
 
 On the contrary, `git reset --soft` revert your commit without removing your files from the working directory. After that you can unstage the files you don't want to commit
 
-```text
+{{< highlight shell "linenos=table,style=witchhazel" >}}
 $ git status
 On branch master
 Untracked files:
@@ -73,11 +74,13 @@ On branch master
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
         test2.txt
-```
 
-# Recover lost files in 3 scenarios
+{{</highlight>}}
 
-## Scenario 1: Changes committed
+
+### 2. Recover files after `git reset --hard` in 3 scenarios
+
+#### Scenario 1: Changes committed
 
 If you do a `git reset --hard` after `git add` and `git commit`
 
@@ -97,7 +100,7 @@ If you do a `git reset --hard` after `git add` and `git commit`
 
     `git merge <new-branch>`
 
-### Scenario 2: Changes staged but not yet committed
+#### Scenario 2: Changes staged but not yet committed
 
 If you do a `git reset --hard` after `git add` but before `git commit`
 
@@ -107,12 +110,12 @@ If you do a `git reset --hard` after `git add` but before `git commit`
 
 3. Another option is to use `git fsck --lost-found` to move all the dangling blobs to lost-found directory. Then, `cd .git/lost-found/other` to check all the dangling blob content
 
-### Scenario 3: Changes not staged nor committed
+#### Scenario 3: Changes not staged nor committed
 
 If you do a `git reset --hard` after `git add` and `git commit`, your new changes before staging will still be in your directory. 
 
 
-# What does chatGPT say?
+### What does chatGPT say?
 
 By the way, I asked chatGPT "How to recover lost files after git reset --hard HEAD", and this is what it suggested
 
@@ -123,7 +126,5 @@ By the way, I asked chatGPT "How to recover lost files after git reset --hard HE
 >*If you have pushed the lost commits to a remote repository, it may be possible to recover the lost files by cloning the repository from the remote and cherry-picking the lost commits. However, this will only work if the remote repository has not been pruned or garbage collected.*
 
 >*In general, it is important to regularly commit your changes to the repository and push them to a remote repository as a backup, to avoid losing work due to actions like git reset --hard HEAD. It is also a good idea to regularly create backups of your work outside of the repository."*
-
-
 
 
