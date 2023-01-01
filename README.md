@@ -22,5 +22,19 @@ Or run `hugo && firebase deploy` to manually deploy the changes
 
 [hugo shortcodes](https://gohugo.io/content-management/shortcodes/#readout)
 
+[Convert tables to markdown](https://tabletomarkdown.com/convert-spreadsheet-to-markdown/)
+
+[icons8](https://icons8.com/icons/)
+
+
+#### Color Palette
+
+[color-hex](https://www.color-hex.com/color/d5a6bd#color-schemes)
+
+[you make me nervous Color Palette](https://www.color-hex.com/color-palette/1020936)
+
+#### Syntax Highlight
+
+https://gohugo.io/content-management/syntax-highlighting/#generate-syntax-highlighter-css
 
 

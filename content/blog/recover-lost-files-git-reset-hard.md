@@ -3,8 +3,7 @@ title: "How to recover lost files after a git reset --hard"
 date: 2022-12-27 11:30:20
 featureImage: images/allpost/git-reset.png
 postImage: images/single-blog/git-reset.png
-tags: [how-to, git]
-categories: git
+tags: ["#how-to", "#git"]
 ---
 
 While working on a recent project, I accidentally committed some files. Instead of using `git reset --soft <prev-commit-id>` to unstage them, I used `git reset --hard HEAD` and all of my new changes gone with the wind. After panicking for a few minutes, I determined to learn how `git reset` works and how I can revert the damages. 

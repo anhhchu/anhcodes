@@ -2,7 +2,7 @@
 enable: true
 topTitle: Blog
 title: >
-  ## Recent Article
+  ## Recent Articles
 
   I blog about Data Processing, Data Storage, Data Analytics, and Distributed System on GCP and Azure Cloud such as Spark, Azure Synapse Analytics, Databases, and GCP BigQuery.
 

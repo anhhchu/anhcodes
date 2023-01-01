@@ -18,12 +18,12 @@
     </item>
     
     <item>
-      <title>SQL Pools in Azure Synapse Analytics vs Redshift</title>
+      <title>Azure Synapse Analytics</title>
       <link>https://anhcodes.dev/blog/sql-pools/</link>
       <pubDate>Tue, 15 Nov 2022 23:30:13 +0000</pubDate>
       
       <guid>https://anhcodes.dev/blog/sql-pools/</guid>
-      <description>What is Dedicated SQL Pool? Dedicated SQL Pool (formerly SQL DW) to store data for analytics queries because it leverages a scale-out architecture (Massively Parallel Processing) to distribute computational processing of data across multiple nodes. Applications connect and issue T-SQL commands to a Control node. The Control node hosts the distributed query engine, which optimizes queries for parallel processing, and then passes operations to Compute nodes to do their work in parallel.</description>
+      <description>Table of Contents What is Azure Synapse Analytics? What is Dedicated SQL Pool? What is Serverless SQL Pool? Dedicated vs Serverless SQL Pool Comparison Azure Synapse Analytics, AWS Redshift, Google Big Query Comparison What is Azure Synapse Analytics? Azure Synapse Analytics is an integrated data platform that brings together SQL technologies used in enterprise data warehousing such as Dedicated SQL Pool and Serverless SQL Pool, Synapse Spark Pool used for big data, Data Explorer for log and time series analytics, Synapse Pipelines for data integration and ETL/ELT, and deep integration with other Azure services such as Power BI, CosmosDB, and AzureML.</description>
     </item>
     
     <item>

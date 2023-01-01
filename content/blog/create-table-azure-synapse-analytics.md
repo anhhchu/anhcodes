@@ -4,8 +4,7 @@ date: 2022-11-15 23:24:30
 featureImage: images/allpost/azure-synapse.jpeg
 # postImage: images/single-blog/feature-image.jpg
 postImage: https://www.altexsoft.com/media/2021/11/the-two-tier-architecture-with-a-data-lake-and-dat.png
-tags: [azure-synapse-analytics, data-lakehouse]
-categories: azure
+tags: ["#azure-synapse-analytics"]
 ---
 
 As Dedicated SQL pool uses a scaled-out node based architecture, when creating tables in Dedicated SQL Pool, remember to specify the distribution (sharding strategy) and index for your tables. 
