@@ -6,7 +6,16 @@
     <description>Recent content on anhcodes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Dec 2022 11:30:20 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 01 Jan 2023 18:49:15 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Goodbye 2022! May 2023 be Fabulous</title>
+      <link>https://anhcodes.dev/blog/goodbye-2022/</link>
+      <pubDate>Sun, 01 Jan 2023 18:49:15 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/blog/goodbye-2022/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>How to recover lost files after a git reset --hard</title>
       <link>https://anhcodes.dev/blog/recover-lost-files-git-reset-hard/</link>
@@ -18,23 +27,22 @@
     </item>
     
     <item>
-      <title>Azure Synapse Analytics</title>
-      <link>https://anhcodes.dev/blog/sql-pools/</link>
-      <pubDate>Tue, 15 Nov 2022 23:30:13 +0000</pubDate>
-      
-      <guid>https://anhcodes.dev/blog/sql-pools/</guid>
-      <description>Table of Contents What is Azure Synapse Analytics? What is Dedicated SQL Pool? What is Serverless SQL Pool? Dedicated vs Serverless SQL Pool Comparison Azure Synapse Analytics, AWS Redshift, Google Big Query Comparison What is Azure Synapse Analytics? Azure Synapse Analytics is an integrated data platform that brings together SQL technologies used in enterprise data warehousing such as Dedicated SQL Pool and Serverless SQL Pool, Synapse Spark Pool used for big data, Data Explorer for log and time series analytics, Synapse Pipelines for data integration and ETL/ELT, and deep integration with other Azure services such as Power BI, CosmosDB, and AzureML.</description>
-    </item>
-    
-    <item>
       <title>Best Practices in creating tables in Azure Synapse Analytics</title>
       <link>https://anhcodes.dev/blog/create-table-azure-synapse-analytics/</link>
       <pubDate>Tue, 15 Nov 2022 23:24:30 +0000</pubDate>
       
       <guid>https://anhcodes.dev/blog/create-table-azure-synapse-analytics/</guid>
       <description>As Dedicated SQL pool uses a scaled-out node based architecture, when creating tables in Dedicated SQL Pool, remember to specify the distribution (sharding strategy) and index for your tables.
-Dedicated SQL Pool Architecture
-Choosing Distribution: The data is sharded into distributions to optimize the performance of the system. You can choose which sharding pattern to use to distribute the data when you define the table. These sharding patterns are supported:</description>
+Dedicated SQL Pool Architecture Choosing Distribution: The data is sharded into distributions to optimize the performance of the system. You can choose which sharding pattern to use to distribute the data when you define the table. These sharding patterns are supported:</description>
+    </item>
+    
+    <item>
+      <title>Azure Synapse Analytics - Data Lakehouse on Azure</title>
+      <link>https://anhcodes.dev/blog/synapse/</link>
+      <pubDate>Tue, 15 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/blog/synapse/</guid>
+      <description>Table of Contents What is Azure Synapse Analytics? What is Dedicated SQL Pool? What is Serverless SQL Pool? Dedicated vs Serverless SQL Pool Comparison Azure Synapse Analytics, AWS Redshift, Google Big Query Comparison What is Azure Synapse Analytics? Azure Synapse Analytics is an integrated data platform that brings together SQL technologies used in enterprise data warehousing such as Dedicated SQL Pool and Serverless SQL Pool, Synapse Spark Pool used for big data, Data Explorer for log and time series analytics, Synapse Pipelines for data integration and ETL/ELT, and deep integration with other Azure services such as Power BI, CosmosDB, and AzureML.</description>
     </item>
     
     <item>

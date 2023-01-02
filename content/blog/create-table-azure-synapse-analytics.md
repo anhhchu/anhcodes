@@ -1,15 +1,16 @@
 ---
 title: "Best Practices in creating tables in Azure Synapse Analytics"
 date: 2022-11-15 23:24:30
-featureImage: images/allpost/azure-synapse.jpeg
+featureImage: images/allpost/sql-pool-vertical.jpeg
 # postImage: images/single-blog/feature-image.jpg
-postImage: https://www.altexsoft.com/media/2021/11/the-two-tier-architecture-with-a-data-lake-and-dat.png
-tags: ["#azure-synapse-analytics"]
+postImage: images/single-blog/sql-pool.jpeg
+tags: [azure-synapse-analytics]
 ---
 
 As Dedicated SQL pool uses a scaled-out node based architecture, when creating tables in Dedicated SQL Pool, remember to specify the distribution (sharding strategy) and index for your tables. 
 
 [Dedicated SQL Pool Architecture](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/massively-parallel-processing-mpp-architecture)
+![](https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
 #### Choosing Distribution: 
 The data is sharded into distributions to optimize the performance of the system. You can choose which sharding pattern to use to distribute the data when you define the table. These sharding patterns are supported:

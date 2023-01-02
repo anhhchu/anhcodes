@@ -37,4 +37,8 @@ Or run `hugo && firebase deploy` to manually deploy the changes
 
 https://gohugo.io/content-management/syntax-highlighting/#generate-syntax-highlighter-css
 
+#### Set Env variables for Hugo
+
+https://gohugo.io/getting-started/configuration/#configuration-environment-variables
+
 

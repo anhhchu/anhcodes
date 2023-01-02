@@ -17,7 +17,7 @@ weight = 2
 # url = "#portfolio"
 # weight = 3
 [[menu.main]]
-name = "Resume"
+name = "Experiences"
 url = "#resume"
 weight = 4
 [[menu.main]]
@@ -25,7 +25,7 @@ name = "Skills"
 url = "#skills"
 weight = 5
 [[menu.main]]
-name = "Testimonial"
+name = "Testimonials"
 url = "#testimonial"
 weight = 6
 [[menu.main]]

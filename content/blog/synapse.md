@@ -1,9 +1,9 @@
 ---
-title: "Azure Synapse Analytics"
-date: 2022-11-15 23:30:13
-featureImage: images/allpost/sql-pool-vertical.jpeg
-postImage: images/single-blog/sql-pool.jpeg
-tags: ["#azure-synapse-analytics", "#big-query", "#redshift","#data-lakehouse"]
+title: "Azure Synapse Analytics - Data Lakehouse on Azure"
+date: 2022-11-15
+featureImage: images/allpost/azure-synapse.jpeg
+postImage: images/single-blog/data-lakehouse.png
+tags: [azure-synapse-analytics, big-query, redshift,data-lakehouse]
 ---
 
 ### Table of Contents
@@ -23,6 +23,7 @@ Azure Synapse Analytics is an integrated data platform that brings together SQL 
 ### What is Dedicated SQL Pool?
 
  Dedicated SQL Pool (previously SQL DW) leverages a scale-out architecture (Massively Parallel Processing) to distribute computational processing of data across multiple nodes to handle complex analytics queries. Applications connect and issue T-SQL commands to a Control node. The Control node hosts the distributed query engine, which optimizes queries for parallel processing, and then passes operations to Compute nodes to do their work in parallel. The Compute nodes store all user data in Azure Storage and run the parallel queries. The Data Movement Service (DMS) is a system-level internal service that moves data across the nodes as necessary to run queries in parallel and return accurate results. 
+[Create table]()
 
 ![Dedicated SQL pool (formerly SQL DW) architecture](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
