@@ -1,7 +1,7 @@
 ---
 title: "Goodbye 2022! May 2023 Be Fabulous"
 date: 2023-01-01 18:49:15
-featureImage: images/single-blog/newyear/fireworks.gif #images/single-blog/newyear/IMG_6388.jpg
+featureImage: images/single-blog/newyear/fireworks2.gif #images/single-blog/newyear/IMG_6388.jpg
 postImage: images/single-blog/newyear/microsoft.jpg
 tags: [career]
 ---
