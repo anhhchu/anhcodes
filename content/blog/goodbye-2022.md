@@ -1,28 +1,38 @@
 ---
-title: "Goodbye 2022! May 2023 be Fabulous"
+title: "Goodbye 2022! May 2023 Be Fabulous"
 date: 2023-01-01 18:49:15
-featureImage: images/single-blog/newyear/IMG_6388.jpg
-postImage: images/single-blog/newyear/feature.jpeg
+featureImage: images/single-blog/newyear/fireworks.gif #images/single-blog/newyear/IMG_6388.jpg
+postImage: images/single-blog/newyear/microsoft.jpg
 tags: [career]
 ---
 
-2022 was an amazing year for me. 
+2022 has been kind to me with exciting changes and opportunities. Looking back on what I have started last year: 
 
+<!-- {{< blogsection title="My 2022 Highlights" image="images/single-blog/newyear/sunset.gif" >}}
+{{< /blogsection >}} -->
 
 🏆 Received Excellence Award at Walmart
 
 ✨ Completed the Deep Learning Course on DeepLearning.ai
 
-🤓 Started job at Microsoft
+🤓 Started my dream job at Microsoft
 
-📦 Moved to Seattle
+📦 Moved to Seattle, WA - the Evergreen State
 
-🎉 Got Data Engineering Associate on Azure Certificate
+🎉 Got the Azure Data Engineering Associate Certification
 
 🥾 Went on 12 amazing hikes in Washington state... and counting
 
-🚤 Completed a data lakehouse migration project
+🚤 Lead a highly visible data lakehouse migration project
 
-🌐 Revamped my website (my previous one is 💩)
+🌐 Revamped my website
+
+✍️ Started blogging
+
+<!-- {{< blogsection title="Goodbye 2022! May 2023 Be Fabulous" image="images/single-blog/newyear/sunset.gif" >}}
+{{< /blogsection >}} -->
+
+
+
 
 
