@@ -6,7 +6,7 @@ postImage: images/single-blog/newyear/microsoft.jpg
 tags: [career]
 ---
 
-2022 has been kind to me with exciting changes and opportunities. Looking back on what I have started last year: 
+2022 has been kind to me with exciting changes and opportunities. Take a look at what I accomplished last year: 
 
 <!-- {{< blogsection title="My 2022 Highlights" image="images/single-blog/newyear/sunset.gif" >}}
 {{< /blogsection >}} -->
