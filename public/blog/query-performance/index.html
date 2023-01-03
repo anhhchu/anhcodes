@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Query Performance Tuning in Dedicated SQL Pool (Azure Synapse Analytics)</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <!-- Slick Carousel -->
+  <link rel="stylesheet" href="https://anhcodes.dev/plugins/slick/slick.css" />
+  <link rel="stylesheet" href="https://anhcodes.dev/plugins/slick/slick-theme.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://anhcodes.dev/plugins/font-awesome/css/font-awesome.min.css" />
+
+  <!-- Magnific Popup -->
+  <link rel="stylesheet" href="https://anhcodes.dev/plugins/magnafic-popup/magnific-popup.css" />
+
+  <!-- Stylesheets -->
+  
+  <link href="https://anhcodes.dev/scss/style.min.css" rel="stylesheet" />
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="https://anhcodes.dev/images/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="https://anhcodes.dev/images/favicon.png" type="image/x-icon" />
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9145PR72NN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-9145PR72NN');
+  </script>
+  
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a href="https://anhcodes.dev/" class="navbar-brand">
+      <img src="https://anhcodes.dev/images/site-navigation/logonew.png" alt="site-logo">
+    </a>
+    <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+      <ul class="nav navbar-nav main-navigation my-0 mx-auto">
+        
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#home"
+            class="nav-link text-dark text-sm-center p-2 ">Home</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#about"
+            class="nav-link text-dark text-sm-center p-2 ">About</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#resume"
+            class="nav-link text-dark text-sm-center p-2 ">Experiences</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#skills"
+            class="nav-link text-dark text-sm-center p-2 ">Skills</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#testimonial"
+            class="nav-link text-dark text-sm-center p-2 ">Testimonials</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#blog"
+            class="nav-link text-dark text-sm-center p-2 ">Blog</a>
+        </li>
+        
+      </ul>
+      <div class="navbar-nav">
+        <a href="https://anhcodes.dev/contact" class="btn btn-primary btn-zoom hire_button">Contact Me</a>
+      </div>
+    </div>
+  </div>
+</nav>
+  <div id="content">
+    
+
+<header class="breadCrumb">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 text-center">
+        <h3 class="breadCrumb__title">Query Performance Tuning in Dedicated SQL Pool (Azure Synapse Analytics)</h3>
+        <nav aria-label="breadcrumb" class="d-flex justify-content-center">
+          <ol class="breadcrumb align-items-center">
+            <li class="breadcrumb-item"><a href=https://anhcodes.dev/>Home</a></li>
+            <li class="breadcrumb-item"><a href=https://anhcodes.dev/blog>All Posts</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Query Performance Tuning in Dedicated SQL Pool (Azure Synapse Analytics)</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <ul class="post-meta">
+      <li>
+        <i class="fa fa-calendar"></i>
+        December 15, 2022
+      </li>
+      <li>
+        <i class="fa fa-clock-o"></i>
+        6 mins read
+      </li>
+      
+      <li>
+        <i class="fa fa-tag"></i>
+        
+          <a class="text-lowercase" href="https://anhcodes.dev/tags/azure-synapse-analytics/">azure-synapse-analytics</a>
+        
+          <a class="text-lowercase" href="https://anhcodes.dev/tags/data-lakehouse/">data-lakehouse</a>
+        
+          <a class="text-lowercase" href="https://anhcodes.dev/tags/how-to/">how-to</a>
+        
+      </li>
+      
+      
+    </ul>
+  </div>
+  </div>
+  </div>
+  </div>
+</header>
+
+<section class="section singleBlog">
+  <div class="svg-img">
+    <img src=https://anhcodes.dev/images/hero/hero-background-svg.svg alt="">
+  </div>
+  <div class="animate-shape">
+    <img src=https://anhcodes.dev/images/skill/skill-background-shape.svg alt="">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 600">
+      <defs>
+        <linearGradient id="d" x1="0.929" y1="0.111" x2="0.263" y2="0.935" gradientUnits="objectBoundingBox">
+          <stop offset="0" stop-color="#e5c9d7" />
+          <stop offset="1" stop-color="#e5c9d7" stop-opacity="0" />
+        </linearGradient>
+      </defs>
+      <g data-name="blob-shape (3)">
+        <path class="blob" fill="url(#d)"
+          d="M455.4 151.1c43.1 36.7 73.4 92.8 60.8 136.3-12.7 43.5-68.1 74.4-111.3 119.4-43.1 45-74 104.1-109.8 109-35.9 5-76.7-44.2-111.8-89.2-35.2-45-64.7-85.8-70.8-132.6-6-46.8 11.6-99.6 46.7-136.3 35.2-36.6 88-57.2 142.4-58.8 54.5-1.7 110.6 15.6 153.8 52.2z" />
+      </g>
+    </svg>
+  </div>
+  <div class="animate-pattern">
+    <img src=https://anhcodes.dev/images/service/background-pattern.svg alt="background-shape">
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="singleBlog__feature">
+          <img src=https://anhcodes.dev/images/single-blog/query-performance.jpeg alt="feature-image">
+        </div>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-lg-12">
+        <div class="singleBlog__content">
+
+          
+
+          <h3 id="1-best-practices-when-creating-tables">1. Best practices when Creating Tables</h3>
+<p>When creating table in Dedicated SQL Pool, choose the correct Distribution Column and Index for best query performance. Follow <a href="./content/blog/create-table-azure-synapse-analytics.md">Best Practices in creating tables in Azure Synapse Analytics</a></p>
+<p><strong>Remember to create and Update Stats on your new tables</strong>
+<a href="https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-statistics#examples-update-statistics">Table statistics for dedicated SQL pool in Azure Synapse Analytics</a></p>
+<h3 id="2-identify-slow-running-qid-and-analyze-compilation">2. Identify slow-running QID and analyze compilation</h3>
+<p>To best determine what is causing any given query&rsquo;s slow performance, you will need to identify an example long-running query:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1"> 1</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2"> 2</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3"> 3</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4"> 4</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5"> 5</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6"> 6</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7"> 7</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="8"><a style="outline: none; text-decoration:none; color:inherit" href="#8"> 8</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="9"><a style="outline: none; text-decoration:none; color:inherit" href="#9"> 9</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="10"><a style="outline: none; text-decoration:none; color:inherit" href="#10">10</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">SELECT</span><span style="color:#a8757b"> </span>total_elapsed_time<span style="color:#ffb8d1">/</span><span style="color:#c5a3ff">60000</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">as</span><span style="color:#a8757b"> </span>minutes,<span style="color:#a8757b"> </span>s.login_name,<span style="color:#a8757b"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">    </span>r.request_id,<span style="color:#a8757b"> </span>r.status,<span style="color:#a8757b"> </span>r.[label],<span style="color:#a8757b"> </span>r.resource_class,<span style="color:#a8757b"> </span>[submit_time],<span style="color:#a8757b"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">    </span>command,<span style="color:#a8757b"> </span>r.request_id,<span style="color:#a8757b"> </span>start_time,<span style="color:#a8757b"> </span>end_time,<span style="color:#a8757b"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">    </span>total_elapsed_time,<span style="color:#a8757b"> </span>result_cache_hit<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">FROM</span><span style="color:#a8757b"> </span>sys.dm_pdw_exec_requests<span style="color:#a8757b"> </span>r<span style="color:#a8757b"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">JOIN</span><span style="color:#a8757b"> </span>sys.dm_pdw_exec_sessions<span style="color:#a8757b"> </span>s<span style="color:#a8757b"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">on</span><span style="color:#a8757b"> </span>r.session_id<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span>s.session_id<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">where</span><span style="color:#a8757b"> </span>r.session_id<span style="color:#a8757b"> </span><span style="color:#ffb8d1">&lt;&gt;</span><span style="color:#a8757b"> </span>session_id()<span style="color:#a8757b">  
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">    </span><span style="color:#c2ffdf">AND</span><span style="color:#a8757b"> </span>r.status<span style="color:#a8757b"> </span><span style="color:#c2ffdf">not</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">in</span><span style="color:#a8757b"> </span>(<span style="color:#1bc5e0">&#39;Completed&#39;</span>,<span style="color:#1bc5e0">&#39;Failed&#39;</span>,<span style="color:#1bc5e0">&#39;Cancelled&#39;</span>)<span style="color:#a8757b"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">order</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">by</span><span style="color:#a8757b"> </span>total_elapsed_time<span style="color:#a8757b"> </span><span style="color:#c2ffdf">desc</span>;</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>See <a href="https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-monitor?WT.mc_id=Portal-Microsoft_Azure_Support#monitor-query-execution">Monitor query execution</a> for additional context.</p>
+
+
+
+
+
+<table class="table table-light table-striped table-bordered">
+<thead>
+<tr>
+<th>Issue Description</th>
+<th>Mitigation(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Query is waiting on resources</td>
+<td>Check for waits that are preventing the query from progressing. You may have to consider killing a blocking statement in order for the query to start processing. Exceeding concurrency limits is a type of wait that is often experienced when workload volume is high, when larger resource classes (for example: xlargerc, staticrc80, etc.) are used, or when your workload isolation configuration conflicts with your expectations.</td>
+</tr>
+<tr>
+<td>Metadata is not optimized</td>
+<td>Rebuild clustered columnstore indexes for all tables in your dedicated SQL pool to reduce and better optimize metadata.</td>
+</tr>
+<tr>
+<td>Usage of older SQL syntax</td>
+<td>Adhere your query to ANSI-92 style joins (have joiners in FROM clause instead of in WHERE clause). Alternatively, consider adding the query hints OPTION(FORCE_ORDER, FORCE_LEGACY_CARDINALITY_ESTIMATION) to the problem query to allow the distributed optimizer better interpret an ANSI-89 style query syntax.</td>
+</tr>
+<tr>
+<td>Highly complex queries</td>
+<td>Highly complex queries can sometimes impact compilation performance/duration. Consider breaking the query into multiple steps to reduce the complexity of any one given query.</td>
+</tr>
+<tr>
+<td>Long-running DROP TABLE or TRUNCATE TABLE statements</td>
+<td>In the event that your workload has recently or very frequently issues a high volume of DROP TABLE or TRUNCATE TABLE statements, asynchronous background processes to complete the data removal may impede currently running DROP TABLE and TRUNCATE TABLE statements. To workaround this issue, run DBCC SHRINKDATABASE against your dedicated SQL pool to immediately force this cleanup. This process should be run in isolation (without any other workload running).</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="3-analyze-the-distributed-query-plan">3. Analyze the distributed query plan</h3>
+<p>You may need to analyze all of the steps of the distributed plan. Run the following statement to retrieve these details:</p>
+<p><code>select * from sys.dm_pdw_request_steps where request_id = 'QID######' order by step_index;</code></p>
+<p>As you review each step of the distributed plan, evaluate following conditions and complete the recommended mitigation if applicable:</p>
+
+
+
+
+
+<table class="table table-light table-striped table-bordered">
+<thead>
+<tr>
+<th>Evaluate</th>
+<th>Mitigation(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Are row estimations inaccurate by more than 10% (compare row_count to estimated_rows)?</td>
+<td>Create/Update statistics for all tables referenced in the query. For large tables, you may need to consider executing WITH FULLSCAN in order to achieve the best estimations.</td>
+</tr>
+<tr>
+<td>Is the health of clustered columnstore indexes for all tables referenced in longest-running step in poor condition?</td>
+<td>Evaluate and consider rebuilding clustered columnstore indexes for tables referenced by the query in in question in order to reduce IO, memory, and CPU overhead.</td>
+</tr>
+<tr>
+<td>Do BroadcastMoveOperations exist for replicated tables?</td>
+<td>Review our Design guidance for replicated tables. The poor query performance could be mitigated by warming the replicated cache prior to user queries are executed. However, if the replicated cache is frequently rebuilding due to INSERT/UPDATE/DELETE statements or if it is a very large table, consider changing the table distribution type from REPLICATE to ROUND_ROBIN.</td>
+</tr>
+<tr>
+<td>Are there a large number of steps to the plan or data movement operations (for example: ShuffleMoveOperation) that are moving unexpectedly large number of rows?</td>
+<td>Carefully review our tables overview, distributed table design guidance, and replicated table design guidance articles to ensure your table design choices align to best practices. Alternatively, the query may be very complex and would benefit from being broken into multiple statements.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="4-analyze-a-specific-query-plan">4. Analyze a specific query plan</h3>
+<p>Using the output of the query from the Analyze the distributed query plan section, identify the longest-running (by total_elapsed_time) step of the query plan. Once identified, note the location_type of the step and then choose the appropriate query below to update with request_id (QID) and step_index and then execute the query:</p>
+<ul>
+<li>
+<p>If location_type in (&lsquo;Compute&rsquo;, &lsquo;Control&rsquo;)
+<code>select * from sys.dm_pdw_sql_requests where request_id = 'QID######' and step_index = #;</code></p>
+</li>
+<li>
+<p>If location_type = &lsquo;DMS&rsquo; (DMS = Data Movement Service)
+<code>select * from sys.dm_pdw_dms_workers where request_id = 'QID######' and step_index = #;</code></p>
+</li>
+</ul>
+<p><strong>a. Analyze distributed query plan</strong></p>
+<p>The output from these queries show information about the execution of the step&rsquo;s query on each distribution. Though there will be variations, the durations of each distribution should be generally similar. If, however, you observe a small number of distributions taking significantly more time than the other distributions, consider the following possible causes and mitigations:</p>
+
+
+
+
+
+<table class="table table-light table-striped table-bordered">
+<thead>
+<tr>
+<th>Issue</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Out-of-date statistics</td>
+<td>Though mentioned previously, inaccurate statistics can result in inconsistent execution plans for specific distributions. Create/Update statistics for all tables referenced in the query.</td>
+</tr>
+<tr>
+<td>Data skew</td>
+<td>Use DBCC PDW_SHOWSPACEUSED to evaluate the distribution of data for the tables in your query. If you find that the rows are not evenly distributed, review our guidance on choosing a good distribution column in order to modify any problematic table(s)</td>
+</tr>
+<tr>
+<td>In-flight data skew</td>
+<td>Even if your tables are properly distributed, some queries may result in a ShuffleMoveOperation which moves a disproportionate set of data to one distribution. To mitigate, you will have to force the distributed plan to change so that the shuffle does not occur on a low-cardinality column. Consider:- Changing the order of your GROUP BY columns to lead with a higher cardinality column- Creating multi-column statistic if joins cover multiple columns- Adding query hint OPTION(FORCE_ORDER) to your query- Refactoring the query</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>b. Use EXPLAIN WITH RECOMMENDATION</strong></p>
+<p>You can also review the query plan before executing a query using Explain [With_Recommendation] command following: <a href="https://learn.microsoft.com/en-us/sql/t-sql/queries/explain-transact-sql?view=azure-sqldw-latest">Explain (T-SQL)</a> and <a href="https://www.sqlshack.com/how-to-read-an-execution-plan-with-all-details/">How to read execution plan</a></p>
+<h3 id="5-analyze-impacts-of-concurrent-workload">5. Analyze impacts of concurrent workload</h3>
+<p>If you eliminated all previous criteria, it&rsquo;s possible that your query is from a a server or client system resource bottleneck. Be sure to revisit the anti-patterns section above and ensure you are following our recommended best practices .</p>
+<p>However, one final possibility to consider is that your overall concurrent workload is constraining shared resources such as IO, network IO, CPU, memory, etc based on your current resource configuration. Perceived poor performance can be the result of either an undersized dedicated SQL pool or client.</p>
+
+
+
+
+
+<table class="table table-light table-striped table-bordered">
+<thead>
+<tr>
+<th>Resource</th>
+<th>How to detect</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dedicated SQL pool</td>
+<td>Review metrics of your dedicated SQL pool to determine if resources are peaking during times of poor performance.</td>
+<td>Consider temporarily scaling up your dedicated SQL pool to determine if the execution duration improves with increased resources.</td>
+</tr>
+<tr>
+<td>Client</td>
+<td>Monitor your client resources while reproducing the issue.</td>
+<td>Consider spreading out the workload that the client is processing, scale up the client resources, or scale out portions of the workload to another client.</td>
+</tr>
+</tbody>
+</table>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  </div>
+  <section class="footer" id="contact">
+	<div class="footer__background_shape">
+		<svg viewBox="0 0 1920 79">
+			<path d="M0 0h1920v79L0 0z" data-name="Path 1450" />
+		</svg>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="footer__cta">
+					<div class="shape-1">
+						<svg xmlns="http://www.w3.org/2000/svg" width="357" height="315.029" viewBox="0 0 357 315.029">
+							<path data-name="Path 1449"
+								d="M76.1-157.222C91.746-135.8 87.2-94.273 99.993-61.945c12.7 32.328 42.661 55.459 39.248 73.282-3.318 17.823-40.007 30.337-65.6 43.325-25.5 12.988-39.912 26.545-60.01 42.566-20.1 16.116-46.074 34.6-63.328 27.682-17.349-6.921-25.976-39.153-59.915-59.82s-93.1-29.768-105.325-51.478 22.373-56.028 43.609-93.949c21.331-37.921 29.2-79.35 53.563-96.793 24.459-17.444 65.414-10.9 103.9-6.921 38.396 3.982 74.326 5.404 89.965 26.829z"
+								transform="translate(217.489 188.626)" />
+						</svg>
+					</div>
+					<div class="shape-2">
+						<svg xmlns="http://www.w3.org/2000/svg" width="357" height="315.029" viewBox="0 0 357 315.029">
+							<path data-name="Path 1449"
+								d="M76.1-157.222C91.746-135.8 87.2-94.273 99.993-61.945c12.7 32.328 42.661 55.459 39.248 73.282-3.318 17.823-40.007 30.337-65.6 43.325-25.5 12.988-39.912 26.545-60.01 42.566-20.1 16.116-46.074 34.6-63.328 27.682-17.349-6.921-25.976-39.153-59.915-59.82s-93.1-29.768-105.325-51.478 22.373-56.028 43.609-93.949c21.331-37.921 29.2-79.35 53.563-96.793 24.459-17.444 65.414-10.9 103.9-6.921 38.396 3.982 74.326 5.404 89.965 26.829z"
+								transform="translate(217.489 188.626)" />
+						</svg>
+					</div>
+					<div class="text-light footer__cta_content">
+						<span>Contact me</span>
+						<h2 class="mb-0">Let’s Work Together</h2>
+					</div>
+					<div class="footer__cta_action">
+						<a class="btn btn-light btn-zoom" href="https://anhcodes.dev/contact">Get in
+							touch</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+			
+			
+		<div class="row footer__footer">
+			<div class="col-lg-6">
+				<div class="footer__footer_copy text-light">
+					<p>©2023 - Made with ☕, Hugo, and Firebase by <a class="text-light" href="https://anhcodes.dev/" target="_blank">Anh Chu</a></p>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="footer__footer_social">
+					<ul class="unstyle-list">
+						
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://www.instagram.com/jasminmay12/"><i
+									class="fa fa-leetcode"></i></a>
+						</li>
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://www.instagram.com/jasminmay12/"><i
+									class="fa fa-instagram"></i></a>
+						</li>
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://www.linkedin.com/in/anhhchu/"><i
+									class="fa fa-linkedin-square"></i></a>
+						</li>
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://github.com/anhhchu"><i
+									class="fa fa-github-square"></i></a>
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRwXsfdEDBGKI-JcVzIfRyKNF2QBWWa-g&libraries=geometry"></script>
+<script src="https://anhcodes.dev/plugins/jQuery/jquery.min.js"></script>
+<script src="https://anhcodes.dev/plugins/bootstrap/bootstrap.min.js"></script>
+<script src="https://anhcodes.dev/plugins/slick/slick.min.js"></script>
+<script src="https://anhcodes.dev/plugins/waypoint/jquery.waypoints.min.js"></script>
+<script src="https://anhcodes.dev/plugins/magnafic-popup/jquery.magnific-popup.min.js"></script>
+<script src="https://anhcodes.dev/plugins/tweenmax/TweenMax.min.js"></script>
+<script src="https://anhcodes.dev/plugins/imagesloaded/imagesloaded.min.js"></script>
+<script src="https://anhcodes.dev/plugins/masonry/masonry.min.js"></script>
+
+
+<script src="https://anhcodes.dev/js/script.min.js"></script>
+
+</body>
+
+</html>

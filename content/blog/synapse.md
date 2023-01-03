@@ -76,23 +76,3 @@ Azure Synapse Analytics, Amazon Redshift, and Google BigQuery are all cloud-base
 {{< /bootstrap-table >}}
 
 ☝🏼[Table of Content](#table-of-contents)
-
-### Why Citus Hyperscale is not a good fit for Data Warehouse
-
-PostgreSQL Database with horizontal scaling using sharding/partition strategy across multiple nodes for parallel query processing (quite similar to MPP). ​
-
-However, some drawbacks: ​
-
-* OLTP store which optimize for highly concurrent transactional workload​
-
-* Not optimized for queries that return data-heavy ETL results rather than summaries​
-
-* No support for AAD groups and authentication, users need to be created manually with pre-defined roles​
-
-* Coupled Storage and compute​
-
-* Require PostgreSQL Anonymizer Extension for Data Masking (which might not be supported)​
-
-* No support for integrating with data in the data lake​
-
-​☝🏼[Table of Content](#table-of-contents)

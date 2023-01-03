@@ -21,11 +21,13 @@ tags: [career]
 
 🎉 Got the Azure Data Engineering Associate Certification
 
+💻 Participated in Microsoft Global Hackathon 
+
 🥾 Went on 12 amazing hikes in Washington state... and counting
 
 🚤 Lead a highly visible data lakehouse migration project
 
-🌐 Revamped my website
+🌐 Revamped my website (my previous one was 💩)
 
 ✍️ Started blogging
 

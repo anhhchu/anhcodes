@@ -6,7 +6,18 @@
     <description>Recent content in azure-synapse-analytics on anhcodes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 Nov 2022 23:24:30 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/tags/azure-synapse-analytics/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/tags/azure-synapse-analytics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Query Performance Tuning in Dedicated SQL Pool (Azure Synapse Analytics)</title>
+      <link>https://anhcodes.dev/blog/query-performance/</link>
+      <pubDate>Thu, 15 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/blog/query-performance/</guid>
+      <description>1. Best practices when Creating Tables When creating table in Dedicated SQL Pool, choose the correct Distribution Column and Index for best query performance. Follow Best Practices in creating tables in Azure Synapse Analytics
+Remember to create and Update Stats on your new tables Table statistics for dedicated SQL pool in Azure Synapse Analytics
+2. Identify slow-running QID and analyze compilation To best determine what is causing any given query&amp;rsquo;s slow performance, you will need to identify an example long-running query:</description>
+    </item>
+    
     <item>
       <title>Best Practices in creating tables in Azure Synapse Analytics</title>
       <link>https://anhcodes.dev/blog/create-table-azure-synapse-analytics/</link>

@@ -37,9 +37,18 @@
     <item>
       <title>azure-synapse-analytics</title>
       <link>https://anhcodes.dev/tags/azure-synapse-analytics/</link>
-      <pubDate>Tue, 15 Nov 2022 23:24:30 +0000</pubDate>
+      <pubDate>Thu, 15 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://anhcodes.dev/tags/azure-synapse-analytics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>data-lakehouse</title>
+      <link>https://anhcodes.dev/tags/data-lakehouse/</link>
+      <pubDate>Thu, 15 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/tags/data-lakehouse/</guid>
       <description></description>
     </item>
     
@@ -49,15 +58,6 @@
       <pubDate>Tue, 15 Nov 2022 00:00:00 +0000</pubDate>
       
       <guid>https://anhcodes.dev/tags/big-query/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>data-lakehouse</title>
-      <link>https://anhcodes.dev/tags/data-lakehouse/</link>
-      <pubDate>Tue, 15 Nov 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://anhcodes.dev/tags/data-lakehouse/</guid>
       <description></description>
     </item>
     

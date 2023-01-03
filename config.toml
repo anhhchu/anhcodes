@@ -58,7 +58,7 @@ logo = "images/site-navigation/logonew.png"
 address = "Seattle, Washington"
 linkedin = "Connect with me"
 github = "View my work"
-leetcode = "Practice DSA with me"
+resume = "View my experiences"
 
 [params.map]
 # APIkey = "AIzaSyDnE0arfqtAgXq2ZMSr3uoN8JzG0wazTeM"
@@ -71,6 +71,10 @@ pinImage = "images/pin.png"
 
 
 # Social icons
+[[params.social]]
+icon = "fa-leetcode"
+url = "https://www.instagram.com/jasminmay12/"
+weight = 1
 [[params.social]]
 icon = "fa-instagram"
 url = "https://www.instagram.com/jasminmay12/"

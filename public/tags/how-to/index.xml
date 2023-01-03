@@ -17,5 +17,16 @@
 1. What is git reset (hard vs soft) git reset --hard resets the current branch tip, and also deletes any changes in the working directory and staging area (although files under git stash will not be affected).</description>
     </item>
     
+    <item>
+      <title>Query Performance Tuning in Dedicated SQL Pool (Azure Synapse Analytics)</title>
+      <link>https://anhcodes.dev/blog/query-performance/</link>
+      <pubDate>Thu, 15 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/blog/query-performance/</guid>
+      <description>1. Best practices when Creating Tables When creating table in Dedicated SQL Pool, choose the correct Distribution Column and Index for best query performance. Follow Best Practices in creating tables in Azure Synapse Analytics
+Remember to create and Update Stats on your new tables Table statistics for dedicated SQL pool in Azure Synapse Analytics
+2. Identify slow-running QID and analyze compilation To best determine what is causing any given query&amp;rsquo;s slow performance, you will need to identify an example long-running query:</description>
+    </item>
+    
   </channel>
 </rss>
