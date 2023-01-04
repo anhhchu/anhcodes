@@ -6,7 +6,7 @@ postImage: images/single-blog/newyear/microsoft.jpg
 tags: [career]
 ---
 
-2022 has been kind to me with exciting changes and opportunities. Take a look at what I accomplished last year: 
+2022 was kind to me with exciting changes and opportunities. Take a look at what I accomplished last year: 
 
 <!-- {{< blogsection title="My 2022 Highlights" image="images/single-blog/newyear/sunset.gif" >}}
 {{< /blogsection >}} -->
@@ -15,15 +15,19 @@ tags: [career]
 
 ✨ Completed the Deep Learning Course on DeepLearning.ai
 
-🤓 Started my dream job at Microsoft
+🎉 Started my dream job at Microsoft
 
 📦 Moved to Seattle, WA - the Evergreen State
 
-🎉 Got the Azure Data Engineering Associate Certification
+🤓 Got the Azure Data Engineering Associate Certification
 
 💻 Participated in Microsoft Global Hackathon 
 
-🥾 Went on 12 amazing hikes in Washington state... and counting
+🏔️ Went on 12 gorgeous hikes in Washington state... and counting
+
+👩🏻‍💻 Talked at Seattle Meetup Group
+
+✨ Created my first Snapchat AR Lens
 
 🚤 Lead a highly visible data lakehouse migration project
 
