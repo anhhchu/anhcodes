@@ -1,8 +1,8 @@
 ---
 title: "Goodbye 2022! May 2023 Be Fabulous"
 date: 2023-01-01 18:49:15
-featureImage: images/single-blog/newyear/fireworks2.gif #images/single-blog/newyear/IMG_6388.jpg
-postImage: images/single-blog/newyear/microsoft.jpg
+featureImage: images/single-blog/fireworks2.gif #images/single-blog/newyear/IMG_6388.jpg
+postImage: images/single-blog/microsoft.jpg
 tags: [career]
 ---
 
@@ -13,7 +13,7 @@ tags: [career]
 
 🏆 Received Excellence Award at Walmart
 
-✨ Completed the Deep Learning Course on DeepLearning.ai
+✨ Completed the Neural Networks and Deep Learning Course by DeepLearning.ai
 
 🎉 Started my dream job at Microsoft
 
@@ -38,10 +38,10 @@ tags: [career]
 <!-- {{< blogsection title="Goodbye 2022! May 2023 Be Fabulous" image="images/single-blog/newyear/sunset.gif" >}}
 {{< /blogsection >}} -->
 
-<!-- 
+
 ### My 2022 in pictures
 
-{{< slide dir="/images/single-blog/newyear" width="800px" height="500px" >}} -->
+{{< slide dir="/images/single-blog/newyear" width="800px" height="500px" arrow-left="fa-chevron-circle-left" arrow-right="fa-chevron-circle-right" auto-slide="2000">}}
 
 
 
