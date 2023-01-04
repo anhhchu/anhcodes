@@ -22,6 +22,8 @@ Or run `hugo && firebase deploy` to manually deploy the changes
 
 [hugo shortcodes](https://gohugo.io/content-management/shortcodes/#readout)
 
+[photos gallery](https://github.com/tbiering/hugo-slider-shortcode)
+
 [Convert tables to markdown](https://tabletomarkdown.com/convert-spreadsheet-to-markdown/)
 
 [icons8](https://icons8.com/icons/)
@@ -39,6 +41,6 @@ https://gohugo.io/content-management/syntax-highlighting/#generate-syntax-highli
 
 #### Set Env variables for Hugo
 
-https://gohugo.io/getting-started/configuration/#configuration-environment-variables
+[Configure Hugo env variables](https://gohugo.io/getting-started/configuration/#configuration-environment-variables)
 
 

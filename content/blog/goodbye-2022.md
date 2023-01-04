@@ -38,8 +38,11 @@ tags: [career]
 <!-- {{< blogsection title="Goodbye 2022! May 2023 Be Fabulous" image="images/single-blog/newyear/sunset.gif" >}}
 {{< /blogsection >}} -->
 
+<!-- 
+### My 2022 in pictures
 
-{{< slide "/images/single-blog/newyear">}}
+{{< slide dir="/images/single-blog/newyear" width="800px" height="500px" >}} -->
+
 
 
 
