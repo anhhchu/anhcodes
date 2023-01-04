@@ -39,6 +39,8 @@ tags: [career]
 {{< /blogsection >}} -->
 
 
+{{< slide "/images/single-blog/newyear">}}
+
 
 
 
