@@ -3,18 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://anhcodes.dev/</loc>
-    <lastmod>2023-01-01T18:49:15+00:00</lastmod>
+    <lastmod>2023-01-07T00:19:27+00:00</lastmod>
   </url><url>
-    <loc>https://anhcodes.dev/tags/career/</loc>
-    <lastmod>2023-01-01T18:49:15+00:00</lastmod>
+    <loc>https://anhcodes.dev/tags/azure-kubernetes/</loc>
+    <lastmod>2023-01-07T00:19:27+00:00</lastmod>
+  </url><url>
+    <loc>https://anhcodes.dev/tags/change-data-capture/</loc>
+    <lastmod>2023-01-07T00:19:27+00:00</lastmod>
   </url><url>
     <loc>https://anhcodes.dev/blog/</loc>
+    <lastmod>2023-01-07T00:19:27+00:00</lastmod>
+  </url><url>
+    <loc>https://anhcodes.dev/tags/debezium/</loc>
+    <lastmod>2023-01-07T00:19:27+00:00</lastmod>
+  </url><url>
+    <loc>https://anhcodes.dev/blog/deploy-debezium-aks/</loc>
+    <lastmod>2023-01-07T00:19:27+00:00</lastmod>
+  </url><url>
+    <loc>https://anhcodes.dev/tags/docker/</loc>
+    <lastmod>2023-01-07T00:19:27+00:00</lastmod>
+  </url><url>
+    <loc>https://anhcodes.dev/tags/kafka/</loc>
+    <lastmod>2023-01-07T00:19:27+00:00</lastmod>
+  </url><url>
+    <loc>https://anhcodes.dev/tags/strimzi/</loc>
+    <lastmod>2023-01-07T00:19:27+00:00</lastmod>
+  </url><url>
+    <loc>https://anhcodes.dev/tags/</loc>
+    <lastmod>2023-01-07T00:19:27+00:00</lastmod>
+  </url><url>
+    <loc>https://anhcodes.dev/tags/career/</loc>
     <lastmod>2023-01-01T18:49:15+00:00</lastmod>
   </url><url>
     <loc>https://anhcodes.dev/blog/goodbye-2022/</loc>
     <lastmod>2023-01-01T18:49:15+00:00</lastmod>
   </url><url>
-    <loc>https://anhcodes.dev/tags/</loc>
+    <loc>https://anhcodes.dev/tags/life/</loc>
     <lastmod>2023-01-01T18:49:15+00:00</lastmod>
   </url><url>
     <loc>https://anhcodes.dev/tags/git/</loc>
@@ -23,7 +47,7 @@
     <loc>https://anhcodes.dev/blog/recover-lost-files-git-reset-hard/</loc>
     <lastmod>2022-12-27T11:30:20+00:00</lastmod>
   </url><url>
-    <loc>https://anhcodes.dev/tags/how-to/</loc>
+    <loc>https://anhcodes.dev/tags/tip/</loc>
     <lastmod>2022-12-27T11:30:20+00:00</lastmod>
   </url><url>
     <loc>https://anhcodes.dev/tags/azure-synapse-analytics/</loc>

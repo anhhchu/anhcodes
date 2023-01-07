@@ -43,4 +43,8 @@ https://gohugo.io/content-management/syntax-highlighting/#generate-syntax-highli
 
 [Configure Hugo env variables](https://gohugo.io/getting-started/configuration/#configuration-environment-variables)
 
+#### Search in Hugo
 
+[hugo-lunr](https://www.npmjs.com/package/hugo-lunr)
+
+[hugo + gruntjs + lunrjs](https://gist.github.com/sebz/efddfc8fdcb6b480f567)

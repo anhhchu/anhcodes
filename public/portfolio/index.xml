@@ -22,7 +22,7 @@
       
       <guid>https://anhcodes.dev/portfolio/predict-churn/</guid>
       <description>1. Exploratory Data Analysis (EAD) Due to computational constraint, this project will only use a 247.6 MB dataset of 543705 records and 448 unique users (198 Males, 250 Females). Among that, only 528k records have valid data, the rest 15k records are sessions where some random folks are merely checking out the site without signing in.
-Number of records in the dataset: 543705 Number of Records after removing blank userID: 528005 |-------|------------------| |summary| sessionId| |-------|------------------| | count| 543705| | mean|2040.</description>
+1Number of records in the dataset: 543705 2Number of Records after removing blank userID: 528005 3|-------|------------------| 4|summary| sessionId| 5|-------|------------------| 6| count| 543705| 7| mean|2040.</description>
     </item>
     
     <item>

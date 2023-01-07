@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>azure-kubernetes on anhcodes</title>
+    <link>https://anhcodes.dev/tags/azure-kubernetes/</link>
+    <description>Recent content in azure-kubernetes on anhcodes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 07 Jan 2023 00:19:27 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/tags/azure-kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Deploy Debezium and Kafka on AKS using Strimzi Operator</title>
+      <link>https://anhcodes.dev/blog/deploy-debezium-aks/</link>
+      <pubDate>Sat, 07 Jan 2023 00:19:27 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/blog/deploy-debezium-aks/</guid>
+      <description>This tutorial follows Debezium official documentation Deploying Debezium on Kubernetes, but modified for Azure Kubernetes Service and Azure Container Registry.
+Table of Content 1. Prerequisites
+2. Deploy strimzi operator
+3. Create secrets and roles
+4. Deploy Kafka cluster
+5. Deploy mysql database in Kubernetes
+6. Deploy Kafka Connect Cluster
+7. Deploy Debezium Connetor
+8. Verify Deployment
+Reference
+1. Prerequisites You need an Azure account, Azure subscription, and Azure resource group before getting started.</description>
+    </item>
+    
+  </channel>
+</rss>

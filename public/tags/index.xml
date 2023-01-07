@@ -6,13 +6,76 @@
     <description>Recent content in Tags on anhcodes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Jan 2023 18:49:15 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 07 Jan 2023 00:19:27 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>azure-kubernetes</title>
+      <link>https://anhcodes.dev/tags/azure-kubernetes/</link>
+      <pubDate>Sat, 07 Jan 2023 00:19:27 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/tags/azure-kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>change-data-capture</title>
+      <link>https://anhcodes.dev/tags/change-data-capture/</link>
+      <pubDate>Sat, 07 Jan 2023 00:19:27 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/tags/change-data-capture/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>debezium</title>
+      <link>https://anhcodes.dev/tags/debezium/</link>
+      <pubDate>Sat, 07 Jan 2023 00:19:27 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/tags/debezium/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker</title>
+      <link>https://anhcodes.dev/tags/docker/</link>
+      <pubDate>Sat, 07 Jan 2023 00:19:27 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kafka</title>
+      <link>https://anhcodes.dev/tags/kafka/</link>
+      <pubDate>Sat, 07 Jan 2023 00:19:27 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/tags/kafka/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>strimzi</title>
+      <link>https://anhcodes.dev/tags/strimzi/</link>
+      <pubDate>Sat, 07 Jan 2023 00:19:27 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/tags/strimzi/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>career</title>
       <link>https://anhcodes.dev/tags/career/</link>
       <pubDate>Sun, 01 Jan 2023 18:49:15 +0000</pubDate>
       
       <guid>https://anhcodes.dev/tags/career/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>life</title>
+      <link>https://anhcodes.dev/tags/life/</link>
+      <pubDate>Sun, 01 Jan 2023 18:49:15 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/tags/life/</guid>
       <description></description>
     </item>
     
@@ -26,11 +89,11 @@
     </item>
     
     <item>
-      <title>how-to</title>
-      <link>https://anhcodes.dev/tags/how-to/</link>
+      <title>tip</title>
+      <link>https://anhcodes.dev/tags/tip/</link>
       <pubDate>Tue, 27 Dec 2022 11:30:20 +0000</pubDate>
       
-      <guid>https://anhcodes.dev/tags/how-to/</guid>
+      <guid>https://anhcodes.dev/tags/tip/</guid>
       <description></description>
     </item>
     

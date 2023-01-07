@@ -6,7 +6,26 @@
     <description>Recent content on anhcodes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Jan 2023 18:49:15 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 07 Jan 2023 00:19:27 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Deploy Debezium and Kafka on AKS using Strimzi Operator</title>
+      <link>https://anhcodes.dev/blog/deploy-debezium-aks/</link>
+      <pubDate>Sat, 07 Jan 2023 00:19:27 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/blog/deploy-debezium-aks/</guid>
+      <description>This tutorial follows Debezium official documentation Deploying Debezium on Kubernetes, but modified for Azure Kubernetes Service and Azure Container Registry.
+Table of Content 1. Prerequisites
+2. Deploy strimzi operator
+3. Create secrets and roles
+4. Deploy Kafka cluster
+5. Deploy mysql database in Kubernetes
+6. Deploy Kafka Connect Cluster
+7. Deploy Debezium Connetor
+8. Verify Deployment
+Reference
+1. Prerequisites You need an Azure account, Azure subscription, and Azure resource group before getting started.</description>
+    </item>
+    
     <item>
       <title>Goodbye 2022! May 2023 Be Fabulous</title>
       <link>https://anhcodes.dev/blog/goodbye-2022/</link>
@@ -79,7 +98,7 @@ Dedicated SQL Pool Architecture Choosing Distribution: The data is sharded into 
       
       <guid>https://anhcodes.dev/portfolio/predict-churn/</guid>
       <description>1. Exploratory Data Analysis (EAD) Due to computational constraint, this project will only use a 247.6 MB dataset of 543705 records and 448 unique users (198 Males, 250 Females). Among that, only 528k records have valid data, the rest 15k records are sessions where some random folks are merely checking out the site without signing in.
-Number of records in the dataset: 543705 Number of Records after removing blank userID: 528005 |-------|------------------| |summary| sessionId| |-------|------------------| | count| 543705| | mean|2040.</description>
+1Number of records in the dataset: 543705 2Number of Records after removing blank userID: 528005 3|-------|------------------| 4|summary| sessionId| 5|-------|------------------| 6| count| 543705| 7| mean|2040.</description>
     </item>
     
     <item>

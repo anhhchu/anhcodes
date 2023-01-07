@@ -3,7 +3,8 @@ title: "Azure Synapse Analytics - Data Lakehouse on Azure"
 date: 2022-11-15
 featureImage: images/allpost/azure-synapse.jpeg
 postImage: images/single-blog/data-lakehouse.png
-tags: [azure-synapse-analytics, big-query, redshift,data-lakehouse]
+tags: [azure-synapse-analytics, big-query,redshift,data-lakehouse]
+author: Anh Chu
 ---
 
 ### Table of Contents
@@ -48,7 +49,7 @@ Serverless SQL Pool is suitable for adhoc, simple queries when users must have a
 
 {{< bootstrap-table "table table-light table-striped table-bordered" >}}
 | External table (Serverless Pool) | External Table (Dedicated Pool)     | Internal Table (Dedicated Pool)  |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| --- | --- | --- |
 | No need to set up infrastructure and maintain clusters. Pay per processed queries|Provisioning required, a fixed number of Data Warehouse Units (DWU) which dictate the CPU, Memory and IO power for the data warehouse ​ |
 | Abstraction of data stored in files in ADLS| Abstraction of data stored in files in ADLS| Require data imported from ADLS to the database      |
 | Native external tables in Serverless SQL pool perform better than Hadoop external tables in dedicated SQL pool in term of query performance​| Query is much slower than regular tables and external tables in serverless SQL pools| Query is faster than external tables   |

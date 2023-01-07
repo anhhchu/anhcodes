@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/anhhchu/anhcodes/issues"
   },
-  "homepage": "https://github.com/anhhchu/anhcodes#readme"
+  "homepage": "https://github.com/anhhchu/anhcodes#readme",
+  "dependencies": {
+    "hugo-lunr": "^0.0.4"
+  }
 }

@@ -3,7 +3,8 @@ title: "Query Performance Tuning in Dedicated SQL Pool (Azure Synapse Analytics)
 date: 2022-12-15
 featureImage: /images/allpost/query-performance.jpeg
 postImage: /images/single-blog/query-performance.jpeg
-tags: [azure-synapse-analytics,data-lakehouse,how-to]
+tags: [azure-synapse-analytics,data-lakehouse,tip]
+author: Anh Chu
 ---
 
 ### 1. Best practices when Creating Tables
@@ -18,7 +19,7 @@ When creating table in Dedicated SQL Pool, choose the correct Distribution Colum
 
 To best determine what is causing any given query's slow performance, you will need to identify an example long-running query:
 
-{{< highlight sql "linenos=table,style=witchhazel" >}}
+```sql
 SELECT total_elapsed_time/60000 as minutes, s.login_name, 
     r.request_id, r.status, r.[label], r.resource_class, [submit_time], 
     command, r.request_id, start_time, end_time, 
@@ -29,8 +30,7 @@ on r.session_id = s.session_id
 where r.session_id <> session_id()  
     AND r.status not in ('Completed','Failed','Cancelled') 
 order by total_elapsed_time desc;
-
-{{</highlight>}}
+```
 
 See [Monitor query execution](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-monitor?WT.mc_id=Portal-Microsoft_Azure_Support#monitor-query-execution) for additional context.
 
@@ -49,7 +49,9 @@ See [Monitor query execution](https://docs.microsoft.com/azure/synapse-analytics
 
 You may need to analyze all of the steps of the distributed plan. Run the following statement to retrieve these details:
 
-`select * from sys.dm_pdw_request_steps where request_id = 'QID######' order by step_index;`
+```sql
+select * from sys.dm_pdw_request_steps where request_id = 'QID######' order by step_index;
+```
 
 As you review each step of the distributed plan, evaluate following conditions and complete the recommended mitigation if applicable:
 
@@ -67,10 +69,14 @@ As you review each step of the distributed plan, evaluate following conditions a
 Using the output of the query from the Analyze the distributed query plan section, identify the longest-running (by total_elapsed_time) step of the query plan. Once identified, note the location_type of the step and then choose the appropriate query below to update with request_id (QID) and step_index and then execute the query:
 
 - If location_type in ('Compute', 'Control')
-`select * from sys.dm_pdw_sql_requests where request_id = 'QID######' and step_index = #;`
+```sql
+select * from sys.dm_pdw_sql_requests where request_id = 'QID######' and step_index = #;
+```
 
 - If location_type = 'DMS' (DMS = Data Movement Service)
-`select * from sys.dm_pdw_dms_workers where request_id = 'QID######' and step_index = #;`
+```sql
+select * from sys.dm_pdw_dms_workers where request_id = 'QID######' and step_index = #;
+```
 
 **a. Analyze distributed query plan**
 

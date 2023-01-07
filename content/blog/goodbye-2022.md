@@ -3,7 +3,8 @@ title: "Goodbye 2022! May 2023 Be Fabulous"
 date: 2023-01-01 18:49:15
 featureImage: images/single-blog/fireworks.gif #images/single-blog/newyear/IMG_6388.jpg
 postImage: images/single-blog/microsoft.jpg
-tags: [career]
+tags: [career, life]
+author: Anh Chu
 ---
 
 2022 was kind to me with exciting changes and opportunities. Take a look at what I accomplished last year: 

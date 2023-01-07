@@ -3,7 +3,8 @@ title: "How to recover lost files after a git reset --hard"
 date: 2022-12-27 11:30:20
 featureImage: images/allpost/git-reset.png
 postImage: images/single-blog/git-reset.png
-tags: [how-to, git]
+tags: [tip, git]
+author: Anh Chu
 ---
 
 While working on a recent project, I accidentally committed some files. Instead of using `git reset --soft <prev-commit-id>` to unstage them, I used `git reset --hard HEAD` and all of my new changes gone with the wind. After panicking for a few minutes, I determined to learn how `git reset` works and how I can revert the damages. 
@@ -14,33 +15,33 @@ While working on a recent project, I accidentally committed some files. Instead 
 
 Below is the demonstration of what happened to a new file `test2.txt` after a `git reset --hard`
 
-{{< highlight shell "linenos=table,style=witchhazel" >}}
-$ git status
-On branch master
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-        test2.txt
+```shell
+  $ git status
+  On branch master
+  Untracked files:
+    (use "git add <file>..." to include in what will be committed)
+          test2.txt
 
-$ git add test2.txt
-On branch master
-Changes to be committed:
-  (use "git restore --staged <file>..." to unstage)
-        new file:   test2.txt
+  $ git add test2.txt
+  On branch master
+  Changes to be committed:
+    (use "git restore --staged <file>..." to unstage)
+          new file:   test2.txt
 
-$ git commit -m "Add test2"
-[master 2d7949d] Add test2
- 1 file changed, 10 insertions(+)
- create mode 100644 test2.txt
+  $ git commit -m "Add test2"
+  [master 2d7949d] Add test2
+  1 file changed, 10 insertions(+)
+  create mode 100644 test2.txt
 
-$ git reset --hard 6122c04
-HEAD is now at 6122c04 add test
-{{< /highlight >}}
+  $ git reset --hard 6122c04
+  HEAD is now at 6122c04 add test
+```
 
 After doing the `get reset --hard` to commit id 6122c04, the file test2 will be removed from the working directory
 
 On the contrary, `git reset --soft` revert your commit without removing your files from the working directory. After that you can unstage the files you don't want to commit
 
-{{< highlight shell "linenos=table,style=witchhazel" >}}
+```shell
 $ git status
 On branch master
 Untracked files:
@@ -74,7 +75,7 @@ Untracked files:
   (use "git add <file>..." to include in what will be committed)
         test2.txt
 
-{{</highlight>}}
+```
 
 
 ### 2. Recover files after `git reset --hard` in 3 scenarios

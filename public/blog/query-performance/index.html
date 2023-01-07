@@ -117,6 +117,13 @@
         <i class="fa fa-clock-o"></i>
         6 mins read
       </li>
+      <li>
+        <i class="fa fa-user"></i>
+        Anh Chu
+      </li>
+    </ul>
+    <ul class="post-meta">
+      </li>
       
       <li>
         <i class="fa fa-tag"></i>
@@ -125,10 +132,9 @@
         
           <a class="text-lowercase" href="https://anhcodes.dev/tags/data-lakehouse/">data-lakehouse</a>
         
-          <a class="text-lowercase" href="https://anhcodes.dev/tags/how-to/">how-to</a>
+          <a class="text-lowercase" href="https://anhcodes.dev/tags/tip/">tip</a>
         
       </li>
-      
       
     </ul>
   </div>
@@ -179,33 +185,17 @@
 <a href="https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-statistics#examples-update-statistics">Table statistics for dedicated SQL pool in Azure Synapse Analytics</a></p>
 <h3 id="2-identify-slow-running-qid-and-analyze-compilation">2. Identify slow-running QID and analyze compilation</h3>
 <p>To best determine what is causing any given query&rsquo;s slow performance, you will need to identify an example long-running query:</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1"> 1</a>
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2"> 2</a>
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3"> 3</a>
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4"> 4</a>
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5"> 5</a>
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6"> 6</a>
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7"> 7</a>
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="8"><a style="outline: none; text-decoration:none; color:inherit" href="#8"> 8</a>
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="9"><a style="outline: none; text-decoration:none; color:inherit" href="#9"> 9</a>
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="10"><a style="outline: none; text-decoration:none; color:inherit" href="#10">10</a>
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">SELECT</span><span style="color:#a8757b"> </span>total_elapsed_time<span style="color:#ffb8d1">/</span><span style="color:#c5a3ff">60000</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">as</span><span style="color:#a8757b"> </span>minutes,<span style="color:#a8757b"> </span>s.login_name,<span style="color:#a8757b"> 
-</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">    </span>r.request_id,<span style="color:#a8757b"> </span>r.status,<span style="color:#a8757b"> </span>r.[label],<span style="color:#a8757b"> </span>r.resource_class,<span style="color:#a8757b"> </span>[submit_time],<span style="color:#a8757b"> 
-</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">    </span>command,<span style="color:#a8757b"> </span>r.request_id,<span style="color:#a8757b"> </span>start_time,<span style="color:#a8757b"> </span>end_time,<span style="color:#a8757b"> 
-</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">    </span>total_elapsed_time,<span style="color:#a8757b"> </span>result_cache_hit<span style="color:#a8757b">
-</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">FROM</span><span style="color:#a8757b"> </span>sys.dm_pdw_exec_requests<span style="color:#a8757b"> </span>r<span style="color:#a8757b"> 
-</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">JOIN</span><span style="color:#a8757b"> </span>sys.dm_pdw_exec_sessions<span style="color:#a8757b"> </span>s<span style="color:#a8757b"> 
-</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">on</span><span style="color:#a8757b"> </span>r.session_id<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span>s.session_id<span style="color:#a8757b">
-</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">where</span><span style="color:#a8757b"> </span>r.session_id<span style="color:#a8757b"> </span><span style="color:#ffb8d1">&lt;&gt;</span><span style="color:#a8757b"> </span>session_id()<span style="color:#a8757b">  
-</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">    </span><span style="color:#c2ffdf">AND</span><span style="color:#a8757b"> </span>r.status<span style="color:#a8757b"> </span><span style="color:#c2ffdf">not</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">in</span><span style="color:#a8757b"> </span>(<span style="color:#1bc5e0">&#39;Completed&#39;</span>,<span style="color:#1bc5e0">&#39;Failed&#39;</span>,<span style="color:#1bc5e0">&#39;Cancelled&#39;</span>)<span style="color:#a8757b"> 
-</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">order</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">by</span><span style="color:#a8757b"> </span>total_elapsed_time<span style="color:#a8757b"> </span><span style="color:#c2ffdf">desc</span>;</span></span></code></pre></td></tr></table>
-</div>
-</div>
-<p>See <a href="https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-monitor?WT.mc_id=Portal-Microsoft_Azure_Support#monitor-query-execution">Monitor query execution</a> for additional context.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-1"><a style="outline: none; text-decoration:none; color:inherit" href="#hl-0-1"> 1</a></span><span><span style="color:#c2ffdf">SELECT</span><span style="color:#a8757b"> </span>total_elapsed_time<span style="color:#ffb8d1">/</span><span style="color:#c5a3ff">60000</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">as</span><span style="color:#a8757b"> </span>minutes,<span style="color:#a8757b"> </span>s.login_name,<span style="color:#a8757b"> 
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-2"><a style="outline: none; text-decoration:none; color:inherit" href="#hl-0-2"> 2</a></span><span><span style="color:#a8757b">    </span>r.request_id,<span style="color:#a8757b"> </span>r.status,<span style="color:#a8757b"> </span>r.[label],<span style="color:#a8757b"> </span>r.resource_class,<span style="color:#a8757b"> </span>[submit_time],<span style="color:#a8757b"> 
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-3"><a style="outline: none; text-decoration:none; color:inherit" href="#hl-0-3"> 3</a></span><span><span style="color:#a8757b">    </span>command,<span style="color:#a8757b"> </span>r.request_id,<span style="color:#a8757b"> </span>start_time,<span style="color:#a8757b"> </span>end_time,<span style="color:#a8757b"> 
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-4"><a style="outline: none; text-decoration:none; color:inherit" href="#hl-0-4"> 4</a></span><span><span style="color:#a8757b">    </span>total_elapsed_time,<span style="color:#a8757b"> </span>result_cache_hit<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-5"><a style="outline: none; text-decoration:none; color:inherit" href="#hl-0-5"> 5</a></span><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">FROM</span><span style="color:#a8757b"> </span>sys.dm_pdw_exec_requests<span style="color:#a8757b"> </span>r<span style="color:#a8757b"> 
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-6"><a style="outline: none; text-decoration:none; color:inherit" href="#hl-0-6"> 6</a></span><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">JOIN</span><span style="color:#a8757b"> </span>sys.dm_pdw_exec_sessions<span style="color:#a8757b"> </span>s<span style="color:#a8757b"> 
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-7"><a style="outline: none; text-decoration:none; color:inherit" href="#hl-0-7"> 7</a></span><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">on</span><span style="color:#a8757b"> </span>r.session_id<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span>s.session_id<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-8"><a style="outline: none; text-decoration:none; color:inherit" href="#hl-0-8"> 8</a></span><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">where</span><span style="color:#a8757b"> </span>r.session_id<span style="color:#a8757b"> </span><span style="color:#ffb8d1">&lt;&gt;</span><span style="color:#a8757b"> </span>session_id()<span style="color:#a8757b">  
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-9"><a style="outline: none; text-decoration:none; color:inherit" href="#hl-0-9"> 9</a></span><span><span style="color:#a8757b">    </span><span style="color:#c2ffdf">AND</span><span style="color:#a8757b"> </span>r.status<span style="color:#a8757b"> </span><span style="color:#c2ffdf">not</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">in</span><span style="color:#a8757b"> </span>(<span style="color:#1bc5e0">&#39;Completed&#39;</span>,<span style="color:#1bc5e0">&#39;Failed&#39;</span>,<span style="color:#1bc5e0">&#39;Cancelled&#39;</span>)<span style="color:#a8757b"> 
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-10"><a style="outline: none; text-decoration:none; color:inherit" href="#hl-0-10">10</a></span><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">order</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">by</span><span style="color:#a8757b"> </span>total_elapsed_time<span style="color:#a8757b"> </span><span style="color:#c2ffdf">desc</span>;<span style="color:#a8757b">
+</span></span></span></code></pre></div><p>See <a href="https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-monitor?WT.mc_id=Portal-Microsoft_Azure_Support#monitor-query-execution">Monitor query execution</a> for additional context.</p>
 
 
 
@@ -244,8 +234,8 @@
 
 <h3 id="3-analyze-the-distributed-query-plan">3. Analyze the distributed query plan</h3>
 <p>You may need to analyze all of the steps of the distributed plan. Run the following statement to retrieve these details:</p>
-<p><code>select * from sys.dm_pdw_request_steps where request_id = 'QID######' order by step_index;</code></p>
-<p>As you review each step of the distributed plan, evaluate following conditions and complete the recommended mitigation if applicable:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-1"><a style="outline: none; text-decoration:none; color:inherit" href="#hl-1-1">1</a></span><span><span style="color:#c2ffdf">select</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">*</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">from</span><span style="color:#a8757b"> </span>sys.dm_pdw_request_steps<span style="color:#a8757b"> </span><span style="color:#c2ffdf">where</span><span style="color:#a8757b"> </span>request_id<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#39;QID######&#39;</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">order</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">by</span><span style="color:#a8757b"> </span>step_index;<span style="color:#a8757b">
+</span></span></span></code></pre></div><p>As you review each step of the distributed plan, evaluate following conditions and complete the recommended mitigation if applicable:</p>
 
 
 
@@ -281,16 +271,14 @@
 <h3 id="4-analyze-a-specific-query-plan">4. Analyze a specific query plan</h3>
 <p>Using the output of the query from the Analyze the distributed query plan section, identify the longest-running (by total_elapsed_time) step of the query plan. Once identified, note the location_type of the step and then choose the appropriate query below to update with request_id (QID) and step_index and then execute the query:</p>
 <ul>
-<li>
-<p>If location_type in (&lsquo;Compute&rsquo;, &lsquo;Control&rsquo;)
-<code>select * from sys.dm_pdw_sql_requests where request_id = 'QID######' and step_index = #;</code></p>
-</li>
-<li>
-<p>If location_type = &lsquo;DMS&rsquo; (DMS = Data Movement Service)
-<code>select * from sys.dm_pdw_dms_workers where request_id = 'QID######' and step_index = #;</code></p>
-</li>
+<li>If location_type in (&lsquo;Compute&rsquo;, &lsquo;Control&rsquo;)</li>
 </ul>
-<p><strong>a. Analyze distributed query plan</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-1"><a style="outline: none; text-decoration:none; color:inherit" href="#hl-2-1">1</a></span><span><span style="color:#c2ffdf">select</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">*</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">from</span><span style="color:#a8757b"> </span>sys.dm_pdw_sql_requests<span style="color:#a8757b"> </span><span style="color:#c2ffdf">where</span><span style="color:#a8757b"> </span>request_id<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#39;QID######&#39;</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">and</span><span style="color:#a8757b"> </span>step_index<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">#</span>;<span style="color:#a8757b">
+</span></span></span></code></pre></div><ul>
+<li>If location_type = &lsquo;DMS&rsquo; (DMS = Data Movement Service)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-1"><a style="outline: none; text-decoration:none; color:inherit" href="#hl-3-1">1</a></span><span><span style="color:#c2ffdf">select</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">*</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">from</span><span style="color:#a8757b"> </span>sys.dm_pdw_dms_workers<span style="color:#a8757b"> </span><span style="color:#c2ffdf">where</span><span style="color:#a8757b"> </span>request_id<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#39;QID######&#39;</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">and</span><span style="color:#a8757b"> </span>step_index<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">#</span>;<span style="color:#a8757b">
+</span></span></span></code></pre></div><p><strong>a. Analyze distributed query plan</strong></p>
 <p>The output from these queries show information about the execution of the step&rsquo;s query on each distribution. Though there will be variations, the durations of each distribution should be generally similar. If, however, you observe a small number of distributions taking significantly more time than the other distributions, consider the following possible causes and mitigations:</p>
 
 
