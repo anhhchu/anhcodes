@@ -5,7 +5,7 @@ author: Anh Chu
 featureImage: images/allpost/vertical-aksdbz.png
 # postImage: images/single-blog/feature-image.jpg
 postImage: /images/single-blog/aksdbz.png
-tags: [kafka, azure-kubernetes, debezium, strimzi, change-data-capture, docker]
+tags: [kafka, kubernetes, debezium, strimzi, change-data-capture, docker]
 ---
 
 This tutorial follows Debezium official documentation [Deploying Debezium on Kubernetes](https://debezium.io/documentation/reference/stable/operations/kubernetes.html), but modified for Azure Kubernetes Service and Azure Container Registry.
@@ -387,6 +387,13 @@ debezium-connector-mysql   debezium-connect-cluster   io.debezium.connector.mysq
 ```shell
 $ kubectl run -n debezium-example -it --rm --image=quay.io/debezium/tooling:1.2  --restart=Never watcher -- kcat -b debezium-cluster-kafka-bootstrap:9092 -C -o beginning -t mysql.inventory.customers
 ```
+
+The above actually comprises of 2 commands:
+
+* `kubectl run` creates the `watcher` pod in interactive `-it` mode using image `tooling:1.2` from quay.io container registry. 
+
+* After that, the 🔗[`kcat` utility](https://codingharbour.com/apache-kafka/learn-how-to-use-kafkacat-the-most-versatile-cli-client/) in consumer mode (`--C`) starts watching topic (`--t` tag) `mysql.inventory.customers` (customers table in inventory database from mysql server) from kafka broker (`--b`) `debezium-cluster-kafka-bootstrap` at port 9092 starting with offset set to beginning (`--o beginning`).
+
 Leave the above running, switch to another shell to connect to mysql db
 
 ```shell
@@ -401,3 +408,4 @@ Switch back to previous shell to view the kafka interactive output in json forma
 ### Reference
 * https://strimzi.io/blog/2021/03/29/connector-build/
 * https://strimzi.io/docs/operators/latest/configuring.html#type-Build-reference
+* https://kubernetes.io/docs/reference/kubectl/cheatsheet/

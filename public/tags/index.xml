@@ -8,15 +8,6 @@
     <language>en-us</language>
     <lastBuildDate>Sat, 07 Jan 2023 00:19:27 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>azure-kubernetes</title>
-      <link>https://anhcodes.dev/tags/azure-kubernetes/</link>
-      <pubDate>Sat, 07 Jan 2023 00:19:27 +0000</pubDate>
-      
-      <guid>https://anhcodes.dev/tags/azure-kubernetes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>change-data-capture</title>
       <link>https://anhcodes.dev/tags/change-data-capture/</link>
       <pubDate>Sat, 07 Jan 2023 00:19:27 +0000</pubDate>
@@ -49,6 +40,15 @@
       <pubDate>Sat, 07 Jan 2023 00:19:27 +0000</pubDate>
       
       <guid>https://anhcodes.dev/tags/kafka/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubernetes</title>
+      <link>https://anhcodes.dev/tags/kubernetes/</link>
+      <pubDate>Sat, 07 Jan 2023 00:19:27 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/tags/kubernetes/</guid>
       <description></description>
     </item>
     
