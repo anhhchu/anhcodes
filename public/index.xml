@@ -20,10 +20,7 @@ Table of Content 1. Prerequisites
 4. Deploy Kafka cluster
 5. Deploy mysql database in Kubernetes
 6. Deploy Kafka Connect Cluster
-7. Deploy Debezium Connetor
-8. Verify Deployment
-Reference
-1. Prerequisites You need an Azure account, Azure subscription, and Azure resource group before getting started.</description>
+Step 1: Create secret for container registry Step 2: Build and push Kafka connecti image with debezium connector plugins to container registry Step 3: Deploy kafka connect cluster Step 4: Validate kafka connect cluster 7.</description>
     </item>
     
     <item>
