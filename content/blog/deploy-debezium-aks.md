@@ -96,9 +96,9 @@ $ kubectl config use-context <Context Name>
 **Note:** The kube config file is a useful tool that helps you interact with your cluster using CLI. If you delete a cluster, you should unset deleted cluster from kubectl config file to keep this file clean. For example, you can unset cluster/context/user in kube config like as below
 
 ```shell
-$ kubectl config unset users.clusterUser_anh-test_anh-test-aks
-
 $ kubectl config unset contexts.anh-test-aks
+
+$ kubectl config unset users.clusterUser_anh-test_anh-test-aks
 
 $ kubectl config unset clusters.anh-test-aks  
 ```
@@ -335,13 +335,13 @@ After pushing the image to ACR, you should be able to see your image on Azure Po
 
 #### Step 3: Deploy kafka-connect resource
 
-Use kafka-connect-build.yml file if you choose Option 1 in Step 2.
+Use [kafka-connect-build.yml](https://github.com/anhhchu/debezium-aks/blob/main/debezium-example/kafka-connect-build.yml) file if you choose Option 1 in Step 2.
 
 ```shell
 $ kubectl create -n debezium-example -f kafka-connect-build.yml
 ```
 
-**OR** Use kafka-connect.yml file if you choose Option 2 in Step 2
+**OR** Use [kafka-connect.yml](https://github.com/anhhchu/debezium-aks/blob/main/debezium-example/kafka-connect.yml) file if you choose Option 2 in Step 2
 
 ```shell
 $ kubectl create -n debezium-example -f kafka-connect.yml
@@ -393,12 +393,10 @@ mysql                              1/1     1            1           8h
 **Troubleshooting:**
 If the kafka connect cluster is not ready, and NO service/deployment/pod are created for this resource, we will have to delete the resouces and try again
 
-To delete all resources relating to KafkaConnect (debezium-connect-cluster), you need to delete service, deployment, and the kafkaconnect resouce itself. Because the pods are managed by the deployment, deleting the deployment also deletes the pods.
+To delete all resources relating to KafkaConnect (debezium-connect-cluster), you need to delete the kafkaconnect custom resource 
 
 ```shell
 $ kubectl delete kafkaconnect debezium-connect-cluster
-$ kubectl delete deployment debezium-connect-cluster-connect
-$ kubectl delete service debezium-connect-cluster-connect-api  
 ```
 
 ### 7. Deploy Debezium Connector
@@ -478,6 +476,12 @@ Metadata for all topics (from broker -1: debezium-cluster-kafka-bootstrap:9092/b
   broker 0 at debezium-cluster-kafka-0.debezium-cluster-kafka-brokers.debezium-example.svc:9092 (controller)
  14 topics:
  ...
+```
+
+You can also inspect kafka topics with below command. View all the topics that were created for this kafka cluster [here](https://github.com/anhhchu/debezium-aks/blob/main/debezium-example/kafka-topics.txt)
+
+```
+$ kubectl get kt > kafka-topics.txt
 ```
 
 
