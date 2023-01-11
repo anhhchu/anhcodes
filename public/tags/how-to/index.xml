@@ -6,26 +6,16 @@
     <description>Recent content in how-to on anhcodes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Dec 2022 11:30:20 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/tags/how-to/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 02 Jan 2023 00:00:59 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/tags/how-to/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>How to recover lost files after a git reset --hard</title>
-      <link>https://anhcodes.dev/blog/recover-lost-files-git-reset-hard/</link>
-      <pubDate>Tue, 27 Dec 2022 11:30:20 +0000</pubDate>
+      <title>How to read Azure Synapse Tables to Spark Dataframe</title>
+      <link>https://anhcodes.dev/blog/how-to-read-synapse-table-spark/</link>
+      <pubDate>Mon, 02 Jan 2023 00:00:59 +0000</pubDate>
       
-      <guid>https://anhcodes.dev/blog/recover-lost-files-git-reset-hard/</guid>
-      <description>While working on a recent project, I accidentally committed some files. Instead of using git reset --soft &amp;lt;prev-commit-id&amp;gt; to unstage them, I used git reset --hard HEAD and all of my new changes gone with the wind. After panicking for a few minutes, I determined to learn how git reset works and how I can revert the damages.
-1. What is git reset (hard vs soft) git reset --hard resets the current branch tip, and also deletes any changes in the working directory and staging area (although files under git stash will not be affected).</description>
-    </item>
-    
-    <item>
-      <title>Query Performance Tuning in Dedicated SQL Pool (Azure Synapse Analytics)</title>
-      <link>https://anhcodes.dev/blog/query-performance/</link>
-      <pubDate>Thu, 15 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://anhcodes.dev/blog/query-performance/</guid>
-      <description>1. Best practices when Creating Tables When creating table in Dedicated SQL Pool, choose the correct Distribution Column and Index for best query performance. Follow Best Practices in creating tables in Azure Synapse Analytics
-Remember to create and Update Stats on your new tables Table statistics for dedicated SQL pool in Azure Synapse Analytics
-2. Identify slow-running QID and analyze compilation To best determine what is causing any given query&amp;rsquo;s slow performance, you will need to identify an example long-running query:</description>
+      <guid>https://anhcodes.dev/blog/how-to-read-synapse-table-spark/</guid>
+      <description>Thanks to Azure Synapse Dedicated SQL Pool Connector for Apache Spark, you can directly read Synapse Dedicated SQL Pool tables into Spark dataframe with Python and Scala using Synapse Spark Pool. These solutions work when the Spark Pool and the Dedicated SQL Pool are in the same workspaces.
+To create Synapse Spark Pool in Azure Synapse, you can follow this documentation. .
+Option 1: Use Scala In Synapse Workspace, you can right-click the table in Dedicated SQL Pool database, and pick Load to Dataframe</description>
     </item>
     
   </channel>
