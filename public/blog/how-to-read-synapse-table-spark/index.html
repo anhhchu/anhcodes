@@ -190,14 +190,14 @@
     <p>
 </div>
 <p>The notebook will automatically open up with 1 default code:</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ffb8d1">%%</span>spark
-</span></span><span style="display:flex;"><span>val df <span style="color:#ffb8d1">=</span> spark<span style="color:#ffb8d1">.</span>read<span style="color:#ffb8d1">.</span>synapsesql(<span style="color:#1bc5e0">&#34;&lt;sql-pool-database&gt;.&lt;schema_name&gt;.&lt;table_name&gt;&#34;</span>)</span></span></code></pre></td></tr></table>
+<pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">%%spark
+val df = spark.read.synapsesql(<span style="color:#0ff;font-weight:bold">&#34;&lt;sql-pool-database&gt;.&lt;schema_name&gt;.&lt;table_name&gt;&#34;</span>)</code></pre></td></tr></table>
 </div>
 </div>
 <div class="image">
@@ -208,32 +208,32 @@
 </div>
 <h4 id="option-2-use-python">Option 2: Use Python</h4>
 <p>With Python solution, you will need to import an additional package <code>com.microsoft.spark.sqlanalytics</code></p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1"> 1</a>
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2"> 2</a>
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3"> 3</a>
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4"> 4</a>
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5"> 5</a>
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6"> 6</a>
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7"> 7</a>
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="8"><a style="outline: none; text-decoration:none; color:inherit" href="#8"> 8</a>
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="9"><a style="outline: none; text-decoration:none; color:inherit" href="#9"> 9</a>
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="10"><a style="outline: none; text-decoration:none; color:inherit" href="#10">10</a>
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="11"><a style="outline: none; text-decoration:none; color:inherit" href="#11">11</a>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1"> 1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2"> 2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3"> 3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4"> 4</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5"> 5</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6"> 6</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7"> 7</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="8"><a style="outline: none; text-decoration:none; color:inherit" href="#8"> 8</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="9"><a style="outline: none; text-decoration:none; color:inherit" href="#9"> 9</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="10"><a style="outline: none; text-decoration:none; color:inherit" href="#10">10</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="11"><a style="outline: none; text-decoration:none; color:inherit" href="#11">11</a>
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ffb8d1">%%</span>pyspark
-</span></span><span style="display:flex;"><span><span style="color:#ffb8d1">import</span> com.microsoft.spark.sqlanalytics
-</span></span><span style="display:flex;"><span><span style="color:#ffb8d1">from</span> com.microsoft.spark.sqlanalytics.Constants <span style="color:#ffb8d1">import</span> Constants
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>synapse_server <span style="color:#ffb8d1">=</span> <span style="color:#1bc5e0">&#39;anh-test-synapse.sql.azuresynapse.net&#39;</span>
-</span></span><span style="display:flex;"><span>database_name <span style="color:#ffb8d1">=</span> <span style="color:#1bc5e0">&#39;anhtestdedicated&#39;</span>
-</span></span><span style="display:flex;"><span>schema_name <span style="color:#ffb8d1">=</span> <span style="color:#1bc5e0">&#39;dbo&#39;</span>
-</span></span><span style="display:flex;"><span>table_name <span style="color:#ffb8d1">=</span> <span style="color:#1bc5e0">&#39;a_new_table&#39;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>df <span style="color:#ffb8d1">=</span> spark<span style="color:#ffb8d1">.</span>read<span style="color:#ffb8d1">.</span>option(Constants<span style="color:#ffb8d1">.</span>SERVER, synapse_server) \
-</span></span><span style="display:flex;"><span>    <span style="color:#ffb8d1">.</span>synapsesql(<span style="color:#1bc5e0">f</span><span style="color:#1bc5e0">&#34;</span><span style="color:#1bc5e0">{</span>database_name<span style="color:#1bc5e0">}</span><span style="color:#1bc5e0">.</span><span style="color:#1bc5e0">{</span>schema_name<span style="color:#1bc5e0">}</span><span style="color:#1bc5e0">.</span><span style="color:#1bc5e0">{</span>table_name<span style="color:#1bc5e0">}</span><span style="color:#1bc5e0">&#34;</span>)</span></span></code></pre></td></tr></table>
+<pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">%%pyspark
+<span style="color:#fff;font-weight:bold">import</span> com.microsoft.spark.sqlanalytics
+<span style="color:#fff;font-weight:bold">from</span> com.microsoft.spark.sqlanalytics.Constants <span style="color:#fff;font-weight:bold">import</span> Constants
+
+synapse_server = <span style="color:#0ff;font-weight:bold">&#39;anh-test-synapse.sql.azuresynapse.net&#39;</span>
+database_name = <span style="color:#0ff;font-weight:bold">&#39;anhtestdedicated&#39;</span>
+schema_name = <span style="color:#0ff;font-weight:bold">&#39;dbo&#39;</span>
+table_name = <span style="color:#0ff;font-weight:bold">&#39;a_new_table&#39;</span>
+
+df = spark.read.option(Constants.SERVER, synapse_server) \
+    .synapsesql(<span style="color:#0ff;font-weight:bold">f</span><span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">{</span>database_name<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">.</span><span style="color:#0ff;font-weight:bold">{</span>schema_name<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">.</span><span style="color:#0ff;font-weight:bold">{</span>table_name<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span>)</code></pre></td></tr></table>
 </div>
 </div>
 <div class="image">
