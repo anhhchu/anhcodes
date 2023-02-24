@@ -72,10 +72,6 @@ pinImage = "images/pin.png"
 
 # Social icons
 [[params.social]]
-icon = "fa-leetcode"
-url = "https://www.instagram.com/jasminmay12/"
-weight = 1
-[[params.social]]
 icon = "fa-instagram"
 url = "https://www.instagram.com/jasminmay12/"
 weight = 1
@@ -96,7 +92,7 @@ weight = 3
     hl_Lines = ''
     lineAnchors = ''
     lineNoStart = 1
-    lineNos = true
+    # lineNos = true
     lineNumbersInTable = false
     noClasses = true
     noHl = false

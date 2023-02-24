@@ -65,42 +65,42 @@ After autocomplete is set up successfully, you should be able to use `k` instead
 Run below script to set up your aks cluster in your local
 
 ```shell
-$ az aks get-credentials --resource-group <myResourceGroup> --name <myAKSCluster>
+  $az aks get-credentials --resource-group <myResourceGroup> --name <myAKSCluster>
 ```
 
 If you use Mac, a file `~/.kube/config` will be created with 3 things related to your cluster: cluster, context, and user. You can view tracked clusters and contexts in this file `~/.kube/config` or run below commands. You should see your newly-created cluster in this kube/config file
 
 ```shell
-$ kubectl config view
+  $kubectl config view
 
-$ kubectl config current-context
+  $kubectl config current-context
 
 ```
 Next create a namespace `debezium-example` and set it as default for your context
 
 ```shell
 # Create Namespace
-$ kubectl create ns debezium-example
+  $kubectl create ns debezium-example
 
 # set default namespace, cluster and user for context
-$ kubectl config set-context \
+  $kubectl config set-context \
         <CONTEXT_NAME> \
         --namespace=<NAMESPACE_NAME> \
         --cluster=<CLUSTER_NAME> \
         --user=<USER_NAME>
 
 # set Context as default
-$ kubectl config use-context <Context Name> 
+  $kubectl config use-context <Context Name> 
 ```
 
 **Note:** The kube config file is a useful tool that helps you interact with your cluster using CLI. If you delete a cluster, you should unset deleted cluster from kubectl config file to keep this file clean. For example, you can unset cluster/context/user in kube config like as below
 
 ```shell
-$ kubectl config unset contexts.anh-test-aks
+  $kubectl config unset contexts.anh-test-aks
 
-$ kubectl config unset users.clusterUser_anh-test_anh-test-aks
+  $kubectl config unset users.clusterUser_anh-test_anh-test-aks
 
-$ kubectl config unset clusters.anh-test-aks  
+  $kubectl config unset clusters.anh-test-aks  
 ```
 
 ### 2. Deploy strimzi operator
@@ -108,7 +108,7 @@ $ kubectl config unset clusters.anh-test-aks
 First deploy **Operator lifecycle manager** as presequisite to deploy strimzi operator. We need OLM because the Operator Lifecycle Manager (OLM) extends Kubernetes to provide a declarative way to install, manage, and upgrade Operators on a cluster
 
 ```shell
-$ curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.20.0/install.sh | bash -s v0.20.0
+  $curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.20.0/install.sh | bash -s v0.20.0
 ```
 
 2 namespaces got created: olm and operators. `operators` namespace will be empty until we install strimzi
@@ -131,7 +131,7 @@ $ curl -sL https://github.com/operator-framework/operator-lifecycle-manager/rele
 Secondly, deploy **strimzi operator**
 
 ```shell
-$ kubectl create -f https://operatorhub.io/install/strimzi-kafka-operator.yaml
+  $kubectl create -f https://operatorhub.io/install/strimzi-kafka-operator.yaml
 ```
 A deployment and pod will be created for strimzi
 
@@ -151,20 +151,20 @@ A deployment and pod will be created for strimzi
 These secrets and roles helps Kafka Connector connects to the database. Create them in debezium-example namespace. Run below scripts at the directory of the yml files:
  
 ```shell
-$ kubectl create -n debezium-example -f debezium-secret.yml
+  $kubectl create -n debezium-example -f debezium-secret.yml
 ```
 
 * secrets: debezium-secret (`kubectl get secrets -n debezium-example`)
 * The username and password contain base64-encoded credentials (debezium/dbz) for connecting to the MySQL database, which we will deploy later.
 
 ```shell
-$ kubectl create -n debezium-example -f debezium-role.yml
+  $kubectl create -n debezium-example -f debezium-role.yml
 ```
 
 * Role `connector-configuration-role` created (`kubectl get roles -n debezium-example`)
 
 ```shell
-$ kubectl create -n debezium-example -f debezium-role-binding.yml
+  $kubectl create -n debezium-example -f debezium-role-binding.yml
 ```
 * Created a role binding `connector-configuration-role-binding` (`kubectl get rolebinding -n debezium-example`)
 
@@ -177,38 +177,38 @@ At this point, we only created secrets and roles, the debezium-example namespace
 Create `debezium-cluster` kafka cluster with [kafka.yml](https://github.com/anhhchu/debezium-aks/blob/main/debezium-example/kafka.yml)🔗 
 
 ```shell
-$ kubectl create -n debezium-example -f kafka.yml
+  $kubectl create -n debezium-example -f kafka.yml
 > kafka.kafka.strimzi.io/debezium-cluster created
 
 # Wait until kafka cluster ready 
-$ kubectl wait kafka/debezium-cluster --for=condition=Ready --timeout=300s -n debezium-example
+  $kubectl wait kafka/debezium-cluster --for=condition=Ready --timeout=300s -n debezium-example
 ```
 
 Validate kafka cluster has been created
 
 ```shell
-$ kubectl get kafka -n debezium-example
-NAME               DESIRED KAFKA REPLICAS   DESIRED ZK REPLICAS   READY   WARNINGS
-debezium-cluster   1                        1                     True 
+  $kubectl get kafka -n debezium-example
+  NAME               DESIRED KAFKA REPLICAS   DESIRED ZK REPLICAS   READY   WARNINGS
+  debezium-cluster   1                        1                     True 
 
-$ kubectl get service -n debezium-example
-NAME                                        TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)                               AGE
-debezium-cluster-kafka-0                    NodePort    10.0.49.104    <none>        9094:31195/TCP                        20h
-debezium-cluster-kafka-bootstrap            ClusterIP   10.0.194.235   <none>        9091/TCP,9092/TCP,9093/TCP            20h
-debezium-cluster-kafka-brokers              ClusterIP   None           <none>        9090/TCP,9091/TCP,9092/TCP,9093/TCP   20h
-debezium-cluster-kafka-external-bootstrap   NodePort    10.0.66.165    <none>        9094:32034/TCP                        20h
-debezium-cluster-zookeeper-client           ClusterIP   10.0.104.91    <none>        2181/TCP                              20h
-debezium-cluster-zookeeper-nodes            ClusterIP   None           <none>        2181/TCP,2888/TCP,3888/TCP            20h
+  $kubectl get service -n debezium-example
+  NAME                                        TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)                               AGE
+  debezium-cluster-kafka-0                    NodePort    10.0.49.104    <none>        9094:31195/TCP                        20h
+  debezium-cluster-kafka-bootstrap            ClusterIP   10.0.194.235   <none>        9091/TCP,9092/TCP,9093/TCP            20h
+  debezium-cluster-kafka-brokers              ClusterIP   None           <none>        9090/TCP,9091/TCP,9092/TCP,9093/TCP   20h
+  debezium-cluster-kafka-external-bootstrap   NodePort    10.0.66.165    <none>        9094:32034/TCP                        20h
+  debezium-cluster-zookeeper-client           ClusterIP   10.0.104.91    <none>        2181/TCP                              20h
+  debezium-cluster-zookeeper-nodes            ClusterIP   None           <none>        2181/TCP,2888/TCP,3888/TCP            20h
 
-$ kubectl get deployment
-NAME                               READY   UP-TO-DATE   AVAILABLE   AGE
-debezium-cluster-entity-operator   1/1     1            1           20h
+  $kubectl get deployment
+  NAME                               READY   UP-TO-DATE   AVAILABLE   AGE
+  debezium-cluster-entity-operator   1/1     1            1           20h
 
-$ kubectl get pod
-NAME                                                READY   STATUS      RESTARTS   AGE
-debezium-cluster-entity-operator-5cc76b7dfb-njt62   3/3     Running     0          20h
-debezium-cluster-kafka-0                            1/1     Running     0          20h
-debezium-cluster-zookeeper-0                        1/1     Running     0          20h
+  $kubectl get pod
+  NAME                                                READY   STATUS      RESTARTS   AGE
+  debezium-cluster-entity-operator-5cc76b7dfb-njt62   3/3     Running     0          20h
+  debezium-cluster-kafka-0                            1/1     Running     0          20h
+  debezium-cluster-zookeeper-0                        1/1     Running     0          20h
 
 ```
 
@@ -217,13 +217,13 @@ debezium-cluster-zookeeper-0                        1/1     Running     0       
 Create mysql service and deployment
 
 ```shell
-$ kubectl create -n debezium-example -f mysql.yml
+  $kubectl create -n debezium-example -f mysql.yml
 
-$ kubectl get pod
+  $kubectl get pod
 
-$ kubectl get service
+  $kubectl get service
 
-$ kubectl get deployment
+  $kubectl get deployment
 ```
 
 
@@ -234,11 +234,11 @@ $ kubectl get deployment
 If you use docker container registry, use your docker username and password to create a k8s secret. For example, I created `anhdockercr-secret` below:
 
 ```shell
-$ kubectl create secret docker-registry anhdockercr-secret --docker-server=docker.io --docker-username=anhhoangchu --docker-password=<password>
+  $kubectl create secret docker-registry anhdockercr-secret --docker-server=docker.io --docker-username=anhhoangchu --docker-password=<password>
 
-$ kubectl get secret anhdockercr-secret --output=yaml > anhdockercr-secret.yml
+  $kubectl get secret anhdockercr-secret --output=yaml > anhdockercr-secret.yml
 
-$ kubectl get secret anhdockercr-secret --output="jsonpath={.data.\.dockerconfigjson}" | base64 --decode
+  $kubectl get secret anhdockercr-secret --output="jsonpath={.data.\.dockerconfigjson}" | base64 --decode
 ```
 
 If you use Azure Container Registry (ACR): follow this [doc](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-auth-kubernetes). My ACR is `anhcr`. Remember to change the role to `acrpush` from `acrpull` to get the permission to both push and pull images to your Azure Container Registry. Refer my [az-ad-sp.sh](https://github.com/anhhchu/debezium-aks/blob/main/debezium-example/az-ad-sp.sh) for more information. 
@@ -246,7 +246,7 @@ If you use Azure Container Registry (ACR): follow this [doc](https://learn.micro
 ```shell
 # Create image pull secret
 
-$ kubectl create secret docker-registry <secret-name> \
+  $kubectl create secret docker-registry <secret-name> \
     --namespace <namespace> \
     --docker-server=<container-registry-name>.azurecr.io \
     --docker-username=<service-principal-ID> \
@@ -256,14 +256,14 @@ $ kubectl create secret docker-registry <secret-name> \
 For example, I created `anhcr-secret` for k8s secret
 
 ```shell
-$ kubectl create secret docker-registry anhcr-secret \
+  $kubectl create secret docker-registry anhcr-secret \
     --namespace debezium-example \
     --docker-server=anhcr.azurecr.io \
     --docker-username=92cd834d-74bc-4555-976d-101aef5cf9b0 \
     --docker-password=<sp-password-after-created>
 
 # verify
-$ kubectl get secret anhcr-secret --output=yaml > anhcr-secret.yml    
+  $kubectl get secret anhcr-secret --output=yaml > anhcr-secret.yml    
 ```
 
 #### Step 2: Modify the KafkaConnect Manifest yaml to build and push image to Container Registry. 
@@ -305,28 +305,28 @@ b) Build your own image with `docker build`
 * If your machine uses amd64 architecture, you only need to run the regular docker build. If you use Azure Container Registry, refer back to Step 1 to create service principal to login
         
 ```shell
-$ docker login <container-registry> --username <service-principal-name> --password <service-principal-password>
+  $docker login <container-registry> --username <service-principal-name> --password <service-principal-password>
 
-$ docker build -t <container-registry>/<image-name>:<tag> .
+  $docker build -t <container-registry>/<image-name>:<tag> .
 
-$ docker push <container-registry>/<image-name>:<tag>
+  $docker push <container-registry>/<image-name>:<tag>
 ```
 For example
 
 ```shell
-$ docker login anhcr.azurecr.io --username 92cd834d-74bc-4555-976d-101aef5cf9b0 --password <password>
+  $docker login anhcr.azurecr.io --username 92cd834d-74bc-4555-976d-101aef5cf9b0 --password <password>
 
-$ docker build -t anhcr.azurecr.io/debezium-connect-cluster:latest .
+  $docker build -t anhcr.azurecr.io/debezium-connect-cluster:latest .
 
-$ docker push anhcr.azurecr.io/debezium-connect-cluster:latest
+  $docker push anhcr.azurecr.io/debezium-connect-cluster:latest
 ```
 
 * If your machine uses arm64 architecture (i.e. macbook apple m1, etc), it gets a little more tricky! You will need to use `docker buildx build` to create a multi-architecture image
 
 ```shell
-$ docker login anhcr.azurecr.io --username 92cd834d-74bc-4555-976d-101aef5cf9b0 --password <password>
+  $docker login anhcr.azurecr.io --username 92cd834d-74bc-4555-976d-101aef5cf9b0 --password <password>
 
-$ docker buildx build --platform linux/arm64,linux/amd64 -t anhcr.azurecr.io/debezium-connect-cluster:latest . --push
+  $docker buildx build --platform linux/arm64,linux/amd64 -t anhcr.azurecr.io/debezium-connect-cluster:latest . --push
 ```
 
 After pushing the image to ACR, you should be able to see your image on Azure Portal
@@ -338,13 +338,13 @@ After pushing the image to ACR, you should be able to see your image on Azure Po
 Use [kafka-connect-build.yml](https://github.com/anhhchu/debezium-aks/blob/main/debezium-example/kafka-connect-build.yml) file if you choose Option 1 in Step 2.
 
 ```shell
-$ kubectl create -n debezium-example -f kafka-connect-build.yml
+  $kubectl create -n debezium-example -f kafka-connect-build.yml
 ```
 
 **OR** Use [kafka-connect.yml](https://github.com/anhhchu/debezium-aks/blob/main/debezium-example/kafka-connect.yml) file if you choose Option 2 in Step 2
 
 ```shell
-$ kubectl create -n debezium-example -f kafka-connect.yml
+  $kubectl create -n debezium-example -f kafka-connect.yml
 ```
 
 **Note: If you want to publish your image with a different name, remember to update the above yaml file `spec.image`:**
@@ -359,11 +359,11 @@ spec:
 #### Step 4: Validate the kafka connect cluster
 
 ```shell
-$ kubectl get kafkaconnect
+  $kubectl get kafkaconnect
 NAME                       DESIRED REPLICAS   READY
 debezium-connect-cluster   1                  True
 
-$ kubectl get service 
+  $kubectl get service 
 NAME                                        TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)                               AGE
 debezium-cluster-kafka-0                    NodePort    10.0.49.104    <none>        9094:31195/TCP                        9h
 debezium-cluster-kafka-bootstrap            ClusterIP   10.0.194.235   <none>        9091/TCP,9092/TCP,9093/TCP            9h
@@ -374,7 +374,7 @@ debezium-cluster-zookeeper-nodes            ClusterIP   None           <none>   
 debezium-connect-cluster-connect-api        ClusterIP   10.0.203.251   <none>        8083/TCP                              28m
 mysql                                       ClusterIP   None           <none>        3306/TCP                              9h
 
-$ kubectl get pod
+  $kubectl get pod
 NAME                                                READY   STATUS    RESTARTS   AGE
 debezium-cluster-entity-operator-5cc76b7dfb-njt62   3/3     Running   0          8h
 debezium-cluster-kafka-0                            1/1     Running   0          8h
@@ -382,7 +382,7 @@ debezium-cluster-zookeeper-0                        1/1     Running   0         
 debezium-connect-cluster-connect-8fd6fd988-7fgsg    1/1     Running   0          2m57s
 mysql-6fc7c66c64-qzbdm                              1/1     Running   0          8h
 
-$ kubectl get deployment
+  $kubectl get deployment
 NAME                               READY   UP-TO-DATE   AVAILABLE   AGE
 debezium-cluster-entity-operator   1/1     1            1           8h
 debezium-connect-cluster-connect   1/1     1            1           3m1s
@@ -396,15 +396,15 @@ If the kafka connect cluster is not ready, and NO service/deployment/pod are cre
 To delete all resources relating to KafkaConnect (debezium-connect-cluster), you need to delete the kafkaconnect custom resource 
 
 ```shell
-$ kubectl delete kafkaconnect debezium-connect-cluster
+  $kubectl delete kafkaconnect debezium-connect-cluster
 ```
 
 ### 7. Deploy Debezium Connector
 
 ```shell
-$ kubectl create -f debezium-connector-mysql.yml
+  $kubectl create -f debezium-connector-mysql.yml
 
-$ kubectl get kafkaconnector 
+  $kubectl get kafkaconnector 
 NAME                       CLUSTER                    CONNECTOR CLASS                              MAX TASKS   READY
 debezium-connector-mysql   debezium-connect-cluster   io.debezium.connector.mysql.MySqlConnector   1           True
 ```
@@ -412,7 +412,7 @@ debezium-connector-mysql   debezium-connect-cluster   io.debezium.connector.mysq
 ### 8. Verify deployment
 
 ```shell
-$ kubectl run -n debezium-example -it --rm --image=quay.io/debezium/tooling:1.2  --restart=Never watcher -- kcat -b debezium-cluster-kafka-bootstrap:9092 -C -o beginning -t mysql.inventory.customers
+  $kubectl run -n debezium-example -it --rm --image=quay.io/debezium/tooling:1.2  --restart=Never watcher -- kcat -b debezium-cluster-kafka-bootstrap:9092 -C -o beginning -t mysql.inventory.customers
 ```
 
 The above actually comprises of 2 commands:
@@ -424,7 +424,7 @@ The above actually comprises of 2 commands:
 Leave the above running, switch to another shell to connect to mysql db
 
 ```shell
-$ kubectl run -n debezium-example -it --rm --image=mysql:8.0 --restart=Never --env MYSQL_ROOT_PASSWORD=debezium mysqlterm -- mysql -hmysql -P3306 -uroot -pdebezium
+  $kubectl run -n debezium-example -it --rm --image=mysql:8.0 --restart=Never --env MYSQL_ROOT_PASSWORD=debezium mysqlterm -- mysql -hmysql -P3306 -uroot -pdebezium
 
 mysql> use inventory
 mysql> update customers set first_name="Sally Marie" where id=1001;
@@ -460,28 +460,28 @@ For example, below command will show metadata of the kafka cluster
 
 ```shell
 
-$ kubectl get pod # check if watcher is still running
-NAME                                                READY   STATUS    RESTARTS   AGE
-debezium-cluster-entity-operator-5cc76b7dfb-njt62   3/3     Running   0          
-debezium-cluster-kafka-0                            1/1     Running   0         
-debezium-cluster-zookeeper-0                        1/1     Running   0          
-debezium-connect-cluster-connect-8fd6fd988-7fgsg    1/1     Running   0          
-mysql-6fc7c66c64-qzbdm                              1/1     Running   0          
-mysqlterm                                           1/1     Running   0          
-watcher                                             1/1     Running   0          
+  $kubectl get pod # check if watcher is still running
+  NAME                                                READY   STATUS    RESTARTS   AGE
+  debezium-cluster-entity-operator-5cc76b7dfb-njt62   3/3     Running   0          
+  debezium-cluster-kafka-0                            1/1     Running   0         
+  debezium-cluster-zookeeper-0                        1/1     Running   0          
+  debezium-connect-cluster-connect-8fd6fd988-7fgsg    1/1     Running   0          
+  mysql-6fc7c66c64-qzbdm                              1/1     Running   0          
+  mysqlterm                                           1/1     Running   0          
+  watcher                                             1/1     Running   0          
 
-$ kubectl exec watcher -- kcat -b debezium-cluster-kafka-bootstrap:9092 -C -L
-Metadata for all topics (from broker -1: debezium-cluster-kafka-bootstrap:9092/bootstrap):
- 1 brokers:
-  broker 0 at debezium-cluster-kafka-0.debezium-cluster-kafka-brokers.debezium-example.svc:9092 (controller)
- 14 topics:
- ...
+  $kubectl exec watcher -- kcat -b debezium-cluster-kafka-bootstrap:9092 -C -L
+  Metadata for all topics (from broker -1: debezium-cluster-kafka-bootstrap:9092/bootstrap):
+  1 brokers:
+    broker 0 at debezium-cluster-kafka-0.debezium-cluster-kafka-brokers.debezium-example.svc:9092 (controller)
+  14 topics:
+  ...
 ```
 
 You can also inspect kafka topics with below command. View all the topics that were created for this kafka cluster [here](https://github.com/anhhchu/debezium-aks/blob/main/debezium-example/kafka-topics.txt)
 
 ```
-$ kubectl get kt > kafka-topics.txt
+  $kubectl get kt > kafka-topics.txt
 ```
 
 
