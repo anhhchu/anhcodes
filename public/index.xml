@@ -20,7 +20,7 @@ Table of Content 1. Prerequisites
 4. Deploy Kafka cluster
 5. Deploy mysql database in Kubernetes
 6. Deploy Kafka Connect Cluster
- Step 1: Create secret for container registry Step 2: Build and push Kafka connecti image with debezium connector plugins to container registry Step 3: Deploy kafka connect cluster Step 4: Validate kafka connect cluster  7.</description>
+Step 1: Create secret for container registry Step 2: Build and push Kafka connecti image with debezium connector plugins to container registry Step 3: Deploy kafka connect cluster Step 4: Validate kafka connect cluster 7.</description>
     </item>
     
     <item>
@@ -87,7 +87,7 @@ Dedicated SQL Pool Architecture Choosing Distribution: The data is sharded into 
       <pubDate>Tue, 15 Nov 2022 00:00:00 +0000</pubDate>
       
       <guid>https://anhcodes.dev/blog/synapse/</guid>
-      <description>Table of Contents  What is Azure Synapse Analytics? What is Dedicated SQL Pool? What is Serverless SQL Pool? Dedicated vs Serverless SQL Pool Comparison Azure Synapse Analytics, AWS Redshift, Google Big Query Comparison  What is Azure Synapse Analytics? Azure Synapse Analytics is an integrated data platform that brings together SQL technologies used in enterprise data warehousing such as Dedicated SQL Pool and Serverless SQL Pool, Synapse Spark Pool used for big data, Data Explorer for log and time series analytics, Synapse Pipelines for data integration and ETL/ELT, and deep integration with other Azure services such as Power BI, CosmosDB, and AzureML.</description>
+      <description>Table of Contents What is Azure Synapse Analytics? What is Dedicated SQL Pool? What is Serverless SQL Pool? Dedicated vs Serverless SQL Pool Comparison Azure Synapse Analytics, AWS Redshift, Google Big Query Comparison What is Azure Synapse Analytics? Azure Synapse Analytics is an integrated data platform that brings together SQL technologies used in enterprise data warehousing such as Dedicated SQL Pool and Serverless SQL Pool, Synapse Spark Pool used for big data, Data Explorer for log and time series analytics, Synapse Pipelines for data integration and ETL/ELT, and deep integration with other Azure services such as Power BI, CosmosDB, and AzureML.</description>
     </item>
     
     <item>
@@ -106,7 +106,7 @@ Dedicated SQL Pool Architecture Choosing Distribution: The data is sharded into 
       
       <guid>https://anhcodes.dev/portfolio/predict-churn/</guid>
       <description>1. Exploratory Data Analysis (EAD) Due to computational constraint, this project will only use a 247.6 MB dataset of 543705 records and 448 unique users (198 Males, 250 Females). Among that, only 528k records have valid data, the rest 15k records are sessions where some random folks are merely checking out the site without signing in.
-1Number of records in the dataset: 543705 2Number of Records after removing blank userID: 528005 3|-------|------------------| 4|summary| sessionId| 5|-------|------------------| 6| count| 543705| 7| mean|2040.</description>
+Number of records in the dataset: 543705 Number of Records after removing blank userID: 528005 |-------|------------------| |summary| sessionId| |-------|------------------| | count| 543705| | mean|2040.</description>
     </item>
     
     <item>
