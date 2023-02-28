@@ -73,6 +73,10 @@ pinImage = "images/pin.png"
 # Social icons
 [[params.social]]
 icon = "fa-instagram"
+url = "https://resume-anhcodes.web.app/"
+weight = 1
+[[params.social]]
+icon = "fa-instagram"
 url = "https://www.instagram.com/jasminmay12/"
 weight = 1
 [[params.social]]
