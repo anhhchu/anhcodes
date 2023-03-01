@@ -8,7 +8,7 @@ content: >
 button1Name: My Blog
 button1URL: blog
 button2Name: Download Resume
-button2URL: https://registry.jsonresume.org/anhhchu
+button2URL: https://resume-anhcodes.firebaseapp.com/
 image: images/hero/chicago.jpg
 # videoThumb: images/hero/popup-thumb.png
 # videoURL: images/hero/signatureupdate.gif
