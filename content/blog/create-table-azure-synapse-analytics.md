@@ -2,7 +2,6 @@
 title: "Best Practices in creating tables in Azure Synapse Analytics"
 date: 2022-11-15 23:24:30
 featureImage: images/allpost/sql-pool-vertical.jpeg
-# postImage: images/single-blog/feature-image.jpg
 postImage: images/single-blog/sql-pool.jpeg
 tags: [azure-synapse-analytics]
 author: Anh Chu

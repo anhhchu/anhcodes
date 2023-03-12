@@ -4,20 +4,22 @@
   "description": "### Deploy with Firebase",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "hugo server",
+    "algolia": "atomic-algolia",
+    "build:prod": "hugo -t portio && npm run algolia"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/anhhchu/anhcodes.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Anh Chu",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/anhhchu/anhcodes/issues"
   },
   "homepage": "https://github.com/anhhchu/anhcodes#readme",
   "dependencies": {
-    "hugo-lunr": "^0.0.4"
+    "atomic-algolia": "^0.3.19"
   }
 }

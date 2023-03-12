@@ -55,6 +55,10 @@ https://gohugo.io/content-management/syntax-highlighting/#generate-syntax-highli
 
 #### Search in Hugo
 
-[hugo-lunr](https://www.npmjs.com/package/hugo-lunr)
+[search with algolia](https://forestry.io/blog/search-with-algolia-in-hugo/)
 
-[hugo + gruntjs + lunrjs](https://gist.github.com/sebz/efddfc8fdcb6b480f567)
+[site search jamstack hugo algolia](https://www.bennet.org/blog/site-search-jamstack-hugo-algolia/)
+
+ `ALGOLIA_APP_ID={{ YOUR_APP_ID }} ALGOLIA_ADMIN_KEY={{ YOUR_ADMIN_KEY }} ALGOLIA_INDEX_NAME={{ YOUR_INDEX NAME }} ALGOLIA_INDEX_FILE={{ PATH/TO/algolia.json }} npm run algolia`
+
+[Google Programmable Search](https://programmablesearchengine.google.com/controlpanel/all)

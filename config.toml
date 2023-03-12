@@ -73,10 +73,6 @@ pinImage = "images/pin.png"
 # Social icons
 [[params.social]]
 icon = "fa-instagram"
-url = "https://resume-anhcodes.web.app/"
-weight = 1
-[[params.social]]
-icon = "fa-instagram"
 url = "https://www.instagram.com/jasminmay12/"
 weight = 1
 [[params.social]]
@@ -102,3 +98,16 @@ weight = 3
     noHl = false
     style = 'witchhazel'
     tabWidth = 4
+
+# [outputFormats.Algolia]
+# baseName = "algolia"
+# isPlainText = true
+# mediaType = "application/json"
+# notAlternative = true
+
+# [params.algolia]
+# vars = ["title", "summary", "date", "publishdate", "expirydate", "permalink"]
+# params = ["categories", "tags"]
+
+# [outputs]
+# home = ["HTML", "RSS", "Algolia"]
