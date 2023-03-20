@@ -5,6 +5,7 @@ featureImage: images/allpost/pyspark-synapse-vertical.jpg
 # postImage: images/single-blog/feature-image.jpg
 postImage: /images/single-blog/pyspark-synapse.png
 tags: [azure-synapse-analytics, how-to, pyspark]
+draft: true
 ---
 
 Thanks to [Azure Synapse Dedicated SQL Pool Connector for Apache Spark](https://learn.microsoft.com/en-us/azure/synapse-analytics/spark/synapse-spark-sql-pool-import-export?tabs=scala%2Cscala1%2Cscala2%2Cscala3%2Cscala4%2Cscala5), you can directly read Synapse Dedicated SQL Pool tables into Spark dataframe with Python and Scala using Synapse Spark Pool.  These solutions work when the Spark Pool and the Dedicated SQL Pool are in the same workspaces. 

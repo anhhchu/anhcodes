@@ -6,18 +6,7 @@
     <description>Recent content in azure-synapse-analytics on anhcodes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 02 Jan 2023 00:00:59 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/tags/azure-synapse-analytics/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>How to read Azure Synapse Tables to Spark Dataframe</title>
-      <link>https://anhcodes.dev/blog/how-to-read-synapse-table-spark/</link>
-      <pubDate>Mon, 02 Jan 2023 00:00:59 +0000</pubDate>
-      
-      <guid>https://anhcodes.dev/blog/how-to-read-synapse-table-spark/</guid>
-      <description>Thanks to Azure Synapse Dedicated SQL Pool Connector for Apache Spark, you can directly read Synapse Dedicated SQL Pool tables into Spark dataframe with Python and Scala using Synapse Spark Pool. These solutions work when the Spark Pool and the Dedicated SQL Pool are in the same workspaces.
-To create Synapse Spark Pool in Azure Synapse, you can follow this documentation. .
-Option 1: Use Scala In Synapse Workspace, you can right-click the table in Dedicated SQL Pool database, and pick Load to Dataframe</description>
-    </item>
-    
+    <lastBuildDate>Thu, 15 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/tags/azure-synapse-analytics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Query Performance Tuning in Dedicated SQL Pool (Azure Synapse Analytics)</title>
       <link>https://anhcodes.dev/blog/query-performance/</link>
