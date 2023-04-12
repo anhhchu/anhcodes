@@ -6,7 +6,36 @@
     <description>Recent content in Data, Coding &amp; More on anhcodes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 07 Jan 2023 00:19:27 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 11 Apr 2023 23:20:57 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Scale and Tune Spark Effectively</title>
+      <link>https://anhcodes.dev/blog/scale-spark/</link>
+      <pubDate>Tue, 11 Apr 2023 23:20:57 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/blog/scale-spark/</guid>
+      <description>If you&amp;rsquo;re working with big data, you&amp;rsquo;ve probably heard of Spark. Spark is a distributed big data processing engine that provides in-memory storage for intermediate computations, making it much faster than Hadoop MapReduce. In this post, we&amp;rsquo;ll cover how to scale and tune Spark effectively to make the most of its capabilities.
+What is Spark? Spark is a distributed big data processing engine that uses the resilient distributed dataset (RDD) data structure with data abstractions such as DataFrames and Datasets.</description>
+    </item>
+    
+    <item>
+      <title>Navigate Databricks FileSystem</title>
+      <link>https://anhcodes.dev/blog/dbfs/</link>
+      <pubDate>Tue, 11 Apr 2023 22:13:33 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/blog/dbfs/</guid>
+      <description> View Fullscreen | View Github </description>
+    </item>
+    
+    <item>
+      <title>Data Lakehouse vs Data Lake vs Data Warehouse: Choosing the Right Solution</title>
+      <link>https://anhcodes.dev/blog/data-lakehouse/</link>
+      <pubDate>Tue, 11 Apr 2023 16:26:45 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/blog/data-lakehouse/</guid>
+      <description>Choosing Enterprise Data Solution is a key challenge for modern businesses. With the explosion of data in recent years, organizations need to be able to store, manage, and analyze vast amounts of information to gain insights and make informed decisions. Data lakes, data warehouses, and data lakehouses are three popular solutions for managing data, each with its own strengths and weaknesses.
+What is a Data Warehouse? A data warehouse is a centralized repository that stores structured, processed data from a variety of sources.</description>
+    </item>
+    
     <item>
       <title>Deploy Debezium and Kafka on AKS using Strimzi Operator</title>
       <link>https://anhcodes.dev/blog/deploy-debezium-aks/</link>
@@ -68,15 +97,6 @@ Remember to create and Update Stats on your new tables Table statistics for dedi
       <guid>https://anhcodes.dev/blog/create-table-azure-synapse-analytics/</guid>
       <description>As Dedicated SQL pool uses a scaled-out node based architecture, when creating tables in Dedicated SQL Pool, remember to specify the distribution (sharding strategy) and index for your tables.
 Dedicated SQL Pool Architecture Choosing Distribution: The data is sharded into distributions to optimize the performance of the system. You can choose which sharding pattern to use to distribute the data when you define the table. These sharding patterns are supported:</description>
-    </item>
-    
-    <item>
-      <title>Azure Synapse Analytics - Data Lakehouse on Azure</title>
-      <link>https://anhcodes.dev/blog/synapse/</link>
-      <pubDate>Tue, 15 Nov 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://anhcodes.dev/blog/synapse/</guid>
-      <description>Table of Contents What is Azure Synapse Analytics? What is Dedicated SQL Pool? What is Serverless SQL Pool? Dedicated vs Serverless SQL Pool Comparison Azure Synapse Analytics, AWS Redshift, Google Big Query Comparison What is Azure Synapse Analytics? Azure Synapse Analytics is an integrated data platform that brings together SQL technologies used in enterprise data warehousing such as Dedicated SQL Pool and Serverless SQL Pool, Synapse Spark Pool used for big data, Data Explorer for log and time series analytics, Synapse Pipelines for data integration and ETL/ELT, and deep integration with other Azure services such as Power BI, CosmosDB, and AzureML.</description>
     </item>
     
   </channel>

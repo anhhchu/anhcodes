@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>big-data on anhcodes</title>
+    <link>https://anhcodes.dev/categories/big-data/</link>
+    <description>Recent content in big-data on anhcodes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 11 Apr 2023 23:20:57 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/categories/big-data/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Scale and Tune Spark Effectively</title>
+      <link>https://anhcodes.dev/blog/scale-spark/</link>
+      <pubDate>Tue, 11 Apr 2023 23:20:57 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/blog/scale-spark/</guid>
+      <description>If you&amp;rsquo;re working with big data, you&amp;rsquo;ve probably heard of Spark. Spark is a distributed big data processing engine that provides in-memory storage for intermediate computations, making it much faster than Hadoop MapReduce. In this post, we&amp;rsquo;ll cover how to scale and tune Spark effectively to make the most of its capabilities.
+What is Spark? Spark is a distributed big data processing engine that uses the resilient distributed dataset (RDD) data structure with data abstractions such as DataFrames and Datasets.</description>
+    </item>
+    
+  </channel>
+</rss>

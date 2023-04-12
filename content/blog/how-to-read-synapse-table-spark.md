@@ -1,9 +1,11 @@
 ---
 title: "How to read Azure Synapse Tables to Spark Dataframe"
 date: 2023-01-02 00:00:59
-featureImage: images/allpost/pyspark-synapse-vertical.jpg
+featureImage: /images/single-blog/pyspark-synapse.png
+#images/allpost/pyspark-synapse-vertical.jpg
 # postImage: images/single-blog/feature-image.jpg
 postImage: /images/single-blog/pyspark-synapse.png
+categories: data-lakehouse
 tags: [azure-synapse-analytics, how-to, pyspark]
 draft: true
 ---

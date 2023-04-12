@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>How to Scale and Tune Spark Effectively</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <!-- Slick Carousel -->
+  <link rel="stylesheet" href="https://anhcodes.dev/plugins/slick/slick.css" />
+  <link rel="stylesheet" href="https://anhcodes.dev/plugins/slick/slick-theme.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://anhcodes.dev/plugins/font-awesome/css/font-awesome.min.css" />
+
+  <!-- Magnific Popup -->
+  <link rel="stylesheet" href="https://anhcodes.dev/plugins/magnafic-popup/magnific-popup.css" />
+
+  <!-- Stylesheets -->
+  
+  <link href="https://anhcodes.dev/scss/style.min.css" rel="stylesheet" />
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="https://anhcodes.dev/images/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="https://anhcodes.dev/images/favicon.png" type="image/x-icon" />
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9145PR72NN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-9145PR72NN');
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.37.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.11.0/dist/algoliasearch.umd.min.js"></script>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.4.5/themes/satellite-min.css" integrity="sha256-TehzF/2QvNKhGQrrNpoOb2Ck4iGZ1J/DI4pkd2oUsBc=" crossorigin="anonymous">  
+  
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a href="https://anhcodes.dev/" class="navbar-brand">
+      <img src="https://anhcodes.dev/images/site-navigation/logonew.png" alt="site-logo">
+    </a>
+    <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+      <ul class="nav navbar-nav main-navigation my-0 mx-auto">
+        
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#home"
+            class="nav-link text-dark text-sm-center p-2 ">Home</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#about"
+            class="nav-link text-dark text-sm-center p-2 ">About</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#resume"
+            class="nav-link text-dark text-sm-center p-2 ">Experiences</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#skills"
+            class="nav-link text-dark text-sm-center p-2 ">Skills</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#testimonial"
+            class="nav-link text-dark text-sm-center p-2 ">Testimonials</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#blog"
+            class="nav-link text-dark text-sm-center p-2 ">Blog</a>
+        </li>
+        
+      </ul>
+      <div class="navbar-nav">
+        <a href="https://anhcodes.dev/contact" class="btn btn-primary btn-zoom hire_button">Contact Me</a>
+      </div>
+    </div>
+  </div>
+</nav>
+  <div id="content">
+    
+
+<header class="breadCrumb">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 text-center">
+        <h3 class="breadCrumb__title">How to Scale and Tune Spark Effectively</h3>
+        <nav aria-label="breadcrumb" class="d-flex justify-content-center">
+          <ol class="breadcrumb align-items-center">
+            <li class="breadcrumb-item"><a href=https://anhcodes.dev/>Home</a></li>
+            <li class="breadcrumb-item"><a href=https://anhcodes.dev/blog>All Posts</a></li>
+            <li class="breadcrumb-item"><a href=https://anhcodes.dev//tags>All Tags</a></li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <ul class="post-meta">
+      <li>
+        <i class="fa fa-calendar"></i>
+        April 11, 2023
+      </li>
+      <li>
+        <i class="fa fa-clock-o"></i>
+        5 mins read
+      </li>
+      <li>
+        <i class="fa fa-user"></i>
+        Anh Chu
+      </li>
+    </ul>
+    <ul class="post-meta">
+      </li>
+      
+      <li>
+        <i class="fa fa-tag"></i>
+        
+          <a class="text-lowercase" href="https://anhcodes.dev/tags/data-lakehouse/">data-lakehouse</a>
+        
+      </li>
+      
+    </ul>
+  </div>
+  </div>
+  </div>
+  </div>
+</header>
+
+<section class="section singleBlog">
+  <div class="svg-img">
+    <img src=https://anhcodes.dev/images/hero/hero-background-svg.svg alt="">
+  </div>
+  <div class="animate-shape">
+    <img src=https://anhcodes.dev/images/skill/skill-background-shape.svg alt="">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 600">
+      <defs>
+        <linearGradient id="d" x1="0.929" y1="0.111" x2="0.263" y2="0.935" gradientUnits="objectBoundingBox">
+          <stop offset="0" stop-color="#e5c9d7" />
+          <stop offset="1" stop-color="#e5c9d7" stop-opacity="0" />
+        </linearGradient>
+      </defs>
+      <g data-name="blob-shape (3)">
+        <path class="blob" fill="url(#d)"
+          d="M455.4 151.1c43.1 36.7 73.4 92.8 60.8 136.3-12.7 43.5-68.1 74.4-111.3 119.4-43.1 45-74 104.1-109.8 109-35.9 5-76.7-44.2-111.8-89.2-35.2-45-64.7-85.8-70.8-132.6-6-46.8 11.6-99.6 46.7-136.3 35.2-36.6 88-57.2 142.4-58.8 54.5-1.7 110.6 15.6 153.8 52.2z" />
+      </g>
+    </svg>
+  </div>
+  <div class="animate-pattern">
+    <img src=https://anhcodes.dev/images/service/background-pattern.svg alt="background-shape">
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="singleBlog__feature">
+          <img src=https://anhcodes.dev/images/single-blog/spark.jpeg alt="feature-image">
+        </div>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-lg-12">
+        <div class="singleBlog__content">
+
+          
+
+          <p>If you&rsquo;re working with big data, you&rsquo;ve probably heard of Spark. Spark is a distributed big data processing engine that provides in-memory storage for intermediate computations, making it much faster than Hadoop MapReduce. In this post, we&rsquo;ll cover how to scale and tune Spark effectively to make the most of its capabilities.</p>
+<h3 id="what-is-spark">What is Spark?</h3>
+<p>Spark is a distributed big data processing engine that uses the resilient distributed dataset (RDD) data structure with data abstractions such as DataFrames and Datasets. It provides API in different programming languages such as Scala, Python, and Java. One of the key benefits of Spark is that it decouples compute and storage, meaning it can be used to read from different data sources on-prem and in the cloud. Spark has four main APIs: Spark SQL, Spark MLlib, Spark Structured Streaming, and GraphX.</p>
+<h3 id="tune-the-spark-hardware-and-configurations">Tune the Spark Hardware and Configurations</h3>
+<p>To make the most of Spark&rsquo;s capabilities, it&rsquo;s important to tune the hardware and configurations. Here are some tips:</p>
+<ul>
+<li>Choose the right instance type and cluster config. Bigger clusters aren’t necessarily faster. 32GB - 128GB RAM are best, and use compute optimized instance for ETL.</li>
+<li>Use dynamic resource allocation configuration and set min and max executors.</li>
+<li>Adjust <code>spark.executor.memory</code> and set amount of memory available to each executor. Allocate to three types: execution, storage, and reserved memory.</li>
+</ul>
+<h3 id="minimize-data-scan-with-dfcache-and-dfpersist">Minimize data scan with <code>df.cache</code> and <code>df.persist</code></h3>
+<p>Dataframe cache stores as many partitions as memory allows. Cache is another type of persist: <code>df.cache == df.persist(StorageLevel.MEMORY_AND_DISK)</code>. This stores partitions in memory and spills excess to disk.</p>
+<p>When we wse <code>dataframe.persist(StorageLevel.LEVEL)</code>, we can choose different storage levels such as Memory, disk or off-heap to persist data</p>
+
+
+
+
+
+<table class="table table-light table-striped table-bordered">
+<thead>
+<tr>
+<th>StorageLevel</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MEMORY_ONLY</td>
+<td>Data is stored as objects only in memory.</td>
+</tr>
+<tr>
+<td>MEMORY_ONLY_SER</td>
+<td>Data is serialized as a compact byte array and stored in memory.</td>
+</tr>
+<tr>
+<td>MEMORY_AND_DISK</td>
+<td>Data is stored in memory and excess data is serialized and stored on disk.</td>
+</tr>
+<tr>
+<td>DISK_ONLY</td>
+<td>Data is serialized and stored on disk only.</td>
+</tr>
+<tr>
+<td>OFF_HEAP</td>
+<td>Data is stored off-heap and not replicated.</td>
+</tr>
+<tr>
+<td>MEMORY_AND_DISK_SER</td>
+<td>Data is serialized and stored in memory and disk.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Each StorageLevel (except OFF_HEAP) has an equivalent LEVEL_NAME_2*,* which means replicate twice on two different Spark executors: MEMORY_ONLY_2, MEMORY_AND_DISK_SER_2, etc. While this option is expensive, it allows data locality in two places, providing fault tolerance and giving Spark the option to schedule a task local to a copy of the data.</p>
+<p>To minimize data scan and speed up Spark processing, we should use cache and persist for:</p>
+<ul>
+<li>DataFrames that need accessed commonly for doing frequent transformations during ETL or building data pipelines</li>
+<li>DataFrames commonly used during iterative machine learning training</li>
+<li>Don’t use when data is too big to fit in memory, or require infrequent transformation</li>
+</ul>
+<p>Remember that When you use <code>cache()</code> or <code>persist()</code>, the DataFrame is not fully cached until you invoke an action that goes through every record (e.g., <code>count()</code>). If you use an action like <code>take(1)</code>, only one partition will be cached because Catalyst realizes that you do not need to compute all the partitions just to retrieve one record.</p>
+<h3 id="partitioning-optimization">Partitioning Optimization</h3>
+<p>Partitioning is an important optimization technique in Spark. Here are some tips:</p>
+<ol>
+<li>Parquet file size: Make sure Parquet files are around 1GiB in size, and the row group size is also large.</li>
+<li>Number of partition on read: The right number of partitions depends on the task and size of the DataFrame. You want (at least) a few times the number of executors. 100 &lt; num partitions &lt; 10000 → reduce the Partition Bytes on Read to allow data explosion.</li>
+<li>Shuffle Partition Size: Keep track of input data size per task (shuffle partitions are created during shuffle stage). Optimal shuffle partition size: 100-200 MB (data exchanged across executors).</li>
+<li>Choose the Correct Partition Column when repartition: The partitioning columns are selected so that rows that must be processed together end up in the same task. When you repartition a dataframe, specify columns if possible.</li>
+</ol>
+<h3 id="choose-the-correct-join">Choose the Correct Join</h3>
+<p>Choosing the correct join is crucial for optimizing performance in Spark. Here are some tips:</p>
+<ul>
+<li>At the cluster level, set these configs:
+<ul>
+<li><code>spark.sql.autoBroadcastJoinThreshold 100*1024*1024</code>: if table is less than 100MB on disk, just broadcast it.</li>
+<li><code>spark.sql.join.preferSortMergeJoin false</code>.</li>
+</ul>
+</li>
+<li>Broadcast Hash Join: This is the most efficient method. The smaller dataset is broadcast by the driver to all executors and join with the larger dataset on the executor. Avoid shuffle and sort of dataset. The driver must have enough memory.</li>
+<li>Shuffle Hash Join: Map two different data frames and shuffle both tables by join key. Create a hash on the join key, data exchanged between executors. In the reduce phase, join two datasets with the same key in the same partition and same executor.</li>
+<li>Shuffle Sort Merge Join: This is the most popular method. All rows with the same key are hashed on the same partition on the same executor. Used with two large datasets, data will be shuffled and exchanged between executors. Use partitioned buckets to eliminate the exchange step.</li>
+<li>Cartesian Join (BroadcastNestedLoopJoin) BNLJ: this is the most expensive and slowest join operation and should be avoided if possible</li>
+</ul>
+<h3 id="omit-expensive-ops">Omit Expensive Ops</h3>
+<p>Avoid expensive operations in Spark to optimize performance. Here are some tips:</p>
+<ul>
+<li>Avoid <code>withColumn</code>.</li>
+<li>Avoid <code>repartition</code>.</li>
+<li>Avoid <code>count</code>.</li>
+<li>Use <code>approxCountDistinct()</code> within 5% of error.</li>
+<li>Use <code>dropDuplicates</code> before the join, before the groupBy.</li>
+<li>Avoid UDFs. Traditional UDFs cannot use Tungsten and are not vectorized. Use org.apache.spark.sql.functions, PandasUDFs, or SparkR UDFs instead.</li>
+</ul>
+<p>By following these tips, hopefully you can scale and tune Spark effectively and make the most of its capabilities for big data processing.</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  </div>
+  <section class="footer" id="contact">
+	<div class="footer__background_shape">
+		<svg viewBox="0 0 1920 79">
+			<path d="M0 0h1920v79L0 0z" data-name="Path 1450" />
+		</svg>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="footer__cta">
+					<div class="shape-1">
+						<svg xmlns="http://www.w3.org/2000/svg" width="357" height="315.029" viewBox="0 0 357 315.029">
+							<path data-name="Path 1449"
+								d="M76.1-157.222C91.746-135.8 87.2-94.273 99.993-61.945c12.7 32.328 42.661 55.459 39.248 73.282-3.318 17.823-40.007 30.337-65.6 43.325-25.5 12.988-39.912 26.545-60.01 42.566-20.1 16.116-46.074 34.6-63.328 27.682-17.349-6.921-25.976-39.153-59.915-59.82s-93.1-29.768-105.325-51.478 22.373-56.028 43.609-93.949c21.331-37.921 29.2-79.35 53.563-96.793 24.459-17.444 65.414-10.9 103.9-6.921 38.396 3.982 74.326 5.404 89.965 26.829z"
+								transform="translate(217.489 188.626)" />
+						</svg>
+					</div>
+					<div class="shape-2">
+						<svg xmlns="http://www.w3.org/2000/svg" width="357" height="315.029" viewBox="0 0 357 315.029">
+							<path data-name="Path 1449"
+								d="M76.1-157.222C91.746-135.8 87.2-94.273 99.993-61.945c12.7 32.328 42.661 55.459 39.248 73.282-3.318 17.823-40.007 30.337-65.6 43.325-25.5 12.988-39.912 26.545-60.01 42.566-20.1 16.116-46.074 34.6-63.328 27.682-17.349-6.921-25.976-39.153-59.915-59.82s-93.1-29.768-105.325-51.478 22.373-56.028 43.609-93.949c21.331-37.921 29.2-79.35 53.563-96.793 24.459-17.444 65.414-10.9 103.9-6.921 38.396 3.982 74.326 5.404 89.965 26.829z"
+								transform="translate(217.489 188.626)" />
+						</svg>
+					</div>
+					<div class="text-light footer__cta_content">
+						<span>Contact me</span>
+						<h2 class="mb-0">Let’s Work Together</h2>
+					</div>
+					<div class="footer__cta_action">
+						<a class="btn btn-light btn-zoom" href="https://anhcodes.dev/contact">Get in
+							touch</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+			
+			
+		<div class="row footer__footer">
+			<div class="col-lg-6">
+				<div class="footer__footer_copy text-light">
+					<p>©2023 - Made with ☕, Hugo, and Firebase by <a class="text-light" href="https://anhcodes.dev/" target="_blank">Anh Chu</a></p>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="footer__footer_social">
+					<ul class="unstyle-list">
+						
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://www.instagram.com/jasminmay12/"><i
+									class="fa fa-instagram"></i></a>
+						</li>
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://www.linkedin.com/in/anhhchu/"><i
+									class="fa fa-linkedin-square"></i></a>
+						</li>
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://github.com/anhhchu"><i
+									class="fa fa-github-square"></i></a>
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRwXsfdEDBGKI-JcVzIfRyKNF2QBWWa-g&libraries=geometry"></script>
+<script src="https://anhcodes.dev/plugins/jQuery/jquery.min.js"></script>
+<script src="https://anhcodes.dev/plugins/bootstrap/bootstrap.min.js"></script>
+<script src="https://anhcodes.dev/plugins/slick/slick.min.js"></script>
+<script src="https://anhcodes.dev/plugins/waypoint/jquery.waypoints.min.js"></script>
+<script src="https://anhcodes.dev/plugins/magnafic-popup/jquery.magnific-popup.min.js"></script>
+<script src="https://anhcodes.dev/plugins/tweenmax/TweenMax.min.js"></script>
+<script src="https://anhcodes.dev/plugins/imagesloaded/imagesloaded.min.js"></script>
+<script src="https://anhcodes.dev/plugins/masonry/masonry.min.js"></script>
+
+
+<script src="https://anhcodes.dev/js/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.37.1"></script>
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.11.0/dist/algoliasearch.umd.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.4.5/themes/satellite-min.css" integrity="sha256-TehzF/2QvNKhGQrrNpoOb2Ck4iGZ1J/DI4pkd2oUsBc=" crossorigin="anonymous">  
+
+</body>
+
+</html>

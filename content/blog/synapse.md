@@ -1,10 +1,13 @@
 ---
 title: "Azure Synapse Analytics - Data Lakehouse on Azure"
 date: 2022-11-15
-featureImage: images/allpost/azure-synapse.jpeg
-postImage: images/single-blog/data-lakehouse.png
+featureImage: images/single-blog/sql-pool.jpeg
+#images/allpost/sql-pool-vertical.jpeg
+postImage: images/single-blog/sql-pool.jpeg
+categories: data-lakehouse
 tags: [azure-synapse-analytics, big-query,redshift,data-lakehouse]
 author: Anh Chu
+draft: true
 ---
 
 ### Table of Contents

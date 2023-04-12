@@ -23,12 +23,6 @@ fields:
 - type: textarea
   name: shortDescription
   label: shortDescription
-- type: textarea
-  name: problemStatement
-  label: problemStatement
-- type: textarea
-  name: solution
-  label: solution
 pages:
 - content/portfolio/image-classification.md
 - content/portfolio/stock-prediction.md

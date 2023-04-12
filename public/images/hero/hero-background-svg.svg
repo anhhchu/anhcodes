@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400.369" height="362.909" viewBox="0 0 400.369 362.909">
   <defs>
     <linearGradient id="linear-gradient" x1="0.929" y1="0.111" x2="0.263" y2="0.935" gradientUnits="objectBoundingBox">
-      <stop offset="0" stop-color="#d5a6bd"/>
-      <stop offset="1" stop-color="#d5a6bd" stop-opacity="0"/>
+      <stop offset="0" stop-color="#A7727D"/>
+      <stop offset="1" stop-color="#A7727D" stop-opacity="0"/>
     </linearGradient>
   </defs>
   <g id="blob-shape_1_" data-name="blob-shape (1)" transform="translate(243.193 165.277)">

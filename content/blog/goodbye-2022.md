@@ -3,6 +3,7 @@ title: "Goodbye 2022! May 2023 Be Fabulous"
 date: 2023-01-01 18:49:15
 featureImage: images/single-blog/fireworks.gif
 postImage: images/single-blog/microsoft.jpg
+categories: life
 tags: [career, life]
 author: Anh Chu
 ---

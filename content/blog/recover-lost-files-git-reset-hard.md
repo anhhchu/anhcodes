@@ -1,8 +1,10 @@
 ---
 title: "How to recover lost files after a git reset --hard"
 date: 2022-12-27 11:30:20
-featureImage: images/allpost/git-reset.png
+featureImage: images/single-blog/git-reset.png
+#images/allpost/git-reset.png
 postImage: images/single-blog/git-reset.png
+categories: software-engineering
 tags: [tip, git]
 author: Anh Chu
 ---

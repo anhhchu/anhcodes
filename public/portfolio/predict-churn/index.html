@@ -99,7 +99,7 @@
 
 <section class="section case-details">
   <div class="svg-img">
-    <img src="https://anhcodes.dev/images/hero/hero-background-svg.svg" alt="" />
+    <img src="https://anhcodes.dev/images/hero/hero-background-svg.svg" alt="hero-background-svg" />
   </div>
   <div class="animate-shape">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 600">
@@ -122,73 +122,33 @@
     <div class="row mb-5">
       <div class="col-lg-10 offset-lg-1 text-left">
         <div class="case-details-title">
-          <h1>Predict Churn of Music Hosting Service</h1>
+          <h1>
+            <center>Predict Churn of Music Hosting Service</center>
+          </h1>
         </div>
         <div class="case-details-thumb mb-5">
-          <img src="https://anhcodes.dev/images/portfolio/predictchurn.jpeg" alt="case-details" />
+          <center><img src="https://anhcodes.dev/images/portfolio/predictchurn.jpeg" alt="case-details" /></center>
         </div>
         <p>
-          Analyzed customer activities of a music hosting service using Spark Dataframe and Spark SQL on a 247.6 MB dataset running on IBM Watson Studio. Built ML Pipeline with Spark ML to predict churn with 0.74 F1 score and 0.8 accuracy
+          Analyzed customer activities of a music hosting service using Spark Dataframe and Spark SQL on a 247.6 MB dataset running on IBM Watson Studio. Built ML Pipeline with Spark ML to predict churn with 0.74 F1 score and 0.8 accuracy.
         </p>
         
-        <div class="row mb-5">
-          <div class="col-lg-6">
-            <div class="case-details-service">
-              <h3>Problem Statement</h3>
-              <p>
-                Number of active users is an essential KPI to any service businesses including music hosting service. Therefore, a critical problem for these companies is predicting whether a users will stop using their service and turn to other competitors. Because losing users mean losing advertising revenue and subscription revenue, which are 2 main streams of revenue for the company.
-              </p>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="case-details-service">
-              <h3>Solution</h3>
-              <p>
-                This project aims to predict churn of a music hosting service (Sparkify) using a 247.6 MB dataset with Python and Spark. A good model of churn prediction is expected to help the company identify users who are prone to leave, then take some preemptive actions (sending promotions, etc.) to hopefully keep them before it&#39;s too late.
-              </p>
-            </div>
-          </div>
-        </div>
-        <h2 id="1-exploratory-data-analysisead">1. Exploratory Data Analysis (EAD)</h2>
-<p>Due to computational constraint, this project will only use a 247.6 MB dataset of 543705 records and 448 unique users (198 Males, 250 Females). Among that, only 528k records have valid data, the rest 15k records are sessions where some random folks are merely checking out the site without signing in.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Number of records in the dataset: 543705
-</span></span><span style="display:flex;"><span>Number of Records after removing blank userID: 528005
-</span></span><span style="display:flex;"><span>|-------|------------------|
-</span></span><span style="display:flex;"><span>|summary|         sessionId|
-</span></span><span style="display:flex;"><span>|-------|------------------|
-</span></span><span style="display:flex;"><span>|  count|            543705|
-</span></span><span style="display:flex;"><span>|   mean|2040.8143533717732|
-</span></span><span style="display:flex;"><span>| stddev| 1434.338931078271|
-</span></span><span style="display:flex;"><span>|    min|                 1|
-</span></span><span style="display:flex;"><span>|    max|              4808|
-</span></span><span style="display:flex;"><span>|-------|------------------|
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Number of Records with blank userID: 15700
-</span></span><span style="display:flex;"><span>Number of Users: 448
-</span></span><span style="display:flex;"><span>|------|-----|
-</span></span><span style="display:flex;"><span>|gender|count|
-</span></span><span style="display:flex;"><span>|------|-----|
-</span></span><span style="display:flex;"><span>|     F|  198|
-</span></span><span style="display:flex;"><span>|     M|  250|
-</span></span><span style="display:flex;"><span>|------|-----|
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>|--------------------|-----|
-</span></span><span style="display:flex;"><span>|              artist|count|
-</span></span><span style="display:flex;"><span>|--------------------|-----|
-</span></span><span style="display:flex;"><span>|       Kings Of Leon| 3497|
-</span></span><span style="display:flex;"><span>|            Coldplay| 3439|
-</span></span><span style="display:flex;"><span>|Florence | The Ma...| 2314|
-</span></span><span style="display:flex;"><span>|                Muse| 2194|
-</span></span><span style="display:flex;"><span>|       Dwight Yoakam| 2187|
-</span></span><span style="display:flex;"><span>|      The Black Keys| 2160|
-</span></span><span style="display:flex;"><span>|            BjÃÂ¶rk| 2150|
-</span></span><span style="display:flex;"><span>|       Justin Bieber| 2096|
-</span></span><span style="display:flex;"><span>|        Jack Johnson| 2049|
-</span></span><span style="display:flex;"><span>|           Radiohead| 1694|
-</span></span><span style="display:flex;"><span>|--------------------|-----|
-</span></span></code></pre></div><p>Each record shows the activity of 1 user at a specific time.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>[Row(artist=&#39;Martin Orford&#39;, auth=&#39;Logged In&#39;, firstName=&#39;Joseph&#39;, gender=&#39;M&#39;, itemInSession=20, lastName=&#39;Morales&#39;, length=597.55057, level=&#39;free&#39;, location=&#39;Corpus Christi, TX&#39;, method=&#39;PUT&#39;, page=&#39;NextSong&#39;, registration=1532063507000, sessionId=292, song=&#39;Grand Designs&#39;, status=200, ts=1538352011000, userAgent=&#39;&#34;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36&#34;&#39;, userId=&#39;293&#39;)]
-</span></span></code></pre></div>
+        
+         
+<h6>
+    <center><a href="/pybooks/Sparkify.html" target="_blank" style="display: inline-block;">View Fullscreen</a> |
+    <a href="https://github.com/anhhchu/Sparkify" target="_blank"  style="display: inline-block;">View Github</a></center>
+</h6>
+
+
+
+
+ <iframe src="/pybooks/Sparkify.html"
+style="height:15750px;width:100%;border:none;overflow:auto;" scrolling="yes"></iframe>
+
+
+  
+
       </div>
     </div>
     <div class="row">
@@ -206,8 +166,7 @@
             </div>
             <div class="content">
               <span class="small">Prev case</span>
-              <h5 class="title"><a class="text-dark"
-                  href="https://anhcodes.dev/portfolio/stock-prediction/">Python Stock Price Prediction</a></h5>
+              <h5 class="title"><a class="text-dark" href="https://anhcodes.dev/portfolio/stock-prediction/">Python Stock Price Prediction</a></h5>
             </div>
           </div>
           
@@ -215,16 +174,10 @@
             
             <ul class="unstyle-list big">
               <li>
-                <a href=" https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fanhcodes.dev%2fportfolio%2fpredict-churn%2f"><i
-                    class="fa fa-facebook-official btn-zoom"></i></a>
+                <a href="https://github.com/anhhchu" target="_blank"><i class="fa fa-github btn-zoom"></i></a>
               </li>
               <li>
-                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3a%2f%2fanhcodes.dev%2fportfolio%2fpredict-churn%2f"><i
-                    class="fa fa-linkedin-square btn-zoom"></i></a>
-              </li>
-              <li>
-                <a href="https://twitter.com/intent/tweet?&url=https%3a%2f%2fanhcodes.dev%2fportfolio%2fpredict-churn%2f"><i
-                    class="fa fa-twitter-square btn-zoom"></i></a>
+                <a href="https://www.linkedin.com/in/anhhchu/" target="_"><i class="fa fa-linkedin btn-zoom"></i></a>
               </li>
             </ul>
           </div>
@@ -233,7 +186,7 @@
             <div class=" content text-right">
               <span class="small">Next case</span>
               <h5 class="title">
-                <a class="text-dark" href="https://anhcodes.dev/portfolio/image-classifcation/">Flower Classifcation with Pytorch</a>
+                <a class="text-dark" href="https://anhcodes.dev/portfolio/flower-classifier/">Flower Classifcation with Pytorch</a>
               </h5>
             </div>
             <div class="icon ml-3">

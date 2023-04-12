@@ -2,8 +2,10 @@
 title: "Deploy Debezium and Kafka on AKS using Strimzi Operator"
 date: 2023-01-07 00:19:27
 author: Anh Chu
-featureImage: images/allpost/vertical-aksdbz.png
+featureImage: /images/single-blog/aksdbz.png
+#images/allpost/vertical-aksdbz.png
 postImage: /images/single-blog/aksdbz.png
+categories: data-engineering
 tags: [kafka, kubernetes, debezium, strimzi, change-data-capture, docker]
 ---
 
