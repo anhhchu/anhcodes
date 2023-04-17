@@ -1,17 +1,20 @@
 ---
 title: "How to recover lost files after a git reset --hard"
 date: 2022-12-27 11:30:20
-featureImage: images/single-blog/git-reset.png
+featureImage: images/single-blog/github-reset.png
 #images/allpost/git-reset.png
-postImage: images/single-blog/git-reset.png
+postImage: images/single-blog/github-reset.png
 categories: software-engineering
-tags: [tip, git]
+tags: [git]
 author: Anh Chu
 ---
 
 While working on a recent project, I accidentally committed some files. Instead of using `git reset --soft <prev-commit-id>` to unstage them, I used `git reset --hard HEAD` and all of my new changes gone with the wind. After panicking for a few minutes, I determined to learn how `git reset` works and how I can revert the damages. 
 
+
 ### 1. What is git reset (hard vs soft)
+
+{{< image image="images/single-blog/git-reset.png" width=500 >}}
 
 `git reset --hard` resets the current branch tip, and also deletes any changes in the working directory and staging area (although files under `git stash` will not be affected). It resets index entries to a specified commit, or the HEAD location. `git reset --hard` should be used with caution, since it can lead to losing work in your staging area and working directory.
 
@@ -44,38 +47,38 @@ After doing the `get reset --hard` to commit id 6122c04, the file test2 will be 
 On the contrary, `git reset --soft` revert your commit without removing your files from the working directory. After that you can unstage the files you don't want to commit
 
 ```shell
-$ git status
-On branch master
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-        test2.txt
+  $ git status
+  On branch master
+  Untracked files:
+    (use "git add <file>..." to include in what will be committed)
+          test2.txt
 
-$ git add test2.txt
-On branch master
-Changes to be committed:
-  (use "git restore --staged <file>..." to unstage)
-        new file:   test2.txt
+  $ git add test2.txt
+  On branch master
+  Changes to be committed:
+    (use "git restore --staged <file>..." to unstage)
+          new file:   test2.txt
 
-$ git commit -m "Add test2"
-[master 2d7949d] Add test2
- 1 file changed, 10 insertions(+)
- create mode 100644 test2.txt
+  $ git commit -m "Add test2"
+  [master 2d7949d] Add test2
+  1 file changed, 10 insertions(+)
+  create mode 100644 test2.txt
 
-$ git reset --soft 6122c04
+  $ git reset --soft 6122c04
 
-$ git status
-On branch master
-Changes to be committed:
-  (use "git restore --staged <file>..." to unstage)
-        new file:   test2.txt
+  $ git status
+  On branch master
+  Changes to be committed:
+    (use "git restore --staged <file>..." to unstage)
+          new file:   test2.txt
 
-$ git restore --staged test2.txt 
+  $ git restore --staged test2.txt 
 
-$ git status
-On branch master
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-        test2.txt
+  $ git status
+  On branch master
+  Untracked files:
+    (use "git add <file>..." to include in what will be committed)
+          test2.txt
 
 ```
 
@@ -117,16 +120,5 @@ If you do a `git reset --hard` after `git add` but before `git commit`
 If you do a `git reset --hard` after `git add` and `git commit`, your new changes before staging will still be in your directory. 
 
 
-### What does chatGPT say?
-
-By the way, I asked chatGPT "How to recover lost files after git reset --hard HEAD", and this is what it suggested
-
->*"It is generally not possible to recover lost files after a git reset --hard HEAD command. This command discards all commits, modifications, and additions made since the last commit, and resets the current branch to match the state of the repository at the commit specified by HEAD. This means that any changes `that have not been committed to the repository will be lost.*
-
->*If you made local changes to your repository and have not yet pushed them to a remote repository, you may be able to recover the lost files by using a tool like git reflog, which can show a log of the recent actions taken in the repository. You may be able to find a reference to a commit that includes the lost files, and use git cherry-pick to apply the changes from that commit to the current branch. However, this will only work if the lost files were staged or committed before the git reset --hard HEAD command was run.*
-
->*If you have pushed the lost commits to a remote repository, it may be possible to recover the lost files by cloning the repository from the remote and cherry-picking the lost commits. However, this will only work if the remote repository has not been pruned or garbage collected.*
-
->*In general, it is important to regularly commit your changes to the repository and push them to a remote repository as a backup, to avoid losing work due to actions like git reset --hard HEAD. It is also a good idea to regularly create backups of your work outside of the repository."*
 
 

@@ -6,6 +6,7 @@ postImage: images/single-blog/microsoft.jpg
 categories: life
 tags: [career, life]
 author: Anh Chu
+draft: true
 ---
 
 2022 was kind to me with exciting changes and opportunities. Take a look at what I accomplished last year: 

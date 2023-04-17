@@ -5,7 +5,7 @@ featureImage: images/single-blog/sql-pool.jpeg
 #images/allpost/sql-pool-vertical.jpeg
 postImage: images/single-blog/sql-pool.jpeg
 categories: data-lakehouse
-tags: [azure-synapse-analytics, big-query,redshift,data-lakehouse]
+tags: [azure-synapse-analytics, big-query,redshift]
 author: Anh Chu
 draft: true
 ---

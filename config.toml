@@ -56,7 +56,8 @@ footerLogo = "images/site-navigation/logonew.png"
 # We're using formspree.io for form handling, paste your formspree url below
 getformURL  = "https://getform.io/f/a5b7b431-b84e-4ac4-b065-d82f4ae85ee9"
 googleAnalytics = "G-9145PR72NN"
-logo = "images/site-navigation/logonew.png"
+logo = "images/favicon.png"
+
 
 [params.address]
 address = "Seattle, Washington"

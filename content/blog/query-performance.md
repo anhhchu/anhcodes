@@ -5,7 +5,7 @@ featureImage: /images/single-blog/query-performance.jpeg
 #/images/allpost/query-performance.jpeg
 postImage: /images/single-blog/query-performance.jpeg
 categories: data-lakehouse
-tags: [azure-synapse-analytics,data-lakehouse,tip]
+tags: [azure-synapse-analytics]
 author: Anh Chu
 ---
 

@@ -1,9 +1,9 @@
 ---
 title: "Data Lakehouse vs Data Lake vs Data Warehouse: Choosing the Right Solution"
 date: 2023-04-11 16:26:45
-featureImage: images/single-blog/lakehouse.jpg
+featureImage: /images/single-blog/data-lakehouse.png
 #images/allpost/lakehouse.webp
-postImage: images/single-blog/lakehouse.jpg
+postImage: /images/single-blog/data-lakehouse.png
 categories: data-lakehouse
 tags: [data-warehouse, data-lakehouse, data-lake]
 author: Anh Chu

@@ -11,13 +11,13 @@
     <loc>https://anhcodes.dev/categories/</loc>
     <lastmod>2023-04-11T23:20:57+00:00</lastmod>
   </url><url>
-    <loc>https://anhcodes.dev/tags/data-lakehouse/</loc>
-    <lastmod>2023-04-11T23:20:57+00:00</lastmod>
-  </url><url>
     <loc>https://anhcodes.dev/blog/</loc>
     <lastmod>2023-04-11T23:20:57+00:00</lastmod>
   </url><url>
     <loc>https://anhcodes.dev/blog/scale-spark/</loc>
+    <lastmod>2023-04-11T23:20:57+00:00</lastmod>
+  </url><url>
+    <loc>https://anhcodes.dev/tags/spark/</loc>
     <lastmod>2023-04-11T23:20:57+00:00</lastmod>
   </url><url>
     <loc>https://anhcodes.dev/tags/</loc>
@@ -36,6 +36,9 @@
     <lastmod>2023-04-11T16:26:45+00:00</lastmod>
   </url><url>
     <loc>https://anhcodes.dev/tags/data-lake/</loc>
+    <lastmod>2023-04-11T16:26:45+00:00</lastmod>
+  </url><url>
+    <loc>https://anhcodes.dev/tags/data-lakehouse/</loc>
     <lastmod>2023-04-11T16:26:45+00:00</lastmod>
   </url><url>
     <loc>https://anhcodes.dev/tags/data-warehouse/</loc>
@@ -65,18 +68,6 @@
     <loc>https://anhcodes.dev/tags/strimzi/</loc>
     <lastmod>2023-01-07T00:19:27+00:00</lastmod>
   </url><url>
-    <loc>https://anhcodes.dev/tags/career/</loc>
-    <lastmod>2023-01-01T18:49:15+00:00</lastmod>
-  </url><url>
-    <loc>https://anhcodes.dev/blog/goodbye-2022/</loc>
-    <lastmod>2023-01-01T18:49:15+00:00</lastmod>
-  </url><url>
-    <loc>https://anhcodes.dev/tags/life/</loc>
-    <lastmod>2023-01-01T18:49:15+00:00</lastmod>
-  </url><url>
-    <loc>https://anhcodes.dev/categories/life/</loc>
-    <lastmod>2023-01-01T18:49:15+00:00</lastmod>
-  </url><url>
     <loc>https://anhcodes.dev/tags/git/</loc>
     <lastmod>2022-12-27T11:30:20+00:00</lastmod>
   </url><url>
@@ -84,9 +75,6 @@
     <lastmod>2022-12-27T11:30:20+00:00</lastmod>
   </url><url>
     <loc>https://anhcodes.dev/categories/software-engineering/</loc>
-    <lastmod>2022-12-27T11:30:20+00:00</lastmod>
-  </url><url>
-    <loc>https://anhcodes.dev/tags/tip/</loc>
     <lastmod>2022-12-27T11:30:20+00:00</lastmod>
   </url><url>
     <loc>https://anhcodes.dev/tags/azure-synapse-analytics/</loc>

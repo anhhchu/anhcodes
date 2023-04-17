@@ -4,7 +4,7 @@ date: 2023-04-11 23:20:57
 featureImage: images/single-blog/spark.jpeg
 postImage: images/single-blog/spark.jpeg
 categories: big-data
-tags: [data-lakehouse]
+tags: [spark]
 author: Anh Chu
 ---
 
