@@ -32,9 +32,6 @@
     <loc>https://anhcodes.dev/blog/dbfs/</loc>
     <lastmod>2023-04-11T22:13:33+00:00</lastmod>
   </url><url>
-    <loc>https://anhcodes.dev/blog/data-lakehouse/</loc>
-    <lastmod>2023-04-11T16:26:45+00:00</lastmod>
-  </url><url>
     <loc>https://anhcodes.dev/tags/data-lake/</loc>
     <lastmod>2023-04-11T16:26:45+00:00</lastmod>
   </url><url>
@@ -42,6 +39,9 @@
     <lastmod>2023-04-11T16:26:45+00:00</lastmod>
   </url><url>
     <loc>https://anhcodes.dev/tags/data-warehouse/</loc>
+    <lastmod>2023-04-11T16:26:45+00:00</lastmod>
+  </url><url>
+    <loc>https://anhcodes.dev/blog/data-lakehouse/</loc>
     <lastmod>2023-04-11T16:26:45+00:00</lastmod>
   </url><url>
     <loc>https://anhcodes.dev/tags/change-data-capture/</loc>
