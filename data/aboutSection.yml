@@ -12,4 +12,6 @@ content: >
 # button2Name: Resume
 # button1Target: skill
 # button2Target: resume
-image: images/about/chicago.png
+# image: images/about/chicago.png
+image: images/arts/cyberfunk-trans.png
+# image: images/about/hero.png

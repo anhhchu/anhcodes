@@ -1,6 +1,6 @@
 baseURL = "https://anhcodes.dev/"
 languageCode = "en-us"
-paginate = 12
+paginate = 27
 theme = "portio"
 title = "anhcodes"
 # Main Menu
