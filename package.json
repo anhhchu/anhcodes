@@ -6,7 +6,7 @@
   "scripts": {
     "start": "hugo server",
     "algolia": "atomic-algolia",
-    "build:prod": "hugo -t portio && npm run algolia"
+    "build:prod": "hugo -t portio"
   },
   "repository": {
     "type": "git",
