@@ -14,7 +14,7 @@
       
       <guid>https://anhcodes.dev/blog/scale-spark/</guid>
       <description>If you&amp;rsquo;re working with big data, you&amp;rsquo;ve probably heard of Spark. Spark is a distributed big data processing engine that provides in-memory storage for intermediate computations, making it much faster than Hadoop MapReduce. In this post, we&amp;rsquo;ll cover how to scale and tune Spark effectively to make the most of its capabilities.
-What is Spark? Spark is a distributed big data processing engine that uses the resilient distributed dataset (RDD) data structure with data abstractions such as DataFrames and Datasets.</description>
+1. What is Spark? Spark is a distributed big data processing engine that uses the resilient distributed dataset (RDD) data structure with data abstractions such as DataFrames and Datasets.</description>
     </item>
     
     <item>
@@ -23,7 +23,7 @@ What is Spark? Spark is a distributed big data processing engine that uses the r
       <pubDate>Tue, 11 Apr 2023 22:13:33 +0000</pubDate>
       
       <guid>https://anhcodes.dev/blog/dbfs/</guid>
-      <description> View Fullscreen | View Github </description>
+      <description> View Fullscreen 🔗 View on Github </description>
     </item>
     
     <item>
@@ -89,7 +89,7 @@ Dedicated SQL Pool Architecture Choosing Distribution: The data is sharded into 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://anhcodes.dev/portfolio/flower-classifier/</guid>
-      <description> View Fullscreen | View Github </description>
+      <description> View Fullscreen 🔗 View on Github </description>
     </item>
     
     <item>
@@ -98,7 +98,7 @@ Dedicated SQL Pool Architecture Choosing Distribution: The data is sharded into 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://anhcodes.dev/portfolio/predict-churn/</guid>
-      <description> View Fullscreen | View Github </description>
+      <description> View Fullscreen 🔗 View on Github </description>
     </item>
     
     <item>
@@ -107,7 +107,7 @@ Dedicated SQL Pool Architecture Choosing Distribution: The data is sharded into 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://anhcodes.dev/portfolio/stock-prediction/</guid>
-      <description> View Fullscreen | View Github </description>
+      <description> View Fullscreen 🔗 View on Github </description>
     </item>
     
   </channel>
