@@ -24,17 +24,15 @@ skill:
     percent: 90
   - title: Analytics & Data Viz
     percent: 80
-  - title: Kafka/Event Hub/Stream Analytics
+  - title: Spark Structured Streaming
     percent: 70
   - title: Change Data Capture/Debezium
     percent: 70
-  - title: Airflow 
-    percent: 50
   - title: Machine Learning
     percent: 50
-  - title: ElasticSearch
-    percent: 40
   - title: Docker & Kubernetes
     percent: 40
   - title: Terraform
+    percent: 40
+  - title: Web Development (Html/CSS/JS/React)
     percent: 40

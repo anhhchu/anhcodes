@@ -13,15 +13,20 @@ tab2Target: education
 
 education:
   - content: >
+      #### Sr Specialist Solutions Engineer | Databricks
+
+      Provided technical leadership to guide strategic customers in achieving successful implementations of enterprise data modernization projects from architectural design to data engineering to model deployment using Data Lakehouse, Big Data Streaming, Data Engineering and cloud data platform products
+    time: 2023-current
+  - content: >
       #### Software Engineer | Microsoft
 
-      Build and manage back-end data flatform (Data Lakehouse) on Azure and AWS for Flip, a video-powered social learning platform owned by Microsoft.
+      Built data ingestion pipeline, and managed back-end data flatform (Data Lakehouse) on Azure and AWS for a video-powered social learning platform owned by Microsoft.
 
     time: 2022-2023
   - content: >
       #### Software Engineer | Walmart Global Tech
 
-      Build and maintain back-end data solution for an end-to-end analytical Supply Chain web application to track inventory and transportation from Suppliers to Stores for international markets
+      Built and maintained back-end data solution for an end-to-end analytical Supply Chain web application to track inventory and transportation from Suppliers to Stores for international markets
     time: 2020-2022
   - content: >
       #### Tableau Systems Analyst | NTT Data Services

@@ -2,7 +2,7 @@
   <defs>
     <linearGradient id="myGradient" gradientTransform="rotate(90)">
       <stop offset="0%" stop-color="#fff" />
-      <stop offset="100%" stop-color="#fff" />
+      <stop offset="100%" stop-color="#5E3E7B" />
     </linearGradient>
   </defs>
   <path id="_2960349" data-name="2960349" d="M590,0H30A30,30,0,0,0,0,30V800a30,30,0,0,0,30,30l560-60a30,30,0,0,0,30-30V30A30,30,0,0,0,590,0Z" fill="url(#myGradient)" />
