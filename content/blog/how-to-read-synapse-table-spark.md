@@ -18,7 +18,7 @@ To create Synapse Spark Pool in Azure Synapse, you can follow this [documentatio
 
 In Synapse Workspace, you can right-click the table in Dedicated SQL Pool database, and pick **Load to Dataframe** 
 
-{{< image image="/images/screenshots/load-to-df.png" width=500 >}}
+{{< image image="/images/inpost/load-to-df.png" width=500 >}}
 
 The notebook will automatically open up with 1 default code:
 
@@ -29,7 +29,7 @@ val df = spark.read.synapsesql("<sql-pool-database>.<schema_name>.<table_name>")
 {{< /highlight >}}
 
 
-{{< image image="images/screenshots/scala-solution.png"  width="500" >}}
+{{< image image="images/inpost/scala-solution.png"  width="500" >}}
 
 #### Option 2: Use Python
 
@@ -50,6 +50,6 @@ df = spark.read.option(Constants.SERVER, synapse_server) \
 
 {{< /highlight >}}
 
-{{< image image="images/screenshots/python.png" width=500 >}}
+{{< image image="images/inpost/python.png" width=500 >}}
 
 

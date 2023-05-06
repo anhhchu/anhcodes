@@ -164,18 +164,6 @@
   </div>
   <div class="animate-shape">
     <img src=https://anhcodes.dev/images/skill/skill-background-shape.svg alt="">
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 600">
-      <defs>
-        <linearGradient id="d" x1="0.929" y1="0.111" x2="0.263" y2="0.935" gradientUnits="objectBoundingBox">
-          <stop offset="0" stop-color="#e5c9d7" />
-          <stop offset="1" stop-color="#e5c9d7" stop-opacity="0" />
-        </linearGradient>
-      </defs>
-      <g data-name="blob-shape (3)">
-        <path class="blob" fill="url(#d)"
-          d="M455.4 151.1c43.1 36.7 73.4 92.8 60.8 136.3-12.7 43.5-68.1 74.4-111.3 119.4-43.1 45-74 104.1-109.8 109-35.9 5-76.7-44.2-111.8-89.2-35.2-45-64.7-85.8-70.8-132.6-6-46.8 11.6-99.6 46.7-136.3 35.2-36.6 88-57.2 142.4-58.8 54.5-1.7 110.6 15.6 153.8 52.2z" />
-      </g>
-    </svg>
   </div>
   <div class="animate-pattern">
     <img src=https://anhcodes.dev/images/service/background-pattern.svg alt="background-shape">
@@ -185,6 +173,7 @@
       <div class="col-lg-12">
         <div class="singleBlog__feature">
           <img src=https://anhcodes.dev/images/single-blog/aksdbz.png alt="feature-image">
+          <center><figcaption style="font-size: 10px; margin-top: 20px;">  </figcaption></center>
         </div>
       </div>
     </div>
@@ -195,41 +184,57 @@
           
 
           <p>This tutorial follows Debezium official documentation <a href="https://debezium.io/documentation/reference/stable/operations/kubernetes.html">Deploying Debezium on Kubernetes</a>, but modified for Azure Kubernetes Service and Azure Container Registry.</p>
-<h3 id="table-of-content">Table of Content</h3>
-<p><a href="#1-prerequisites">1. Prerequisites</a></p>
-<p><a href="#2-deploy-strimzi-operator">2. Deploy strimzi operator</a></p>
-<p><a href="#3-create-secrets-and-roles">3. Create secrets and roles</a></p>
-<p><a href="#4-deploy-kafka-cluster">4. Deploy Kafka cluster</a></p>
-<p><a href="#5-deploy-the-database-mysql">5. Deploy mysql database in Kubernetes</a></p>
-<p><a href="#6-deploy-kafka-connect-cluster">6. Deploy Kafka Connect Cluster</a></p>
-<ul>
-<li><a href="#step-1-create-a-secret-for-your-container-registry-in-the-same-k8s-namespace">Step 1: Create secret for container registry</a></li>
-<li><a href="#step-2-modify-the-kafkaconnect-manifest-yaml-to-build-and-push-image-to-container-registry">Step 2: Build and push Kafka connecti image with debezium connector plugins to container registry</a></li>
-<li><a href="#step-3-deploy-kafka-connect-resource">Step 3: Deploy kafka connect cluster</a></li>
-<li><a href="#step-4-validate-the-kafka-connect-cluster">Step 4: Validate kafka connect cluster</a></li>
-</ul>
-<p><a href="#7-deploy-debezium-connector">7. Deploy Debezium Connetor</a></p>
-<p><a href="#8-verify-deployment">8. Verify Deployment</a></p>
-<p><a href="#reference">Reference</a></p>
-<h3 id="1-prerequisites">1. Prerequisites</h3>
+<h2 id="table-of-content">Table of Content</h2>
+<div class="toc">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#table-of-content">Table of Content</a></li>
+    <li><a href="#1-prerequisites">1. Prerequisites</a>
+      <ul>
+        <li><a href="#azure-cli">Azure CLI</a></li>
+        <li><a href="#azure-kubernetes-cluster">Azure Kubernetes Cluster</a></li>
+        <li><a href="#set-up-kubectl-in-local">Set up kubectl in local</a></li>
+        <li><a href="#interact-with-your-aks-cluster-in-your-terminal">Interact with your AKS cluster in your terminal</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-deploy-strimzi-operator">2. Deploy strimzi operator</a></li>
+    <li><a href="#3-create-secrets-and-roles">3. Create secrets and roles</a></li>
+    <li><a href="#4-deploy-kafka-cluster">4. Deploy kafka cluster</a></li>
+    <li><a href="#5-deploy-the-database-mysql">5. Deploy the database (mysql)</a></li>
+    <li><a href="#6-deploy-kafka-connect-cluster">6. Deploy Kafka Connect Cluster</a>
+      <ul>
+        <li><a href="#step-1-create-a-secret-for-your-container-registry-in-the-same-k8s-namespace">Step 1: Create a secret for your container registry in the same k8s namespace</a></li>
+        <li><a href="#step-2-modify-the-kafkaconnect-manifest-yaml-to-build-and-push-image-to-container-registry">Step 2: Modify the KafkaConnect Manifest yaml to build and push image to Container Registry.</a></li>
+        <li><a href="#step-3-deploy-kafka-connect-resource">Step 3: Deploy kafka-connect resource</a></li>
+        <li><a href="#step-4-validate-the-kafka-connect-cluster">Step 4: Validate the kafka connect cluster</a></li>
+      </ul>
+    </li>
+    <li><a href="#7-deploy-debezium-connector">7. Deploy Debezium Connector</a></li>
+    <li><a href="#8-verify-deployment">8. Verify deployment</a></li>
+    <li><a href="#reference">Reference</a></li>
+  </ul>
+</nav>
+</div>
+  
+<h2 id="1-prerequisites">1. Prerequisites</h2>
 <p>You need an Azure account, Azure subscription, and Azure resource group before getting started. You also need to have some understanding of CLI, Docker, Kafka, Debezium, and Kubernetes</p>
-<h4 id="azure-cli">Azure CLI</h4>
+<h3 id="azure-cli">Azure CLI</h3>
 <p>If you haven&rsquo;t set up your Azure CLI environment, follow this <a href="https://learn.microsoft.com/en-us/cli/azure/manage-azure-subscriptions-azure-cli">documentation</a> to set it up. Remember to set the subscription and resource group that you will use to create AKS cluster as default</p>
-<h4 id="azure-kubernetes-cluster">Azure Kubernetes Cluster</h4>
+<h3 id="azure-kubernetes-cluster">Azure Kubernetes Cluster</h3>
 <p>Follow this document to get your Kubernetes cluster ready on AKS: <a href="https://learn.microsoft.com/en-us/azure/aks/learn/quick-kubernetes-deploy-portal?tabs=azure-cli#create-an-aks-cluster">Create an AKS Cluster</a></p>
 <p>After your aks cluster is created, you should see it on Azure Portal as below. For demo purpose, I created an AKS cluster called <code>anhaks</code> in <code>anhtest</code> resource group</p>
 <div class="image">
     <p>
-    <img src="https://anhcodes.dev/images/screenshots/aks.png"  alt="blog-img" width="500 " height="">
+    <center><img src="https://anhcodes.dev/images/inpost/aks.png"  alt="blog-img" width="500 " height=""></center>
     <style>@media screen and (min-width: 300px) and (max-width: 445px) { #slide-window { max-width: 350px; } }</style>
     <p>
 </div>
-<h4 id="set-up-kubectl-in-local">Set up kubectl in local</h4>
+<h3 id="set-up-kubectl-in-local">Set up kubectl in local</h3>
 <p>You should have <a href="https://kubernetes.io/docs/tasks/tools/">kubectl installed</a> on your local. If you are using .zshrc, you can also set up autocomplete for kubectl as below. In case you are using <code>ohmyzsh</code> like I do, add  <code>kubectl</code> to your plugins array in your ~/.zshrc file <code>plugins=(... kubectl)</code> (Refer <a href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/kubectl">here</a>)</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>  source &lt;<span style="color:#ffb8d1">(</span>kubectl completion zsh<span style="color:#ffb8d1">)</span>  <span style="color:#b0bec5"># set up autocomplete in zsh into the current shell`</span>
 </span></span><span style="display:flex;"><span>  echo <span style="color:#1bc5e0">&#39;[[ $commands[kubectl] ]] &amp;&amp; source &lt;(kubectl completion zsh)&#39;</span> &gt;&gt; ~/.zshrc
 </span></span></code></pre></div><p>After autocomplete is set up successfully, you should be able to use <code>k</code> instead of <code>kubectl</code> for all of your kubectl command</p>
-<h4 id="interact-with-your-aks-cluster-in-your-terminal">Interact with your AKS cluster in your terminal</h4>
+<h3 id="interact-with-your-aks-cluster-in-your-terminal">Interact with your AKS cluster in your terminal</h3>
 <p>Run below script to set up your aks cluster in your local</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>  $az aks get-credentials --resource-group &lt;myResourceGroup&gt; --name &lt;myAKSCluster&gt;
 </span></span></code></pre></div><p>If you use Mac, a file <code>~/.kube/config</code> will be created with 3 things related to your cluster: cluster, context, and user. You can view tracked clusters and contexts in this file <code>~/.kube/config</code> or run below commands. You should see your newly-created cluster in this kube/config file</p>
@@ -255,7 +260,7 @@
 </span></span><span style="display:flex;"><span>  $kubectl config unset users.clusterUser_anh-test_anh-test-aks
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  $kubectl config unset clusters.anh-test-aks  
-</span></span></code></pre></div><h3 id="2-deploy-strimzi-operator">2. Deploy strimzi operator</h3>
+</span></span></code></pre></div><h2 id="2-deploy-strimzi-operator">2. Deploy strimzi operator</h2>
 <p>First deploy <strong>Operator lifecycle manager</strong> as presequisite to deploy strimzi operator. We need OLM because the Operator Lifecycle Manager (OLM) extends Kubernetes to provide a declarative way to install, manage, and upgrade Operators on a cluster</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>  $curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.20.0/install.sh | bash -s v0.20.0
 </span></span></code></pre></div><p>2 namespaces got created: olm and operators. <code>operators</code> namespace will be empty until we install strimzi</p>
@@ -303,7 +308,7 @@
 </ul>
 <hr>
 <p><strong>You can find all kubernetes manifest yml files used in below sections at this <a href="https://github.com/anhhchu/debezium-aks">Github repo</a></strong></p>
-<h3 id="3-create-secrets-and-roles">3. Create secrets and roles</h3>
+<h2 id="3-create-secrets-and-roles">3. Create secrets and roles</h2>
 <p>These secrets and roles helps Kafka Connector connects to the database. Create them in debezium-example namespace. Run below scripts at the directory of the yml files:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>  $kubectl create -n debezium-example -f debezium-secret.yml
 </span></span></code></pre></div><ul>
@@ -322,7 +327,7 @@
 <p><strong>Note:</strong> If you look in 🔗<a href="https://github.com/anhhchu/debezium-aks/blob/main/debezium-example/debezium-role-binding.yml">debezium-role-binding.yml</a>  file, you will see that the subjects.name of the Service Account is <code>debezium-connect-cluster-connect</code>. The service account will be created by Strimzi once we deploy Kafka Connect. The name of the service account take the form <code>$KafkaConnectName-connect</code>.  Later on, we will the create Kafka Connect cluster named <code>debezium-connect-cluster</code> and therefore we used <code>debezium-connect-cluster-connect</code> here as a subjects.name.</p>
 </blockquote>
 <p>At this point, we only created secrets and roles, the debezium-example namespace doesn&rsquo;t have any service, deployment or pod yet.</p>
-<h3 id="4-deploy-kafka-cluster">4. Deploy kafka cluster</h3>
+<h2 id="4-deploy-kafka-cluster">4. Deploy kafka cluster</h2>
 <p>Create <code>debezium-cluster</code> kafka cluster with <a href="https://github.com/anhhchu/debezium-aks/blob/main/debezium-example/kafka.yml">kafka.yml</a>🔗</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>  $kubectl create -n debezium-example -f kafka.yml
 </span></span><span style="display:flex;"><span>&gt; kafka.kafka.strimzi.io/debezium-cluster created
@@ -352,7 +357,7 @@
 </span></span><span style="display:flex;"><span>  debezium-cluster-entity-operator-5cc76b7dfb-njt62   3/3     Running     <span style="color:#c5a3ff">0</span>          20h
 </span></span><span style="display:flex;"><span>  debezium-cluster-kafka-0                            1/1     Running     <span style="color:#c5a3ff">0</span>          20h
 </span></span><span style="display:flex;"><span>  debezium-cluster-zookeeper-0                        1/1     Running     <span style="color:#c5a3ff">0</span>          20h
-</span></span></code></pre></div><h3 id="5-deploy-the-database-mysql">5. Deploy the database (mysql)</h3>
+</span></span></code></pre></div><h2 id="5-deploy-the-database-mysql">5. Deploy the database (mysql)</h2>
 <p>Create mysql service and deployment</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>  $kubectl create -n debezium-example -f mysql.yml
 </span></span><span style="display:flex;"><span>
@@ -361,8 +366,8 @@
 </span></span><span style="display:flex;"><span>  $kubectl get service
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  $kubectl get deployment
-</span></span></code></pre></div><h3 id="6-deploy-kafka-connect-cluster">6. Deploy Kafka Connect Cluster</h3>
-<h4 id="step-1-create-a-secret-for-your-container-registry-in-the-same-k8s-namespace">Step 1: Create a secret for your container registry in the same k8s namespace</h4>
+</span></span></code></pre></div><h2 id="6-deploy-kafka-connect-cluster">6. Deploy Kafka Connect Cluster</h2>
+<h3 id="step-1-create-a-secret-for-your-container-registry-in-the-same-k8s-namespace">Step 1: Create a secret for your container registry in the same k8s namespace</h3>
 <p>If you use docker container registry, use your docker username and password to create a k8s secret. For example, I created <code>anhdockercr-secret</code> below:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>  $kubectl create secret docker-registry anhdockercr-secret --docker-server<span style="color:#ffb8d1">=</span>docker.io --docker-username<span style="color:#ffb8d1">=</span>anhhoangchu --docker-password<span style="color:#ffb8d1">=</span>&lt;password&gt;
 </span></span><span style="display:flex;"><span>
@@ -386,7 +391,7 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#b0bec5"># verify</span>
 </span></span><span style="display:flex;"><span>  $kubectl get secret anhcr-secret --output<span style="color:#ffb8d1">=</span>yaml &gt; anhcr-secret.yml    
-</span></span></code></pre></div><h4 id="step-2-modify-the-kafkaconnect-manifest-yaml-to-build-and-push-image-to-container-registry">Step 2: Modify the KafkaConnect Manifest yaml to build and push image to Container Registry.</h4>
+</span></span></code></pre></div><h3 id="step-2-modify-the-kafkaconnect-manifest-yaml-to-build-and-push-image-to-container-registry">Step 2: Modify the KafkaConnect Manifest yaml to build and push image to Container Registry.</h3>
 <p><strong>Option 1: <a href="https://strimzi.io/docs/operators/latest/deploying.html#creating-new-image-using-kafka-connect-build-str">Creating a new container image automatically using Strimzi</a></strong> 🔗</p>
 <p>Update the <code>build</code> section in your kafka-connect-build.yml file. Rember to add the secret you created in Step 1 as <code>pushSecret</code></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#a8757b">  </span><span style="color:#ffb8d1">build</span>:<span style="color:#a8757b">
@@ -435,11 +440,11 @@
 </span></span></code></pre></div><p>After pushing the image to ACR, you should be able to see your image on Azure Portal</p>
 <div class="image">
     <p>
-    <img src="https://anhcodes.dev/images/screenshots/debezium-connect-cluster.png"  alt="blog-img" width="500 " height="">
+    <center><img src="https://anhcodes.dev/images/inpost/debezium-connect-cluster.png"  alt="blog-img" width="500 " height=""></center>
     <style>@media screen and (min-width: 300px) and (max-width: 445px) { #slide-window { max-width: 350px; } }</style>
     <p>
 </div>
-<h4 id="step-3-deploy-kafka-connect-resource">Step 3: Deploy kafka-connect resource</h4>
+<h3 id="step-3-deploy-kafka-connect-resource">Step 3: Deploy kafka-connect resource</h3>
 <p>Use <a href="https://github.com/anhhchu/debezium-aks/blob/main/debezium-example/kafka-connect-build.yml">kafka-connect-build.yml</a> file if you choose Option 1 in Step 2.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>  $kubectl create -n debezium-example -f kafka-connect-build.yml
 </span></span></code></pre></div><p><strong>OR</strong> Use <a href="https://github.com/anhhchu/debezium-aks/blob/main/debezium-example/kafka-connect.yml">kafka-connect.yml</a> file if you choose Option 2 in Step 2</p>
@@ -449,7 +454,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span>...<span style="color:#a8757b">
 </span></span></span><span style="display:flex;"><span><span style="color:#a8757b">    </span><span style="color:#ffb8d1">image</span>:<span style="color:#a8757b"> </span><span style="color:#ae81ff">&lt;your-container-registry&gt;/&lt;your-image:tag&gt;</span><span style="color:#a8757b">
 </span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span>...<span style="color:#a8757b">
-</span></span></span></code></pre></div><h4 id="step-4-validate-the-kafka-connect-cluster">Step 4: Validate the kafka connect cluster</h4>
+</span></span></span></code></pre></div><h3 id="step-4-validate-the-kafka-connect-cluster">Step 4: Validate the kafka connect cluster</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>  $kubectl get kafkaconnect
 </span></span><span style="display:flex;"><span>NAME                       DESIRED REPLICAS   READY
 </span></span><span style="display:flex;"><span>debezium-connect-cluster   <span style="color:#c5a3ff">1</span>                  True
@@ -482,13 +487,13 @@
 If the kafka connect cluster is not ready, and NO service/deployment/pod are created for this resource, we will have to delete the resouces and try again</p>
 <p>To delete all resources relating to KafkaConnect (debezium-connect-cluster), you need to delete the kafkaconnect custom resource</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>  $kubectl delete kafkaconnect debezium-connect-cluster
-</span></span></code></pre></div><h3 id="7-deploy-debezium-connector">7. Deploy Debezium Connector</h3>
+</span></span></code></pre></div><h2 id="7-deploy-debezium-connector">7. Deploy Debezium Connector</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>  $kubectl create -f debezium-connector-mysql.yml
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  $kubectl get kafkaconnector 
 </span></span><span style="display:flex;"><span>NAME                       CLUSTER                    CONNECTOR CLASS                              MAX TASKS   READY
 </span></span><span style="display:flex;"><span>debezium-connector-mysql   debezium-connect-cluster   io.debezium.connector.mysql.MySqlConnector   <span style="color:#c5a3ff">1</span>           True
-</span></span></code></pre></div><h3 id="8-verify-deployment">8. Verify deployment</h3>
+</span></span></code></pre></div><h2 id="8-verify-deployment">8. Verify deployment</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>  $kubectl run -n debezium-example -it --rm --image<span style="color:#ffb8d1">=</span>quay.io/debezium/tooling:1.2  --restart<span style="color:#ffb8d1">=</span>Never watcher -- kcat -b debezium-cluster-kafka-bootstrap:9092 -C -o beginning -t mysql.inventory.customers
 </span></span></code></pre></div><p>The above actually comprises of 2 commands:</p>
 <ul>
@@ -538,7 +543,7 @@ If the kafka connect cluster is not ready, and NO service/deployment/pod are cre
 </span></span><span style="display:flex;"><span>  ...
 </span></span></code></pre></div><p>You can also inspect kafka topics with below command. View all the topics that were created for this kafka cluster <a href="https://github.com/anhhchu/debezium-aks/blob/main/debezium-example/kafka-topics.txt">here</a></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>  $kubectl get kt &gt; kafka-topics.txt
-</span></span></code></pre></div><h3 id="reference">Reference</h3>
+</span></span></code></pre></div><h2 id="reference">Reference</h2>
 <ul>
 <li><a href="https://strimzi.io/blog/2021/03/29/connector-build/">https://strimzi.io/blog/2021/03/29/connector-build/</a></li>
 <li><a href="https://strimzi.io/docs/operators/latest/configuring.html#type-Build-reference">https://strimzi.io/docs/operators/latest/configuring.html#type-Build-reference</a></li>

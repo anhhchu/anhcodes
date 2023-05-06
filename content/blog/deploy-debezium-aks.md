@@ -11,47 +11,26 @@ tags: [kafka, kubernetes, debezium, strimzi, change-data-capture, docker]
 
 This tutorial follows Debezium official documentation [Deploying Debezium on Kubernetes](https://debezium.io/documentation/reference/stable/operations/kubernetes.html), but modified for Azure Kubernetes Service and Azure Container Registry.
 
-### Table of Content
+## Table of Content
 
-[1. Prerequisites](#1-prerequisites)
+{{< table_of_contents >}}
 
-[2. Deploy strimzi operator](#2-deploy-strimzi-operator)
-
-[3. Create secrets and roles](#3-create-secrets-and-roles)
-
-[4. Deploy Kafka cluster](#4-deploy-kafka-cluster)
-
-[5. Deploy mysql database in Kubernetes](#5-deploy-the-database-mysql)
-
-[6. Deploy Kafka Connect Cluster](#6-deploy-kafka-connect-cluster)
-
-  * [Step 1: Create secret for container registry](#step-1-create-a-secret-for-your-container-registry-in-the-same-k8s-namespace)
-  * [Step 2: Build and push Kafka connecti image with debezium connector plugins to container registry](#step-2-modify-the-kafkaconnect-manifest-yaml-to-build-and-push-image-to-container-registry)
-  * [Step 3: Deploy kafka connect cluster](#step-3-deploy-kafka-connect-resource)
-  * [Step 4: Validate kafka connect cluster](#step-4-validate-the-kafka-connect-cluster)
-
-[7. Deploy Debezium Connetor](#7-deploy-debezium-connector)
-
-[8. Verify Deployment](#8-verify-deployment)
-
-[Reference](#reference)
-
-### 1. Prerequisites
+## 1. Prerequisites
 
 You need an Azure account, Azure subscription, and Azure resource group before getting started. You also need to have some understanding of CLI, Docker, Kafka, Debezium, and Kubernetes
 
-#### Azure CLI
+### Azure CLI
 If you haven't set up your Azure CLI environment, follow this [documentation](https://learn.microsoft.com/en-us/cli/azure/manage-azure-subscriptions-azure-cli) to set it up. Remember to set the subscription and resource group that you will use to create AKS cluster as default
 
-#### Azure Kubernetes Cluster
+### Azure Kubernetes Cluster
 Follow this document to get your Kubernetes cluster ready on AKS: [Create an AKS Cluster](https://learn.microsoft.com/en-us/azure/aks/learn/quick-kubernetes-deploy-portal?tabs=azure-cli#create-an-aks-cluster)
 
 After your aks cluster is created, you should see it on Azure Portal as below. For demo purpose, I created an AKS cluster called `anhaks` in `anhtest` resource group
 
-{{< image image="/images/screenshots/aks.png" width=500  >}}
+{{< image image="/images/inpost/aks.png" width=500  >}}
 
 
-#### Set up kubectl in local
+### Set up kubectl in local
 
 You should have [kubectl installed](https://kubernetes.io/docs/tasks/tools/) on your local. If you are using .zshrc, you can also set up autocomplete for kubectl as below. In case you are using `ohmyzsh` like I do, add  `kubectl` to your plugins array in your ~/.zshrc file `plugins=(... kubectl)` (Refer [here](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/kubectl))
 
@@ -61,7 +40,7 @@ You should have [kubectl installed](https://kubernetes.io/docs/tasks/tools/) on 
 ```
 After autocomplete is set up successfully, you should be able to use `k` instead of `kubectl` for all of your kubectl command
 
-#### Interact with your AKS cluster in your terminal
+### Interact with your AKS cluster in your terminal
 
 Run below script to set up your aks cluster in your local
 
@@ -104,7 +83,7 @@ Next create a namespace `debezium-example` and set it as default for your contex
   $kubectl config unset clusters.anh-test-aks  
 ```
 
-### 2. Deploy strimzi operator
+## 2. Deploy strimzi operator
 
 First deploy **Operator lifecycle manager** as presequisite to deploy strimzi operator. We need OLM because the Operator Lifecycle Manager (OLM) extends Kubernetes to provide a declarative way to install, manage, and upgrade Operators on a cluster
 
@@ -147,7 +126,7 @@ A deployment and pod will be created for strimzi
 
 **You can find all kubernetes manifest yml files used in below sections at this [Github repo](https://github.com/anhhchu/debezium-aks)**
 
-### 3. Create secrets and roles
+## 3. Create secrets and roles
 
 These secrets and roles helps Kafka Connector connects to the database. Create them in debezium-example namespace. Run below scripts at the directory of the yml files:
  
@@ -173,7 +152,7 @@ These secrets and roles helps Kafka Connector connects to the database. Create t
 
 At this point, we only created secrets and roles, the debezium-example namespace doesn't have any service, deployment or pod yet.
 
-### 4. Deploy kafka cluster
+## 4. Deploy kafka cluster
 
 Create `debezium-cluster` kafka cluster with [kafka.yml](https://github.com/anhhchu/debezium-aks/blob/main/debezium-example/kafka.yml)🔗 
 
@@ -213,7 +192,7 @@ Validate kafka cluster has been created
 
 ```
 
-### 5. Deploy the database (mysql)
+## 5. Deploy the database (mysql)
 
 Create mysql service and deployment
 
@@ -228,9 +207,9 @@ Create mysql service and deployment
 ```
 
 
-### 6. Deploy Kafka Connect Cluster
+## 6. Deploy Kafka Connect Cluster
 
-#### Step 1: Create a secret for your container registry in the same k8s namespace
+### Step 1: Create a secret for your container registry in the same k8s namespace
 
 If you use docker container registry, use your docker username and password to create a k8s secret. For example, I created `anhdockercr-secret` below:
 
@@ -267,7 +246,7 @@ For example, I created `anhcr-secret` for k8s secret
   $kubectl get secret anhcr-secret --output=yaml > anhcr-secret.yml    
 ```
 
-#### Step 2: Modify the KafkaConnect Manifest yaml to build and push image to Container Registry. 
+### Step 2: Modify the KafkaConnect Manifest yaml to build and push image to Container Registry. 
 
 **Option 1: [Creating a new container image automatically using Strimzi](https://strimzi.io/docs/operators/latest/deploying.html#creating-new-image-using-kafka-connect-build-str)** 🔗
 
@@ -332,9 +311,9 @@ For example
 
 After pushing the image to ACR, you should be able to see your image on Azure Portal
 
-{{< image image="/images/screenshots/debezium-connect-cluster.png" width=500  >}}
+{{< image image="/images/inpost/debezium-connect-cluster.png" width=500  >}}
 
-#### Step 3: Deploy kafka-connect resource
+### Step 3: Deploy kafka-connect resource
 
 Use [kafka-connect-build.yml](https://github.com/anhhchu/debezium-aks/blob/main/debezium-example/kafka-connect-build.yml) file if you choose Option 1 in Step 2.
 
@@ -357,7 +336,7 @@ spec:
 ...
 ```
 
-#### Step 4: Validate the kafka connect cluster
+### Step 4: Validate the kafka connect cluster
 
 ```shell
   $kubectl get kafkaconnect
@@ -400,7 +379,7 @@ To delete all resources relating to KafkaConnect (debezium-connect-cluster), you
   $kubectl delete kafkaconnect debezium-connect-cluster
 ```
 
-### 7. Deploy Debezium Connector
+## 7. Deploy Debezium Connector
 
 ```shell
   $kubectl create -f debezium-connector-mysql.yml
@@ -410,7 +389,7 @@ NAME                       CLUSTER                    CONNECTOR CLASS           
 debezium-connector-mysql   debezium-connect-cluster   io.debezium.connector.mysql.MySqlConnector   1           True
 ```
 
-### 8. Verify deployment
+## 8. Verify deployment
 
 ```shell
   $kubectl run -n debezium-example -it --rm --image=quay.io/debezium/tooling:1.2  --restart=Never watcher -- kcat -b debezium-cluster-kafka-bootstrap:9092 -C -o beginning -t mysql.inventory.customers
@@ -487,7 +466,7 @@ You can also inspect kafka topics with below command. View all the topics that w
 
 
 
-### Reference
+## Reference
 * https://strimzi.io/blog/2021/03/29/connector-build/
 * https://strimzi.io/docs/operators/latest/configuring.html#type-Build-reference
 * https://kubernetes.io/docs/reference/kubectl/cheatsheet/

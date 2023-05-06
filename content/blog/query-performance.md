@@ -9,7 +9,9 @@ tags: [azure-synapse-analytics]
 author: Anh Chu
 ---
 
-### 1. Best practices when Creating Tables
+{{< table_of_contents >}}
+
+## 1. Best practices when Creating Tables
 
 When creating table in Dedicated SQL Pool, choose the correct Distribution Column and Index for best query performance. Follow [Best Practices in creating tables in Azure Synapse Analytics](./content/blog/create-table-azure-synapse-analytics.md)
 
@@ -17,7 +19,7 @@ When creating table in Dedicated SQL Pool, choose the correct Distribution Colum
 [Table statistics for dedicated SQL pool in Azure Synapse Analytics](https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-statistics#examples-update-statistics)
 
 
-### 2. Identify slow-running QID and analyze compilation
+## 2. Identify slow-running QID and analyze compilation
 
 To best determine what is causing any given query's slow performance, you will need to identify an example long-running query:
 
@@ -47,12 +49,12 @@ See [Monitor query execution](https://docs.microsoft.com/azure/synapse-analytics
 
 {{</bootstrap-table>}}
 
-### 3. Analyze the distributed query plan
+## 3. Analyze the distributed query plan
 
 You may need to analyze all of the steps of the distributed plan. Run the following statement to retrieve these details:
 
 ```sql
-select * from sys.dm_pdw_request_steps where request_id = 'QID######' order by step_index;
+select * from sys.dm_pdw_request_steps where request_id = 'QID####' order by step_index;
 ```
 
 As you review each step of the distributed plan, evaluate following conditions and complete the recommended mitigation if applicable:
@@ -66,18 +68,18 @@ As you review each step of the distributed plan, evaluate following conditions a
 | Are there a large number of steps to the plan or data movement operations (for example: ShuffleMoveOperation) that are moving unexpectedly large number of rows? | Carefully review our tables overview, distributed table design guidance, and replicated table design guidance articles to ensure your table design choices align to best practices. Alternatively, the query may be very complex and would benefit from being broken into multiple statements. |
 {{</bootstrap-table>}}
 
-### 4. Analyze a specific query plan
+## 4. Analyze a specific query plan
 
 Using the output of the query from the Analyze the distributed query plan section, identify the longest-running (by total_elapsed_time) step of the query plan. Once identified, note the location_type of the step and then choose the appropriate query below to update with request_id (QID) and step_index and then execute the query:
 
 - If location_type in ('Compute', 'Control')
 ```sql
-select * from sys.dm_pdw_sql_requests where request_id = 'QID######' and step_index = #;
+select * from sys.dm_pdw_sql_requests where request_id = 'QID####' and step_index = #;
 ```
 
 - If location_type = 'DMS' (DMS = Data Movement Service)
 ```sql
-select * from sys.dm_pdw_dms_workers where request_id = 'QID######' and step_index = #;
+select * from sys.dm_pdw_dms_workers where request_id = 'QID####' and step_index = #;
 ```
 
 **a. Analyze distributed query plan**
@@ -96,7 +98,7 @@ The output from these queries show information about the execution of the step's
 
 You can also review the query plan before executing a query using Explain [With_Recommendation] command following: [Explain (T-SQL)](https://learn.microsoft.com/en-us/sql/t-sql/queries/explain-transact-sql?view=azure-sqldw-latest) and [How to read execution plan](https://www.sqlshack.com/how-to-read-an-execution-plan-with-all-details/)
 
-### 5. Analyze impacts of concurrent workload
+## 5. Analyze impacts of concurrent workload
 If you eliminated all previous criteria, it's possible that your query is from a a server or client system resource bottleneck. Be sure to revisit the anti-patterns section above and ensure you are following our recommended best practices .
 
 However, one final possibility to consider is that your overall concurrent workload is constraining shared resources such as IO, network IO, CPU, memory, etc based on your current resource configuration. Perceived poor performance can be the result of either an undersized dedicated SQL pool or client.

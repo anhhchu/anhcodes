@@ -154,18 +154,6 @@
   </div>
   <div class="animate-shape">
     <img src=https://anhcodes.dev/images/skill/skill-background-shape.svg alt="">
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 600">
-      <defs>
-        <linearGradient id="d" x1="0.929" y1="0.111" x2="0.263" y2="0.935" gradientUnits="objectBoundingBox">
-          <stop offset="0" stop-color="#e5c9d7" />
-          <stop offset="1" stop-color="#e5c9d7" stop-opacity="0" />
-        </linearGradient>
-      </defs>
-      <g data-name="blob-shape (3)">
-        <path class="blob" fill="url(#d)"
-          d="M455.4 151.1c43.1 36.7 73.4 92.8 60.8 136.3-12.7 43.5-68.1 74.4-111.3 119.4-43.1 45-74 104.1-109.8 109-35.9 5-76.7-44.2-111.8-89.2-35.2-45-64.7-85.8-70.8-132.6-6-46.8 11.6-99.6 46.7-136.3 35.2-36.6 88-57.2 142.4-58.8 54.5-1.7 110.6 15.6 153.8 52.2z" />
-      </g>
-    </svg>
   </div>
   <div class="animate-pattern">
     <img src=https://anhcodes.dev/images/service/background-pattern.svg alt="background-shape">
@@ -175,6 +163,7 @@
       <div class="col-lg-12">
         <div class="singleBlog__feature">
           <img src=https://anhcodes.dev/images/single-blog/spark.jpeg alt="feature-image">
+          <center><figcaption style="font-size: 10px; margin-top: 20px;">  </figcaption></center>
         </div>
       </div>
     </div>
@@ -184,17 +173,28 @@
 
           
 
-          <p>If you&rsquo;re working with big data, you&rsquo;ve probably heard of Spark. Spark is a distributed big data processing engine that provides in-memory storage for intermediate computations, making it much faster than Hadoop MapReduce. In this post, we&rsquo;ll cover how to scale and tune Spark effectively to make the most of its capabilities.</p>
-<h3 id="1-what-is-spark">1. What is Spark?</h3>
-<p>Spark is a distributed big data processing engine that uses the resilient distributed dataset (RDD) data structure with data abstractions such as DataFrames and Datasets. It provides API in different programming languages such as Scala, Python, and Java. One of the key benefits of Spark is that it decouples compute and storage, meaning it can be used to read from different data sources on-prem and in the cloud. Spark has four main APIs: Spark SQL, Spark MLlib, Spark Structured Streaming, and GraphX.</p>
-<h3 id="2-tune-the-spark-hardware-and-configurations">2. Tune the Spark Hardware and Configurations</h3>
+          <p>Spark is a distributed big data processing engine that uses the resilient distributed dataset (RDD) data structure with data abstractions such as DataFrames and Datasets. It provides API in different programming languages such as Scala, Python, and Java. One of the key benefits of Spark is that it decouples compute and storage, meaning it can be used to read from different data sources on-prem and in the cloud. Spark has four main APIs: Spark SQL, Spark MLlib, Spark Structured Streaming, and GraphX.</p>
+<p>To tune Spark, below are a few things you can try:</p>
+<div class="toc">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-tune-the-spark-hardware-and-configurations">1. Tune the Spark Hardware and Configurations</a></li>
+    <li><a href="#2-minimize-data-scan-with-dfcache-and-dfpersist">2. Minimize data scan with <code>df.cache</code> and <code>df.persist</code></a></li>
+    <li><a href="#3-partitioning-optimization">3. Partitioning Optimization</a></li>
+    <li><a href="#4-choose-the-correct-join">4. Choose the Correct Join</a></li>
+    <li><a href="#5-omit-expensive-ops">5. Omit Expensive Ops</a></li>
+  </ul>
+</nav>
+</div>
+  
+<h2 id="1-tune-the-spark-hardware-and-configurations">1. Tune the Spark Hardware and Configurations</h2>
 <p>To make the most of Spark&rsquo;s capabilities, it&rsquo;s important to tune the hardware and configurations. Here are some tips:</p>
 <ul>
 <li>Choose the right instance type and cluster config. Bigger clusters aren’t necessarily faster. 32GB - 128GB RAM are best, and use compute optimized instance for ETL.</li>
 <li>Use dynamic resource allocation configuration and set min and max executors.</li>
 <li>Adjust <code>spark.executor.memory</code> and set amount of memory available to each executor. Allocate to three types: execution, storage, and reserved memory.</li>
 </ul>
-<h3 id="3-minimize-data-scan-with-dfcache-and-dfpersist">3. Minimize data scan with <code>df.cache</code> and <code>df.persist</code></h3>
+<h2 id="2-minimize-data-scan-with-dfcache-and-dfpersist">2. Minimize data scan with <code>df.cache</code> and <code>df.persist</code></h2>
 <p>Dataframe cache stores as many partitions as memory allows. Cache is another type of persist: <code>df.cache == df.persist(StorageLevel.MEMORY_AND_DISK)</code>. This stores partitions in memory and spills excess to disk.</p>
 <p>When we wse <code>dataframe.persist(StorageLevel.LEVEL)</code>, we can choose different storage levels such as Memory, disk or off-heap to persist data</p>
 
@@ -245,7 +245,7 @@
 <li>Don’t use when data is too big to fit in memory, or require infrequent transformation</li>
 </ul>
 <p>Remember that When you use <code>cache()</code> or <code>persist()</code>, the DataFrame is not fully cached until you invoke an action that goes through every record (e.g., <code>count()</code>). If you use an action like <code>take(1)</code>, only one partition will be cached because Catalyst realizes that you do not need to compute all the partitions just to retrieve one record.</p>
-<h3 id="4-partitioning-optimization">4. Partitioning Optimization</h3>
+<h2 id="3-partitioning-optimization">3. Partitioning Optimization</h2>
 <p>Partitioning is an important optimization technique in Spark. Here are some tips:</p>
 <ol>
 <li>Parquet file size: Make sure Parquet files are around 1GiB in size, and the row group size is also large.</li>
@@ -253,7 +253,7 @@
 <li>Shuffle Partition Size: Keep track of input data size per task (shuffle partitions are created during shuffle stage). Optimal shuffle partition size: 100-200 MB (data exchanged across executors).</li>
 <li>Choose the Correct Partition Column when repartition: The partitioning columns are selected so that rows that must be processed together end up in the same task. When you repartition a dataframe, specify columns if possible.</li>
 </ol>
-<h3 id="5-choose-the-correct-join">5. Choose the Correct Join</h3>
+<h2 id="4-choose-the-correct-join">4. Choose the Correct Join</h2>
 <p>Choosing the correct join is crucial for optimizing performance in Spark. Here are some tips:</p>
 <ul>
 <li>At the cluster level, set these configs:
@@ -267,7 +267,7 @@
 <li>Shuffle Sort Merge Join: This is the most popular method. All rows with the same key are hashed on the same partition on the same executor. Used with two large datasets, data will be shuffled and exchanged between executors. Use partitioned buckets to eliminate the exchange step.</li>
 <li>Cartesian Join (BroadcastNestedLoopJoin) BNLJ: this is the most expensive and slowest join operation and should be avoided if possible</li>
 </ul>
-<h3 id="6-omit-expensive-ops">6. Omit Expensive Ops</h3>
+<h2 id="5-omit-expensive-ops">5. Omit Expensive Ops</h2>
 <p>Avoid expensive operations in Spark to optimize performance. Here are some tips:</p>
 <ul>
 <li>Avoid <code>withColumn</code>.</li>

@@ -7,24 +7,20 @@ postImage: images/single-blog/sql-pool.jpeg
 categories: data-lakehouse
 tags: [azure-synapse-analytics, big-query,redshift]
 author: Anh Chu
-draft: true
+draft: false
 ---
 
-### Table of Contents
+## Table of Contents
 
-1. [What is Azure Synapse Analytics?](#what-is-azure-synapse-analytics)
-2. [What is Dedicated SQL Pool?](#what-is-dedicated-sql-pool)
-3. [What is Serverless SQL Pool?](#what-is-serverless-sql-pool)
-4. [Dedicated vs Serverless SQL Pool Comparison](#dedicated-vs-serverless-sql-pool-comparison)
-5. [Azure Synapse Analytics, AWS Redshift, Google Big Query Comparison](#azure-synapse-analytics-aws-redshift-google-big-query-comparison)
+{{< table_of_contents >}}
 
-### What is Azure Synapse Analytics?
+## What is Azure Synapse Analytics?
 
 Azure Synapse Analytics is an integrated data platform that brings together SQL technologies used in enterprise data warehousing such as `Dedicated SQL Pool and Serverless SQL Pool`, `Synapse Spark Pool` used for big data, `Data Explorer` for log and time series analytics, `Synapse Pipelines` for data integration and ETL/ELT, and deep integration with other Azure services such as Power BI, CosmosDB, and AzureML. 
 
 ☝🏼[Table of Content](#table-of-contents)
 
-### What is Dedicated SQL Pool?
+## What is Dedicated SQL Pool?
 
  Dedicated SQL Pool (previously SQL DW) leverages a scale-out architecture (Massively Parallel Processing) to distribute computational processing of data across multiple nodes to handle complex analytics queries. Applications connect and issue T-SQL commands to a Control node. The Control node hosts the distributed query engine, which optimizes queries for parallel processing, and then passes operations to Compute nodes to do their work in parallel. The Compute nodes store all user data in Azure Storage and run the parallel queries. The Data Movement Service (DMS) is a system-level internal service that moves data across the nodes as necessary to run queries in parallel and return accurate results. 
 [Create table]()
@@ -35,7 +31,7 @@ Users can connect to Dedicated SQL Pool using Azure Data Studio (on Mac and Wind
 
 ☝🏼[Table of Content](#table-of-contents)
 
-### What is Serverless SQL Pool?
+## What is Serverless SQL Pool?
 
 In Serverless SQL pool, there is no need to set up infrastructure and maintain clusters. While in dedicated SQL Pool, we reserved a fixed number of Data Warehouse Units (DWU) which dictate the CPU, Memory and IO power for the data warehouse.
 
@@ -48,7 +44,7 @@ Serverless SQL Pool is suitable for adhoc, simple queries when users must have a
 
 ☝🏼[Table of Content](#table-of-contents)
 
-### Dedicated vs Serverless SQL Pool Comparison
+## Dedicated vs Serverless SQL Pool Comparison
 
 {{< bootstrap-table "table table-light table-striped table-bordered" >}}
 | External table (Serverless Pool) | External Table (Dedicated Pool)     | Internal Table (Dedicated Pool)  |
@@ -65,7 +61,7 @@ Serverless SQL Pool is suitable for adhoc, simple queries when users must have a
 
 ☝🏼[Table of Content](#table-of-contents)
 
-### Azure Synapse Analytics, AWS Redshift, Google Big Query Comparison
+## Azure Synapse Analytics, AWS Redshift, Google Big Query Comparison
 
 Azure Synapse Analytics, Amazon Redshift, and Google BigQuery are all cloud-based data warehousing platforms that allow you to analyze large datasets using SQL and other query languages
 

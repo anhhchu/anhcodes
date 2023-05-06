@@ -45,7 +45,7 @@
   <nav class="navbar navbar-expand-lg fixed-top">
   <div class="container">
     <a href="https://anhcodes.dev/" class="navbar-brand">
-      <img src="https://anhcodes.dev/images/site-navigation/logonew.png" alt="site-logo">
+      <img src="https://anhcodes.dev/images/favicon.png" alt="site-logo">
     </a>
     <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarCollapse">
       <span class="navbar-toggler-icon"></span>
@@ -65,6 +65,11 @@
         <li class="nav-item">
           <a href="https://anhcodes.dev/#about"
             class="nav-link text-dark text-sm-center p-2 ">About</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#portfolio"
+            class="nav-link text-dark text-sm-center p-2 ">Portfolio</a>
         </li>
         
         <li class="nav-item">
@@ -138,8 +143,6 @@
         
           <a class="text-lowercase" href="https://anhcodes.dev/tags/redshift/">redshift</a>
         
-          <a class="text-lowercase" href="https://anhcodes.dev/tags/data-lakehouse/">data-lakehouse</a>
-        
       </li>
       
     </ul>
@@ -155,18 +158,6 @@
   </div>
   <div class="animate-shape">
     <img src=https://anhcodes.dev/images/skill/skill-background-shape.svg alt="">
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 600">
-      <defs>
-        <linearGradient id="d" x1="0.929" y1="0.111" x2="0.263" y2="0.935" gradientUnits="objectBoundingBox">
-          <stop offset="0" stop-color="#e5c9d7" />
-          <stop offset="1" stop-color="#e5c9d7" stop-opacity="0" />
-        </linearGradient>
-      </defs>
-      <g data-name="blob-shape (3)">
-        <path class="blob" fill="url(#d)"
-          d="M455.4 151.1c43.1 36.7 73.4 92.8 60.8 136.3-12.7 43.5-68.1 74.4-111.3 119.4-43.1 45-74 104.1-109.8 109-35.9 5-76.7-44.2-111.8-89.2-35.2-45-64.7-85.8-70.8-132.6-6-46.8 11.6-99.6 46.7-136.3 35.2-36.6 88-57.2 142.4-58.8 54.5-1.7 110.6 15.6 153.8 52.2z" />
-      </g>
-    </svg>
   </div>
   <div class="animate-pattern">
     <img src=https://anhcodes.dev/images/service/background-pattern.svg alt="background-shape">
@@ -175,7 +166,8 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="singleBlog__feature">
-          <img src=https://anhcodes.dev/images/single-blog/data-lakehouse.png alt="feature-image">
+          <img src=https://anhcodes.dev/images/single-blog/sql-pool.jpeg alt="feature-image">
+          <center><figcaption style="font-size: 10px; margin-top: 20px;">  </figcaption></center>
         </div>
       </div>
     </div>
@@ -185,31 +177,37 @@
 
           
 
-          <h3 id="table-of-contents">Table of Contents</h3>
-<ol>
-<li><a href="#what-is-azure-synapse-analytics">What is Azure Synapse Analytics?</a></li>
-<li><a href="#what-is-dedicated-sql-pool">What is Dedicated SQL Pool?</a></li>
-<li><a href="#what-is-serverless-sql-pool">What is Serverless SQL Pool?</a></li>
-<li><a href="#dedicated-vs-serverless-sql-pool-comparison">Dedicated vs Serverless SQL Pool Comparison</a></li>
-<li><a href="#azure-synapse-analytics-aws-redshift-google-big-query-comparison">Azure Synapse Analytics, AWS Redshift, Google Big Query Comparison</a></li>
-</ol>
-<h3 id="what-is-azure-synapse-analytics">What is Azure Synapse Analytics?</h3>
+          <h2 id="table-of-contents">Table of Contents</h2>
+<div class="toc">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#table-of-contents">Table of Contents</a></li>
+    <li><a href="#what-is-azure-synapse-analytics">What is Azure Synapse Analytics?</a></li>
+    <li><a href="#what-is-dedicated-sql-pool">What is Dedicated SQL Pool?</a></li>
+    <li><a href="#what-is-serverless-sql-pool">What is Serverless SQL Pool?</a></li>
+    <li><a href="#dedicated-vs-serverless-sql-pool-comparison">Dedicated vs Serverless SQL Pool Comparison</a></li>
+    <li><a href="#azure-synapse-analytics-aws-redshift-google-big-query-comparison">Azure Synapse Analytics, AWS Redshift, Google Big Query Comparison</a></li>
+  </ul>
+</nav>
+</div>
+  
+<h2 id="what-is-azure-synapse-analytics">What is Azure Synapse Analytics?</h2>
 <p>Azure Synapse Analytics is an integrated data platform that brings together SQL technologies used in enterprise data warehousing such as <code>Dedicated SQL Pool and Serverless SQL Pool</code>, <code>Synapse Spark Pool</code> used for big data, <code>Data Explorer</code> for log and time series analytics, <code>Synapse Pipelines</code> for data integration and ETL/ELT, and deep integration with other Azure services such as Power BI, CosmosDB, and AzureML.</p>
 <p>☝🏼<a href="#table-of-contents">Table of Content</a></p>
-<h3 id="what-is-dedicated-sql-pool">What is Dedicated SQL Pool?</h3>
+<h2 id="what-is-dedicated-sql-pool">What is Dedicated SQL Pool?</h2>
 <p>Dedicated SQL Pool (previously SQL DW) leverages a scale-out architecture (Massively Parallel Processing) to distribute computational processing of data across multiple nodes to handle complex analytics queries. Applications connect and issue T-SQL commands to a Control node. The Control node hosts the distributed query engine, which optimizes queries for parallel processing, and then passes operations to Compute nodes to do their work in parallel. The Compute nodes store all user data in Azure Storage and run the parallel queries. The Data Movement Service (DMS) is a system-level internal service that moves data across the nodes as necessary to run queries in parallel and return accurate results.
 <a href="">Create table</a></p>
 <p><img src="https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png" alt="Dedicated SQL pool (formerly SQL DW) architecture"></p>
 <p>Users can connect to Dedicated SQL Pool using Azure Data Studio (on Mac and Windows), SQL Server Management Studio (for Windows), and Azure Synapse Workspace web interface.</p>
 <p>☝🏼<a href="#table-of-contents">Table of Content</a></p>
-<h3 id="what-is-serverless-sql-pool">What is Serverless SQL Pool?</h3>
+<h2 id="what-is-serverless-sql-pool">What is Serverless SQL Pool?</h2>
 <p>In Serverless SQL pool, there is no need to set up infrastructure and maintain clusters. While in dedicated SQL Pool, we reserved a fixed number of Data Warehouse Units (DWU) which dictate the CPU, Memory and IO power for the data warehouse.</p>
 <p>Serverless SQL pool uses a pay-per-use model, so there is no charge for resources reserved, and the charges are made for the data processed by each query that you run. On the other hand, we provisioned our dedicated SQL Pool and pay by Data Warehouse Unit (DWU).</p>
 <p>When we query Serverless SQL Pool, we query the external tables, which are abstraction of data in data lake storage. As the result, Serverless SQL Pool doesn&rsquo;t support indexes for query
 optimization, or dynamic data masking or column level encryption for permission granting and data security, as well as materialized views. On the other hand, if we import data from the lake to regular tables in Dedicated SQL Pool, we can take advantage of these mentioned features. Dedicated SQL Pool support materialized views but LEFT, RIGHT, OUTER JOIN is not supported in materialized views query creation.</p>
 <p>Serverless SQL Pool is suitable for adhoc, simple queries when users must have access to data in our data lake storage account. While dedicated pool can be use for more complex queries suitable for analytics purpose, you also can connect to dedicated SQL pool using a SQL client like Azure Data Studio or SQL Server Management Studio.</p>
 <p>☝🏼<a href="#table-of-contents">Table of Content</a></p>
-<h3 id="dedicated-vs-serverless-sql-pool-comparison">Dedicated vs Serverless SQL Pool Comparison</h3>
+<h2 id="dedicated-vs-serverless-sql-pool-comparison">Dedicated vs Serverless SQL Pool Comparison</h2>
 
 
 
@@ -268,7 +266,7 @@ optimization, or dynamic data masking or column level encryption for permission 
 </table>
 
 <p>☝🏼<a href="#table-of-contents">Table of Content</a></p>
-<h3 id="azure-synapse-analytics-aws-redshift-google-big-query-comparison">Azure Synapse Analytics, AWS Redshift, Google Big Query Comparison</h3>
+<h2 id="azure-synapse-analytics-aws-redshift-google-big-query-comparison">Azure Synapse Analytics, AWS Redshift, Google Big Query Comparison</h2>
 <p>Azure Synapse Analytics, Amazon Redshift, and Google BigQuery are all cloud-based data warehousing platforms that allow you to analyze large datasets using SQL and other query languages</p>
 
 

@@ -13,9 +13,8 @@
       <pubDate>Thu, 15 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://anhcodes.dev/blog/query-performance/</guid>
-      <description>1. Best practices when Creating Tables When creating table in Dedicated SQL Pool, choose the correct Distribution Column and Index for best query performance. Follow Best Practices in creating tables in Azure Synapse Analytics
-Remember to create and Update Stats on your new tables Table statistics for dedicated SQL pool in Azure Synapse Analytics
-2. Identify slow-running QID and analyze compilation To best determine what is causing any given query&amp;rsquo;s slow performance, you will need to identify an example long-running query:</description>
+      <description>1. Best practices when Creating Tables 2. Identify slow-running QID and analyze compilation 3. Analyze the distributed query plan 4. Analyze a specific query plan 5. Analyze impacts of concurrent workload 1. Best practices when Creating Tables When creating table in Dedicated SQL Pool, choose the correct Distribution Column and Index for best query performance. Follow Best Practices in creating tables in Azure Synapse Analytics
+Remember to create and Update Stats on your new tables Table statistics for dedicated SQL pool in Azure Synapse Analytics</description>
     </item>
     
     <item>
@@ -26,6 +25,15 @@ Remember to create and Update Stats on your new tables Table statistics for dedi
       <guid>https://anhcodes.dev/blog/create-table-azure-synapse-analytics/</guid>
       <description>As Dedicated SQL pool uses a scaled-out node based architecture, when creating tables in Dedicated SQL Pool, remember to specify the distribution (sharding strategy) and index for your tables.
 Dedicated SQL Pool Architecture Choosing Distribution: The data is sharded into distributions to optimize the performance of the system. You can choose which sharding pattern to use to distribute the data when you define the table. These sharding patterns are supported:</description>
+    </item>
+    
+    <item>
+      <title>Azure Synapse Analytics - Data Lakehouse on Azure</title>
+      <link>https://anhcodes.dev/blog/synapse/</link>
+      <pubDate>Tue, 15 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/blog/synapse/</guid>
+      <description>Table of Contents Table of Contents What is Azure Synapse Analytics? What is Dedicated SQL Pool? What is Serverless SQL Pool? Dedicated vs Serverless SQL Pool Comparison Azure Synapse Analytics, AWS Redshift, Google Big Query Comparison What is Azure Synapse Analytics? Azure Synapse Analytics is an integrated data platform that brings together SQL technologies used in enterprise data warehousing such as Dedicated SQL Pool and Serverless SQL Pool, Synapse Spark Pool used for big data, Data Explorer for log and time series analytics, Synapse Pipelines for data integration and ETL/ELT, and deep integration with other Azure services such as Power BI, CosmosDB, and AzureML.</description>
     </item>
     
   </channel>

@@ -6,15 +6,23 @@
     <description>Recent content on anhcodes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 11 Apr 2023 23:20:57 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 05 May 2023 18:06:47 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Create your own AI avatar with DreamBooth and Stable Diffusion</title>
+      <link>https://anhcodes.dev/blog/ai-avatar-sd-dreambooth/</link>
+      <pubDate>Fri, 05 May 2023 18:06:47 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/blog/ai-avatar-sd-dreambooth/</guid>
+      <description>You&amp;rsquo;re looking at your photos and suddenly you realize&amp;hellip; it could use a little something extra. That&amp;rsquo;s when you decide to take matters into your own creative hands. You fire up Stable Diffusion and DreamBooth, and before you know it, you&amp;rsquo;re generating hyper-realistic images that make you look gorgeous! It&amp;rsquo;s a place where you can unleash your imagination, and the best part is that you&amp;rsquo;re the one in control. Thanks to these awesome tools, now you can bring your digital dreams to life, one pixel at a time.</description>
+    </item>
+    
     <item>
       <title>How to Scale and Tune Spark Effectively</title>
       <link>https://anhcodes.dev/blog/scale-spark/</link>
       <pubDate>Tue, 11 Apr 2023 23:20:57 +0000</pubDate>
       
       <guid>https://anhcodes.dev/blog/scale-spark/</guid>
-      <description>If you&amp;rsquo;re working with big data, you&amp;rsquo;ve probably heard of Spark. Spark is a distributed big data processing engine that provides in-memory storage for intermediate computations, making it much faster than Hadoop MapReduce. In this post, we&amp;rsquo;ll cover how to scale and tune Spark effectively to make the most of its capabilities.
-1. What is Spark? Spark is a distributed big data processing engine that uses the resilient distributed dataset (RDD) data structure with data abstractions such as DataFrames and Datasets.</description>
+      <description>Spark is a distributed big data processing engine that uses the resilient distributed dataset (RDD) data structure with data abstractions such as DataFrames and Datasets. It provides API in different programming languages such as Scala, Python, and Java. One of the key benefits of Spark is that it decouples compute and storage, meaning it can be used to read from different data sources on-prem and in the cloud. Spark has four main APIs: Spark SQL, Spark MLlib, Spark Structured Streaming, and GraphX.</description>
     </item>
     
     <item>
@@ -23,7 +31,7 @@
       <pubDate>Tue, 11 Apr 2023 22:13:33 +0000</pubDate>
       
       <guid>https://anhcodes.dev/blog/dbfs/</guid>
-      <description> View Fullscreen 🔗 View on Github </description>
+      <description> View Fullscreen View on Github </description>
     </item>
     
     <item>
@@ -43,13 +51,7 @@ The battle: Data Warehouse vs Data Lake vs Data Lakehouse A data warehouse is a 
       
       <guid>https://anhcodes.dev/blog/deploy-debezium-aks/</guid>
       <description>This tutorial follows Debezium official documentation Deploying Debezium on Kubernetes, but modified for Azure Kubernetes Service and Azure Container Registry.
-Table of Content 1. Prerequisites
-2. Deploy strimzi operator
-3. Create secrets and roles
-4. Deploy Kafka cluster
-5. Deploy mysql database in Kubernetes
-6. Deploy Kafka Connect Cluster
-Step 1: Create secret for container registry Step 2: Build and push Kafka connecti image with debezium connector plugins to container registry Step 3: Deploy kafka connect cluster Step 4: Validate kafka connect cluster 7.</description>
+Table of Content Table of Content 1. Prerequisites Azure CLI Azure Kubernetes Cluster Set up kubectl in local Interact with your AKS cluster in your terminal 2. Deploy strimzi operator 3. Create secrets and roles 4. Deploy kafka cluster 5. Deploy the database (mysql) 6. Deploy Kafka Connect Cluster Step 1: Create a secret for your container registry in the same k8s namespace Step 2: Modify the KafkaConnect Manifest yaml to build and push image to Container Registry.</description>
     </item>
     
     <item>
@@ -68,9 +70,8 @@ Step 1: Create secret for container registry Step 2: Build and push Kafka connec
       <pubDate>Thu, 15 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://anhcodes.dev/blog/query-performance/</guid>
-      <description>1. Best practices when Creating Tables When creating table in Dedicated SQL Pool, choose the correct Distribution Column and Index for best query performance. Follow Best Practices in creating tables in Azure Synapse Analytics
-Remember to create and Update Stats on your new tables Table statistics for dedicated SQL pool in Azure Synapse Analytics
-2. Identify slow-running QID and analyze compilation To best determine what is causing any given query&amp;rsquo;s slow performance, you will need to identify an example long-running query:</description>
+      <description>1. Best practices when Creating Tables 2. Identify slow-running QID and analyze compilation 3. Analyze the distributed query plan 4. Analyze a specific query plan 5. Analyze impacts of concurrent workload 1. Best practices when Creating Tables When creating table in Dedicated SQL Pool, choose the correct Distribution Column and Index for best query performance. Follow Best Practices in creating tables in Azure Synapse Analytics
+Remember to create and Update Stats on your new tables Table statistics for dedicated SQL pool in Azure Synapse Analytics</description>
     </item>
     
     <item>
@@ -84,12 +85,21 @@ Dedicated SQL Pool Architecture Choosing Distribution: The data is sharded into 
     </item>
     
     <item>
+      <title>Azure Synapse Analytics - Data Lakehouse on Azure</title>
+      <link>https://anhcodes.dev/blog/synapse/</link>
+      <pubDate>Tue, 15 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/blog/synapse/</guid>
+      <description>Table of Contents Table of Contents What is Azure Synapse Analytics? What is Dedicated SQL Pool? What is Serverless SQL Pool? Dedicated vs Serverless SQL Pool Comparison Azure Synapse Analytics, AWS Redshift, Google Big Query Comparison What is Azure Synapse Analytics? Azure Synapse Analytics is an integrated data platform that brings together SQL technologies used in enterprise data warehousing such as Dedicated SQL Pool and Serverless SQL Pool, Synapse Spark Pool used for big data, Data Explorer for log and time series analytics, Synapse Pipelines for data integration and ETL/ELT, and deep integration with other Azure services such as Power BI, CosmosDB, and AzureML.</description>
+    </item>
+    
+    <item>
       <title>Flower Classifcation with Pytorch</title>
       <link>https://anhcodes.dev/portfolio/flower-classifier/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://anhcodes.dev/portfolio/flower-classifier/</guid>
-      <description> View Fullscreen 🔗 View on Github </description>
+      <description> View Fullscreen View on Github </description>
     </item>
     
     <item>
@@ -98,7 +108,7 @@ Dedicated SQL Pool Architecture Choosing Distribution: The data is sharded into 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://anhcodes.dev/portfolio/predict-churn/</guid>
-      <description> View Fullscreen 🔗 View on Github </description>
+      <description> View Fullscreen View on Github </description>
     </item>
     
     <item>
@@ -107,7 +117,7 @@ Dedicated SQL Pool Architecture Choosing Distribution: The data is sharded into 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://anhcodes.dev/portfolio/stock-prediction/</guid>
-      <description> View Fullscreen 🔗 View on Github </description>
+      <description> View Fullscreen View on Github </description>
     </item>
     
   </channel>

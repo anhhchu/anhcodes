@@ -13,8 +13,7 @@
       <pubDate>Tue, 11 Apr 2023 23:20:57 +0000</pubDate>
       
       <guid>https://anhcodes.dev/blog/scale-spark/</guid>
-      <description>If you&amp;rsquo;re working with big data, you&amp;rsquo;ve probably heard of Spark. Spark is a distributed big data processing engine that provides in-memory storage for intermediate computations, making it much faster than Hadoop MapReduce. In this post, we&amp;rsquo;ll cover how to scale and tune Spark effectively to make the most of its capabilities.
-1. What is Spark? Spark is a distributed big data processing engine that uses the resilient distributed dataset (RDD) data structure with data abstractions such as DataFrames and Datasets.</description>
+      <description>Spark is a distributed big data processing engine that uses the resilient distributed dataset (RDD) data structure with data abstractions such as DataFrames and Datasets. It provides API in different programming languages such as Scala, Python, and Java. One of the key benefits of Spark is that it decouples compute and storage, meaning it can be used to read from different data sources on-prem and in the cloud. Spark has four main APIs: Spark SQL, Spark MLlib, Spark Structured Streaming, and GraphX.</description>
     </item>
     
   </channel>

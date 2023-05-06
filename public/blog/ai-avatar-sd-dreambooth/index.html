@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Create your own AI avatar with DreamBooth and Stable Diffusion</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <!-- Slick Carousel -->
+  <link rel="stylesheet" href="https://anhcodes.dev/plugins/slick/slick.css" />
+  <link rel="stylesheet" href="https://anhcodes.dev/plugins/slick/slick-theme.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://anhcodes.dev/plugins/font-awesome/css/font-awesome.min.css" />
+
+  <!-- Magnific Popup -->
+  <link rel="stylesheet" href="https://anhcodes.dev/plugins/magnafic-popup/magnific-popup.css" />
+
+  <!-- Stylesheets -->
+  
+  <link href="https://anhcodes.dev/scss/style.min.css" rel="stylesheet" />
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="https://anhcodes.dev/images/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="https://anhcodes.dev/images/favicon.png" type="image/x-icon" />
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9145PR72NN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-9145PR72NN');
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.37.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.11.0/dist/algoliasearch.umd.min.js"></script>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.4.5/themes/satellite-min.css" integrity="sha256-TehzF/2QvNKhGQrrNpoOb2Ck4iGZ1J/DI4pkd2oUsBc=" crossorigin="anonymous">  
+  
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a href="https://anhcodes.dev/" class="navbar-brand">
+      <img src="https://anhcodes.dev/images/favicon.png" alt="site-logo">
+    </a>
+    <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+      <ul class="nav navbar-nav main-navigation my-0 mx-auto">
+        
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#home"
+            class="nav-link text-dark text-sm-center p-2 ">Home</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#about"
+            class="nav-link text-dark text-sm-center p-2 ">About</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#portfolio"
+            class="nav-link text-dark text-sm-center p-2 ">Portfolio</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#resume"
+            class="nav-link text-dark text-sm-center p-2 ">Experiences</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#skills"
+            class="nav-link text-dark text-sm-center p-2 ">Skills</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#testimonial"
+            class="nav-link text-dark text-sm-center p-2 ">Testimonials</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#blog"
+            class="nav-link text-dark text-sm-center p-2 ">Blog</a>
+        </li>
+        
+      </ul>
+      <div class="navbar-nav">
+        <a href="https://anhcodes.dev/contact" class="btn btn-primary btn-zoom hire_button">Contact Me</a>
+      </div>
+    </div>
+  </div>
+</nav>
+  <div id="content">
+    
+
+<header class="breadCrumb">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 text-center">
+        <h3 class="breadCrumb__title">Create your own AI avatar with DreamBooth and Stable Diffusion</h3>
+        <nav aria-label="breadcrumb" class="d-flex justify-content-center">
+          <ol class="breadcrumb align-items-center">
+            <li class="breadcrumb-item"><a href=https://anhcodes.dev/>Home</a></li>
+            <li class="breadcrumb-item"><a href=https://anhcodes.dev/blog>All Posts</a></li>
+            <li class="breadcrumb-item"><a href=https://anhcodes.dev//tags>All Tags</a></li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <ul class="post-meta">
+      <li>
+        <i class="fa fa-calendar"></i>
+        May 5, 2023
+      </li>
+      <li>
+        <i class="fa fa-clock-o"></i>
+        7 mins read
+      </li>
+      <li>
+        <i class="fa fa-user"></i>
+        Anh Chu
+      </li>
+    </ul>
+    <ul class="post-meta">
+      </li>
+      
+      <li>
+        <i class="fa fa-tag"></i>
+        
+          <a class="text-lowercase" href="https://anhcodes.dev/tags/ai-stable-diffusion/">ai stable-diffusion</a>
+        
+      </li>
+      
+    </ul>
+  </div>
+  </div>
+  </div>
+  </div>
+</header>
+
+<section class="section singleBlog">
+  <div class="svg-img">
+    <img src=https://anhcodes.dev/images/hero/hero-background-svg.svg alt="">
+  </div>
+  <div class="animate-shape">
+    <img src=https://anhcodes.dev/images/skill/skill-background-shape.svg alt="">
+  </div>
+  <div class="animate-pattern">
+    <img src=https://anhcodes.dev/images/service/background-pattern.svg alt="background-shape">
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="singleBlog__feature">
+          <img src=https://anhcodes.dev/images/single-blog/sd-grid.png alt="feature-image">
+          <center><figcaption style="font-size: 10px; margin-top: 20px;"> Full head portrait of anh on the moon, illustration, 8k, high resolution, artstation -- By Author in Stable Diffusion </figcaption></center>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-lg-12">
+        <div class="singleBlog__content">
+
+          
+
+          <p>You&rsquo;re looking at your photos and suddenly you realize&hellip; it could use a little something extra. That&rsquo;s when you decide to take matters into your own creative hands. You fire up Stable Diffusion and DreamBooth, and before you know it, you&rsquo;re generating hyper-realistic images that make you look gorgeous!  It&rsquo;s a place where you can unleash your imagination, and the best part is that you&rsquo;re the one in control. Thanks to these awesome tools, now you can bring your digital dreams to life, one pixel at a time.</p>
+<h2 id="table-of-content">Table of Content</h2>
+<div class="toc">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#table-of-content">Table of Content</a></li>
+    <li><a href="#what-is-stable-diffusion">What is Stable Diffusion?</a></li>
+    <li><a href="#what-is-dreambooth">What is DreamBooth?</a></li>
+    <li><a href="#options-for-creating-your-own-images">Options for Creating Your Own Images</a></li>
+    <li><a href="#a-3-step-process-to-create-your-own-ai-avatar-for-free">A 3-Step Process to Create Your Own AI Avatar for Free</a>
+      <ul>
+        <li><a href="#step-1-train-your-own-model-with-dreambooth-in-google-colabs">Step 1: Train Your Own Model with DreamBooth in Google Colabs</a></li>
+        <li><a href="#step-2-download-and-import-the-model-into-stable-diffusion-webui">Step 2: Download and Import the Model into Stable Diffusion WebUI</a></li>
+        <li><a href="#step-3-use-text2image-option-to-generate-your-images">Step 3: Use text2image Option to Generate Your Images</a></li>
+      </ul>
+    </li>
+    <li><a href="#challenges-and-tips">Challenges and tips</a></li>
+  </ul>
+</nav>
+</div>
+  
+<h2 id="what-is-stable-diffusion">What is Stable Diffusion?</h2>
+<p>Stable Diffusion is a deep learning model that can generate detailed images based on text descriptions. Developed in collaboration with academic researchers and non-profit organizations by Stability AI, it is a kind of deep generative neural network known as a latent diffusion model. It can be applied to various tasks such as inpainting, outpainting, and generating image-to-image translations guided by a text prompt. Notably, Stable Diffusion&rsquo;s code and model weights have been publicly released and it can run on most consumer hardware equipped with a modest GPU with at least 8 GB VRAM. This makes it accessible to a wider range of users who can utilize the model to generate photo-realistic images based on text descriptions.</p>
+<h2 id="what-is-dreambooth">What is DreamBooth?</h2>
+<p>DreamBooth is a deep learning generation model developed by researchers from Google Research and Boston University in 2022. It is used to fine-tune existing text-to-image models in order to produce personalized outputs based on several images of a particular subject. Originally developed using Google&rsquo;s own Imagen text-to-image model, DreamBooth implementations can be applied to other text-to-image models, where it allows for increased specificity when generating images of lesser-known subjects or rendering familiar subjects in different contexts. Users can customize their own text prompts and training data to produce more fine-tuned and personalized outputs.</p>
+<h2 id="options-for-creating-your-own-images">Options for Creating Your Own Images</h2>
+<p>There are several options available for creating your own AI avatars. Some of the paid options that I&rsquo;m aware of include Lensa, RunwayML, and Leonardo AI.</p>
+<ul>
+<li>
+<p>Lensa is a digital portrait editor app availabe on Iphone and Android. You can upload your own photos on the mobile app, and it will transform your photos into customized avatars. The results are normally pretty good, but you have limited options to customize your images. And you have to pay extra for the new batch of images</p>
+</li>
+<li>
+<p><a href="https://runwayml.com/">RunwayML</a> is a creative platform that offers Generative AI images and videos editing tools. You can also upload your images and train your own custom AI model with Standard plan ($15/month at time of writing) with their <a href="https://app.runwayml.com/video-tools/teams/anhhchu12/ai-training/portrait-generator">portrait generator service</a>. It&rsquo;s worth noting that RunwayML was a partner of Stability AI, and the two companies have worked together on the development of Stable Diffusion, a text-to-image generative AI model. I haven&rsquo;t tried this yet so I&rsquo;m not sure about the quality and consistency of the images generated by this tool</p>
+</li>
+<li>
+<p><a href="https://leonardo.ai/">Leonardo.Ai</a> is a platform that utilizes artificial intelligence to generate various types of production-ready art assets.  In some senses, Leonardo.Ai is very similar to Midjourney, but you can generate images on WebUI as opposed to in Discord. Besides, Users can use a pre-trained or fine-tuned model to generate art assets, or generate prompts, or train their own AI model to generate custom assets. Currently, Midjourney doesn&rsquo;t provide the option to train your own model. As of the time of writing, Leonardo.Ai gives you 1 free model training credit that will reset every month, and 150 credits daily to generate AI images. I trained 1 model on this platform with about 8 images but the result is not as good as the DreamBooth free version. Below are some images created with Leonardo.Ai using my trained model. The images quality is definitely stunning, but they don&rsquo;t look like me, I don&rsquo;t even look Asian. Leonardo is definitely promising if I can get them to look like me, so I will try again when my credit resets</p>
+</li>
+</ul>
+<div class="image">
+    <p>
+    <center><img src="https://anhcodes.dev/images/inpost/diy-avatar/leonardo.png"  alt="blog-img" width="500 " height=""></center>
+    <style>@media screen and (min-width: 300px) and (max-width: 445px) { #slide-window { max-width: 350px; } }</style>
+    <p>
+</div>
+<p>However, why pay if you can do it for free? From my experience, DreamBooth has been able to create pretty close rendering of my features from just a few 512x512 images without cost. So that&rsquo;s something I would like to show you in this post.</p>
+<h2 id="a-3-step-process-to-create-your-own-ai-avatar-for-free">A 3-Step Process to Create Your Own AI Avatar for Free</h2>
+<h3 id="step-1-train-your-own-model-with-dreambooth-in-google-colabs">Step 1: Train Your Own Model with DreamBooth in Google Colabs</h3>
+<p>DreamBooth can be used in conjunction with Google Colabs to train your own stable diffusion models.</p>
+<ol>
+<li>
+<p>Download and Import this <a href="https://colab.research.google.com/github/sagiodev/stablediffusion_webui/blob/master/DreamBooth_Stable_Diffusion_SDA.ipynb">notebook</a>.</p>
+</li>
+<li>
+<p>This notebook uses the <code>runwayml/stable-diffusion-v1-5</code> model on HuggingFace as the base model. You need to get the HuggingFace token on the website to continue. You can generate access tokens under <code>Settings/Access Tokens</code></p>
+</li>
+</ol>
+<div class="image">
+    <p>
+    <center><img src="https://anhcodes.dev/images/inpost/diy-avatar/hf-token.png"  alt="blog-img" width="500 " height=""></center>
+    <style>@media screen and (min-width: 300px) and (max-width: 445px) { #slide-window { max-width: 350px; } }</style>
+    <p>
+</div>
+<ol start="2">
+<li>Change the instance_prompt to the subject name. For example, I use <code>anh</code> as the subject of my model (You will need to use this subject name in the prompt later). Keep the class_prompt as <code>photo of a person</code></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    instance_prompt <span style="color:#ffb8d1">=</span> <span style="color:#1bc5e0">&#34;photo of anh person&#34;</span> <span style="color:#b0bec5">#@param {type:&#34;string&#34;}</span>
+</span></span><span style="display:flex;"><span>    class_prompt <span style="color:#ffb8d1">=</span>  <span style="color:#1bc5e0">&#34;photo of a person&#34;</span> <span style="color:#b0bec5">#@param {type:&#34;string&#34;}</span>
+</span></span></code></pre></div><ol start="3">
+<li>
+<p>Upload 8 to 10 images of yourself, you should crop these images to 512x512 using the tool such as <a href="https://birme.net/">birme.net</a> or canva. These models train well with images this size</p>
+</li>
+<li>
+<p>Run the model training cell, it should complete in about 30-45 minutes. You should see a few rendering of the AI images after the training is done</p>
+</li>
+<li>
+<p>Your model should be saved on Google Drive (Model saved to /content/drive/MyDrive/Dreambooth_model/model1.ckpt). You will need to use this model checkpoint in the next step.</p>
+</li>
+</ol>
+<h3 id="step-2-download-and-import-the-model-into-stable-diffusion-webui">Step 2: Download and Import the Model into Stable Diffusion WebUI</h3>
+<p>Stable Diffusion WebUI is a a user-friendly graphical interface created by AUTOMATIC111 that makes it easy to navigate, select models, and execute Stable Diffusion jobs quickly and efficiently.</p>
+<p>Follow this <a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui">GitHub repo</a> to install and launch this tool on your local machine.</p>
+<p>Download the model in Google Drive (created in the previous step) and save under <code>stable-diffusion-webui/models/Stable-diffusion</code></p>
+<p>To spin up Stable Diffusion, <code>cd stable-diffusion-webui</code> and run <code>./webui.sh</code> in your terminal (on Mac). The webUI should run on your localhost <code>http://127.0.0.1:7860/</code></p>
+<p>Another option is to run this tool directly on Google Colabs (however, I&rsquo;m not sure how much GPU you can use for free in Google Colabs). Follow this <a href="https://stable-diffusion-art.com/automatic1111-colab/">guide</a> to set it up on Google Colab</p>
+<h3 id="step-3-use-text2image-option-to-generate-your-images">Step 3: Use text2image Option to Generate Your Images</h3>
+<p>Finally, choose the model checkpoint we just downloaded in the previous step.</p>
+<p>Then use the text2image option with the subject name to generate your images. For example, in below screenshot, <code>anh</code> is my subject name</p>
+<div class="image">
+    <p>
+    <center><img src="https://anhcodes.dev/images/inpost/diy-avatar/sdui.png"  alt="blog-img" width="700 " height=""></center>
+    <style>@media screen and (min-width: 300px) and (max-width: 445px) { #slide-window { max-width: 350px; } }</style>
+    <p>
+</div>
+<p>{{ $image := resources.GetRemote &ldquo;<a href="https://i0.wp.com/stable-diffusion-art.com/wp-content/uploads/2023/04/cover-1200.png?resize=1024%2C683&amp;ssl=1%22">https://i0.wp.com/stable-diffusion-art.com/wp-content/uploads/2023/04/cover-1200.png?resize=1024%2C683&amp;ssl=1&quot;</a> }}</p>
+<p>You can experiment with different settings and parameters to create truly unique and personalized avatars.</p>
+<h2 id="challenges-and-tips">Challenges and tips</h2>
+<p>AI images generated by Stable Diffusion are fascinating, but unpredictable. There is a high chance of distorted features in many of the images, so it&rsquo;s important to get a good prompt and some good configs. Below configs work pretty well for me</p>
+<ol>
+<li>
+<p>Use negative prompt to fix distorted features. Negative prompt is what you don&rsquo;t want to see in the images. It&rsquo;s a good rule of thumb to use negative prompt in open source SD model. Normally you don&rsquo;t have to this as much on Midjourney. I frequently use this prompt: <code>double heads, double bodies, ugly, tiling, poorly drawn hands, poorly drawn feet, poorly drawn face, out of frame, extra limbs, disfigured, deformed, body out of frame, bad anatomy, watermark, signature, cut off, low contrast, underexposed, overexposed, bad art, beginner, amateur, distorted face</code></p>
+</li>
+<li>
+<p>For sampling method, I frequently use <code>Euler a</code> and <code>DPM++ 2M Karras</code>. I&rsquo;m not very familiar with different sampling methods, so it&rsquo;s more like trial and error.</p>
+</li>
+<li>
+<p>Generate about 4 images per batch so you have options to choose from</p>
+</li>
+<li>
+<p>Keep everything else as default</p>
+</li>
+<li>
+<p>If you are looking for a good prompt, use <code>lexica.art</code> to look for the styles and prompts you like. However, keep the prompt simple.</p>
+</li>
+<li>
+<p>SD WebUI provides several powerful options to perform image tasks such as inpainting, cropping, and upscaling. You can use the workflow below to edit your image further within the tool</p>
+</li>
+</ol>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/vx2ZysNrUWw" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p>While there are many tutorials available to learn more about the SD webui capabilities, it&rsquo;s beyond the scope of this post. Just have fun experimenting with its various features, you sure can create impressive AI-generated assets.</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  </div>
+  <section class="footer" id="contact">
+	<div class="footer__background_shape">
+		<svg viewBox="0 0 1920 79">
+			<path d="M0 0h1920v79L0 0z" data-name="Path 1450" />
+		</svg>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="footer__cta">
+					<div class="shape-1">
+						<svg xmlns="http://www.w3.org/2000/svg" width="357" height="315.029" viewBox="0 0 357 315.029">
+							<path data-name="Path 1449"
+								d="M76.1-157.222C91.746-135.8 87.2-94.273 99.993-61.945c12.7 32.328 42.661 55.459 39.248 73.282-3.318 17.823-40.007 30.337-65.6 43.325-25.5 12.988-39.912 26.545-60.01 42.566-20.1 16.116-46.074 34.6-63.328 27.682-17.349-6.921-25.976-39.153-59.915-59.82s-93.1-29.768-105.325-51.478 22.373-56.028 43.609-93.949c21.331-37.921 29.2-79.35 53.563-96.793 24.459-17.444 65.414-10.9 103.9-6.921 38.396 3.982 74.326 5.404 89.965 26.829z"
+								transform="translate(217.489 188.626)" />
+						</svg>
+					</div>
+					<div class="shape-2">
+						<svg xmlns="http://www.w3.org/2000/svg" width="357" height="315.029" viewBox="0 0 357 315.029">
+							<path data-name="Path 1449"
+								d="M76.1-157.222C91.746-135.8 87.2-94.273 99.993-61.945c12.7 32.328 42.661 55.459 39.248 73.282-3.318 17.823-40.007 30.337-65.6 43.325-25.5 12.988-39.912 26.545-60.01 42.566-20.1 16.116-46.074 34.6-63.328 27.682-17.349-6.921-25.976-39.153-59.915-59.82s-93.1-29.768-105.325-51.478 22.373-56.028 43.609-93.949c21.331-37.921 29.2-79.35 53.563-96.793 24.459-17.444 65.414-10.9 103.9-6.921 38.396 3.982 74.326 5.404 89.965 26.829z"
+								transform="translate(217.489 188.626)" />
+						</svg>
+					</div>
+					<div class="text-light footer__cta_content">
+						<span>Contact me</span>
+						<h2 class="mb-0">Let’s Work Together</h2>
+					</div>
+					<div class="footer__cta_action">
+						<a class="btn btn-light btn-zoom" href="https://anhcodes.dev/contact">Get in
+							touch</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+			
+			
+		<div class="row footer__footer">
+			<div class="col-lg-6">
+				<div class="footer__footer_copy text-light">
+					<p>©2023 - Made with ☕, Hugo, and Firebase by <a class="text-light" href="https://anhcodes.dev/" target="_blank">Anh Chu</a></p>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="footer__footer_social">
+					<ul class="unstyle-list">
+						
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://www.instagram.com/jasminmay12/"><i
+									class="fa fa-instagram"></i></a>
+						</li>
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://www.linkedin.com/in/anhhchu/"><i
+									class="fa fa-linkedin-square"></i></a>
+						</li>
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://github.com/anhhchu"><i
+									class="fa fa-github-square"></i></a>
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRwXsfdEDBGKI-JcVzIfRyKNF2QBWWa-g&libraries=geometry"></script>
+<script src="https://anhcodes.dev/plugins/jQuery/jquery.min.js"></script>
+<script src="https://anhcodes.dev/plugins/bootstrap/bootstrap.min.js"></script>
+<script src="https://anhcodes.dev/plugins/slick/slick.min.js"></script>
+<script src="https://anhcodes.dev/plugins/waypoint/jquery.waypoints.min.js"></script>
+<script src="https://anhcodes.dev/plugins/magnafic-popup/jquery.magnific-popup.min.js"></script>
+<script src="https://anhcodes.dev/plugins/tweenmax/TweenMax.min.js"></script>
+<script src="https://anhcodes.dev/plugins/imagesloaded/imagesloaded.min.js"></script>
+<script src="https://anhcodes.dev/plugins/masonry/masonry.min.js"></script>
+
+
+<script src="https://anhcodes.dev/js/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.37.1"></script>
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.11.0/dist/algoliasearch.umd.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.4.5/themes/satellite-min.css" integrity="sha256-TehzF/2QvNKhGQrrNpoOb2Ck4iGZ1J/DI4pkd2oUsBc=" crossorigin="anonymous">  
+
+</body>
+
+</html>

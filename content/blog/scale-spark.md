@@ -8,13 +8,13 @@ tags: [spark]
 author: Anh Chu
 ---
 
-If you're working with big data, you've probably heard of Spark. Spark is a distributed big data processing engine that provides in-memory storage for intermediate computations, making it much faster than Hadoop MapReduce. In this post, we'll cover how to scale and tune Spark effectively to make the most of its capabilities.
-
-### 1. What is Spark?
-
 Spark is a distributed big data processing engine that uses the resilient distributed dataset (RDD) data structure with data abstractions such as DataFrames and Datasets. It provides API in different programming languages such as Scala, Python, and Java. One of the key benefits of Spark is that it decouples compute and storage, meaning it can be used to read from different data sources on-prem and in the cloud. Spark has four main APIs: Spark SQL, Spark MLlib, Spark Structured Streaming, and GraphX.
 
-### 2. Tune the Spark Hardware and Configurations
+To tune Spark, below are a few things you can try:
+
+{{< table_of_contents >}}
+
+## 1. Tune the Spark Hardware and Configurations
 
 To make the most of Spark's capabilities, it's important to tune the hardware and configurations. Here are some tips:
 
@@ -22,7 +22,7 @@ To make the most of Spark's capabilities, it's important to tune the hardware an
 - Use dynamic resource allocation configuration and set min and max executors.
 - Adjust `spark.executor.memory` and set amount of memory available to each executor. Allocate to three types: execution, storage, and reserved memory.
 
-### 3. Minimize data scan with `df.cache` and `df.persist`
+## 2. Minimize data scan with `df.cache` and `df.persist`
 
 Dataframe cache stores as many partitions as memory allows. Cache is another type of persist: `df.cache == df.persist(StorageLevel.MEMORY_AND_DISK)`. This stores partitions in memory and spills excess to disk.
 
@@ -50,7 +50,7 @@ To minimize data scan and speed up Spark processing, we should use cache and per
 
 Remember that When you use `cache()` or `persist()`, the DataFrame is not fully cached until you invoke an action that goes through every record (e.g., `count()`). If you use an action like `take(1)`, only one partition will be cached because Catalyst realizes that you do not need to compute all the partitions just to retrieve one record.
 
-### 4. Partitioning Optimization
+## 3. Partitioning Optimization
 
 Partitioning is an important optimization technique in Spark. Here are some tips:
 
@@ -59,7 +59,7 @@ Partitioning is an important optimization technique in Spark. Here are some tips
 3. Shuffle Partition Size: Keep track of input data size per task (shuffle partitions are created during shuffle stage). Optimal shuffle partition size: 100-200 MB (data exchanged across executors).
 4. Choose the Correct Partition Column when repartition: The partitioning columns are selected so that rows that must be processed together end up in the same task. When you repartition a dataframe, specify columns if possible.
 
-### 5. Choose the Correct Join
+## 4. Choose the Correct Join
 
 Choosing the correct join is crucial for optimizing performance in Spark. Here are some tips:
 
@@ -71,7 +71,7 @@ Choosing the correct join is crucial for optimizing performance in Spark. Here a
 - Shuffle Sort Merge Join: This is the most popular method. All rows with the same key are hashed on the same partition on the same executor. Used with two large datasets, data will be shuffled and exchanged between executors. Use partitioned buckets to eliminate the exchange step.
 - Cartesian Join (BroadcastNestedLoopJoin) BNLJ: this is the most expensive and slowest join operation and should be avoided if possible
 
-### 6. Omit Expensive Ops
+## 5. Omit Expensive Ops
 
 Avoid expensive operations in Spark to optimize performance. Here are some tips:
 
