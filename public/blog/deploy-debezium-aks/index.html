@@ -225,7 +225,7 @@
 <p>After your aks cluster is created, you should see it on Azure Portal as below. For demo purpose, I created an AKS cluster called <code>anhaks</code> in <code>anhtest</code> resource group</p>
 <div class="image">
     <p>
-    <center><img src="https://anhcodes.dev/images/inpost/aks.png"  alt="blog-img" width="500 " height=""></center>
+    <center><img src="https://anhcodes.dev/images/inpost/cdc/aks.png"  alt="blog-img" width="500 " height=""></center>
     <style>@media screen and (min-width: 300px) and (max-width: 445px) { #slide-window { max-width: 350px; } }</style>
     <p>
 </div>
@@ -413,9 +413,10 @@
 </span></span></span></code></pre></div><p><strong>Option 2: <a href="https://strimzi.io/docs/operators/latest/deploying.html#creating-new-image-from-base-str">Creating a Docker image from the Kafka Connect base image</a></strong> 🔗</p>
 <p>Instead of building the image in the yaml file using Strimzi, you can build your own images based on Kafka Connect image</p>
 <p>a) <strong>Download Debezium connector plugins from Maven</strong> to <a href="https://github.com/anhhchu/debezium-aks/tree/main/my-plugins">my-plugins</a> directory on your local</p>
-<pre><code>* https://repo1.maven.org/maven2/io/debezium/debezium-connector-mysql 
-* https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres
-</code></pre>
+<ul>
+<li><a href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-mysql">mysql connector</a></li>
+<li><a href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres">postgres connector</a></li>
+</ul>
 <p>b) Build your own image with <code>docker build</code></p>
 <ul>
 <li>If your machine uses amd64 architecture, you only need to run the regular docker build. If you use Azure Container Registry, refer back to Step 1 to create service principal to login</li>
@@ -440,7 +441,7 @@
 </span></span></code></pre></div><p>After pushing the image to ACR, you should be able to see your image on Azure Portal</p>
 <div class="image">
     <p>
-    <center><img src="https://anhcodes.dev/images/inpost/debezium-connect-cluster.png"  alt="blog-img" width="500 " height=""></center>
+    <center><img src="https://anhcodes.dev/images/inpost/cdc/debezium-connect-cluster.png"  alt="blog-img" width="500 " height=""></center>
     <style>@media screen and (min-width: 300px) and (max-width: 445px) { #slide-window { max-width: 350px; } }</style>
     <p>
 </div>

@@ -27,7 +27,7 @@ Follow this document to get your Kubernetes cluster ready on AKS: [Create an AKS
 
 After your aks cluster is created, you should see it on Azure Portal as below. For demo purpose, I created an AKS cluster called `anhaks` in `anhtest` resource group
 
-{{< image image="/images/inpost/aks.png" width=500  >}}
+{{< image image="/images/inpost/cdc/aks.png" width=500  >}}
 
 
 ### Set up kubectl in local
@@ -277,8 +277,8 @@ Instead of building the image in the yaml file using Strimzi, you can build your
 
 a) **Download Debezium connector plugins from Maven** to [my-plugins](https://github.com/anhhchu/debezium-aks/tree/main/my-plugins) directory on your local
    
-    * https://repo1.maven.org/maven2/io/debezium/debezium-connector-mysql 
-    * https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres
+* [mysql connector](https://repo1.maven.org/maven2/io/debezium/debezium-connector-mysql)
+* [postgres connector](https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres)
 
 b) Build your own image with `docker build`
     
@@ -311,7 +311,7 @@ For example
 
 After pushing the image to ACR, you should be able to see your image on Azure Portal
 
-{{< image image="/images/inpost/debezium-connect-cluster.png" width=500  >}}
+{{< image image="/images/inpost/cdc/debezium-connect-cluster.png" width=500  >}}
 
 ### Step 3: Deploy kafka-connect resource
 
