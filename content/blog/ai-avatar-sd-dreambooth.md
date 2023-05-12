@@ -10,8 +10,6 @@ tags: [ai stable-diffusion]
 author: Anh Chu
 ---
 
-You're looking at your photos and suddenly you realize... it could use a little something extra. That's when you decide to take matters into your own creative hands. You fire up Stable Diffusion and DreamBooth, and before you know it, you're generating hyper-realistic images that make you look gorgeous!  It's a place where you can unleash your imagination, and the best part is that you're the one in control. Thanks to these awesome tools, now you can bring your digital dreams to life, one pixel at a time. 
-
 ## Table of Content
 
 {{< table_of_contents >}}

@@ -13,7 +13,7 @@
       <pubDate>Fri, 05 May 2023 18:06:47 +0000</pubDate>
       
       <guid>https://anhcodes.dev/blog/ai-avatar-sd-dreambooth/</guid>
-      <description>You&amp;rsquo;re looking at your photos and suddenly you realize&amp;hellip; it could use a little something extra. That&amp;rsquo;s when you decide to take matters into your own creative hands. You fire up Stable Diffusion and DreamBooth, and before you know it, you&amp;rsquo;re generating hyper-realistic images that make you look gorgeous! It&amp;rsquo;s a place where you can unleash your imagination, and the best part is that you&amp;rsquo;re the one in control. Thanks to these awesome tools, now you can bring your digital dreams to life, one pixel at a time.</description>
+      <description>Table of Content Table of Content What is Stable Diffusion? What is DreamBooth? Options for Creating Your Own Images A 3-Step Process to Create Your Own AI Avatar for Free Step 1: Train Your Own Model with DreamBooth in Google Colabs Step 2: Download and Import the Model into Stable Diffusion WebUI Step 3: Use text2image Option to Generate Your Images Challenges and tips What is Stable Diffusion? Stable Diffusion is a deep learning model that can generate detailed images based on text descriptions.</description>
     </item>
     
   </channel>
