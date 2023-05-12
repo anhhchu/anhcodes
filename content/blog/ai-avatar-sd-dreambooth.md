@@ -3,8 +3,8 @@ title: "Create your own AI avatar with DreamBooth and Stable Diffusion"
 date: 2023-05-05 18:06:47
 featureImage: images/single-blog/sd-dreambooth.png
 # images/allpost/sql-pool-vertical.jpeg
-postImage: images/single-blog/sd-grid.png
-caption: Full head portrait of anh on the moon, illustration, 8k, high resolution, artstation -- By Author in Stable Diffusion
+postImage: images/single-blog/grid-cyberfunk.png
+caption: full head portrait of anh, cyberfunk, colorful trending on artstation, greg rutkowski, 4k -- By Author in Stable Diffusion
 categories: ai
 tags: [ai stable-diffusion]
 author: Anh Chu
