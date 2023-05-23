@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>How to recover lost files after a git reset --hard</title>
+  <title>How to Scale and Tune Spark Effectively</title>
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -106,7 +106,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 text-center">
-        <h3 class="breadCrumb__title">How to recover lost files after a git reset --hard</h3>
+        <h3 class="breadCrumb__title">How to Scale and Tune Spark Effectively</h3>
         <nav aria-label="breadcrumb" class="d-flex justify-content-center">
           <ol class="breadcrumb align-items-center">
             <li class="breadcrumb-item"><a href=https://anhcodes.dev/>Home</a></li>
@@ -120,11 +120,11 @@
     <ul class="post-meta">
       <li>
         <i class="fa fa-calendar"></i>
-        December 27, 2022
+        April 11, 2023
       </li>
       <li>
         <i class="fa fa-clock-o"></i>
-        3 mins read
+        5 mins read
       </li>
       <li>
         <i class="fa fa-user"></i>
@@ -137,7 +137,7 @@
       <li>
         <i class="fa fa-tag"></i>
         
-          <a class="text-lowercase" href="https://anhcodes.dev/tags/git/">git</a>
+          <a class="text-lowercase" href="https://anhcodes.dev/tags/spark/">spark</a>
         
       </li>
       
@@ -162,7 +162,7 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="singleBlog__feature">
-          <img src=https://anhcodes.dev/images/single-blog/github-reset.png alt="feature-image">
+          <img src=https://anhcodes.dev/images/single-blog/spark.jpeg alt="feature-image">
           <center><figcaption style="font-size: 10px; margin-top: 20px;">  </figcaption></center>
         </div>
       </div>
@@ -173,110 +173,111 @@
 
           
 
-          <p>While working on a recent project, I accidentally committed some files. Instead of using <code>git reset --soft &lt;prev-commit-id&gt;</code> to unstage them, I used <code>git reset --hard HEAD</code> and all of my new changes gone with the wind. After panicking for a few minutes, I determined to learn how <code>git reset</code> works and how I can revert the damages.</p>
-<h3 id="1-what-is-git-reset-hard-vs-soft">1. What is git reset (hard vs soft)</h3>
-<div class="image">
-    <style>
-      .img-responsive {
-        display: block;
-        height: auto;
-        max-width: 100%;
-      }
-    </style>
-    <p>
-      <center><img src="https://anhcodes.dev/images/single-blog/git-reset.png"  alt="blog-img" class="img-responsive"></center>
-    </p>
-  </div>
+          <p>Spark is a distributed big data processing engine that uses the resilient distributed dataset (RDD) data structure with data abstractions such as DataFrames and Datasets. It provides API in different programming languages such as Scala, Python, and Java. One of the key benefits of Spark is that it decouples compute and storage, meaning it can be used to read from different data sources on-prem and in the cloud. Spark has four main APIs: Spark SQL, Spark MLlib, Spark Structured Streaming, and GraphX.</p>
+<p>To tune Spark, below are a few things you can try:</p>
+<div class="toc">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-tune-the-spark-hardware-and-configurations">1. Tune the Spark Hardware and Configurations</a></li>
+    <li><a href="#2-minimize-data-scan-with-dfcache-and-dfpersist">2. Minimize data scan with <code>df.cache</code> and <code>df.persist</code></a></li>
+    <li><a href="#3-partitioning-optimization">3. Partitioning Optimization</a></li>
+    <li><a href="#4-choose-the-correct-join">4. Choose the Correct Join</a></li>
+    <li><a href="#5-omit-expensive-ops">5. Omit Expensive Ops</a></li>
+  </ul>
+</nav>
+</div>
   
-<p><code>git reset --hard</code> resets the current branch tip, and also deletes any changes in the working directory and staging area (although files under <code>git stash</code> will not be affected). It resets index entries to a specified commit, or the HEAD location. <code>git reset --hard</code> should be used with caution, since it can lead to losing work in your staging area and working directory.</p>
-<p>Below is the demonstration of what happened to a new file <code>test2.txt</code> after a <code>git reset --hard</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>  $ git status
-</span></span><span style="display:flex;"><span>  On branch master
-</span></span><span style="display:flex;"><span>  Untracked files:
-</span></span><span style="display:flex;"><span>    <span style="color:#ffb8d1">(</span>use <span style="color:#1bc5e0">&#34;git add &lt;file&gt;...&#34;</span> to include in what will be committed<span style="color:#ffb8d1">)</span>
-</span></span><span style="display:flex;"><span>          test2.txt
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  $ git add test2.txt
-</span></span><span style="display:flex;"><span>  On branch master
-</span></span><span style="display:flex;"><span>  Changes to be committed:
-</span></span><span style="display:flex;"><span>    <span style="color:#ffb8d1">(</span>use <span style="color:#1bc5e0">&#34;git restore --staged &lt;file&gt;...&#34;</span> to unstage<span style="color:#ffb8d1">)</span>
-</span></span><span style="display:flex;"><span>          new file:   test2.txt
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  $ git commit -m <span style="color:#1bc5e0">&#34;Add test2&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#ffb8d1">[</span>master 2d7949d<span style="color:#ffb8d1">]</span> Add test2
-</span></span><span style="display:flex;"><span>  <span style="color:#c5a3ff">1</span> file changed, <span style="color:#c5a3ff">10</span> insertions<span style="color:#ffb8d1">(</span>+<span style="color:#ffb8d1">)</span>
-</span></span><span style="display:flex;"><span>  create mode <span style="color:#c5a3ff">100644</span> test2.txt
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  $ git reset --hard 6122c04
-</span></span><span style="display:flex;"><span>  HEAD is now at 6122c04 add test
-</span></span></code></pre></div><p>After doing the <code>get reset --hard</code> to commit id 6122c04, the file test2 will be removed from the working directory</p>
-<p>On the contrary, <code>git reset --soft</code> revert your commit without removing your files from the working directory. After that you can unstage the files you don&rsquo;t want to commit</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>  $ git status
-</span></span><span style="display:flex;"><span>  On branch master
-</span></span><span style="display:flex;"><span>  Untracked files:
-</span></span><span style="display:flex;"><span>    <span style="color:#ffb8d1">(</span>use <span style="color:#1bc5e0">&#34;git add &lt;file&gt;...&#34;</span> to include in what will be committed<span style="color:#ffb8d1">)</span>
-</span></span><span style="display:flex;"><span>          test2.txt
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  $ git add test2.txt
-</span></span><span style="display:flex;"><span>  On branch master
-</span></span><span style="display:flex;"><span>  Changes to be committed:
-</span></span><span style="display:flex;"><span>    <span style="color:#ffb8d1">(</span>use <span style="color:#1bc5e0">&#34;git restore --staged &lt;file&gt;...&#34;</span> to unstage<span style="color:#ffb8d1">)</span>
-</span></span><span style="display:flex;"><span>          new file:   test2.txt
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  $ git commit -m <span style="color:#1bc5e0">&#34;Add test2&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#ffb8d1">[</span>master 2d7949d<span style="color:#ffb8d1">]</span> Add test2
-</span></span><span style="display:flex;"><span>  <span style="color:#c5a3ff">1</span> file changed, <span style="color:#c5a3ff">10</span> insertions<span style="color:#ffb8d1">(</span>+<span style="color:#ffb8d1">)</span>
-</span></span><span style="display:flex;"><span>  create mode <span style="color:#c5a3ff">100644</span> test2.txt
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  $ git reset --soft 6122c04
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  $ git status
-</span></span><span style="display:flex;"><span>  On branch master
-</span></span><span style="display:flex;"><span>  Changes to be committed:
-</span></span><span style="display:flex;"><span>    <span style="color:#ffb8d1">(</span>use <span style="color:#1bc5e0">&#34;git restore --staged &lt;file&gt;...&#34;</span> to unstage<span style="color:#ffb8d1">)</span>
-</span></span><span style="display:flex;"><span>          new file:   test2.txt
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  $ git restore --staged test2.txt 
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  $ git status
-</span></span><span style="display:flex;"><span>  On branch master
-</span></span><span style="display:flex;"><span>  Untracked files:
-</span></span><span style="display:flex;"><span>    <span style="color:#ffb8d1">(</span>use <span style="color:#1bc5e0">&#34;git add &lt;file&gt;...&#34;</span> to include in what will be committed<span style="color:#ffb8d1">)</span>
-</span></span><span style="display:flex;"><span>          test2.txt
-</span></span></code></pre></div><h3 id="2-recover-files-after-git-reset---hard-in-3-scenarios">2. Recover files after <code>git reset --hard</code> in 3 scenarios</h3>
-<h4 id="scenario-1-changes-committed">Scenario 1: Changes committed</h4>
-<p>If you do a <code>git reset --hard</code> after <code>git add</code> and <code>git commit</code></p>
+<h2 id="1-tune-the-spark-hardware-and-configurations">1. Tune the Spark Hardware and Configurations</h2>
+<p>To make the most of Spark&rsquo;s capabilities, it&rsquo;s important to tune the hardware and configurations. Here are some tips:</p>
+<ul>
+<li>Choose the right instance type and cluster config. Bigger clusters aren’t necessarily faster. 32GB - 128GB RAM are best, and use compute optimized instance for ETL.</li>
+<li>Use dynamic resource allocation configuration and set min and max executors.</li>
+<li>Adjust <code>spark.executor.memory</code> and set amount of memory available to each executor. Allocate to three types: execution, storage, and reserved memory.</li>
+</ul>
+<h2 id="2-minimize-data-scan-with-dfcache-and-dfpersist">2. Minimize data scan with <code>df.cache</code> and <code>df.persist</code></h2>
+<p>Dataframe cache stores as many partitions as memory allows. Cache is another type of persist: <code>df.cache == df.persist(StorageLevel.MEMORY_AND_DISK)</code>. This stores partitions in memory and spills excess to disk.</p>
+<p>When we wse <code>dataframe.persist(StorageLevel.LEVEL)</code>, we can choose different storage levels such as Memory, disk or off-heap to persist data</p>
+
+
+
+
+
+<table class="table  table-light table-striped table-bordered">
+<thead>
+<tr>
+<th>StorageLevel</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MEMORY_ONLY</td>
+<td>Data is stored as objects only in memory.</td>
+</tr>
+<tr>
+<td>MEMORY_ONLY_SER</td>
+<td>Data is serialized as a compact byte array and stored in memory.</td>
+</tr>
+<tr>
+<td>MEMORY_AND_DISK</td>
+<td>Data is stored in memory and excess data is serialized and stored on disk.</td>
+</tr>
+<tr>
+<td>DISK_ONLY</td>
+<td>Data is serialized and stored on disk only.</td>
+</tr>
+<tr>
+<td>OFF_HEAP</td>
+<td>Data is stored off-heap and not replicated.</td>
+</tr>
+<tr>
+<td>MEMORY_AND_DISK_SER</td>
+<td>Data is serialized and stored in memory and disk.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Each StorageLevel (except OFF_HEAP) has an equivalent LEVEL_NAME_2*,* which means replicate twice on two different Spark executors: MEMORY_ONLY_2, MEMORY_AND_DISK_SER_2, etc. While this option is expensive, it allows data locality in two places, providing fault tolerance and giving Spark the option to schedule a task local to a copy of the data.</p>
+<p>To minimize data scan and speed up Spark processing, we should use cache and persist for:</p>
+<ul>
+<li>DataFrames that need accessed commonly for doing frequent transformations during ETL or building data pipelines</li>
+<li>DataFrames commonly used during iterative machine learning training</li>
+<li>Don’t use when data is too big to fit in memory, or require infrequent transformation</li>
+</ul>
+<p>Remember that When you use <code>cache()</code> or <code>persist()</code>, the DataFrame is not fully cached until you invoke an action that goes through every record (e.g., <code>count()</code>). If you use an action like <code>take(1)</code>, only one partition will be cached because Catalyst realizes that you do not need to compute all the partitions just to retrieve one record.</p>
+<h2 id="3-partitioning-optimization">3. Partitioning Optimization</h2>
+<p>Partitioning is an important optimization technique in Spark. Here are some tips:</p>
 <ol>
-<li>
-<p>retrace the commit that you need to recover</p>
-<p><code>git reflog</code></p>
-</li>
-<li>
-<p>switch to the commit you want to recover, now your repo will be in &lsquo;detached HEAD&rsquo; state</p>
-<p><code>git checkout &lt;commit-id&gt;</code></p>
-</li>
-<li>
-<p>to fix the detached HEAD state, create a new branch and merge the branch back to master</p>
-<p><code>git branch &lt;new-branch&gt; &lt;commit-id&gt;</code></p>
-<p><code>git checkout master</code></p>
-<p><code>git merge &lt;new-branch&gt;</code></p>
-</li>
+<li>Parquet file size: Make sure Parquet files are around 1GiB in size, and the row group size is also large.</li>
+<li>Number of partition on read: The right number of partitions depends on the task and size of the DataFrame. You want (at least) a few times the number of executors. 100 &lt; num partitions &lt; 10000 → reduce the Partition Bytes on Read to allow data explosion.</li>
+<li>Shuffle Partition Size: Keep track of input data size per task (shuffle partitions are created during shuffle stage). Optimal shuffle partition size: 100-200 MB (data exchanged across executors).</li>
+<li>Choose the Correct Partition Column when repartition: The partitioning columns are selected so that rows that must be processed together end up in the same task. When you repartition a dataframe, specify columns if possible.</li>
 </ol>
-<h4 id="scenario-2-changes-staged-but-not-yet-committed">Scenario 2: Changes staged but not yet committed</h4>
-<p>If you do a <code>git reset --hard</code> after <code>git add</code> but before <code>git commit</code></p>
-<ol>
-<li>
-<p>Use <code>git fsck</code> to check dangling blob hash id (blob that has no commits associated to it). This will help us retrieve the content of the files that were staged but not yet committed</p>
+<h2 id="4-choose-the-correct-join">4. Choose the Correct Join</h2>
+<p>Choosing the correct join is crucial for optimizing performance in Spark. Here are some tips:</p>
+<ul>
+<li>At the cluster level, set these configs:
+<ul>
+<li><code>spark.sql.autoBroadcastJoinThreshold 100*1024*1024</code>: if table is less than 100MB on disk, just broadcast it.</li>
+<li><code>spark.sql.join.preferSortMergeJoin false</code>.</li>
+</ul>
 </li>
-<li>
-<p><code>git show &lt;dangling blob id&gt; &gt; recover.txt</code> to send the content of the blob to a file</p>
-</li>
-<li>
-<p>Another option is to use <code>git fsck --lost-found</code> to move all the dangling blobs to lost-found directory. Then, <code>cd .git/lost-found/other</code> to check all the dangling blob content</p>
-</li>
-</ol>
-<h4 id="scenario-3-changes-not-staged-nor-committed">Scenario 3: Changes not staged nor committed</h4>
-<p>If you do a <code>git reset --hard</code> after <code>git add</code> and <code>git commit</code>, your new changes before staging will still be in your directory.</p>
+<li>Broadcast Hash Join: This is the most efficient method. The smaller dataset is broadcast by the driver to all executors and join with the larger dataset on the executor. Avoid shuffle and sort of dataset. The driver must have enough memory.</li>
+<li>Shuffle Hash Join: Map two different data frames and shuffle both tables by join key. Create a hash on the join key, data exchanged between executors. In the reduce phase, join two datasets with the same key in the same partition and same executor.</li>
+<li>Shuffle Sort Merge Join: This is the most popular method. All rows with the same key are hashed on the same partition on the same executor. Used with two large datasets, data will be shuffled and exchanged between executors. Use partitioned buckets to eliminate the exchange step.</li>
+<li>Cartesian Join (BroadcastNestedLoopJoin) BNLJ: this is the most expensive and slowest join operation and should be avoided if possible</li>
+</ul>
+<h2 id="5-omit-expensive-ops">5. Omit Expensive Ops</h2>
+<p>Avoid expensive operations in Spark to optimize performance. Here are some tips:</p>
+<ul>
+<li>Avoid <code>withColumn</code>.</li>
+<li>Avoid <code>repartition</code>.</li>
+<li>Avoid <code>count</code>.</li>
+<li>Use <code>approxCountDistinct()</code> within 5% of error.</li>
+<li>Use <code>dropDuplicates</code> before the join, before the groupBy.</li>
+<li>Avoid UDFs. Traditional UDFs cannot use Tungsten and are not vectorized. Use org.apache.spark.sql.functions, PandasUDFs, or SparkR UDFs instead.</li>
+</ul>
+<p>By following these tips, hopefully you can scale and tune Spark effectively and make the most of its capabilities for big data processing.</p>
 
         </div>
       </div>

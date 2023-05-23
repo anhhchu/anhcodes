@@ -8,11 +8,22 @@
     <language>en-us</language>
     <lastBuildDate>Tue, 11 Apr 2023 23:20:57 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/categories/big-data/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>How to Scale and Tune Spark Effectively</title>
-      <link>https://anhcodes.dev/blog/scale-spark/</link>
+      <title>Debug long running Spark job</title>
+      <link>https://anhcodes.dev/blog/mitigate-skew-spark/</link>
       <pubDate>Tue, 11 Apr 2023 23:20:57 +0000</pubDate>
       
-      <guid>https://anhcodes.dev/blog/scale-spark/</guid>
+      <guid>https://anhcodes.dev/blog/mitigate-skew-spark/</guid>
+      <description>You Spark job is running for a long time, what to do? Generally, long-running Spark jobs can be due to various factors. We like to call them the 5S - Spill, Skew, Shuffle, Storage, and Serialization. So, how do we identify the main culprit?
+🔎 Look for Skew: Are some of the tasks taking longer than others? Do you have a join operation?
+🔎 Look for Spill: Any out-of-memory errors? Do the executors have enough memory to finish their tasks?</description>
+    </item>
+    
+    <item>
+      <title>How to Scale and Tune Spark Effectively</title>
+      <link>https://anhcodes.dev/blog/tune-spark/</link>
+      <pubDate>Tue, 11 Apr 2023 23:20:57 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/blog/tune-spark/</guid>
       <description>Spark is a distributed big data processing engine that uses the resilient distributed dataset (RDD) data structure with data abstractions such as DataFrames and Datasets. It provides API in different programming languages such as Scala, Python, and Java. One of the key benefits of Spark is that it decouples compute and storage, meaning it can be used to read from different data sources on-prem and in the cloud. Spark has four main APIs: Spark SQL, Spark MLlib, Spark Structured Streaming, and GraphX.</description>
     </item>
     

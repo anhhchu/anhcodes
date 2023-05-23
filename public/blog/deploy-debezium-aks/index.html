@@ -224,11 +224,18 @@
 <p>Follow this document to get your Kubernetes cluster ready on AKS: <a href="https://learn.microsoft.com/en-us/azure/aks/learn/quick-kubernetes-deploy-portal?tabs=azure-cli#create-an-aks-cluster">Create an AKS Cluster</a></p>
 <p>After your aks cluster is created, you should see it on Azure Portal as below. For demo purpose, I created an AKS cluster called <code>anhaks</code> in <code>anhtest</code> resource group</p>
 <div class="image">
+    <style>
+      .img-responsive {
+        display: block;
+        height: auto;
+        max-width: 100%;
+      }
+    </style>
     <p>
-    <center><img src="https://anhcodes.dev/images/inpost/cdc/aks.png"  alt="blog-img" width="500 " height=""></center>
-    <style>@media screen and (min-width: 300px) and (max-width: 445px) { #slide-window { max-width: 350px; } }</style>
-    <p>
-</div>
+      <center><img src="https://anhcodes.dev/images/inpost/cdc/aks.png"  alt="blog-img" class="img-responsive"></center>
+    </p>
+  </div>
+  
 <h3 id="set-up-kubectl-in-local">Set up kubectl in local</h3>
 <p>You should have <a href="https://kubernetes.io/docs/tasks/tools/">kubectl installed</a> on your local. If you are using .zshrc, you can also set up autocomplete for kubectl as below. In case you are using <code>ohmyzsh</code> like I do, add  <code>kubectl</code> to your plugins array in your ~/.zshrc file <code>plugins=(... kubectl)</code> (Refer <a href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/kubectl">here</a>)</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>  source &lt;<span style="color:#ffb8d1">(</span>kubectl completion zsh<span style="color:#ffb8d1">)</span>  <span style="color:#b0bec5"># set up autocomplete in zsh into the current shell`</span>
@@ -440,11 +447,18 @@
 </span></span><span style="display:flex;"><span>  $docker buildx build --platform linux/arm64,linux/amd64 -t anhcr.azurecr.io/debezium-connect-cluster:latest . --push
 </span></span></code></pre></div><p>After pushing the image to ACR, you should be able to see your image on Azure Portal</p>
 <div class="image">
+    <style>
+      .img-responsive {
+        display: block;
+        height: auto;
+        max-width: 100%;
+      }
+    </style>
     <p>
-    <center><img src="https://anhcodes.dev/images/inpost/cdc/debezium-connect-cluster.png"  alt="blog-img" width="500 " height=""></center>
-    <style>@media screen and (min-width: 300px) and (max-width: 445px) { #slide-window { max-width: 350px; } }</style>
-    <p>
-</div>
+      <center><img src="https://anhcodes.dev/images/inpost/cdc/debezium-connect-cluster.png"  alt="blog-img" class="img-responsive"></center>
+    </p>
+  </div>
+  
 <h3 id="step-3-deploy-kafka-connect-resource">Step 3: Deploy kafka-connect resource</h3>
 <p>Use <a href="https://github.com/anhhchu/debezium-aks/blob/main/debezium-example/kafka-connect-build.yml">kafka-connect-build.yml</a> file if you choose Option 1 in Step 2.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>  $kubectl create -n debezium-example -f kafka-connect-build.yml

@@ -26,7 +26,10 @@
     <loc>https://anhcodes.dev/categories/big-data/</loc>
     <lastmod>2023-04-11T23:20:57+00:00</lastmod>
   </url><url>
-    <loc>https://anhcodes.dev/blog/scale-spark/</loc>
+    <loc>https://anhcodes.dev/blog/mitigate-skew-spark/</loc>
+    <lastmod>2023-04-11T23:20:57+00:00</lastmod>
+  </url><url>
+    <loc>https://anhcodes.dev/blog/tune-spark/</loc>
     <lastmod>2023-04-11T23:20:57+00:00</lastmod>
   </url><url>
     <loc>https://anhcodes.dev/tags/spark/</loc>
