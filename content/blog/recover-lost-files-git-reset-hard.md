@@ -14,7 +14,7 @@ While working on a recent project, I accidentally committed some files. Instead 
 
 ### 1. What is git reset (hard vs soft)
 
-{{< image image="images/single-blog/git-reset.png" width=500 >}}
+{{< image image="images/single-blog/git-reset.png" >}}
 
 `git reset --hard` resets the current branch tip, and also deletes any changes in the working directory and staging area (although files under `git stash` will not be affected). It resets index entries to a specified commit, or the HEAD location. `git reset --hard` should be used with caution, since it can lead to losing work in your staging area and working directory.
 
