@@ -162,6 +162,8 @@ To address issues with schema operations, one option is to specify the schema wh
 
 *TL,DR - Bad codes can also slow your Spark down, always try to use spark sql built-in functions and avoid UDFs when develop your Spark codes. If UDFs are needed, try vectorized UDFs for Python and Typed Transformations for Scala*  
 
+Refer to my post about [SparkSQL Programming](https://anhcodes.dev/blog/spark-sql-programming/) to understand the difference between built-in functions, UDFs and vectorized UDFs
+
 Slower Spark Jobs can sometimes occur as a result of suboptimal code. One example of this would be code segments that have not been reworked to support more efficient Spark operations.
 
 As a rule of thumb, always use `spark.sql.functions` whenever possible, regardless of which language you're using. You can expect similar performance for both Python or Scala with these functions
