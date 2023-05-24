@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Spark SQL Programming Primer</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <!-- Slick Carousel -->
+  <link rel="stylesheet" href="https://anhcodes.dev/plugins/slick/slick.css" />
+  <link rel="stylesheet" href="https://anhcodes.dev/plugins/slick/slick-theme.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://anhcodes.dev/plugins/font-awesome/css/font-awesome.min.css" />
+
+  <!-- Magnific Popup -->
+  <link rel="stylesheet" href="https://anhcodes.dev/plugins/magnafic-popup/magnific-popup.css" />
+
+  <!-- Stylesheets -->
+  
+  <link href="https://anhcodes.dev/scss/style.min.css" rel="stylesheet" />
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="https://anhcodes.dev/images/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="https://anhcodes.dev/images/favicon.png" type="image/x-icon" />
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9145PR72NN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-9145PR72NN');
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.37.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.11.0/dist/algoliasearch.umd.min.js"></script>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.4.5/themes/satellite-min.css" integrity="sha256-TehzF/2QvNKhGQrrNpoOb2Ck4iGZ1J/DI4pkd2oUsBc=" crossorigin="anonymous">  
+  
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a href="https://anhcodes.dev/" class="navbar-brand">
+      <img src="https://anhcodes.dev/images/favicon.png" alt="site-logo">
+    </a>
+    <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+      <ul class="nav navbar-nav main-navigation my-0 mx-auto">
+        
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#home"
+            class="nav-link text-dark text-sm-center p-2 ">Home</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#about"
+            class="nav-link text-dark text-sm-center p-2 ">About</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#portfolio"
+            class="nav-link text-dark text-sm-center p-2 ">Portfolio</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#resume"
+            class="nav-link text-dark text-sm-center p-2 ">Experiences</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#skills"
+            class="nav-link text-dark text-sm-center p-2 ">Skills</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#testimonial"
+            class="nav-link text-dark text-sm-center p-2 ">Testimonials</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#blog"
+            class="nav-link text-dark text-sm-center p-2 ">Blog</a>
+        </li>
+        
+      </ul>
+      <div class="navbar-nav">
+        <a href="https://anhcodes.dev/contact" class="btn btn-primary btn-zoom hire_button">Contact Me</a>
+      </div>
+    </div>
+  </div>
+</nav>
+  <div id="content">
+    
+
+<header class="breadCrumb">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 text-center">
+        <h3 class="breadCrumb__title">Spark SQL Programming Primer</h3>
+        <nav aria-label="breadcrumb" class="d-flex justify-content-center">
+          <ol class="breadcrumb align-items-center">
+            <li class="breadcrumb-item"><a href=https://anhcodes.dev/>Home</a></li>
+            <li class="breadcrumb-item"><a href=https://anhcodes.dev/blog>All Posts</a></li>
+            <li class="breadcrumb-item"><a href=https://anhcodes.dev//tags>All Tags</a></li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <ul class="post-meta">
+      <li>
+        <i class="fa fa-calendar"></i>
+        May 23, 2023
+      </li>
+      <li>
+        <i class="fa fa-clock-o"></i>
+        6 mins read
+      </li>
+      <li>
+        <i class="fa fa-user"></i>
+        Anh Chu
+      </li>
+    </ul>
+    <ul class="post-meta">
+      </li>
+      
+      <li>
+        <i class="fa fa-tag"></i>
+        
+          <a class="text-lowercase" href="https://anhcodes.dev/tags/spark/">spark</a>
+        
+      </li>
+      
+    </ul>
+  </div>
+  </div>
+  </div>
+  </div>
+</header>
+
+<section class="section singleBlog">
+  <div class="svg-img">
+    <img src=https://anhcodes.dev/images/hero/hero-background-svg.svg alt="">
+  </div>
+  <div class="animate-shape">
+    <img src=https://anhcodes.dev/images/skill/skill-background-shape.svg alt="">
+  </div>
+  <div class="animate-pattern">
+    <img src=https://anhcodes.dev/images/service/background-pattern.svg alt="background-shape">
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="singleBlog__feature">
+          <img src=https://anhcodes.dev/images/inpost/sparksql/0.png alt="feature-image">
+          <center><figcaption style="font-size: 10px; margin-top: 20px;">  </figcaption></center>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-lg-12">
+        <div class="singleBlog__content">
+
+          
+
+          <p><em>TL,DR - SparkSQL is a huge component of Spark Programming. This post introduces programming in SparkSQL through Spark DataFrame API. It&rsquo;s important to be aware of Spark SQL built-in functions to be a more efficient Spark programmer</em></p>
+<div class="toc">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-sparksql">What is SparkSQL</a></li>
+    <li><a href="#dataframe-api-in-sparksql">DataFrame API in SparkSQL</a>
+      <ul>
+        <li><a href="#read-and-write-data-with-spark-dataframe">Read and write data with Spark DataFrame</a></li>
+        <li><a href="#work-with-columns-in-df">Work with columns in DF</a></li>
+        <li><a href="#work-with-rows-in-df">Work with Rows in DF</a></li>
+        <li><a href="#data-operations-in-spark-dataframe">Data Operations in Spark DataFrame</a></li>
+      </ul>
+    </li>
+    <li><a href="#sparksql-built-in-functions">SparkSQL Built-in Functions</a>
+      <ul>
+        <li><a href="#1-aggregation-functions">1. Aggregation functions</a></li>
+        <li><a href="#2-datetime-functions">2. Datetime functions</a></li>
+        <li><a href="#3-complex-data-types-funtions">3. Complex Data Types funtions</a></li>
+        <li><a href="#3-join-functions">3. Join functions</a></li>
+      </ul>
+    </li>
+    <li><a href="#user-defined-functions-udf-in-spark">User Defined Functions (UDF) in Spark</a></li>
+  </ul>
+</nav>
+</div>
+  
+<h2 id="what-is-sparksql">What is SparkSQL</h2>
+<p>SparkSQL is one of the 4 APIs in Spark ecosystems. SparkSQL provides structured data processing with interfaces such as SQL or Dataframe API using Python, Scala, R, Java programming languages</p>
+<div class="image">
+    <style>
+      .img-responsive {
+        display: block;
+        height: auto;
+        max-width: 100%;
+      }
+    </style>
+    <p>
+      <center><img src="https://anhcodes.dev/images/inpost/sparksql/1.png"  alt="blog-img" class="img-responsive"></center>
+    </p>
+  </div>
+  
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#b0bec5">-- sql
+</span></span></span><span style="display:flex;"><span><span style="color:#b0bec5"></span><span style="color:#c2ffdf">select</span><span style="color:#a8757b"> </span>a,<span style="color:#a8757b"> </span>b<span style="color:#a8757b"> </span><span style="color:#c2ffdf">from</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">&lt;</span><span style="color:#c2ffdf">table</span><span style="color:#ffb8d1">&gt;</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">where</span><span style="color:#a8757b"> </span>a<span style="color:#a8757b"> </span><span style="color:#ffb8d1">&gt;</span><span style="color:#a8757b"> </span><span style="color:#c5a3ff">1</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">order</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">by</span><span style="color:#a8757b"> </span>b<span style="color:#a8757b">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#b0bec5">## python</span>
+</span></span><span style="display:flex;"><span>df <span style="color:#ffb8d1">=</span> spark<span style="color:#ffb8d1">.</span>table(<span style="color:#1bc5e0">&#39;&lt;table&gt;&#39;</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#ffb8d1">.</span>select(<span style="color:#1bc5e0">&#39;a&#39;</span>, <span style="color:#1bc5e0">&#39;b&#39;</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#ffb8d1">.</span>where(<span style="color:#1bc5e0">&#39;a&gt;1&#39;</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#ffb8d1">.</span>orderBy(<span style="color:#1bc5e0">&#39;b&#39;</span>)
+</span></span></code></pre></div><p>The same SparkSQL query can be expressed with SQL and DataFrame API. SQL queries, Python DataFrame and Scala DataFrame Queries will then be executed on the same engine. The queries will go through Query Plans, RDDs then Execution. SparkSQL always optimizes the queries before execution using <strong>Catalyst Optimizer</strong></p>
+<div class="image">
+    <style>
+      .img-responsive {
+        display: block;
+        height: auto;
+        max-width: 100%;
+      }
+    </style>
+    <p>
+      <center><img src="https://anhcodes.dev/images/inpost/sparksql/2.png"  alt="blog-img" class="img-responsive"></center>
+    </p>
+  </div>
+  
+<p>The Catalyst Optimizer is a component of Spark SQL that performs optimization on a query through 4 stages:</p>
+<ul>
+<li>analysis: create abstract syntax tree of a query</li>
+<li>logical optimization: create plan and cost-based optimizer and assign costs to plan</li>
+<li>physical planning: generate physical plan based on logical plan</li>
+<li>code generation: generate java <strong>bytecode</strong> to run on each machine, spark sql acts as a <strong>compiler</strong>. Project Tungsten engine generate RDD code</li>
+</ul>
+<h2 id="dataframe-api-in-sparksql">DataFrame API in SparkSQL</h2>
+<p>DataFrame is immutable collections of data grouped into named columns. Schema defines the column names and data types of a DataFrame.</p>
+<h3 id="read-and-write-data-with-spark-dataframe">Read and write data with Spark DataFrame</h3>
+<p>You can read data almost all file formats such as CSV, JSON, Parquet, Delta, etc.  into Spark DataFrame</p>
+<p>You can either choose to inferSchema from the files (expensive with JSON and CSV), or specify schema explitcitly (more efficient)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#b0bec5">## Read data from parquet files to dataframe</span>
+</span></span><span style="display:flex;"><span>df <span style="color:#ffb8d1">=</span> spark<span style="color:#ffb8d1">.</span>read<span style="color:#ffb8d1">.</span>parquet(<span style="color:#1bc5e0">&#39;path/to/parquet_files&#39;</span>)<span style="color:#ffb8d1">.</span>option(<span style="color:#1bc5e0">&#39;inferSchema&#39;</span>, <span style="color:#c2ffdf">True</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#b0bec5">## read data from csv specifying separator, header and schema</span>
+</span></span><span style="display:flex;"><span>df <span style="color:#ffb8d1">=</span> spark<span style="color:#ffb8d1">.</span>read<span style="color:#ffb8d1">.</span>csv(<span style="color:#1bc5e0">&#39;path/to/csv_files&#39;</span>, sep<span style="color:#ffb8d1">=</span><span style="color:#1bc5e0">&#39;t&#39;</span>, header<span style="color:#ffb8d1">=</span><span style="color:#c2ffdf">True</span>, inferSchema<span style="color:#ffb8d1">=</span><span style="color:#c2ffdf">True</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#b0bec5">## Read data from json files to dataframe</span>
+</span></span><span style="display:flex;"><span>df <span style="color:#ffb8d1">=</span> spark<span style="color:#ffb8d1">.</span>read<span style="color:#ffb8d1">.</span>json(<span style="color:#1bc5e0">&#39;path/to/json_files&#39;</span>, inferSchema<span style="color:#ffb8d1">=</span><span style="color:#c2ffdf">True</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#b0bec5">## Option 1: read data from file with schema specified as StructType</span>
+</span></span><span style="display:flex;"><span>sparkSchema <span style="color:#ffb8d1">=</span> StructType([StructField(<span style="color:#1bc5e0">&#39;col1&#39;</span>, StringType(), <span style="color:#c2ffdf">True</span>), StructField(<span style="color:#1bc5e0">&#39;col2&#39;</span>, IntegerType(), <span style="color:#c2ffdf">True</span>)]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>df <span style="color:#ffb8d1">=</span> spark<span style="color:#ffb8d1">.</span>read<span style="color:#ffb8d1">.</span>csv(<span style="color:#1bc5e0">&#39;path/to/csv_files&#39;</span>, sep<span style="color:#ffb8d1">=</span><span style="color:#1bc5e0">&#39;t&#39;</span>, header<span style="color:#ffb8d1">=</span><span style="color:#c2ffdf">True</span>, schema<span style="color:#ffb8d1">=</span>sparkSchema)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#b0bec5">## Option 2: read data from file with schema specified as DDL syntax</span>
+</span></span><span style="display:flex;"><span>ddlSchema <span style="color:#ffb8d1">=</span> <span style="color:#1bc5e0">&#34;col1 string, col2 integer&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>df <span style="color:#ffb8d1">=</span> spark<span style="color:#ffb8d1">.</span>read<span style="color:#ffb8d1">.</span>csv(<span style="color:#1bc5e0">&#39;path/to/csv_files&#39;</span>, sep<span style="color:#ffb8d1">=</span><span style="color:#1bc5e0">&#39;t&#39;</span>, header<span style="color:#ffb8d1">=</span><span style="color:#c2ffdf">True</span>, schema<span style="color:#ffb8d1">=</span>ddlSchema)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#b0bec5">## Write dataframe to parquet files</span>
+</span></span><span style="display:flex;"><span>df<span style="color:#ffb8d1">.</span>write
+</span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>option(<span style="color:#1bc5e0">&#39;compression&#39;</span>, <span style="color:#1bc5e0">&#39;snappy&#39;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>mode(<span style="color:#1bc5e0">&#39;overwrite&#39;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>parquet(<span style="color:#1bc5e0">&#39;path/to/storage&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#b0bec5">## Write data to table</span>
+</span></span><span style="display:flex;"><span>df<span style="color:#ffb8d1">.</span>write
+</span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>mode(<span style="color:#1bc5e0">&#39;overwrite&#39;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>saveAsTable(<span style="color:#1bc5e0">&#39;&lt;table_name&gt;&#39;</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#b0bec5">## write dataframe to Delta, default Parquet format</span>
+</span></span><span style="display:flex;"><span>df<span style="color:#ffb8d1">.</span>write<span style="color:#ffb8d1">.</span>format(<span style="color:#1bc5e0">&#39;delta&#39;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>mode(<span style="color:#1bc5e0">&#39;overwrite&#39;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>save(<span style="color:#1bc5e0">&#39;outputPath&#39;</span>)
+</span></span></code></pre></div><h3 id="work-with-columns-in-df">Work with columns in DF</h3>
+<p>There are many ways to pick a column in DF depending on which language API you use</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#b0bec5">## Multi ways of extracting columns from Spark DF </span>
+</span></span><span style="display:flex;"><span><span style="color:#b0bec5">## Python way</span>
+</span></span><span style="display:flex;"><span>df[<span style="color:#1bc5e0">&#39;columnName&#39;</span>]
+</span></span><span style="display:flex;"><span>df<span style="color:#ffb8d1">.</span>columnName
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ffb8d1">import</span> spark.sql.functions <span style="color:#c2ffdf">as</span> F
+</span></span><span style="display:flex;"><span>F<span style="color:#ffb8d1">.</span>col(<span style="color:#1bc5e0">&#39;columnName&#39;</span>)
+</span></span><span style="display:flex;"><span>F<span style="color:#ffb8d1">.</span>col(<span style="color:#1bc5e0">&#39;columnName.field&#39;</span>) <span style="color:#b0bec5">##nested column array</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#b0bec5">// Scala way
+</span></span></span><span style="display:flex;"><span><span style="color:#b0bec5"></span>df<span style="color:#ffb8d1">(</span><span style="color:#1bc5e0">&#34;columnName&#34;</span><span style="color:#ffb8d1">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#c2ffdf">import</span> org.apache.spark.sql.functions.col
+</span></span><span style="display:flex;"><span>col<span style="color:#ffb8d1">(</span><span style="color:#1bc5e0">&#34;columnName&#34;</span><span style="color:#ffb8d1">)</span>
+</span></span><span style="display:flex;"><span>$<span style="color:#1bc5e0">&#34;columnName&#34;</span>
+</span></span><span style="display:flex;"><span>$<span style="color:#1bc5e0">&#34;columnName.field&#34;</span> <span style="color:#b0bec5">//nested column array
+</span></span></span></code></pre></div><p>Column Operators &amp; Methods</p>
+<div class="image">
+    <style>
+      .img-responsive {
+        display: block;
+        height: auto;
+        max-width: 100%;
+      }
+    </style>
+    <p>
+      <center><img src="https://anhcodes.dev/images/inpost/sparksql/3.png"  alt="blog-img" class="img-responsive"></center>
+    </p>
+  </div>
+  
+<div class="image">
+    <style>
+      .img-responsive {
+        display: block;
+        height: auto;
+        max-width: 100%;
+      }
+    </style>
+    <p>
+      <center><img src="https://anhcodes.dev/images/inpost/sparksql/4.png"  alt="blog-img" class="img-responsive"></center>
+    </p>
+  </div>
+  
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ffb8d1">import</span> pyspark.sql.functions.col
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#b0bec5">## These are chained transformations</span>
+</span></span><span style="display:flex;"><span>new_df <span style="color:#ffb8d1">=</span> df<span style="color:#ffb8d1">.</span>filter(col(<span style="color:#1bc5e0">&#34;colA&#34;</span>)<span style="color:#ffb8d1">.</span>isNotNull())
+</span></span><span style="display:flex;"><span>					<span style="color:#ffb8d1">.</span>withColumn(<span style="color:#1bc5e0">&#34;colB&#34;</span>, (col(<span style="color:#1bc5e0">&#34;colA&#34;</span>)<span style="color:#ffb8d1">*</span><span style="color:#c5a3ff">100</span>)<span style="color:#ffb8d1">.</span>cast(<span style="color:#1bc5e0">&#34;int&#34;</span>))
+</span></span><span style="display:flex;"><span>					<span style="color:#ffb8d1">.</span>sort(col(<span style="color:#1bc5e0">&#34;colB&#34;</span>)<span style="color:#ffb8d1">.</span>desc())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#b0bec5">## transformations with selectExp</span>
+</span></span><span style="display:flex;"><span>appleDF <span style="color:#ffb8d1">=</span> eventsDf
+</span></span><span style="display:flex;"><span>					<span style="color:#ffb8d1">.</span>selectExpr(<span style="color:#1bc5e0">&#34;user_id&#34;</span>, <span style="color:#1bc5e0">&#34;device in (&#39;macOS&#39;, &#39;iOS&#39;) as apple_user&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#b0bec5">## transformation with regular PythonAPI</span>
+</span></span><span style="display:flex;"><span>appleDF <span style="color:#ffb8d1">=</span> eventsDF<span style="color:#ffb8d1">.</span>select(<span style="color:#1bc5e0">&#34;user_id&#34;</span>)
+</span></span><span style="display:flex;"><span>					<span style="color:#ffb8d1">.</span>withColumn(<span style="color:#1bc5e0">&#34;apple_user&#34;</span>, col(<span style="color:#1bc5e0">&#34;device&#34;</span>)<span style="color:#ffb8d1">.</span>isin(<span style="color:#1bc5e0">&#39;macOS&#39;</span>, <span style="color:#1bc5e0">&#39;iOS&#39;</span>))
+</span></span></code></pre></div><h3 id="work-with-rows-in-df">Work with Rows in DF</h3>
+<div class="image">
+    <style>
+      .img-responsive {
+        display: block;
+        height: auto;
+        max-width: 100%;
+      }
+    </style>
+    <p>
+      <center><img src="https://anhcodes.dev/images/inpost/sparksql/5.png"  alt="blog-img" class="img-responsive"></center>
+    </p>
+  </div>
+  
+<div class="image">
+    <style>
+      .img-responsive {
+        display: block;
+        height: auto;
+        max-width: 100%;
+      }
+    </style>
+    <p>
+      <center><img src="https://anhcodes.dev/images/inpost/sparksql/6.png"  alt="blog-img" class="img-responsive"></center>
+    </p>
+  </div>
+  
+<h3 id="data-operations-in-spark-dataframe">Data Operations in Spark DataFrame</h3>
+<p>There are 2 main types of operations you can do with Spark DataFrame.</p>
+<p>Remember that DataFrame is immutable so after a transformation, a new dataFrame will be created.</p>
+<ol>
+<li>
+<p><strong>transformations</strong> (<code>select</code>, <code>where</code>, <code>orderBy</code>, <code>groupBy</code>): create a new DataFrame, evaluated lazily until action is invoked or data is touched, not executed immediately but recorded as lineage. There are 2 types of Spark Transformations</p>
+<ol>
+<li><strong>narrow transformation</strong>: single input partition computes single output partition (each column are computed separately), <strong>without exchange of data</strong> (such as <code>filter</code>, <code>contains</code>).</li>
+<li><strong>wide transformation</strong>: data from many partitions read, combined and written to disk (<code>groupBy</code>, <code>orderBy</code>, <code>count</code>), which means <strong>shuffle of data</strong> across partitions</li>
+</ol>
+</li>
+<li>
+<p><strong>action</strong> (<code>show</code>, <code>display</code>, <code>take</code>, <code>describe</code>, <code>summary</code>, <code>first, head</code>, <code>count</code>, <code>collect</code>): trigger the lazy evaluation of recorded transformation</p>
+<p><code>count</code> vs <code>collect</code>: <code>count</code> returns single number to the driver, <code>collect</code> returns collection of row objects (expensive and can cause out of memory)</p>
+<div class="image">
+        <style>
+          .img-responsive {
+            display: block;
+            height: auto;
+            max-width: 100%;
+          }
+        </style>
+        <p>
+          <center><img src="https://anhcodes.dev/images/inpost/sparksql/7.png"  alt="blog-img" class="img-responsive"></center>
+        </p>
+      </div>
+      
+</li>
+</ol>
+<p>Remember that when you specify transformation, your Spark code will not be executed until you call an action on it. Lazy evaluation provide fault tolerance as spark records transformation lineage to restart the job if there’s failure.</p>
+<h2 id="sparksql-built-in-functions">SparkSQL Built-in Functions</h2>
+<p>You can use built-in aggregate functions coming from <code>pyspark.sql.functions</code> for Python and <code>org.apache.spark.sql.functions</code> for Scala. Refer <a href="https://spark.apache.org/docs/latest/sql-ref-functions-builtin.html">spark sql built-in functions</a>. Built-in functions are highly efficient and best practices for Spark Programming. It’s highly recommended to utilize built-in functions before attempting to create your own UDFs (User Defined Functions)</p>
+<h3 id="1-aggregation-functions">1. Aggregation functions</h3>
+<p>All aggregations methods require a <code>groupBy</code> method that returns a GroupedData object</p>
+<p>Use the grouped data method <code>agg</code> to apply these built-in aggregate functions</p>
+<div class="image">
+    <style>
+      .img-responsive {
+        display: block;
+        height: auto;
+        max-width: 100%;
+      }
+    </style>
+    <p>
+      <center><img src="https://anhcodes.dev/images/inpost/sparksql/8.png"  alt="blog-img" class="img-responsive"></center>
+    </p>
+  </div>
+  
+<p>For example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df<span style="color:#ffb8d1">.</span>groupBy(<span style="color:#1bc5e0">&#34;col1&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>count()<span style="color:#ffb8d1">.</span>display()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>df<span style="color:#ffb8d1">.</span>groupBy(<span style="color:#1bc5e0">&#34;col1&#34;</span>, <span style="color:#1bc5e0">&#34;col2&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>sum(<span style="color:#1bc5e0">&#34;val1&#34;</span>, <span style="color:#1bc5e0">&#34;val2&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>display()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>df<span style="color:#ffb8d1">.</span>groupBy(<span style="color:#1bc5e0">&#39;col1&#39;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>agg( sum(<span style="color:#1bc5e0">&#39;val1&#39;</span>)<span style="color:#ffb8d1">.</span>alias(<span style="color:#1bc5e0">&#39;total1&#39;</span>) 
+</span></span><span style="display:flex;"><span>				avg(<span style="color:#1bc5e0">&#39;val2&#39;</span>)<span style="color:#ffb8d1">.</span>alias(<span style="color:#1bc5e0">&#39;average2&#39;</span>)
+</span></span><span style="display:flex;"><span>			)
+</span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>display()
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df<span style="color:#ffb8d1">.</span>groupBy(<span style="color:#1bc5e0">&#39;col1&#39;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>agg( sumDistinct(<span style="color:#1bc5e0">&#39;val1&#39;</span>)<span style="color:#ffb8d1">.</span>alias(<span style="color:#1bc5e0">&#39;total1&#39;</span>) 
+</span></span><span style="display:flex;"><span>				approx_count_distinct(<span style="color:#1bc5e0">&#39;val2&#39;</span>)<span style="color:#ffb8d1">.</span>alias(<span style="color:#1bc5e0">&#39;count2&#39;</span>)
+</span></span><span style="display:flex;"><span>			)
+</span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>display()
+</span></span></code></pre></div><h3 id="2-datetime-functions">2. Datetime functions</h3>
+<div class="image">
+    <style>
+      .img-responsive {
+        display: block;
+        height: auto;
+        max-width: 100%;
+      }
+    </style>
+    <p>
+      <center><img src="https://anhcodes.dev/images/inpost/sparksql/9.png"  alt="blog-img" class="img-responsive"></center>
+    </p>
+  </div>
+  
+<ul>
+<li>Reformat the timestamp column to string representation</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ffb8d1">import</span> pyspark.sql.functions <span style="color:#c2ffdf">as</span> F
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>df<span style="color:#ffb8d1">.</span>withColumn(<span style="color:#1bc5e0">&#34;date_string&#34;</span>, F<span style="color:#ffb8d1">.</span>date_format(<span style="color:#1bc5e0">&#34;timestamp&#34;</span>, <span style="color:#1bc5e0">&#34;MMMM dd, yyyy&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>withColumn(<span style="color:#1bc5e0">&#34;time_string&#34;</span>, F<span style="color:#ffb8d1">.</span>date_format(<span style="color:#1bc5e0">&#34;timestamp&#34;</span>, <span style="color:#1bc5e0">&#34;HH:mm:ss.SSSSSS&#34;</span>)
+</span></span></code></pre></div><ul>
+<li>Extract date time parts from timestamp</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df<span style="color:#ffb8d1">.</span>withColumn(<span style="color:#1bc5e0">&#39;year&#39;</span>, F<span style="color:#ffb8d1">.</span>year(F<span style="color:#ffb8d1">.</span>col(<span style="color:#1bc5e0">&#39;timestamp&#39;</span>))
+</span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>withColumn(<span style="color:#1bc5e0">&#39;month&#39;</span>, F<span style="color:#ffb8d1">.</span>month(F<span style="color:#ffb8d1">.</span>col(<span style="color:#1bc5e0">&#39;timestamp&#39;</span>))
+</span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>withColumn(<span style="color:#1bc5e0">&#39;dayofweek&#39;</span>, F<span style="color:#ffb8d1">.</span>dayofweek(F<span style="color:#ffb8d1">.</span>col(<span style="color:#1bc5e0">&#39;timestamp&#39;</span>))
+</span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>withColumn(<span style="color:#1bc5e0">&#39;minute&#39;</span>, F<span style="color:#ffb8d1">.</span>minute(F<span style="color:#ffb8d1">.</span>col(<span style="color:#1bc5e0">&#39;timestamp&#39;</span>))
+</span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>withColumn(<span style="color:#1bc5e0">&#39;second&#39;</span>, F<span style="color:#ffb8d1">.</span>second(F<span style="color:#ffb8d1">.</span>col(<span style="color:#1bc5e0">&#39;timestamp&#39;</span>))
+</span></span></code></pre></div><ul>
+<li>Convert timestamp to date</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df<span style="color:#ffb8d1">.</span>withColumn(<span style="color:#1bc5e0">&#34;date&#34;</span>, F<span style="color:#ffb8d1">.</span>to_date(F<span style="color:#ffb8d1">.</span>col(<span style="color:#1bc5e0">&#34;timestamp&#34;</span>))
+</span></span></code></pre></div><ul>
+<li>manipulate datetimes</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df<span style="color:#ffb8d1">.</span>withColumns(<span style="color:#1bc5e0">&#34;add_2_day&#34;</span>, F<span style="color:#ffb8d1">.</span>date_add(F<span style="color:#ffb8d1">.</span>col(<span style="color:#1bc5e0">&#34;timestamp&#34;</span>), <span style="color:#c5a3ff">2</span>))
+</span></span></code></pre></div><h3 id="3-complex-data-types-funtions">3. Complex Data Types funtions</h3>
+<div class="image">
+    <style>
+      .img-responsive {
+        display: block;
+        height: auto;
+        max-width: 100%;
+      }
+    </style>
+    <p>
+      <center><img src="https://anhcodes.dev/images/inpost/sparksql/10.png"  alt="blog-img" class="img-responsive"></center>
+    </p>
+  </div>
+  
+<div class="image">
+    <style>
+      .img-responsive {
+        display: block;
+        height: auto;
+        max-width: 100%;
+      }
+    </style>
+    <p>
+      <center><img src="https://anhcodes.dev/images/inpost/sparksql/11.png"  alt="blog-img" class="img-responsive"></center>
+    </p>
+  </div>
+  
+<p>Assume we have a DataFrame with <code>items</code> column as nested array. For example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#b0bec5">## For example</span>
+</span></span><span style="display:flex;"><span><span style="color:#ffb8d1">from</span> pyspark.sql.functions <span style="color:#ffb8d1">import</span> F
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>df
+</span></span><span style="display:flex;"><span><span style="color:#b0bec5">## explode the items field to create a new row for each element in the array</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>withColumn(<span style="color:#1bc5e0">&#34;items&#34;</span>, explode(<span style="color:#1bc5e0">&#34;items&#34;</span>))
+</span></span><span style="display:flex;"><span><span style="color:#b0bec5">## split column item_name by &#34; &#34; to array</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>withColumn(<span style="color:#1bc5e0">&#34;details&#34;</span>, split(col(<span style="color:#1bc5e0">&#34;item_name&#34;</span>, <span style="color:#1bc5e0">&#34; &#34;</span>) 
+</span></span><span style="display:flex;"><span><span style="color:#b0bec5">## extract the element from details</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>withColumn(<span style="color:#1bc5e0">&#34;size&#34;</span>, element_at(col(<span style="color:#1bc5e0">&#34;details&#34;</span>), <span style="color:#c5a3ff">1</span>)
+</span></span></code></pre></div><h3 id="3-join-functions">3. Join functions</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#b0bec5">## inner join </span>
+</span></span><span style="display:flex;"><span>df1<span style="color:#ffb8d1">.</span>join(df2, <span style="color:#1bc5e0">&#39;name&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#b0bec5">## inner join with 2 columns</span>
+</span></span><span style="display:flex;"><span>df1<span style="color:#ffb8d1">.</span>join(df2, [<span style="color:#1bc5e0">&#39;name&#39;</span>, <span style="color:#1bc5e0">&#39;age&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#b0bec5">## specify join</span>
+</span></span><span style="display:flex;"><span>df1<span style="color:#ffb8d1">.</span>join(df2, <span style="color:#1bc5e0">&#39;name&#39;</span>, <span style="color:#1bc5e0">&#39;left&#39;</span>)
+</span></span><span style="display:flex;"><span>df1<span style="color:#ffb8d1">.</span>join(df2, <span style="color:#1bc5e0">&#39;name&#39;</span>, <span style="color:#1bc5e0">&#39;right&#39;</span>)
+</span></span><span style="display:flex;"><span>df1<span style="color:#ffb8d1">.</span>join(df2, <span style="color:#1bc5e0">&#39;name&#39;</span>, <span style="color:#1bc5e0">&#39;outer&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#b0bec5">## specify explicit column expressiion</span>
+</span></span><span style="display:flex;"><span>df1<span style="color:#ffb8d1">.</span>join(df2, df1[<span style="color:#1bc5e0">&#39;customer_name&#39;</span>] <span style="color:#ffb8d1">==</span> df2[<span style="color:#1bc5e0">&#39;user_name&#39;</span>], <span style="color:#1bc5e0">&#39;left_outer&#39;</span>)
+</span></span></code></pre></div><h2 id="user-defined-functions-udf-in-spark">User Defined Functions (UDF) in Spark</h2>
+<p>In case Built-in Functions are not enough to cover the need, you can write your own custom functions at an efficiency cost.</p>
+<p>User-defined function can’t be optimized by Catalyst Optimizer, and must be serialized and sent to executors. Moreover, row data is deserialized from Spark binary format to pass to UDF, then results are serialized back into Spark native format. For Python, they also add overhead to Python interpreter running on each worker node.</p>
+<p>Using UDFs can cause <a href="https://anhcodes.dev/blog/mitigate-skew-spark/##serialization-api-coding-style">serialization</a> issues and long-running Spark job.</p>
+<p>A way to fix this is to use <a href="https://www.databricks.com/blog/2017/10/30/introducing-vectorized-udfs-for-pyspark.html">Pandas UDF aka Vectorized UDFs</a> using Apache Arrow in Spark 3.x.</p>
+<p>To create a UDF, you can follow below steps:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#b0bec5">## Step 1: Create a function</span>
+</span></span><span style="display:flex;"><span><span style="color:#c2ffdf">def</span> <span style="color:#ceb1ff">calProfit</span>(sales, cost):
+</span></span><span style="display:flex;"><span>	<span style="color:#c2ffdf">return</span> sales <span style="color:#ffb8d1">-</span> cost
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#b0bec5">## Step 2: Register function -&gt; serialize the function and send to executors</span>
+</span></span><span style="display:flex;"><span>calProfitUDF <span style="color:#ffb8d1">=</span> udf(calProfit)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#b0bec5">## Step 3: Apply the udf to the dataframe</span>
+</span></span><span style="display:flex;"><span>df<span style="color:#ffb8d1">.</span>withColumn(<span style="color:#1bc5e0">&#34;profit&#34;</span>, calProfitUDF(col(<span style="color:#1bc5e0">&#34;sales&#34;</span>), col(<span style="color:#1bc5e0">&#34;cost&#34;</span>)))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#b0bec5">## Register UDF to use in SQL</span>
+</span></span><span style="display:flex;"><span>df<span style="color:#ffb8d1">.</span>createOrReplaceTempView(<span style="color:#1bc5e0">&#39;sales&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>calProfitUDF <span style="color:#ffb8d1">=</span> park<span style="color:#ffb8d1">.</span>udf<span style="color:#ffb8d1">.</span>register(<span style="color:#1bc5e0">&#34;sql_udf&#34;</span>, calProfit)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#b0bec5">-- Use the UDF in sql
+</span></span></span><span style="display:flex;"><span><span style="color:#b0bec5"></span><span style="color:#ffb8d1">%</span>sq<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">select</span><span style="color:#a8757b"> </span>sql_udf(sales,<span style="color:#a8757b"> </span>cost)<span style="color:#a8757b"> </span><span style="color:#c2ffdf">as</span><span style="color:#a8757b"> </span>profit<span style="color:#a8757b"> </span><span style="color:#c2ffdf">from</span><span style="color:#a8757b"> </span>sales<span style="color:#a8757b">
+</span></span></span></code></pre></div><p>Alternatively, you can use decorator syntax (only applicable in Python)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#b0bec5">## Use Decorator Syntax for Python</span>
+</span></span><span style="display:flex;"><span><span style="color:#b0bec5">## Our input/output is float</span>
+</span></span><span style="display:flex;"><span><span style="color:#ceb1ff">@udf</span>(<span style="color:#1bc5e0">&#34;float&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#c2ffdf">def</span> <span style="color:#ceb1ff">calProfitUDF</span>(sales: float, cost: float) <span style="color:#ffb8d1">-&gt;</span> float:
+</span></span><span style="display:flex;"><span>	<span style="color:#c2ffdf">return</span> sales <span style="color:#ffb8d1">-</span> cost
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#b0bec5">## use the UDF</span>
+</span></span><span style="display:flex;"><span>df<span style="color:#ffb8d1">.</span>withColumn(<span style="color:#1bc5e0">&#34;profit&#34;</span>, calProfitUDF(col(<span style="color:#1bc5e0">&#34;sales&#34;</span>), col(<span style="color:#1bc5e0">&#34;cost&#34;</span>)))
+</span></span></code></pre></div><p>Recommend to use Pandas/Vectorized UDFs, notice the difference in syntax</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ffb8d1">from</span> pyspark.sql.functions <span style="color:#ffb8d1">import</span> pandas_udf
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ceb1ff">@pandas_udf</span>(<span style="color:#1bc5e0">&#34;float&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#c2ffdf">def</span> <span style="color:#ceb1ff">vectorizedUDF</span>(sales: pd<span style="color:#ffb8d1">.</span>Series, cost: pd<span style="color:#ffb8d1">.</span>Series) <span style="color:#ffb8d1">-&gt;</span> pd<span style="color:#ffb8d1">.</span>Series:
+</span></span><span style="display:flex;"><span>	<span style="color:#c2ffdf">return</span> sales <span style="color:#ffb8d1">-</span> cost
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#b0bec5">## use the UDF</span>
+</span></span><span style="display:flex;"><span>df<span style="color:#ffb8d1">.</span>withColumn(<span style="color:#1bc5e0">&#34;profit&#34;</span>, vectorizedUDF(col(<span style="color:#1bc5e0">&#34;sales&#34;</span>), col(<span style="color:#1bc5e0">&#34;cost&#34;</span>)))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#b0bec5">## register the UDF for sql </span>
+</span></span><span style="display:flex;"><span>spark<span style="color:#ffb8d1">.</span>udf<span style="color:#ffb8d1">.</span>register(<span style="color:#1bc5e0">&#34;sql_vectorized_udf&#34;</span>, vectorizedUDF)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">select</span><span style="color:#a8757b"> </span>sql_vectorized_udf(sales,<span style="color:#a8757b"> </span>cost)<span style="color:#a8757b"> </span><span style="color:#c2ffdf">as</span><span style="color:#a8757b"> </span>profit<span style="color:#a8757b"> </span><span style="color:#c2ffdf">from</span><span style="color:#a8757b"> </span>sales<span style="color:#a8757b">
+</span></span></span></code></pre></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  </div>
+  <section class="footer" id="contact">
+	<div class="footer__background_shape">
+		<svg viewBox="0 0 1920 79">
+			<path d="M0 0h1920v79L0 0z" data-name="Path 1450" />
+		</svg>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="footer__cta">
+					<div class="shape-1">
+						<svg xmlns="http://www.w3.org/2000/svg" width="357" height="315.029" viewBox="0 0 357 315.029">
+							<path data-name="Path 1449"
+								d="M76.1-157.222C91.746-135.8 87.2-94.273 99.993-61.945c12.7 32.328 42.661 55.459 39.248 73.282-3.318 17.823-40.007 30.337-65.6 43.325-25.5 12.988-39.912 26.545-60.01 42.566-20.1 16.116-46.074 34.6-63.328 27.682-17.349-6.921-25.976-39.153-59.915-59.82s-93.1-29.768-105.325-51.478 22.373-56.028 43.609-93.949c21.331-37.921 29.2-79.35 53.563-96.793 24.459-17.444 65.414-10.9 103.9-6.921 38.396 3.982 74.326 5.404 89.965 26.829z"
+								transform="translate(217.489 188.626)" />
+						</svg>
+					</div>
+					<div class="shape-2">
+						<svg xmlns="http://www.w3.org/2000/svg" width="357" height="315.029" viewBox="0 0 357 315.029">
+							<path data-name="Path 1449"
+								d="M76.1-157.222C91.746-135.8 87.2-94.273 99.993-61.945c12.7 32.328 42.661 55.459 39.248 73.282-3.318 17.823-40.007 30.337-65.6 43.325-25.5 12.988-39.912 26.545-60.01 42.566-20.1 16.116-46.074 34.6-63.328 27.682-17.349-6.921-25.976-39.153-59.915-59.82s-93.1-29.768-105.325-51.478 22.373-56.028 43.609-93.949c21.331-37.921 29.2-79.35 53.563-96.793 24.459-17.444 65.414-10.9 103.9-6.921 38.396 3.982 74.326 5.404 89.965 26.829z"
+								transform="translate(217.489 188.626)" />
+						</svg>
+					</div>
+					<div class="text-light footer__cta_content">
+						<span>Contact me</span>
+						<h2 class="mb-0">Let’s Work Together</h2>
+					</div>
+					<div class="footer__cta_action">
+						<a class="btn btn-light btn-zoom" href="https://anhcodes.dev/contact">Get in
+							touch</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+			
+			
+		<div class="row footer__footer">
+			<div class="col-lg-6">
+				<div class="footer__footer_copy text-light">
+					<p>©2023 - Made with ☕, Hugo, and Firebase by <a class="text-light" href="https://anhcodes.dev/" target="_blank">Anh Chu</a></p>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="footer__footer_social">
+					<ul class="unstyle-list">
+						
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://www.instagram.com/jasminmay12/"><i
+									class="fa fa-instagram"></i></a>
+						</li>
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://www.linkedin.com/in/anhhchu/"><i
+									class="fa fa-linkedin-square"></i></a>
+						</li>
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://github.com/anhhchu"><i
+									class="fa fa-github-square"></i></a>
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRwXsfdEDBGKI-JcVzIfRyKNF2QBWWa-g&libraries=geometry"></script>
+<script src="https://anhcodes.dev/plugins/jQuery/jquery.min.js"></script>
+<script src="https://anhcodes.dev/plugins/bootstrap/bootstrap.min.js"></script>
+<script src="https://anhcodes.dev/plugins/slick/slick.min.js"></script>
+<script src="https://anhcodes.dev/plugins/waypoint/jquery.waypoints.min.js"></script>
+<script src="https://anhcodes.dev/plugins/magnafic-popup/jquery.magnific-popup.min.js"></script>
+<script src="https://anhcodes.dev/plugins/tweenmax/TweenMax.min.js"></script>
+<script src="https://anhcodes.dev/plugins/imagesloaded/imagesloaded.min.js"></script>
+<script src="https://anhcodes.dev/plugins/masonry/masonry.min.js"></script>
+
+
+<script src="https://anhcodes.dev/js/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.37.1"></script>
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.11.0/dist/algoliasearch.umd.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.4.5/themes/satellite-min.css" integrity="sha256-TehzF/2QvNKhGQrrNpoOb2Ck4iGZ1J/DI4pkd2oUsBc=" crossorigin="anonymous">  
+
+</body>
+
+</html>

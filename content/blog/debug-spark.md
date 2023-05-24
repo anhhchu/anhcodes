@@ -1,6 +1,6 @@
 ---
 title: "Debug long running Spark job"
-date: 2023-04-11 23:20:57
+date: 2023-05-22 17:09:41
 featureImage: images/inpost/debug-spark/0.png
 postImage: images/inpost/debug-spark/0.png
 categories: big-data
@@ -134,31 +134,31 @@ Bucketing should be performed by a skilled data engineer as part of the data pre
 
 By using bucketing in the Join operation, the process of shuffling and exchanging data can be eliminated, resulting in a more efficient join. 
 
-## Storage [small files, scanning, inferring schema/schema evoluation]
+## Storage [small files, scanning, inferring schema/schema evolution]
 *TL,DR - Storage issues are problems related to how data is stored on disk, which can lead to high overhead with ingesting data by open, read, close files operation. To fix issues relating to Storage, think about how you can reduce the read, write, ingest files on disk*  
 
 ### How to Identify storage issue?
 
 There are a few storage-related potential issues that can slow down operations in Spark data processing. One is the overhead of opening, reading, and closing many **small files**. To address this, it's recommended to aim for files with a size of 1GB or larger, which can significantly reduce the time spent on these operations.
 
-Another is **directory scanning issue** which can arise with ****highly partitioned datasets that have multiple directories for each partition, requiring the driver to scan all of them on disk. For example, files on your storage are fine-grained partitioned to year-month-date-minute. 
+Another is **directory scanning issue** which can arise with **highly partitioned** datasets that have multiple directories for each partition, requiring the driver to scan all of them on disk. For example, files on your storage are fine-grained partitioned to year-month-date-minute. 
 
-A third issue involves **schema operations**, such as inferring the schema for JSON and CSV files. This can be very costly, requiring a full read of the files to determine data types, even if you only need a subset of the data. By contrast, reading Parquet files typically only requires one-time reading of the schema, which is much faster.
+A third issue involves **schema operations**, such as inferring the schema for JSON and CSV files. This can be very costly, requiring a full read of the files to determine data types, even if you only need a subset of the data. By contrast, reading Parquet files typically only requires one-time reading of the schema, which is much faster. Therefore, it's recommended to use Parquet as file storage for Spark considering that Parquet stores schema information in the file
 
 However, schema evolution support, even with Parquet files, can also be expensive, as it requires reading all the files and merging the schema collectively. For this reason, starting from Spark 1.5, schema merging is turned off by default and needs to be turned on by setting the `spark.sql.parquet.mergeSchema` option.
 
 ### How to fix storage issue?
 
-To address the issue of tiny files in a storage location, if you are using Delta Lake, consider using `autoOptimize` with `optimizeWrite` and `autoCompact` features. These will automatically coalesce small files into larger ones, however they have some subtle differences: auto
+To address the issue of tiny files in a storage location, if you are using Delta Lake, consider using `autoOptimize` with `optimizeWrite` and `autoCompact` features. These will automatically coalesce small files into larger ones, however they have some subtle differences:
 
 - Auto compaction occurs after a write to a table has succeeded and runs synchronously on the cluster that has performed the write. Auto compaction only compacts files that haven’t been compacted previously.
 - Optimized writes improve file size as data is written and benefit subsequent reads on the table. Optimized writes are most effective for partitioned tables, as they reduce the number of small files written to each partition.
 
-To address the issue of slow performance when scanning directories, consider registering your directory as a table in order to leverage the metastore to track the files in the storage location. This may have some initial overhead, but will benefit you in the long run by avoiding repeated directory scans.
+To address the issue of slow performance when scanning directories, consider registering your data as tables in order to leverage the metastore to track the files in the storage location. This may have some initial overhead, but will benefit you in the long run by avoiding repeated directory scans.
 
-Finally, to address issues with schema operations, there are several approaches you can take. One option is to specify the schema when reading in non-Parquet file types, though this can be a time-consuming process. Alternatively, you can use tables so that the metastore can track the table schema, or consider using DeltaLake that offer zero reads of schema with a metastore, and at most one for schema evolution. 
+To address issues with schema operations, one option is to specify the schema when reading in non-Parquet file types, though this can be a time-consuming process. Alternatively, you can register tables so that the metastore can track the table schema. The best option is to use Delta Lake which offer zero reads of schema with a metastore, and at most one reads for schema evolution. [Delta Lake](https://delta.io/) also provides other benefits such as ACID transactions, time travel, DML operations, schema evolution, etc. 
 
-## Serialization [API, coding style]
+## Serialization [API, programming]
 
 *TL,DR - Bad codes can also slow your Spark down, always try to use spark sql built-in functions and avoid UDFs when develop your Spark codes. If UDFs are needed, try vectorized UDFs for Python and Typed Transformations for Scala*  
 

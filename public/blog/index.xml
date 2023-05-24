@@ -6,7 +6,28 @@
     <description>Recent content in Data, Coding &amp; More on anhcodes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 05 May 2023 18:06:47 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 23 May 2023 17:09:34 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Spark SQL Programming Primer</title>
+      <link>https://anhcodes.dev/blog/spark-sql-programming/</link>
+      <pubDate>Tue, 23 May 2023 17:09:34 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/blog/spark-sql-programming/</guid>
+      <description>TL,DR - SparkSQL is a huge component of Spark Programming. This post introduces programming in SparkSQL through Spark DataFrame API. It&amp;rsquo;s important to be aware of Spark SQL built-in functions to be a more efficient Spark programmer
+What is SparkSQL DataFrame API in SparkSQL Read and write data with Spark DataFrame Work with columns in DF Work with Rows in DF Data Operations in Spark DataFrame SparkSQL Built-in Functions 1. Aggregation functions 2.</description>
+    </item>
+    
+    <item>
+      <title>Debug long running Spark job</title>
+      <link>https://anhcodes.dev/blog/debug-spark/</link>
+      <pubDate>Mon, 22 May 2023 17:09:41 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/blog/debug-spark/</guid>
+      <description>You Spark job is running for a long time, what to do? Generally, long-running Spark jobs can be due to various factors. We like to call them the 5S - Spill, Skew, Shuffle, Storage, and Serialization. So, how do we identify the main culprit?
+🔎 Look for Skew: Are some of the tasks taking longer than others? Do you have a join operation?
+🔎 Look for Spill: Any out-of-memory errors? Do the executors have enough memory to finish their tasks?</description>
+    </item>
+    
     <item>
       <title>Create your own AI avatar with DreamBooth and Stable Diffusion</title>
       <link>https://anhcodes.dev/blog/ai-avatar-sd-dreambooth/</link>
@@ -14,17 +35,6 @@
       
       <guid>https://anhcodes.dev/blog/ai-avatar-sd-dreambooth/</guid>
       <description>Table of Content Table of Content What is Stable Diffusion? What is DreamBooth? Options for Creating Your Own Images A 3-Step Process to Create Your Own AI Avatar for Free Step 1: Train Your Own Model with DreamBooth in Google Colabs Step 2: Download and Import the Model into Stable Diffusion WebUI Step 3: Use text2image Option to Generate Your Images Challenges and tips What is Stable Diffusion? Stable Diffusion is a deep learning model that can generate detailed images based on text descriptions.</description>
-    </item>
-    
-    <item>
-      <title>Debug long running Spark job</title>
-      <link>https://anhcodes.dev/blog/mitigate-skew-spark/</link>
-      <pubDate>Tue, 11 Apr 2023 23:20:57 +0000</pubDate>
-      
-      <guid>https://anhcodes.dev/blog/mitigate-skew-spark/</guid>
-      <description>You Spark job is running for a long time, what to do? Generally, long-running Spark jobs can be due to various factors. We like to call them the 5S - Spill, Skew, Shuffle, Storage, and Serialization. So, how do we identify the main culprit?
-🔎 Look for Skew: Are some of the tasks taking longer than others? Do you have a join operation?
-🔎 Look for Spill: Any out-of-memory errors? Do the executors have enough memory to finish their tasks?</description>
     </item>
     
     <item>
