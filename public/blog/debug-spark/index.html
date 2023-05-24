@@ -209,6 +209,7 @@
       </ul>
     </li>
     <li><a href="#serialization-api-programming">Serialization [API, programming]</a></li>
+    <li><a href="#reference">Reference</a></li>
   </ul>
 </nav>
 </div>
@@ -299,7 +300,7 @@
 <li>If above doesn’t work, allocate a cluster with more memory per worker if each worker need to process bigger partitions of data.</li>
 <li>Finally, you can adjust specific configuration settings using <code>spark.conf.set()</code> to manage the size and number of partitions.
 <ul>
-<li>manage <code>spark.conf.set(spark.sql.shuffle.partitions, {num_partitions})</code> to reduce data in each partition</li>
+<li>manage <code>spark.conf.set(spark.sql.shuffle.partitions, {num_partitions})</code> to reduce data in each partition shuffled across executors</li>
 <li>manage <code>spark.conf.set(’spark.sql.files.maxPartitionBytes’, {MB}*1024*1024)</code> to reduce size of partition when Spark read from disk to memory</li>
 </ul>
 </li>
@@ -330,9 +331,24 @@
 <ul>
 <li>Use fewer and larger workers: You normally pay the same unit price for the same total number of cores and memory in your cluster, no matter the number of executors. So if you have jobs that require a lot of wide transformations, choose the bigger instance and less workers. That way you don&rsquo;t have many executors to exchange data.</li>
 </ul>
-<h4 id="2-limit-shuffled-data">2. Limit shuffled data</h4>
+<h4 id="2-limit-shuffled-data-and-tune-the-shuffle-partitions">2. Limit shuffled data and tune the shuffle partitions</h4>
 <ul>
 <li>Use predicate push down and/or narrow the columns to reduce the amount of data being shuffled</li>
+<li>Turn on Adaptive Query Execution (AQE) to dynamically coaslesce shuffle partitions at runtime to avoid empty partitions
+<div class="image">
+    <style>
+      .img-responsive {
+        display: block;
+        height: auto;
+        max-width: 100%;
+      }
+    </style>
+    <p>
+      <center><img src="https://anhcodes.dev/images/inpost/debug-spark/aqe-shuffle.png"  alt="blog-img" class="img-responsive"></center>
+    </p>
+  </div>
+  </li>
+<li>manage spark.conf.set(spark.sql.shuffle.partitions, {num_partitions}) to set the number of partitions to be shuffled</li>
 </ul>
 <h4 id="3-try-broadcasthashjoin-if-possible">3. Try BroadcastHashJoin if possible</h4>
 <ul>
@@ -373,6 +389,8 @@
 <p>As a rule of thumb, always use <code>spark.sql.functions</code> whenever possible, regardless of which language you&rsquo;re using. You can expect similar performance for both Python or Scala with these functions</p>
 <p>In Scala, if you have to use User-defined functions that are not supported by standard spark functions, it&rsquo;s more efficient to use Typed transformations instead of standard Scala UDFs. In general, Scala is more efficient than Python with UDFs and Typed transformation.</p>
 <p>If you&rsquo;re working with Python, avoid using Spark UDFs and vectorized UDFs if possible. But if you have to use UDF, always use <a href="https://www.databricks.com/blog/2017/10/30/introducing-vectorized-udfs-for-pyspark.html">vectorized UDF</a></p>
+<h2 id="reference">Reference</h2>
+<p><a href="https://spark.apache.org/docs/latest/sql-performance-tuning.html">Spark SQL Performance Tuning</a></p>
 
         </div>
       </div>

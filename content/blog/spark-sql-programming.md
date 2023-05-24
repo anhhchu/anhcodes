@@ -1,8 +1,8 @@
 ---
 title: "Spark SQL Programming Primer"
 date: 2023-05-23 17:09:34
-featureImage: images/inpost/sparksql/0.png
-postImage: images/inpost/sparksql/0.png
+featureImage: images/inpost/sparksql/0.webp
+postImage: images/inpost/sparksql/0.webp
 categories: big-data
 tags: [spark]
 author: Anh Chu
@@ -34,11 +34,6 @@ The same SparkSQL query can be expressed with SQL and DataFrame API. SQL queries
 
 {{< image image="images/inpost/sparksql/2.png" >}}
 
-The Catalyst Optimizer is a component of Spark SQL that performs optimization on a query through 4 stages:
-* analysis: create abstract syntax tree of a query
-* logical optimization: create plan and cost-based optimizer and assign costs to plan
-* physical planning: generate physical plan based on logical plan
-* code generation: generate java **bytecode** to run on each machine, spark sql acts as a **compiler**. Project Tungsten engine generate RDD code 
 
 ## DataFrame API in SparkSQL
 

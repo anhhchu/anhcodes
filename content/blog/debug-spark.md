@@ -89,7 +89,7 @@ To mitigate Spill issues, there are several actions you can take.
 - First, make sure to fix the root cause of skew if this is the underlying issue behind the spill. To decrease partition sizes, increase the number of partitions or use explicit repartitioning.
 - If above doesn’t work, allocate a cluster with more memory per worker if each worker need to process bigger partitions of data.
 - Finally, you can adjust specific configuration settings using `spark.conf.set()` to manage the size and number of partitions.
-    - manage `spark.conf.set(spark.sql.shuffle.partitions, {num_partitions})` to reduce data in each partition
+    - manage `spark.conf.set(spark.sql.shuffle.partitions, {num_partitions})` to reduce data in each partition shuffled across executors
     - manage `spark.conf.set(’spark.sql.files.maxPartitionBytes’, {MB}*1024*1024)` to reduce size of partition when Spark read from disk to memory
 
 It's worth noting that ignoring spill may not always be a good idea, as even a small percentage of tasks can delay an entire process. Therefore, it's important to take note of spills and manage them proactively to enhance the performance of your Spark jobs.
@@ -115,8 +115,11 @@ To reduce the impact of shuffle on your Spark job, try to reduce the amount of d
 #### 1. Tune the Spark Cluster
 - Use fewer and larger workers: You normally pay the same unit price for the same total number of cores and memory in your cluster, no matter the number of executors. So if you have jobs that require a lot of wide transformations, choose the bigger instance and less workers. That way you don't have many executors to exchange data. 
 
-#### 2. Limit shuffled data
+#### 2. Limit shuffled data and tune the shuffle partitions
 - Use predicate push down and/or narrow the columns to reduce the amount of data being shuffled
+- Turn on Adaptive Query Execution (AQE) to dynamically coaslesce shuffle partitions at runtime to avoid empty partitions
+{{< image image="images/inpost/debug-spark/aqe-shuffle.png" >}}
+- manage spark.conf.set(spark.sql.shuffle.partitions, {num_partitions}) to set the number of partitions to be shuffled
 
 #### 3. Try BroadcastHashJoin if possible
 - Use BroadcastHashJoin if 1 table is less than 10MB. With BHJ, the smaller table will be broadcasted to all executors, which can eliminate the shuffle of data. 
@@ -171,3 +174,7 @@ As a rule of thumb, always use `spark.sql.functions` whenever possible, regard
 In Scala, if you have to use User-defined functions that are not supported by standard spark functions, it's more efficient to use Typed transformations instead of standard Scala UDFs. In general, Scala is more efficient than Python with UDFs and Typed transformation.
 
 If you're working with Python, avoid using Spark UDFs and vectorized UDFs if possible. But if you have to use UDF, always use [vectorized UDF](https://www.databricks.com/blog/2017/10/30/introducing-vectorized-udfs-for-pyspark.html) 
+
+## Reference
+
+[Spark SQL Performance Tuning](https://spark.apache.org/docs/latest/sql-performance-tuning.html)
