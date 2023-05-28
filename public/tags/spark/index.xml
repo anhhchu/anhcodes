@@ -6,7 +6,16 @@
     <description>Recent content in spark on anhcodes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 23 May 2023 17:09:34 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/tags/spark/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 27 May 2023 21:48:00 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/tags/spark/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Spark working internals, and why should you care?</title>
+      <link>https://anhcodes.dev/blog/tune-spark/</link>
+      <pubDate>Sat, 27 May 2023 21:48:00 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/blog/tune-spark/</guid>
+      <description>Most Big Data developers and Data Engineers start learning Spark by learning how to write SparkSQLcodes, how to ingest data and perform transformations on DataFrame (I know I did). I also wrote a post about SparkSQL Programming. However, we quickly learn that there’s more knowlege required to go from processing a few GBs of data to dealing with TBs and PBs of data, which is a challenge for big enterprises. Learning to write correct Spark codes is only a small part of the battle, you will need to understand the Spark Architecture and Spark working internals to correct tune Spark to handle true big data, and it’s the focus of this post.</description>
+    </item>
+    
     <item>
       <title>Spark SQL Programming Primer</title>
       <link>https://anhcodes.dev/blog/spark-sql-programming/</link>
@@ -26,15 +35,6 @@ What is SparkSQL DataFrame API in SparkSQL Read and write data with Spark DataFr
       <description>You Spark job is running for a long time, what to do? Generally, long-running Spark jobs can be due to various factors. We like to call them the 5S - Spill, Skew, Shuffle, Storage, and Serialization. So, how do we identify the main culprit?
 🔎 Look for Skew: Are some of the tasks taking longer than others? Do you have a join operation?
 🔎 Look for Spill: Any out-of-memory errors? Do the executors have enough memory to finish their tasks?</description>
-    </item>
-    
-    <item>
-      <title>How to Scale and Tune Spark Effectively</title>
-      <link>https://anhcodes.dev/blog/tune-spark/</link>
-      <pubDate>Tue, 11 Apr 2023 23:20:57 +0000</pubDate>
-      
-      <guid>https://anhcodes.dev/blog/tune-spark/</guid>
-      <description>Spark is a distributed big data processing engine that uses the resilient distributed dataset (RDD) data structure with data abstractions such as DataFrames and Datasets. It provides API in different programming languages such as Scala, Python, and Java. One of the key benefits of Spark is that it decouples compute and storage, meaning it can be used to read from different data sources on-prem and in the cloud. Spark has four main APIs: Spark SQL, Spark MLlib, Spark Structured Streaming, and GraphX.</description>
     </item>
     
   </channel>

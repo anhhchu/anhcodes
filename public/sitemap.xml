@@ -3,24 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://anhcodes.dev/</loc>
-    <lastmod>2023-05-23T17:09:34+00:00</lastmod>
+    <lastmod>2023-05-27T21:48:00+00:00</lastmod>
   </url><url>
     <loc>https://anhcodes.dev/categories/big-data/</loc>
-    <lastmod>2023-05-23T17:09:34+00:00</lastmod>
+    <lastmod>2023-05-27T21:48:00+00:00</lastmod>
   </url><url>
     <loc>https://anhcodes.dev/categories/</loc>
-    <lastmod>2023-05-23T17:09:34+00:00</lastmod>
+    <lastmod>2023-05-27T21:48:00+00:00</lastmod>
   </url><url>
     <loc>https://anhcodes.dev/blog/</loc>
-    <lastmod>2023-05-23T17:09:34+00:00</lastmod>
+    <lastmod>2023-05-27T21:48:00+00:00</lastmod>
   </url><url>
     <loc>https://anhcodes.dev/tags/spark/</loc>
-    <lastmod>2023-05-23T17:09:34+00:00</lastmod>
+    <lastmod>2023-05-27T21:48:00+00:00</lastmod>
   </url><url>
-    <loc>https://anhcodes.dev/blog/spark-sql-programming/</loc>
-    <lastmod>2023-05-23T17:09:34+00:00</lastmod>
+    <loc>https://anhcodes.dev/blog/tune-spark/</loc>
+    <lastmod>2023-05-27T21:48:00+00:00</lastmod>
   </url><url>
     <loc>https://anhcodes.dev/tags/</loc>
+    <lastmod>2023-05-27T21:48:00+00:00</lastmod>
+  </url><url>
+    <loc>https://anhcodes.dev/blog/spark-sql-programming/</loc>
     <lastmod>2023-05-23T17:09:34+00:00</lastmod>
   </url><url>
     <loc>https://anhcodes.dev/blog/debug-spark/</loc>
@@ -34,9 +37,6 @@
   </url><url>
     <loc>https://anhcodes.dev/blog/ai-avatar-sd-dreambooth/</loc>
     <lastmod>2023-05-05T18:06:47+00:00</lastmod>
-  </url><url>
-    <loc>https://anhcodes.dev/blog/tune-spark/</loc>
-    <lastmod>2023-04-11T23:20:57+00:00</lastmod>
   </url><url>
     <loc>https://anhcodes.dev/categories/data-lakehouse/</loc>
     <lastmod>2023-04-11T22:13:33+00:00</lastmod>

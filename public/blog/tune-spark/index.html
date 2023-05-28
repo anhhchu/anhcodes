@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>How to Scale and Tune Spark Effectively</title>
+  <title>Spark working internals, and why should you care?</title>
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -106,7 +106,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 text-center">
-        <h3 class="breadCrumb__title">How to Scale and Tune Spark Effectively</h3>
+        <h3 class="breadCrumb__title">Spark working internals, and why should you care?</h3>
         <nav aria-label="breadcrumb" class="d-flex justify-content-center">
           <ol class="breadcrumb align-items-center">
             <li class="breadcrumb-item"><a href=https://anhcodes.dev/>Home</a></li>
@@ -120,11 +120,11 @@
     <ul class="post-meta">
       <li>
         <i class="fa fa-calendar"></i>
-        April 11, 2023
+        May 27, 2023
       </li>
       <li>
         <i class="fa fa-clock-o"></i>
-        5 mins read
+        9 mins read
       </li>
       <li>
         <i class="fa fa-user"></i>
@@ -173,111 +173,234 @@
 
           
 
-          <p>Spark is a distributed big data processing engine that uses the resilient distributed dataset (RDD) data structure with data abstractions such as DataFrames and Datasets. It provides API in different programming languages such as Scala, Python, and Java. One of the key benefits of Spark is that it decouples compute and storage, meaning it can be used to read from different data sources on-prem and in the cloud. Spark has four main APIs: Spark SQL, Spark MLlib, Spark Structured Streaming, and GraphX.</p>
-<p>To tune Spark, below are a few things you can try:</p>
-<div class="toc">
-    <nav id="TableOfContents">
-  <ul>
-    <li><a href="#1-tune-the-spark-hardware-and-configurations">1. Tune the Spark Hardware and Configurations</a></li>
-    <li><a href="#2-minimize-data-scan-with-dfcache-and-dfpersist">2. Minimize data scan with <code>df.cache</code> and <code>df.persist</code></a></li>
-    <li><a href="#3-partitioning-optimization">3. Partitioning Optimization</a></li>
-    <li><a href="#4-choose-the-correct-join">4. Choose the Correct Join</a></li>
-    <li><a href="#5-omit-expensive-ops">5. Omit Expensive Ops</a></li>
-  </ul>
-</nav>
-</div>
-  
-<h2 id="1-tune-the-spark-hardware-and-configurations">1. Tune the Spark Hardware and Configurations</h2>
-<p>To make the most of Spark&rsquo;s capabilities, it&rsquo;s important to tune the hardware and configurations. Here are some tips:</p>
+          <p>Most Big Data developers and Data Engineers start learning Spark by learning how to write SparkSQLcodes, how to ingest data and perform transformations on DataFrame (I know I did). I also wrote a post about <a href="https://anhcodes.dev/blog/spark-sql-programming/">SparkSQL Programming</a>. However, we quickly learn that there’s more knowlege required to go from processing a few GBs of data to dealing with TBs and PBs of data, which is a challenge for big enterprises. Learning to write correct Spark codes is only a small part of the battle, you will need to understand the Spark Architecture and Spark working internals to correct tune Spark to handle true big data, and it’s the focus of this post.</p>
+<h2 id="spark-architecture">Spark Architecture</h2>
+<p>First, let this sink in: Spark is an <strong>in-memory</strong>, <strong>parallel processing engine</strong> that is very <strong>scalable.</strong>  The more data you have, the more powerful Spark can become that sets it apart from other processing engines. Spark is faster than Map Reduce paradigm because it processes data in memory, which means that it can reduce the disk IO that normally slows down Map Reduce jobs. Spark is fast because of the ability to process data in parallel.</p>
+<p>Parallelism is key enabler of Spark efficiency. The Spark Architecture is designed so that you can add new computers to process growing amount of big data in parallel.</p>
+<h3 id="spark-cluster-components">Spark Cluster Components</h3>
+<p>A Spark cluster has, a driver and mutiple workers (think computers).</p>
 <ul>
-<li>Choose the right instance type and cluster config. Bigger clusters aren’t necessarily faster. 32GB - 128GB RAM are best, and use compute optimized instance for ETL.</li>
-<li>Use dynamic resource allocation configuration and set min and max executors.</li>
-<li>Adjust <code>spark.executor.memory</code> and set amount of memory available to each executor. Allocate to three types: execution, storage, and reserved memory.</li>
+<li>Spark driver (JVMs) is responsible for instantiate Spark Session, turn Spark operations into DAGs, schedule and distribute tasks to the workers.</li>
+<li>Each worker has multiple cores (think threads) that can run multiple tasks. Each task is a single unit of work, each task maps to a single core and works on a single partition of data at a given time (1 task, 1 partition, 1 slot, 1 core)</li>
+<li>Besides, we also have a <strong>cluster manager,</strong> and <strong>Spark Session</strong> that runs Spark applications.</li>
 </ul>
-<h2 id="2-minimize-data-scan-with-dfcache-and-dfpersist">2. Minimize data scan with <code>df.cache</code> and <code>df.persist</code></h2>
-<p>Dataframe cache stores as many partitions as memory allows. Cache is another type of persist: <code>df.cache == df.persist(StorageLevel.MEMORY_AND_DISK)</code>. This stores partitions in memory and spills excess to disk.</p>
-<p>When we wse <code>dataframe.persist(StorageLevel.LEVEL)</code>, we can choose different storage levels such as Memory, disk or off-heap to persist data</p>
-
-
-
-
-
-<table class="table  table-light table-striped table-bordered">
-<thead>
-<tr>
-<th>StorageLevel</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>MEMORY_ONLY</td>
-<td>Data is stored as objects only in memory.</td>
-</tr>
-<tr>
-<td>MEMORY_ONLY_SER</td>
-<td>Data is serialized as a compact byte array and stored in memory.</td>
-</tr>
-<tr>
-<td>MEMORY_AND_DISK</td>
-<td>Data is stored in memory and excess data is serialized and stored on disk.</td>
-</tr>
-<tr>
-<td>DISK_ONLY</td>
-<td>Data is serialized and stored on disk only.</td>
-</tr>
-<tr>
-<td>OFF_HEAP</td>
-<td>Data is stored off-heap and not replicated.</td>
-</tr>
-<tr>
-<td>MEMORY_AND_DISK_SER</td>
-<td>Data is serialized and stored in memory and disk.</td>
-</tr>
-</tbody>
-</table>
-
-<p>Each StorageLevel (except OFF_HEAP) has an equivalent LEVEL_NAME_2*,* which means replicate twice on two different Spark executors: MEMORY_ONLY_2, MEMORY_AND_DISK_SER_2, etc. While this option is expensive, it allows data locality in two places, providing fault tolerance and giving Spark the option to schedule a task local to a copy of the data.</p>
-<p>To minimize data scan and speed up Spark processing, we should use cache and persist for:</p>
+<div class="image">
+    <style>
+      .img-responsive {
+        display: block;
+        height: auto;
+        max-width: 100%;
+      }
+    </style>
+    <p>
+      <center><img src="https://anhcodes.dev/images/inpost/spark/1.png"  alt="blog-img" class="img-responsive"></center>
+    </p>
+  </div>
+  
+<h3 id="spark-session">Spark Session</h3>
+<p>SparkSession is the single point of entry to all DataFrame API functionality. SparkSession is available since Spark 2.0, before that Spark Context was used with a limitation of only one Spark Context per JVM. SparkSession can unify numerous Spark Contexts.</p>
+<p>SparkSession automatically created in a Databricks notebook as the variable <code>spark</code>.</p>
+<div class="image">
+    <style>
+      .img-responsive {
+        display: block;
+        height: auto;
+        max-width: 100%;
+      }
+    </style>
+    <p>
+      <center><img src="https://anhcodes.dev/images/inpost/spark/2.png"  alt="blog-img" class="img-responsive"></center>
+    </p>
+  </div>
+  
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#b0bec5"># In below code, the `spark` variable specifies a sparkSession</span>
+</span></span><span style="display:flex;"><span><span style="color:#b0bec5"># spark.table reads a table to a dataframe</span>
+</span></span><span style="display:flex;"><span>df <span style="color:#ffb8d1">=</span> spark<span style="color:#ffb8d1">.</span>table(<span style="color:#1bc5e0">&#39;&lt;table&gt;&#39;</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#ffb8d1">.</span>select(<span style="color:#1bc5e0">&#39;a&#39;</span>, <span style="color:#1bc5e0">&#39;b&#39;</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#ffb8d1">.</span>where(<span style="color:#1bc5e0">&#39;a&gt;1&#39;</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#ffb8d1">.</span>orderBy(<span style="color:#1bc5e0">&#39;b&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#b0bec5"># spark.read reads files to a dataframe</span>
+</span></span><span style="display:flex;"><span>df <span style="color:#ffb8d1">=</span> spark<span style="color:#ffb8d1">.</span>read<span style="color:#ffb8d1">.</span>parquet(<span style="color:#1bc5e0">&#39;path/to/parquet&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#b0bec5"># spark.sql execute sql queries on a table and save the result set to df</span>
+</span></span><span style="display:flex;"><span>df <span style="color:#ffb8d1">=</span> spark<span style="color:#ffb8d1">.</span>sql(<span style="color:#1bc5e0">&#39;select * from &lt;table&gt;&#39;</span>)
+</span></span></code></pre></div><h3 id="spark-apis">Spark APIs</h3>
+<p>Spark ecosystems have 4 APIs: SparkSQL, Spark Structured Streaming,  SparkML, and GraphX (I haven’t  used this before, not sure if it’s deprecated or not). Most of Spark developers started with SparkSQL APIs with ingestion and transformations on Spark DataFrame. However, Spark Structured Streaming and SparkML are pretty popular too, which we can discuss later in later posts.</p>
+<h2 id="computation-in-spark">Computation in Spark</h2>
+<p>Earlier I mentioned that Driver is responsible to turn operations into jobs or DAGs. DAGs are Directed Acyclic Graphs (fancy word for graphs that have direction with no cycle). In a spark execution plan, each <strong>job</strong> is a DAG, each node within a DAG can have one or multiple <strong>stages</strong>, each stage can have multiple <strong>tasks</strong> (clear?)</p>
+<p>Spark parallelizes at 2 levels:</p>
 <ul>
-<li>DataFrames that need accessed commonly for doing frequent transformations during ETL or building data pipelines</li>
-<li>DataFrames commonly used during iterative machine learning training</li>
+<li>splitting work among workers, executors (or workers) will run the spark code on the data partitions it has</li>
+<li>each executors have a number of slots/cores, each slot can execute a task on a data partition.</li>
+</ul>
+<p>Another characteristic of Spark is lazy execution. When you specify transformations on a Spark DataFrame, Spark records lineage and only start the computation when an action is triggered (refer to my previous post about <a href="">SparkSQL programming</a> for more information on transformations and actions)</p>
+<div class="image">
+    <style>
+      .img-responsive {
+        display: block;
+        height: auto;
+        max-width: 100%;
+      }
+    </style>
+    <p>
+      <center><img src="https://anhcodes.dev/images/inpost/spark/3.png"  alt="blog-img" class="img-responsive"></center>
+    </p>
+  </div>
+  
+<p>Under the hood, SparkSQL uses Spark Catalyst Optimizer to optimize query performation, similar to how a relational database or a data warehouse plans their query jobs.</p>
+<h3 id="spark-catalyst-optimizer">Spark Catalyst Optimizer</h3>
+<p>The Catalyst Optimizer is a component of Spark SQL that performs optimization on a query through 4 stages:</p>
+<ul>
+<li>analysis: create abstract syntax tree of a query</li>
+<li>logical optimization: create plan and cost-based optimizer and assign costs to plan</li>
+<li>physical planning: generate physical plan based on logical plan</li>
+<li>code generation: generate java <strong>bytecode</strong> to run on each machine, spark sql acts as a <strong>compiler</strong>. Project Tungsten engine generate RDD code</li>
+</ul>
+<p>Catalyst Optimizer is a rule based engine that takes the Logical Plan and rewrites it as an optimized Physical Plan. The Physical Plan is developed BEFORE a query is executed</p>
+<div class="image">
+    <style>
+      .img-responsive {
+        display: block;
+        height: auto;
+        max-width: 100%;
+      }
+    </style>
+    <p>
+      <center><img src="https://anhcodes.dev/images/inpost/spark/4.png"  alt="blog-img" class="img-responsive"></center>
+    </p>
+  </div>
+  
+<p>To view the Catalyst Optimizier in action, use <code>df.explain(True)</code> to view the Logical and Physical Execution plans of a query.</p>
+<div class="image">
+    <style>
+      .img-responsive {
+        display: block;
+        height: auto;
+        max-width: 100%;
+      }
+    </style>
+    <p>
+      <center><img src="https://anhcodes.dev/images/inpost/spark/5.png"  alt="blog-img" class="img-responsive"></center>
+    </p>
+  </div>
+  
+<h3 id="adaptive-query-execution">Adaptive Query Execution</h3>
+<p>In Spark 3.0, Adaptive Query Execution (AQE) was introduced. One difference between AQE and Catalyst Optimizer is that AQE modifies the Physical Plan based on Runtime Statistics, so AQE can tune your queries further on the flight. So you may think that AQE is complimentary to Catalyst Optimizer.</p>
+<p>For example, during runtime, based on the new information that is previously not available during planning, AQE can decide to change your join strategy to Broadcast Hash Join from Sort Merge Join to reduce data shuffle. Or AQE can coalesce your partitions to optimal size during shuffling stage, or help improve Skew Join.</p>
+<p>This option is not turned on by default in Spark, you can enable by setting spark config: <code>spark.conf.set(spark.sql.adaptive.enabled, True)</code> , and it’s recommended to turn this on. However, If you run Spark on later version of Databricks Runtime, AQE is enabled by default.</p>
+<div class="image">
+    <style>
+      .img-responsive {
+        display: block;
+        height: auto;
+        max-width: 100%;
+      }
+    </style>
+    <p>
+      <center><img src="https://anhcodes.dev/images/inpost/spark/6.png"  alt="blog-img" class="img-responsive"></center>
+    </p>
+  </div>
+  
+<h2 id="shuffle-partitioning-and-caching-in-spark">Shuffle, Partitioning and Caching in Spark</h2>
+<p>We established that Spark processes data in parallel by splitting up data into <strong>partitions</strong> and <strong>move (shuffle)</strong> them to each executors so that they can run a task on a small subset of data in <strong>memory.</strong></p>
+<p><strong>Shufflings, partitionings,</strong> and <strong>memory can</strong> potentially dictate Spark performance. So if you understand these terms in depth, debugging Spark can become much easier, which I explained further in another post about <a href="https://anhcodes.dev/blog/debug-spark/">Debugging Long Running Spark Job</a></p>
+<p>To process your data, Spark will first have to ingest files from disk to memory, and by default it reads data into partitions of 128MB. If there’s any wide transformation on the DataFrame, Spark needs to repartition the data and move partititions to cores for processing. The implication of this is each partition will have to fit into the core’s memory or you will have spill or OOM errors. If partitions are not evenly distributed, you can have skew (which means some executors have more works than the others). Correctly tuning partitions upon ingestion and upon shuffling stage can help improve your Spark jobs.</p>
+<h3 id="partitioning">Partitioning</h3>
+<p>There are 2 types of partitioning:</p>
+<ul>
+<li>Spark Partition: partition in flight (in RAM)</li>
+<li>Disk Partition (Hive partition): partition at rest (on disk)</li>
+</ul>
+<p>When Spark read data from disk to memory (dataframe), the initial partition in the dataframe (in MEMORY) will be determined by number of cores (default level of parallelism), dataset size, <code>spark.sql.files.maxPartitionBytes</code> config, <code>spark.sql.files.openCostInBytes</code> (default 4MB, overhead of opening file). Remember that this is the size of the partition in Memory, irrelevant to what it is on disk.</p>
+<p>Check number of partitions in DataFrame when ingested from disk to memory with <code>df.rdd.getNumPartitions()</code>. We can estimate the size of your dataframe in memory by multiply the number of partitions in memory by the partition size.</p>
+<ul>
+<li>By default, each partition has the size of 128MB but you can set with <code>spark.sql.files.maxPartitionBytes</code>. A situation when setting this config can be beneficial is to write data to 1GB part files.</li>
+</ul>
+<div class="image">
+    <style>
+      .img-responsive {
+        display: block;
+        height: auto;
+        max-width: 100%;
+      }
+    </style>
+    <p>
+      <center><img src="https://anhcodes.dev/images/inpost/spark/7.png"  alt="blog-img" class="img-responsive"></center>
+    </p>
+  </div>
+  
+<ul>
+<li>Don’t allow partition size to increase &gt;200MB per 8GB of core total memory, if more than that, increase number of partitions. It’s better to have many small partitions than too few large partitions.</li>
+<li>It’s best to tune the number of partitions so it is at least a multiple of number of cores in your cluster. This allows for better paralellism. Run <code>df.rdd.getNumPartitions()</code> to check the number of partitions in memory.</li>
+<li>In case if you want to change partition size at runtime, you can run <code>coalesce()</code> and <code>repartition()</code>.  Coalesce can only reduce the number of partitions and increase partition size, but as a <strong>narrow transformation</strong> with no shuffling, coalsce is more efficient than repartition. Repartition returns new DF with exactly N partitions of even size. It can increase or decrease your partition count, but it requires expensive data shuffling</li>
+</ul>
+<h3 id="shuffle">Shuffle</h3>
+<p>Shuffle is one of the most expensive operation in Spark. In every wide transformation (for example a <code>groupBy</code>), shuffle create multiple stages:</p>
+<ul>
+<li>First stage will create shuffle files (shuffle write)</li>
+<li>Subsequent stages will reuse those shuffle files (shuffle read)</li>
+</ul>
+<div class="image">
+    <style>
+      .img-responsive {
+        display: block;
+        height: auto;
+        max-width: 100%;
+      }
+    </style>
+    <p>
+      <center><img src="https://anhcodes.dev/images/inpost/spark/8.png"  alt="blog-img" class="img-responsive"></center>
+    </p>
+  </div>
+  
+<ul>
+<li>If cache is used, first stage can create shuffle files and cache the results, later stages can read from cache with improve the performance</li>
+</ul>
+<div class="image">
+    <style>
+      .img-responsive {
+        display: block;
+        height: auto;
+        max-width: 100%;
+      }
+    </style>
+    <p>
+      <center><img src="https://anhcodes.dev/images/inpost/spark/9.png"  alt="blog-img" class="img-responsive"></center>
+    </p>
+  </div>
+  
+<div class="image">
+    <style>
+      .img-responsive {
+        display: block;
+        height: auto;
+        max-width: 100%;
+      }
+    </style>
+    <p>
+      <center><img src="https://anhcodes.dev/images/inpost/spark/10.png"  alt="blog-img" class="img-responsive"></center>
+    </p>
+  </div>
+  
+<p>The issues with shuffle partitions are:</p>
+<ul>
+<li>Too many partitions and you may have empty or very small partitions which put pressure on driver. This issue can be solved by enabling Adaptive Query Execution (AQE) as explained above</li>
+<li>Too few partitions and big partitions can cause spill or OOM. Correctly setting the <code>spark.sql.shuffle.partitions</code> based on the rule in partition section can help. This setting indicates how many partitions Spark will create for the next stage, and it MUST be managed by user for every job.</li>
+</ul>
+<p>Besides, there are a few techniques to mitigate excessive shuffles in my previous post <a href="https://anhcodes.dev/blog/debug-spark/">Debugging Long Running Spark Job</a></p>
+<h3 id="cache-in-spark">Cache in Spark</h3>
+<p>By default, data in a DataFrame is only present in Spark cluster while bing processed during a query, it won’t be persisted on a cluster afterwards. However, you can explicitly request Spark to persist DataFrame on the cluster by invoking <code>df.cache</code>. Cache can store as many partitions of the dataframe as the cluster memory allows</p>
+<p>Note that cache is another type of persist: <code>df.cache</code> is <code>df.persist(StorageLevel.MEMORY_AND_DISK)</code>. This stores partitions in memory and spills excess to disk.</p>
+<p>Cache should be used with care because caching consumes cluster resources that could otherwise be used for other executions, and it can prevent Spark from performing query optimization</p>
+<p>You should only used cache in below situations:</p>
+<ul>
+<li>DataFrames frequently used during Exploratory Data Analysis, iterative machine learning training in a Spark session</li>
+<li>DataFrames accessed commonly for doing frequent transformations during ETL or building data pipelines</li>
 <li>Don’t use when data is too big to fit in memory, or require infrequent transformation</li>
 </ul>
-<p>Remember that When you use <code>cache()</code> or <code>persist()</code>, the DataFrame is not fully cached until you invoke an action that goes through every record (e.g., <code>count()</code>). If you use an action like <code>take(1)</code>, only one partition will be cached because Catalyst realizes that you do not need to compute all the partitions just to retrieve one record.</p>
-<h2 id="3-partitioning-optimization">3. Partitioning Optimization</h2>
-<p>Partitioning is an important optimization technique in Spark. Here are some tips:</p>
-<ol>
-<li>Parquet file size: Make sure Parquet files are around 1GiB in size, and the row group size is also large.</li>
-<li>Number of partition on read: The right number of partitions depends on the task and size of the DataFrame. You want (at least) a few times the number of executors. 100 &lt; num partitions &lt; 10000 → reduce the Partition Bytes on Read to allow data explosion.</li>
-<li>Shuffle Partition Size: Keep track of input data size per task (shuffle partitions are created during shuffle stage). Optimal shuffle partition size: 100-200 MB (data exchanged across executors).</li>
-<li>Choose the Correct Partition Column when repartition: The partitioning columns are selected so that rows that must be processed together end up in the same task. When you repartition a dataframe, specify columns if possible.</li>
-</ol>
-<h2 id="4-choose-the-correct-join">4. Choose the Correct Join</h2>
-<p>Choosing the correct join is crucial for optimizing performance in Spark. Here are some tips:</p>
-<ul>
-<li>At the cluster level, set these configs:
-<ul>
-<li><code>spark.sql.autoBroadcastJoinThreshold 100*1024*1024</code>: if table is less than 100MB on disk, just broadcast it.</li>
-<li><code>spark.sql.join.preferSortMergeJoin false</code>.</li>
-</ul>
-</li>
-<li>Broadcast Hash Join: This is the most efficient method. The smaller dataset is broadcast by the driver to all executors and join with the larger dataset on the executor. Avoid shuffle and sort of dataset. The driver must have enough memory.</li>
-<li>Shuffle Hash Join: Map two different data frames and shuffle both tables by join key. Create a hash on the join key, data exchanged between executors. In the reduce phase, join two datasets with the same key in the same partition and same executor.</li>
-<li>Shuffle Sort Merge Join: This is the most popular method. All rows with the same key are hashed on the same partition on the same executor. Used with two large datasets, data will be shuffled and exchanged between executors. Use partitioned buckets to eliminate the exchange step.</li>
-<li>Cartesian Join (BroadcastNestedLoopJoin) BNLJ: this is the most expensive and slowest join operation and should be avoided if possible</li>
-</ul>
-<h2 id="5-omit-expensive-ops">5. Omit Expensive Ops</h2>
-<p>Avoid expensive operations in Spark to optimize performance. Here are some tips:</p>
-<ul>
-<li>Avoid <code>withColumn</code>.</li>
-<li>Avoid <code>repartition</code>.</li>
-<li>Avoid <code>count</code>.</li>
-<li>Use <code>approxCountDistinct()</code> within 5% of error.</li>
-<li>Use <code>dropDuplicates</code> before the join, before the groupBy.</li>
-<li>Avoid UDFs. Traditional UDFs cannot use Tungsten and are not vectorized. Use org.apache.spark.sql.functions, PandasUDFs, or SparkR UDFs instead.</li>
-</ul>
-<p>By following these tips, hopefully you can scale and tune Spark effectively and make the most of its capabilities for big data processing.</p>
+<p>When you use cache() or persist(), the DataFrame is not fully cached until you invoke an action that goes through every record (e.g., count()). If you use an action like take(1), only one partition will be cached because Catalyst realizes that you do not need to compute all the partitions just to retrieve one record.</p>
+<p>Don’t forget to cleanup with <code>df.unpersist</code> to evict the dataframe from cache when you no longer need it.</p>
 
         </div>
       </div>

@@ -6,7 +6,16 @@
     <description>Recent content on anhcodes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 23 May 2023 17:09:34 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 27 May 2023 21:48:00 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Spark working internals, and why should you care?</title>
+      <link>https://anhcodes.dev/blog/tune-spark/</link>
+      <pubDate>Sat, 27 May 2023 21:48:00 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/blog/tune-spark/</guid>
+      <description>Most Big Data developers and Data Engineers start learning Spark by learning how to write SparkSQLcodes, how to ingest data and perform transformations on DataFrame (I know I did). I also wrote a post about SparkSQL Programming. However, we quickly learn that there’s more knowlege required to go from processing a few GBs of data to dealing with TBs and PBs of data, which is a challenge for big enterprises. Learning to write correct Spark codes is only a small part of the battle, you will need to understand the Spark Architecture and Spark working internals to correct tune Spark to handle true big data, and it’s the focus of this post.</description>
+    </item>
+    
     <item>
       <title>Spark SQL Programming Primer</title>
       <link>https://anhcodes.dev/blog/spark-sql-programming/</link>
@@ -35,15 +44,6 @@ What is SparkSQL DataFrame API in SparkSQL Read and write data with Spark DataFr
       
       <guid>https://anhcodes.dev/blog/ai-avatar-sd-dreambooth/</guid>
       <description>Table of Content Table of Content What is Stable Diffusion? What is DreamBooth? Options for Creating Your Own Images A 3-Step Process to Create Your Own AI Avatar for Free Step 1: Train Your Own Model with DreamBooth in Google Colabs Step 2: Download and Import the Model into Stable Diffusion WebUI Step 3: Use text2image Option to Generate Your Images Challenges and tips What is Stable Diffusion? Stable Diffusion is a deep learning model that can generate detailed images based on text descriptions.</description>
-    </item>
-    
-    <item>
-      <title>How to Scale and Tune Spark Effectively</title>
-      <link>https://anhcodes.dev/blog/tune-spark/</link>
-      <pubDate>Tue, 11 Apr 2023 23:20:57 +0000</pubDate>
-      
-      <guid>https://anhcodes.dev/blog/tune-spark/</guid>
-      <description>Spark is a distributed big data processing engine that uses the resilient distributed dataset (RDD) data structure with data abstractions such as DataFrames and Datasets. It provides API in different programming languages such as Scala, Python, and Java. One of the key benefits of Spark is that it decouples compute and storage, meaning it can be used to read from different data sources on-prem and in the cloud. Spark has four main APIs: Spark SQL, Spark MLlib, Spark Structured Streaming, and GraphX.</description>
     </item>
     
     <item>
