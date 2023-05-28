@@ -155,9 +155,6 @@
   <div class="animate-shape">
     <img src=https://anhcodes.dev/images/skill/skill-background-shape.svg alt="">
   </div>
-  <div class="animate-pattern">
-    <img src=https://anhcodes.dev/images/service/background-pattern.svg alt="background-shape">
-  </div>
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
@@ -175,18 +172,63 @@
 
           <p>While working on a recent project, I accidentally committed some files. Instead of using <code>git reset --soft &lt;prev-commit-id&gt;</code> to unstage them, I used <code>git reset --hard HEAD</code> and all of my new changes gone with the wind. After panicking for a few minutes, I determined to learn how <code>git reset</code> works and how I can revert the damages.</p>
 <h3 id="1-what-is-git-reset-hard-vs-soft">1. What is git reset (hard vs soft)</h3>
+
+
 <div class="image">
-    <style>
-      .img-responsive {
-        display: block;
-        height: auto;
-        max-width: 100%;
-      }
-    </style>
-    <p>
-      <center><img src="https://anhcodes.dev/images/single-blog/git-reset.png"  alt="blog-img" class="img-responsive"></center>
-    </p>
-  </div>
+  <style>
+    .img-responsive {
+      display: block;
+      height: auto;
+      max-width: 100%;
+      cursor: pointer;
+    }
+  </style>
+  <p>
+    <center><img src="https://anhcodes.dev/images/single-blog/git-reset.png" alt="blog-img" class="img-responsive" onclick="openModal(this)"></center>
+  </p>
+</div>
+
+<script>
+function openModal(img) {
+  var modal = document.createElement('div');
+  modal.classList.add('modal');
+  modal.innerHTML = '<div class="modal-content"><img src="' + img.src + '"></div>';
+  document.body.appendChild(modal);
+  modal.addEventListener('click', closeModal);
+}
+
+function closeModal(event) {
+  if (event.target.classList.contains('modal')) {
+    document.body.removeChild(event.target);
+  }
+}
+</script>
+
+<style>
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 80%;
+  max-height: 80%;
+  overflow: auto;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+}
+</style>
+
   
 <p><code>git reset --hard</code> resets the current branch tip, and also deletes any changes in the working directory and staging area (although files under <code>git stash</code> will not be affected). It resets index entries to a specified commit, or the HEAD location. <code>git reset --hard</code> should be used with caution, since it can lead to losing work in your staging area and working directory.</p>
 <p>Below is the demonstration of what happened to a new file <code>test2.txt</code> after a <code>git reset --hard</code></p>

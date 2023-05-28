@@ -155,9 +155,6 @@
   <div class="animate-shape">
     <img src=https://anhcodes.dev/images/skill/skill-background-shape.svg alt="">
   </div>
-  <div class="animate-pattern">
-    <img src=https://anhcodes.dev/images/service/background-pattern.svg alt="background-shape">
-  </div>
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
@@ -224,35 +221,125 @@
 <li>If you see uneven Shuffle Read/Write Size in a stage’s Summary Metrics</li>
 <li>Skew can cause Spill, so sometimes you will see Disk or Memory Spill as well. If Spill is caused by Skew, you have to fix Skew as the Root cause.</li>
 </ul>
+
+
 <div class="image">
-    <style>
-      .img-responsive {
-        display: block;
-        height: auto;
-        max-width: 100%;
-      }
-    </style>
-    <p>
-      <center><img src="https://anhcodes.dev/images/inpost/debug-spark/1.png"  alt="blog-img" class="img-responsive"></center>
-    </p>
-  </div>
+  <style>
+    .img-responsive {
+      display: block;
+      height: auto;
+      max-width: 100%;
+      cursor: pointer;
+    }
+  </style>
+  <p>
+    <center><img src="https://anhcodes.dev/images/inpost/debug-spark/1.png" alt="blog-img" class="img-responsive" onclick="openModal(this)"></center>
+  </p>
+</div>
+
+<script>
+function openModal(img) {
+  var modal = document.createElement('div');
+  modal.classList.add('modal');
+  modal.innerHTML = '<div class="modal-content"><img src="' + img.src + '"></div>';
+  document.body.appendChild(modal);
+  modal.addEventListener('click', closeModal);
+}
+
+function closeModal(event) {
+  if (event.target.classList.contains('modal')) {
+    document.body.removeChild(event.target);
+  }
+}
+</script>
+
+<style>
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 80%;
+  max-height: 80%;
+  overflow: auto;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+}
+</style>
+
   
+
+
 <div class="image">
-    <style>
-      .img-responsive {
-        display: block;
-        height: auto;
-        max-width: 100%;
-      }
-    </style>
-    <p>
-      <center><img src="https://anhcodes.dev/images/inpost/debug-spark/2.png"  alt="blog-img" class="img-responsive"></center>
-    </p>
-  </div>
+  <style>
+    .img-responsive {
+      display: block;
+      height: auto;
+      max-width: 100%;
+      cursor: pointer;
+    }
+  </style>
+  <p>
+    <center><img src="https://anhcodes.dev/images/inpost/debug-spark/2.png" alt="blog-img" class="img-responsive" onclick="openModal(this)"></center>
+  </p>
+</div>
+
+<script>
+function openModal(img) {
+  var modal = document.createElement('div');
+  modal.classList.add('modal');
+  modal.innerHTML = '<div class="modal-content"><img src="' + img.src + '"></div>';
+  document.body.appendChild(modal);
+  modal.addEventListener('click', closeModal);
+}
+
+function closeModal(event) {
+  if (event.target.classList.contains('modal')) {
+    document.body.removeChild(event.target);
+  }
+}
+</script>
+
+<style>
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 80%;
+  max-height: 80%;
+  overflow: auto;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+}
+</style>
+
   
 <h3 id="how-do-you-fix-skew">How do you fix Skew?</h3>
 <p>If you disk spill or OOM errors are caused by skew, instead of solving for RAM problem, solve for uneven distribution of records across all partitions</p>
-<p>Option 1: If you run Spark on Databricks, use skew hint (refer <a href="https://docs.databricks.com/optimizations/skew-join.html">Skew Join optimization</a>). For example, assuming that you know the column used in the join is skewed, set the skew hint for that column. With this skew hint information, Databricks Runtime can hopefully construct a better query plan for the join</p>
+<p>Option 1: If you run Spark on Databricks, use skew hint (refer <a href="https://docs.databricks.com/optimizations/skew-join.html">Skew Join optimization</a>). For example, assuming that you know the column used in the join is skewed, set the skew hint for that column. With this skew hint information, Spark can hopefully construct a better query plan for the join</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#b0bec5">## Set skew hint when loading the table</span>
 </span></span><span style="display:flex;"><span>df <span style="color:#ffb8d1">=</span> spark<span style="color:#ffb8d1">.</span>read<span style="color:#ffb8d1">.</span>format(<span style="color:#1bc5e0">&#34;delta&#34;</span>)<span style="color:#ffb8d1">.</span>load(trxPath)
 </span></span><span style="display:flex;"><span>						<span style="color:#ffb8d1">.</span>hint(<span style="color:#1bc5e0">&#34;skew&#34;</span>,<span style="color:#1bc5e0">&#34;&lt;join_column&gt;&#34;</span>) 
@@ -263,35 +350,125 @@
 </span></span></code></pre></div><p>Option3 : Another option is to salt the skewed column with a random number to create more evenly partitions but at the cost of extra processing. This is a more complex operations, which we should discuss in another post.</p>
 <h2 id="spill-lack-of-memory">Spill [lack of memory]</h2>
 <p><em>TL,DR - Spill is caused by executors lacking of memory to process partitions. To fix Spill think about how you can add more memory to the executors, or manage the partitions sizes</em></p>
-<p>If your Spark executors don’t have enough local memory to process their allocated partitions, Spark has to spill the data to disk. Spill is a Spark’s measure of moving an RDD from local RAM to disk and then back to executor’s RAM again for further processing with the goal of avoiding an out-of-memory error. However, this can lead to expensive disk reads and writes, and significantly slow down the entire job.</p>
+<p>If your Spark executors don’t have enough local memory to process their allocated partitions, Spark has to spill the data to disk. Spill is a Spark’s measure of moving an RDD from local RAM to disk and then back to executor’s RAM again for further processing with the goal of avoiding an out-of-memory (OOM) error. However, this can lead to expensive disk reads and writes, and significantly slow down the entire job.</p>
 <p>This process occurs when a partition becomes too large to fit into RAM, and it may be a result of skew in the data. Some potential causes of spill include setting <code>spark.sql.files.maxPartitionBytes</code> too high, using <code>explode()</code> on an array, performing a <code>join</code> or <code>crossJoin</code> of two tables, or aggregating results by a skewed column.</p>
 <h3 id="how-do-you-identify-spill-in-your-sparkui">How do you identify Spill in your SparkUI?</h3>
 <p>You can  find Spill indicators on SparkUI under each stage’s detail tabe or Aggregated Metrics by Executor. When data is spilled, both the size of the data in memory and on disk will be provided. Typically, the size on disk will be smaller due to compression that occurs when serializing data before it is written to disk.</p>
+
+
 <div class="image">
-    <style>
-      .img-responsive {
-        display: block;
-        height: auto;
-        max-width: 100%;
-      }
-    </style>
-    <p>
-      <center><img src="https://anhcodes.dev/images/inpost/debug-spark/3.png"  alt="blog-img" class="img-responsive"></center>
-    </p>
-  </div>
+  <style>
+    .img-responsive {
+      display: block;
+      height: auto;
+      max-width: 100%;
+      cursor: pointer;
+    }
+  </style>
+  <p>
+    <center><img src="https://anhcodes.dev/images/inpost/debug-spark/3.png" alt="blog-img" class="img-responsive" onclick="openModal(this)"></center>
+  </p>
+</div>
+
+<script>
+function openModal(img) {
+  var modal = document.createElement('div');
+  modal.classList.add('modal');
+  modal.innerHTML = '<div class="modal-content"><img src="' + img.src + '"></div>';
+  document.body.appendChild(modal);
+  modal.addEventListener('click', closeModal);
+}
+
+function closeModal(event) {
+  if (event.target.classList.contains('modal')) {
+    document.body.removeChild(event.target);
+  }
+}
+</script>
+
+<style>
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 80%;
+  max-height: 80%;
+  overflow: auto;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+}
+</style>
+
   
+
+
 <div class="image">
-    <style>
-      .img-responsive {
-        display: block;
-        height: auto;
-        max-width: 100%;
-      }
-    </style>
-    <p>
-      <center><img src="https://anhcodes.dev/images/inpost/debug-spark/4.png"  alt="blog-img" class="img-responsive"></center>
-    </p>
-  </div>
+  <style>
+    .img-responsive {
+      display: block;
+      height: auto;
+      max-width: 100%;
+      cursor: pointer;
+    }
+  </style>
+  <p>
+    <center><img src="https://anhcodes.dev/images/inpost/debug-spark/4.png" alt="blog-img" class="img-responsive" onclick="openModal(this)"></center>
+  </p>
+</div>
+
+<script>
+function openModal(img) {
+  var modal = document.createElement('div');
+  modal.classList.add('modal');
+  modal.innerHTML = '<div class="modal-content"><img src="' + img.src + '"></div>';
+  document.body.appendChild(modal);
+  modal.addEventListener('click', closeModal);
+}
+
+function closeModal(event) {
+  if (event.target.classList.contains('modal')) {
+    document.body.removeChild(event.target);
+  }
+}
+</script>
+
+<style>
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 80%;
+  max-height: 80%;
+  overflow: auto;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+}
+</style>
+
   
 <h3 id="how-do-you-fix-spill">How do you fix Spill?</h3>
 <p>To mitigate Spill issues, there are several actions you can take.</p>
@@ -308,18 +485,63 @@
 <p>It&rsquo;s worth noting that ignoring spill may not always be a good idea, as even a small percentage of tasks can delay an entire process. Therefore, it&rsquo;s important to take note of spills and manage them proactively to enhance the performance of your Spark jobs.</p>
 <h2 id="shuffles-data-transfer">Shuffles [data transfer]</h2>
 <p><em>TL,DR - Shuffle refers to the movement of data across executors, and it&rsquo;s inevitable with wide transformation jobs. To tune shuffle operations, think about how you can reduce the amount of data that get shuffled across the cluster network</em></p>
+
+
 <div class="image">
-    <style>
-      .img-responsive {
-        display: block;
-        height: auto;
-        max-width: 100%;
-      }
-    </style>
-    <p>
-      <center><img src="https://anhcodes.dev/images/inpost/debug-spark/5.png"  alt="blog-img" class="img-responsive"></center>
-    </p>
-  </div>
+  <style>
+    .img-responsive {
+      display: block;
+      height: auto;
+      max-width: 100%;
+      cursor: pointer;
+    }
+  </style>
+  <p>
+    <center><img src="https://anhcodes.dev/images/inpost/debug-spark/5.png" alt="blog-img" class="img-responsive" onclick="openModal(this)"></center>
+  </p>
+</div>
+
+<script>
+function openModal(img) {
+  var modal = document.createElement('div');
+  modal.classList.add('modal');
+  modal.innerHTML = '<div class="modal-content"><img src="' + img.src + '"></div>';
+  document.body.appendChild(modal);
+  modal.addEventListener('click', closeModal);
+}
+
+function closeModal(event) {
+  if (event.target.classList.contains('modal')) {
+    document.body.removeChild(event.target);
+  }
+}
+</script>
+
+<style>
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 80%;
+  max-height: 80%;
+  overflow: auto;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+}
+</style>
+
   
 <p>Shuffle is the act of moving data between executors. If you have multiple data partitions in different executors on a Spark cluster, shuffle is necessary and inevitable. Most of the time, shuffle operations are actually quite fast. However, there are situations when shuffle can become the culprit of slowing down your Spark job. For example, moving data across the network is slow, and the more data you have to move, the slower it will get.  Moreover, Incorrect shuffles can cause Skew, and potentital Spill</p>
 <h3 id="how-to-identify-shuffle">How to identify Shuffle?</h3>
@@ -335,18 +557,63 @@
 <ul>
 <li>Use predicate push down and/or narrow the columns to reduce the amount of data being shuffled</li>
 <li>Turn on Adaptive Query Execution (AQE) to dynamically coaslesce shuffle partitions at runtime to avoid empty partitions
+
+
 <div class="image">
-    <style>
-      .img-responsive {
-        display: block;
-        height: auto;
-        max-width: 100%;
-      }
-    </style>
-    <p>
-      <center><img src="https://anhcodes.dev/images/inpost/debug-spark/aqe-shuffle.png"  alt="blog-img" class="img-responsive"></center>
-    </p>
-  </div>
+  <style>
+    .img-responsive {
+      display: block;
+      height: auto;
+      max-width: 100%;
+      cursor: pointer;
+    }
+  </style>
+  <p>
+    <center><img src="https://anhcodes.dev/images/inpost/debug-spark/aqe-shuffle.png" alt="blog-img" class="img-responsive" onclick="openModal(this)"></center>
+  </p>
+</div>
+
+<script>
+function openModal(img) {
+  var modal = document.createElement('div');
+  modal.classList.add('modal');
+  modal.innerHTML = '<div class="modal-content"><img src="' + img.src + '"></div>';
+  document.body.appendChild(modal);
+  modal.addEventListener('click', closeModal);
+}
+
+function closeModal(event) {
+  if (event.target.classList.contains('modal')) {
+    document.body.removeChild(event.target);
+  }
+}
+</script>
+
+<style>
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 80%;
+  max-height: 80%;
+  overflow: auto;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+}
+</style>
+
   </li>
 <li>manage spark.conf.set(spark.sql.shuffle.partitions, {num_partitions}) to set the number of partitions to be shuffled</li>
 </ul>

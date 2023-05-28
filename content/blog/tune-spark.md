@@ -150,14 +150,12 @@ By default, data in a DataFrame is only present in Spark cluster while bing proc
 
 Note that cache is another type of persist: `df.cache` is `df.persist(StorageLevel.MEMORY_AND_DISK)`. This stores partitions in memory and spills excess to disk.
 
-Cache should be used with care because caching consumes cluster resources that could otherwise be used for other executions, and it can prevent Spark from performing query optimization
-
-You should only used cache in below situations:
+Cache should be used with care because caching consumes cluster resources that could otherwise be used for other executions, and it can prevent Spark from performing query optimization. You should only used cache in below situations:
 
 - DataFrames frequently used during Exploratory Data Analysis, iterative machine learning training in a Spark session
 - DataFrames accessed commonly for doing frequent transformations during ETL or building data pipelines
-- Don’t use when data is too big to fit in memory, or require infrequent transformation
+- Don’t use when data is too big to fit in memory, or only need infrequent transformation
 
-When you use cache() or persist(), the DataFrame is not fully cached until you invoke an action that goes through every record (e.g., count()). If you use an action like take(1), only one partition will be cached because Catalyst realizes that you do not need to compute all the partitions just to retrieve one record.
+When you use cache() or persist(), the DataFrame is not fully cached until you invoke an action that goes through every record (e.g., count()). If you use an action like take(1)w, only one partition will be cached because Catalyst realizes that you do not need to compute all the partitions just to retrieve one record.
 
 Don’t forget to cleanup with `df.unpersist` to evict the dataframe from cache when you no longer need it.

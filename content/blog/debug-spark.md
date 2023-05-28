@@ -48,7 +48,7 @@ When a partition is bigger than the others, the executor will take longer to pro
 
 If you disk spill or OOM errors are caused by skew, instead of solving for RAM problem, solve for uneven distribution of records across all partitions
 
-Option 1: If you run Spark on Databricks, use skew hint (refer [Skew Join optimization](https://docs.databricks.com/optimizations/skew-join.html)). For example, assuming that you know the column used in the join is skewed, set the skew hint for that column. With this skew hint information, Databricks Runtime can hopefully construct a better query plan for the join
+Option 1: If you run Spark on Databricks, use skew hint (refer [Skew Join optimization](https://docs.databricks.com/optimizations/skew-join.html)). For example, assuming that you know the column used in the join is skewed, set the skew hint for that column. With this skew hint information, Spark can hopefully construct a better query plan for the join
 
 ```python
 ## Set skew hint when loading the table
@@ -70,7 +70,7 @@ Option3 : Another option is to salt the skewed column with a random number to cr
 
 *TL,DR - Spill is caused by executors lacking of memory to process partitions. To fix Spill think about how you can add more memory to the executors, or manage the partitions sizes*  
 
-If your Spark executors don’t have enough local memory to process their allocated partitions, Spark has to spill the data to disk. Spill is a Spark’s measure of moving an RDD from local RAM to disk and then back to executor’s RAM again for further processing with the goal of avoiding an out-of-memory error. However, this can lead to expensive disk reads and writes, and significantly slow down the entire job. 
+If your Spark executors don’t have enough local memory to process their allocated partitions, Spark has to spill the data to disk. Spill is a Spark’s measure of moving an RDD from local RAM to disk and then back to executor’s RAM again for further processing with the goal of avoiding an out-of-memory (OOM) error. However, this can lead to expensive disk reads and writes, and significantly slow down the entire job. 
 
 This process occurs when a partition becomes too large to fit into RAM, and it may be a result of skew in the data. Some potential causes of spill include setting `spark.sql.files.maxPartitionBytes` too high, using `explode()` on an array, performing a `join` or `crossJoin` of two tables, or aggregating results by a skewed column.
 

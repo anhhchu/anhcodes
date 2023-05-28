@@ -155,9 +155,6 @@
   <div class="animate-shape">
     <img src=https://anhcodes.dev/images/skill/skill-background-shape.svg alt="">
   </div>
-  <div class="animate-pattern">
-    <img src=https://anhcodes.dev/images/service/background-pattern.svg alt="background-shape">
-  </div>
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
@@ -210,18 +207,63 @@
 <p><a href="https://leonardo.ai/">Leonardo.Ai</a> is a platform that utilizes artificial intelligence to generate various types of production-ready art assets.  In some senses, Leonardo.Ai is very similar to Midjourney, but you can generate images on WebUI as opposed to in Discord. Besides, Users can use a pre-trained or fine-tuned model to generate art assets, or generate prompts, or train their own AI model to generate custom assets. Currently, Midjourney doesn&rsquo;t provide the option to train your own model. As of the time of writing, Leonardo.Ai gives you 1 free model training credit that will reset every month, and 150 credits daily to generate AI images. I trained 1 model on this platform with about 8 images but the result is not as good as the DreamBooth free version. Below are some images created with Leonardo.Ai using my trained model. The images quality is definitely stunning, but they don&rsquo;t look like me, I don&rsquo;t even look Asian. Leonardo is definitely promising if I can get them to look like me, so I will try again when my credit resets</p>
 </li>
 </ul>
+
+
 <div class="image">
-    <style>
-      .img-responsive {
-        display: block;
-        height: auto;
-        max-width: 100%;
-      }
-    </style>
-    <p>
-      <center><img src="https://anhcodes.dev/images/inpost/diy-avatar/leonardo.png"  alt="blog-img" class="img-responsive"></center>
-    </p>
-  </div>
+  <style>
+    .img-responsive {
+      display: block;
+      height: auto;
+      max-width: 100%;
+      cursor: pointer;
+    }
+  </style>
+  <p>
+    <center><img src="https://anhcodes.dev/images/inpost/diy-avatar/leonardo.png" alt="blog-img" class="img-responsive" onclick="openModal(this)"></center>
+  </p>
+</div>
+
+<script>
+function openModal(img) {
+  var modal = document.createElement('div');
+  modal.classList.add('modal');
+  modal.innerHTML = '<div class="modal-content"><img src="' + img.src + '"></div>';
+  document.body.appendChild(modal);
+  modal.addEventListener('click', closeModal);
+}
+
+function closeModal(event) {
+  if (event.target.classList.contains('modal')) {
+    document.body.removeChild(event.target);
+  }
+}
+</script>
+
+<style>
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 80%;
+  max-height: 80%;
+  overflow: auto;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+}
+</style>
+
   
 <p>However, why pay if you can do it for free? From my experience, DreamBooth has been able to create pretty close rendering of my features from just a few 512x512 images without cost. So that&rsquo;s something I would like to show you in this post.</p>
 <h2 id="a-3-step-process-to-create-your-own-ai-avatar-for-free">A 3-Step Process to Create Your Own AI Avatar for Free</h2>
@@ -235,18 +277,63 @@
 <p>This notebook uses the <code>runwayml/stable-diffusion-v1-5</code> model on HuggingFace as the base model. You need to get the HuggingFace token on the website to continue. You can generate access tokens under <code>Settings/Access Tokens</code></p>
 </li>
 </ol>
+
+
 <div class="image">
-    <style>
-      .img-responsive {
-        display: block;
-        height: auto;
-        max-width: 100%;
-      }
-    </style>
-    <p>
-      <center><img src="https://anhcodes.dev/images/inpost/diy-avatar/hf-token.png"  alt="blog-img" class="img-responsive"></center>
-    </p>
-  </div>
+  <style>
+    .img-responsive {
+      display: block;
+      height: auto;
+      max-width: 100%;
+      cursor: pointer;
+    }
+  </style>
+  <p>
+    <center><img src="https://anhcodes.dev/images/inpost/diy-avatar/hf-token.png" alt="blog-img" class="img-responsive" onclick="openModal(this)"></center>
+  </p>
+</div>
+
+<script>
+function openModal(img) {
+  var modal = document.createElement('div');
+  modal.classList.add('modal');
+  modal.innerHTML = '<div class="modal-content"><img src="' + img.src + '"></div>';
+  document.body.appendChild(modal);
+  modal.addEventListener('click', closeModal);
+}
+
+function closeModal(event) {
+  if (event.target.classList.contains('modal')) {
+    document.body.removeChild(event.target);
+  }
+}
+</script>
+
+<style>
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 80%;
+  max-height: 80%;
+  overflow: auto;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+}
+</style>
+
   
 <ol start="2">
 <li>Change the instance_prompt to the subject name. For example, I use <code>anh</code> as the subject of my model (You will need to use this subject name in the prompt later). Keep the class_prompt as <code>photo of a person</code></li>
@@ -273,18 +360,63 @@
 <h3 id="step-3-use-text2image-option-to-generate-your-images">Step 3: Use text2image Option to Generate Your Images</h3>
 <p>Finally, choose the model checkpoint we just downloaded in the previous step.</p>
 <p>Then use the text2image option with the subject name to generate your images. For example, in below screenshot, <code>anh</code> is my subject name</p>
+
+
 <div class="image">
-    <style>
-      .img-responsive {
-        display: block;
-        height: auto;
-        max-width: 100%;
-      }
-    </style>
-    <p>
-      <center><img src="https://anhcodes.dev/images/inpost/diy-avatar/sdui.png"  alt="blog-img" class="img-responsive"></center>
-    </p>
-  </div>
+  <style>
+    .img-responsive {
+      display: block;
+      height: auto;
+      max-width: 100%;
+      cursor: pointer;
+    }
+  </style>
+  <p>
+    <center><img src="https://anhcodes.dev/images/inpost/diy-avatar/sdui.png" alt="blog-img" class="img-responsive" onclick="openModal(this)"></center>
+  </p>
+</div>
+
+<script>
+function openModal(img) {
+  var modal = document.createElement('div');
+  modal.classList.add('modal');
+  modal.innerHTML = '<div class="modal-content"><img src="' + img.src + '"></div>';
+  document.body.appendChild(modal);
+  modal.addEventListener('click', closeModal);
+}
+
+function closeModal(event) {
+  if (event.target.classList.contains('modal')) {
+    document.body.removeChild(event.target);
+  }
+}
+</script>
+
+<style>
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 80%;
+  max-height: 80%;
+  overflow: auto;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+}
+</style>
+
   
 <p>You can experiment with different settings and parameters to create truly unique and personalized avatars.</p>
 <h2 id="challenges-and-tips">Challenges and tips</h2>
@@ -309,18 +441,63 @@
 <p>Use <code>Seed</code> to keep your images consistent. It works some of the time.</p>
 </li>
 </ol>
+
+
 <div class="image">
-    <style>
-      .img-responsive {
-        display: block;
-        height: auto;
-        max-width: 100%;
-      }
-    </style>
-    <p>
-      <center><img src="https://anhcodes.dev/images/inpost/diy-avatar/seed.png"  alt="blog-img" class="img-responsive"></center>
-    </p>
-  </div>
+  <style>
+    .img-responsive {
+      display: block;
+      height: auto;
+      max-width: 100%;
+      cursor: pointer;
+    }
+  </style>
+  <p>
+    <center><img src="https://anhcodes.dev/images/inpost/diy-avatar/seed.png" alt="blog-img" class="img-responsive" onclick="openModal(this)"></center>
+  </p>
+</div>
+
+<script>
+function openModal(img) {
+  var modal = document.createElement('div');
+  modal.classList.add('modal');
+  modal.innerHTML = '<div class="modal-content"><img src="' + img.src + '"></div>';
+  document.body.appendChild(modal);
+  modal.addEventListener('click', closeModal);
+}
+
+function closeModal(event) {
+  if (event.target.classList.contains('modal')) {
+    document.body.removeChild(event.target);
+  }
+}
+</script>
+
+<style>
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 80%;
+  max-height: 80%;
+  overflow: auto;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+}
+</style>
+
   
 <ol start="7">
 <li>SD WebUI provides several powerful options to perform image tasks such as inpainting, cropping, and upscaling. You can use the workflow below to edit your image further within the tool</li>
