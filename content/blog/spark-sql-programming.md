@@ -17,6 +17,8 @@ SparkSQL is one of the 4 APIs in Spark ecosystems. SparkSQL provides structured 
 
 {{< image image="images/inpost/sparksql/1.png" >}}
 
+The same SparkSQL query can be expressed with SQL and DataFrame API. SQL queries, Python DataFrame and Scala DataFrame Queries will then be executed on the same engine. The queries will go through Query Plans, RDDs then Execution. SparkSQL always optimizes the queries before execution using **Catalyst Optimizer**
+
 ```sql
 -- sql
 select a, b from <table> where a > 1 order by b
@@ -30,10 +32,7 @@ df = spark.table('<table>')
 		.orderBy('b')
 ```
 
-The same SparkSQL query can be expressed with SQL and DataFrame API. SQL queries, Python DataFrame and Scala DataFrame Queries will then be executed on the same engine. The queries will go through Query Plans, RDDs then Execution. SparkSQL always optimizes the queries before execution using **Catalyst Optimizer**
-
 {{< image image="images/inpost/sparksql/2.png" >}}
-
 
 ## DataFrame API in SparkSQL
 
@@ -88,13 +87,13 @@ df.write.format('delta')
 	.save('outputPath')
 ```
 
-### Work with columns in DF
+### Columns in DF
 
 There are many ways to pick a column in DF depending on which language API you use
 
 ```python
 ## Multi ways of extracting columns from Spark DF 
-## Python way
+## Python
 df['columnName']
 df.columnName
 
@@ -104,7 +103,7 @@ F.col('columnName.field') ##nested column array
 ```
 
 ```scala
-// Scala way
+// Scala
 df("columnName")
 
 import org.apache.spark.sql.functions.col
@@ -136,21 +135,21 @@ appleDF = eventsDF.select("user_id")
 					.withColumn("apple_user", col("device").isin('macOS', 'iOS'))
 ```
 
-### Work with Rows in DF
+### Rows in DF
 
 {{< image image="images/inpost/sparksql/5.png" >}}
 
 {{< image image="images/inpost/sparksql/6.png" >}}
 
 ### Data Operations in Spark DataFrame
-
 There are 2 main types of operations you can do with Spark DataFrame. 
 
-Remember that DataFrame is immutable so after a transformation, a new dataFrame will be created. 
+1. **transformations** (`select`, `where`, `orderBy`, `groupBy`): Remember that DataFrame is immutable so after a transformation, a new dataFrame will be created. Transformation is evaluated lazily until action is invoked or data is touched, not executed immediately but recorded as lineage. There are 2 types of Spark Transformations
 
-1. **transformations** (`select`, `where`, `orderBy`, `groupBy`): create a new DataFrame, evaluated lazily until action is invoked or data is touched, not executed immediately but recorded as lineage. There are 2 types of Spark Transformations
-    1. **narrow transformation**: single input partition computes single output partition (each column are computed separately), **without exchange of data** (such as `filter`, `contains`). 
-    2. **wide transformation**: data from many partitions read, combined and written to disk (`groupBy`, `orderBy`, `count`), which means **shuffle of data** across partitions 
+    * **narrow transformation**: single input partition computes single output partition (each column are computed separately), **without exchange of data** (such as `filter`, `contains`). 
+
+    * **wide transformation**: data from many partitions read, combined and written to disk (`groupBy`, `orderBy`, `count`), which causes **shuffle of data** across partitions 
+	
 2. **action** (`show`, `display`, `take`, `describe`, `summary`, `first, head`, `count`, `collect`): trigger the lazy evaluation of recorded transformation
     
     `count` vs `collect`: `count` returns single number to the driver, `collect` returns collection of row objects (expensive and can cause out of memory)

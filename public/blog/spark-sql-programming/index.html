@@ -178,8 +178,8 @@
     <li><a href="#dataframe-api-in-sparksql">DataFrame API in SparkSQL</a>
       <ul>
         <li><a href="#read-and-write-data-with-spark-dataframe">Read and write data with Spark DataFrame</a></li>
-        <li><a href="#work-with-columns-in-df">Work with columns in DF</a></li>
-        <li><a href="#work-with-rows-in-df">Work with Rows in DF</a></li>
+        <li><a href="#columns-in-df">Columns in DF</a></li>
+        <li><a href="#rows-in-df">Rows in DF</a></li>
         <li><a href="#data-operations-in-spark-dataframe">Data Operations in Spark DataFrame</a></li>
       </ul>
     </li>
@@ -198,7 +198,6 @@
   
 <h2 id="what-is-sparksql">What is SparkSQL</h2>
 <p>SparkSQL is one of the 4 APIs in Spark ecosystems. SparkSQL provides structured data processing with interfaces such as SQL or Dataframe API using Python, Scala, R, Java programming languages</p>
-
 
 <div class="image">
   <style>
@@ -256,6 +255,7 @@ function closeModal(event) {
 </style>
 
   
+<p>The same SparkSQL query can be expressed with SQL and DataFrame API. SQL queries, Python DataFrame and Scala DataFrame Queries will then be executed on the same engine. The queries will go through Query Plans, RDDs then Execution. SparkSQL always optimizes the queries before execution using <strong>Catalyst Optimizer</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#b0bec5">-- sql
 </span></span></span><span style="display:flex;"><span><span style="color:#b0bec5"></span><span style="color:#c2ffdf">select</span><span style="color:#a8757b"> </span>a,<span style="color:#a8757b"> </span>b<span style="color:#a8757b"> </span><span style="color:#c2ffdf">from</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">&lt;</span><span style="color:#c2ffdf">table</span><span style="color:#ffb8d1">&gt;</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">where</span><span style="color:#a8757b"> </span>a<span style="color:#a8757b"> </span><span style="color:#ffb8d1">&gt;</span><span style="color:#a8757b"> </span><span style="color:#c5a3ff">1</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">order</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">by</span><span style="color:#a8757b"> </span>b<span style="color:#a8757b">
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#b0bec5">## python</span>
@@ -263,9 +263,7 @@ function closeModal(event) {
 </span></span><span style="display:flex;"><span>		<span style="color:#ffb8d1">.</span>select(<span style="color:#1bc5e0">&#39;a&#39;</span>, <span style="color:#1bc5e0">&#39;b&#39;</span>)
 </span></span><span style="display:flex;"><span>		<span style="color:#ffb8d1">.</span>where(<span style="color:#1bc5e0">&#39;a&gt;1&#39;</span>)
 </span></span><span style="display:flex;"><span>		<span style="color:#ffb8d1">.</span>orderBy(<span style="color:#1bc5e0">&#39;b&#39;</span>)
-</span></span></code></pre></div><p>The same SparkSQL query can be expressed with SQL and DataFrame API. SQL queries, Python DataFrame and Scala DataFrame Queries will then be executed on the same engine. The queries will go through Query Plans, RDDs then Execution. SparkSQL always optimizes the queries before execution using <strong>Catalyst Optimizer</strong></p>
-
-
+</span></span></code></pre></div>
 <div class="image">
   <style>
     .img-responsive {
@@ -358,17 +356,17 @@ function closeModal(event) {
 </span></span><span style="display:flex;"><span>df<span style="color:#ffb8d1">.</span>write<span style="color:#ffb8d1">.</span>format(<span style="color:#1bc5e0">&#39;delta&#39;</span>)
 </span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>mode(<span style="color:#1bc5e0">&#39;overwrite&#39;</span>)
 </span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>save(<span style="color:#1bc5e0">&#39;outputPath&#39;</span>)
-</span></span></code></pre></div><h3 id="work-with-columns-in-df">Work with columns in DF</h3>
+</span></span></code></pre></div><h3 id="columns-in-df">Columns in DF</h3>
 <p>There are many ways to pick a column in DF depending on which language API you use</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#b0bec5">## Multi ways of extracting columns from Spark DF </span>
-</span></span><span style="display:flex;"><span><span style="color:#b0bec5">## Python way</span>
+</span></span><span style="display:flex;"><span><span style="color:#b0bec5">## Python</span>
 </span></span><span style="display:flex;"><span>df[<span style="color:#1bc5e0">&#39;columnName&#39;</span>]
 </span></span><span style="display:flex;"><span>df<span style="color:#ffb8d1">.</span>columnName
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ffb8d1">import</span> spark.sql.functions <span style="color:#c2ffdf">as</span> F
 </span></span><span style="display:flex;"><span>F<span style="color:#ffb8d1">.</span>col(<span style="color:#1bc5e0">&#39;columnName&#39;</span>)
 </span></span><span style="display:flex;"><span>F<span style="color:#ffb8d1">.</span>col(<span style="color:#1bc5e0">&#39;columnName.field&#39;</span>) <span style="color:#b0bec5">##nested column array</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#b0bec5">// Scala way
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#b0bec5">// Scala
 </span></span></span><span style="display:flex;"><span><span style="color:#b0bec5"></span>df<span style="color:#ffb8d1">(</span><span style="color:#1bc5e0">&#34;columnName&#34;</span><span style="color:#ffb8d1">)</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#c2ffdf">import</span> org.apache.spark.sql.functions.col
@@ -376,7 +374,6 @@ function closeModal(event) {
 </span></span><span style="display:flex;"><span>$<span style="color:#1bc5e0">&#34;columnName&#34;</span>
 </span></span><span style="display:flex;"><span>$<span style="color:#1bc5e0">&#34;columnName.field&#34;</span> <span style="color:#b0bec5">//nested column array
 </span></span></span></code></pre></div><p>Column Operators &amp; Methods</p>
-
 
 <div class="image">
   <style>
@@ -434,7 +431,6 @@ function closeModal(event) {
 </style>
 
   
-
 
 <div class="image">
   <style>
@@ -506,8 +502,7 @@ function closeModal(event) {
 </span></span><span style="display:flex;"><span><span style="color:#b0bec5">## transformation with regular PythonAPI</span>
 </span></span><span style="display:flex;"><span>appleDF <span style="color:#ffb8d1">=</span> eventsDF<span style="color:#ffb8d1">.</span>select(<span style="color:#1bc5e0">&#34;user_id&#34;</span>)
 </span></span><span style="display:flex;"><span>					<span style="color:#ffb8d1">.</span>withColumn(<span style="color:#1bc5e0">&#34;apple_user&#34;</span>, col(<span style="color:#1bc5e0">&#34;device&#34;</span>)<span style="color:#ffb8d1">.</span>isin(<span style="color:#1bc5e0">&#39;macOS&#39;</span>, <span style="color:#1bc5e0">&#39;iOS&#39;</span>))
-</span></span></code></pre></div><h3 id="work-with-rows-in-df">Work with Rows in DF</h3>
-
+</span></span></code></pre></div><h3 id="rows-in-df">Rows in DF</h3>
 
 <div class="image">
   <style>
@@ -565,7 +560,6 @@ function closeModal(event) {
 </style>
 
   
-
 
 <div class="image">
   <style>
@@ -625,20 +619,22 @@ function closeModal(event) {
   
 <h3 id="data-operations-in-spark-dataframe">Data Operations in Spark DataFrame</h3>
 <p>There are 2 main types of operations you can do with Spark DataFrame.</p>
-<p>Remember that DataFrame is immutable so after a transformation, a new dataFrame will be created.</p>
 <ol>
 <li>
-<p><strong>transformations</strong> (<code>select</code>, <code>where</code>, <code>orderBy</code>, <code>groupBy</code>): create a new DataFrame, evaluated lazily until action is invoked or data is touched, not executed immediately but recorded as lineage. There are 2 types of Spark Transformations</p>
-<ol>
-<li><strong>narrow transformation</strong>: single input partition computes single output partition (each column are computed separately), <strong>without exchange of data</strong> (such as <code>filter</code>, <code>contains</code>).</li>
-<li><strong>wide transformation</strong>: data from many partitions read, combined and written to disk (<code>groupBy</code>, <code>orderBy</code>, <code>count</code>), which means <strong>shuffle of data</strong> across partitions</li>
-</ol>
+<p><strong>transformations</strong> (<code>select</code>, <code>where</code>, <code>orderBy</code>, <code>groupBy</code>): Remember that DataFrame is immutable so after a transformation, a new dataFrame will be created. Transformation is evaluated lazily until action is invoked or data is touched, not executed immediately but recorded as lineage. There are 2 types of Spark Transformations</p>
+<ul>
+<li>
+<p><strong>narrow transformation</strong>: single input partition computes single output partition (each column are computed separately), <strong>without exchange of data</strong> (such as <code>filter</code>, <code>contains</code>).</p>
+</li>
+<li>
+<p><strong>wide transformation</strong>: data from many partitions read, combined and written to disk (<code>groupBy</code>, <code>orderBy</code>, <code>count</code>), which causes <strong>shuffle of data</strong> across partitions</p>
+</li>
+</ul>
 </li>
 <li>
 <p><strong>action</strong> (<code>show</code>, <code>display</code>, <code>take</code>, <code>describe</code>, <code>summary</code>, <code>first, head</code>, <code>count</code>, <code>collect</code>): trigger the lazy evaluation of recorded transformation</p>
 <p><code>count</code> vs <code>collect</code>: <code>count</code> returns single number to the driver, <code>collect</code> returns collection of row objects (expensive and can cause out of memory)</p>
 
-    
     <div class="image">
       <style>
         .img-responsive {
@@ -703,7 +699,6 @@ function closeModal(event) {
 <h3 id="1-aggregation-functions">1. Aggregation functions</h3>
 <p>All aggregations methods require a <code>groupBy</code> method that returns a GroupedData object</p>
 <p>Use the grouped data method <code>agg</code> to apply these built-in aggregate functions</p>
-
 
 <div class="image">
   <style>
@@ -780,7 +775,6 @@ function closeModal(event) {
 </span></span><span style="display:flex;"><span>			)
 </span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>display()
 </span></span></code></pre></div><h3 id="2-datetime-functions">2. Datetime functions</h3>
-
 
 <div class="image">
   <style>
@@ -863,7 +857,6 @@ function closeModal(event) {
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df<span style="color:#ffb8d1">.</span>withColumns(<span style="color:#1bc5e0">&#34;add_2_day&#34;</span>, F<span style="color:#ffb8d1">.</span>date_add(F<span style="color:#ffb8d1">.</span>col(<span style="color:#1bc5e0">&#34;timestamp&#34;</span>), <span style="color:#c5a3ff">2</span>))
 </span></span></code></pre></div><h3 id="3-complex-data-types-funtions">3. Complex Data Types funtions</h3>
 
-
 <div class="image">
   <style>
     .img-responsive {
@@ -920,7 +913,6 @@ function closeModal(event) {
 </style>
 
   
-
 
 <div class="image">
   <style>
@@ -1106,8 +1098,8 @@ function closeModal(event) {
 					<ul class="unstyle-list">
 						
 						
-						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://www.instagram.com/jasminmay12/"><i
-									class="fa fa-instagram"></i></a>
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://dev.to/anhcodes"><i
+									class="fa fa-code"></i></a>
 						</li>
 						
 						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://www.linkedin.com/in/anhhchu/"><i

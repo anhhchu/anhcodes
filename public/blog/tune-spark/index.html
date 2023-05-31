@@ -170,7 +170,34 @@
 
           
 
-          <p>Most Big Data developers and Data Engineers start learning Spark by learning how to write SparkSQLcodes, how to ingest data and perform transformations on DataFrame (I know I did). I also wrote a post about <a href="https://anhcodes.dev/blog/spark-sql-programming/">SparkSQL Programming</a>. However, we quickly learn that there’s more knowlege required to go from processing a few GBs of data to dealing with TBs and PBs of data, which is a challenge for big enterprises. Learning to write correct Spark codes is only a small part of the battle, you will need to understand the Spark Architecture and Spark working internals to correct tune Spark to handle true big data, and it’s the focus of this post.</p>
+          <div class="toc">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#spark-architecture">Spark Architecture</a>
+      <ul>
+        <li><a href="#spark-cluster-components">Spark Cluster Components</a></li>
+        <li><a href="#spark-session">Spark Session</a></li>
+        <li><a href="#spark-apis">Spark APIs</a></li>
+      </ul>
+    </li>
+    <li><a href="#computation-in-spark">Computation in Spark</a>
+      <ul>
+        <li><a href="#spark-catalyst-optimizer">Spark Catalyst Optimizer</a></li>
+        <li><a href="#adaptive-query-execution">Adaptive Query Execution</a></li>
+      </ul>
+    </li>
+    <li><a href="#shuffle-partitioning-and-caching-in-spark">Shuffle, Partitioning and Caching in Spark</a>
+      <ul>
+        <li><a href="#partitioning">Partitioning</a></li>
+        <li><a href="#shuffle">Shuffle</a></li>
+        <li><a href="#cache-in-spark">Cache in Spark</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+  
+<p>Most Big Data developers and Data Engineers start learning Spark by writing SparkSQL codes to perform ETL on DataFrame (I know I did). I also wrote a post about <a href="https://anhcodes.dev/blog/spark-sql-programming/">SparkSQL Programming</a>. However, we quickly learn that there’s more knowlege required to go from processing a few GBs of data to dealing with TBs and PBs of data, which is a challenge for big enterprises. Learning to write correct Spark codes is only a small part of the battle, you will need to understand the Spark Architecture and Spark working internals to correct tune Spark to handle true big data, and it’s the focus of this post.</p>
 <h2 id="spark-architecture">Spark Architecture</h2>
 <p>First, let this sink in: Spark is an <strong>in-memory</strong>, <strong>parallel processing engine</strong> that is very <strong>scalable.</strong>  The more data you have, the more powerful Spark can become that sets it apart from other processing engines. Spark is faster than Map Reduce paradigm because it processes data in memory, which means that it can reduce the disk IO that normally slows down Map Reduce jobs. Spark is fast because of the ability to process data in parallel.</p>
 <p>Parallelism is key enabler of Spark efficiency. The Spark Architecture is designed so that you can add new computers to process growing amount of big data in parallel.</p>
@@ -181,7 +208,6 @@
 <li>Each worker has multiple cores (think threads) that can run multiple tasks. Each task is a single unit of work, each task maps to a single core and works on a single partition of data at a given time (1 task, 1 partition, 1 slot, 1 core)</li>
 <li>Besides, we also have a <strong>cluster manager,</strong> and <strong>Spark Session</strong> that runs Spark applications.</li>
 </ul>
-
 
 <div class="image">
   <style>
@@ -242,7 +268,6 @@ function closeModal(event) {
 <h3 id="spark-session">Spark Session</h3>
 <p>SparkSession is the single point of entry to all DataFrame API functionality. SparkSession is available since Spark 2.0, before that Spark Context was used with a limitation of only one Spark Context per JVM. SparkSession can unify numerous Spark Contexts.</p>
 <p>SparkSession automatically created in a Databricks notebook as the variable <code>spark</code>.</p>
-
 
 <div class="image">
   <style>
@@ -314,6 +339,63 @@ function closeModal(event) {
 </span></span><span style="display:flex;"><span>df <span style="color:#ffb8d1">=</span> spark<span style="color:#ffb8d1">.</span>sql(<span style="color:#1bc5e0">&#39;select * from &lt;table&gt;&#39;</span>)
 </span></span></code></pre></div><h3 id="spark-apis">Spark APIs</h3>
 <p>Spark ecosystems have 4 APIs: SparkSQL, Spark Structured Streaming,  SparkML, and GraphX (I haven’t  used this before, not sure if it’s deprecated or not). Most of Spark developers started with SparkSQL APIs with ingestion and transformations on Spark DataFrame. However, Spark Structured Streaming and SparkML are pretty popular too, which we can discuss later in later posts.</p>
+
+<div class="image">
+  <style>
+    .img-responsive {
+      display: block;
+      height: auto;
+      max-width: 100%;
+      cursor: pointer;
+    }
+  </style>
+  <p>
+    <center><img src="https://anhcodes.dev/images/inpost/sparksql/1.png" alt="blog-img" class="img-responsive" onclick="openModal(this)"></center>
+  </p>
+</div>
+
+<script>
+function openModal(img) {
+  var modal = document.createElement('div');
+  modal.classList.add('modal');
+  modal.innerHTML = '<div class="modal-content"><img src="' + img.src + '"></div>';
+  document.body.appendChild(modal);
+  modal.addEventListener('click', closeModal);
+}
+
+function closeModal(event) {
+  if (event.target.classList.contains('modal')) {
+    document.body.removeChild(event.target);
+  }
+}
+</script>
+
+<style>
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 80%;
+  max-height: 80%;
+  overflow: auto;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+}
+</style>
+
+  
 <h2 id="computation-in-spark">Computation in Spark</h2>
 <p>Earlier I mentioned that Driver is responsible to turn operations into jobs or DAGs. DAGs are Directed Acyclic Graphs (fancy word for graphs that have direction with no cycle). In a spark execution plan, each <strong>job</strong> is a DAG, each node within a DAG can have one or multiple <strong>stages</strong>, each stage can have multiple <strong>tasks</strong> (clear?)</p>
 <p>Spark parallelizes at 2 levels:</p>
@@ -322,7 +404,6 @@ function closeModal(event) {
 <li>each executors have a number of slots/cores, each slot can execute a task on a data partition.</li>
 </ul>
 <p>Another characteristic of Spark is lazy execution. When you specify transformations on a Spark DataFrame, Spark records lineage and only start the computation when an action is triggered (refer to my previous post about <a href="">SparkSQL programming</a> for more information on transformations and actions)</p>
-
 
 <div class="image">
   <style>
@@ -391,7 +472,6 @@ function closeModal(event) {
 </ul>
 <p>Catalyst Optimizer is a rule based engine that takes the Logical Plan and rewrites it as an optimized Physical Plan. The Physical Plan is developed BEFORE a query is executed</p>
 
-
 <div class="image">
   <style>
     .img-responsive {
@@ -449,7 +529,6 @@ function closeModal(event) {
 
   
 <p>To view the Catalyst Optimizier in action, use <code>df.explain(True)</code> to view the Logical and Physical Execution plans of a query.</p>
-
 
 <div class="image">
   <style>
@@ -511,7 +590,6 @@ function closeModal(event) {
 <p>In Spark 3.0, Adaptive Query Execution (AQE) was introduced. One difference between AQE and Catalyst Optimizer is that AQE modifies the Physical Plan based on Runtime Statistics, so AQE can tune your queries further on the flight. So you may think that AQE is complimentary to Catalyst Optimizer.</p>
 <p>For example, during runtime, based on the new information that is previously not available during planning, AQE can decide to change your join strategy to Broadcast Hash Join from Sort Merge Join to reduce data shuffle. Or AQE can coalesce your partitions to optimal size during shuffling stage, or help improve Skew Join.</p>
 <p>This option is not turned on by default in Spark, you can enable by setting spark config: <code>spark.conf.set(spark.sql.adaptive.enabled, True)</code> , and it’s recommended to turn this on. However, If you run Spark on later version of Databricks Runtime, AQE is enabled by default.</p>
-
 
 <div class="image">
   <style>
@@ -585,7 +663,6 @@ function closeModal(event) {
 <li>By default, each partition has the size of 128MB but you can set with <code>spark.sql.files.maxPartitionBytes</code>. A situation when setting this config can be beneficial is to write data to 1GB part files.</li>
 </ul>
 
-
 <div class="image">
   <style>
     .img-responsive {
@@ -654,7 +731,6 @@ function closeModal(event) {
 <li>Subsequent stages will reuse those shuffle files (shuffle read)</li>
 </ul>
 
-
 <div class="image">
   <style>
     .img-responsive {
@@ -715,7 +791,6 @@ function closeModal(event) {
 <li>If cache is used, first stage can create shuffle files and cache the results, later stages can read from cache with improve the performance</li>
 </ul>
 
-
 <div class="image">
   <style>
     .img-responsive {
@@ -772,7 +847,6 @@ function closeModal(event) {
 </style>
 
   
-
 
 <div class="image">
   <style>
@@ -905,8 +979,8 @@ function closeModal(event) {
 					<ul class="unstyle-list">
 						
 						
-						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://www.instagram.com/jasminmay12/"><i
-									class="fa fa-instagram"></i></a>
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://dev.to/anhcodes"><i
+									class="fa fa-code"></i></a>
 						</li>
 						
 						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://www.linkedin.com/in/anhhchu/"><i

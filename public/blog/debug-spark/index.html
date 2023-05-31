@@ -222,7 +222,6 @@
 <li>Skew can cause Spill, so sometimes you will see Disk or Memory Spill as well. If Spill is caused by Skew, you have to fix Skew as the Root cause.</li>
 </ul>
 
-
 <div class="image">
   <style>
     .img-responsive {
@@ -279,7 +278,6 @@ function closeModal(event) {
 </style>
 
   
-
 
 <div class="image">
   <style>
@@ -355,7 +353,6 @@ function closeModal(event) {
 <h3 id="how-do-you-identify-spill-in-your-sparkui">How do you identify Spill in your SparkUI?</h3>
 <p>You can  find Spill indicators on SparkUI under each stage’s detail tabe or Aggregated Metrics by Executor. When data is spilled, both the size of the data in memory and on disk will be provided. Typically, the size on disk will be smaller due to compression that occurs when serializing data before it is written to disk.</p>
 
-
 <div class="image">
   <style>
     .img-responsive {
@@ -412,7 +409,6 @@ function closeModal(event) {
 </style>
 
   
-
 
 <div class="image">
   <style>
@@ -486,7 +482,6 @@ function closeModal(event) {
 <h2 id="shuffles-data-transfer">Shuffles [data transfer]</h2>
 <p><em>TL,DR - Shuffle refers to the movement of data across executors, and it&rsquo;s inevitable with wide transformation jobs. To tune shuffle operations, think about how you can reduce the amount of data that get shuffled across the cluster network</em></p>
 
-
 <div class="image">
   <style>
     .img-responsive {
@@ -557,7 +552,6 @@ function closeModal(event) {
 <ul>
 <li>Use predicate push down and/or narrow the columns to reduce the amount of data being shuffled</li>
 <li>Turn on Adaptive Query Execution (AQE) to dynamically coaslesce shuffle partitions at runtime to avoid empty partitions
-
 
 <div class="image">
   <style>
@@ -716,8 +710,8 @@ function closeModal(event) {
 					<ul class="unstyle-list">
 						
 						
-						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://www.instagram.com/jasminmay12/"><i
-									class="fa fa-instagram"></i></a>
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://dev.to/anhcodes"><i
+									class="fa fa-code"></i></a>
 						</li>
 						
 						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://www.linkedin.com/in/anhhchu/"><i
