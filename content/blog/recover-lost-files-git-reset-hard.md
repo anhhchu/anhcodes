@@ -1,9 +1,8 @@
 ---
 title: "How to recover lost files after a git reset --hard"
 date: 2022-12-27 11:30:20
-featureImage: images/single-blog/github-reset.png
-#images/allpost/git-reset.png
-postImage: images/single-blog/github-reset.png
+featureImage: images/single-blog/git-reset/github-reset.png
+postImage: images/single-blog/git-reset/github-reset.png
 categories: software-engineering
 tags: [git]
 author: Anh Chu
@@ -14,7 +13,7 @@ While working on a recent project, I accidentally committed some files. Instead 
 
 ### 1. What is git reset (hard vs soft)
 
-{{< image image="images/single-blog/git-reset.png" >}}
+{{< image image="images/single-blog/git-reset/git-reset.png" >}}
 
 `git reset --hard` resets the current branch tip, and also deletes any changes in the working directory and staging area (although files under `git stash` will not be affected). It resets index entries to a specified commit, or the HEAD location. `git reset --hard` should be used with caution, since it can lead to losing work in your staging area and working directory.
 

@@ -2,7 +2,6 @@
 title: "The beauty of a data lakehouse"
 date: 2023-04-11 16:26:45
 featureImage: /images/single-blog/data-lakehouse.png
-#images/allpost/lakehouse.webp
 postImage: /images/single-blog/data-lakehouse.png
 categories: data-lakehouse
 tags: [data-warehouse, data-lakehouse, data-lake]

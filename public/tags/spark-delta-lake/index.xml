@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>spark delta-lake on anhcodes</title>
+    <link>https://anhcodes.dev/tags/spark-delta-lake/</link>
+    <description>Recent content in spark delta-lake on anhcodes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 07 Aug 2023 11:23:00 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/tags/spark-delta-lake/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Deep Dive Into Delta Lake</title>
+      <link>https://anhcodes.dev/blog/deep-dive-delta-lake/</link>
+      <pubDate>Mon, 07 Aug 2023 11:23:00 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/blog/deep-dive-delta-lake/</guid>
+      <description>Create Delta Tables Create Table as Select (CTAS) Create Tables with Options Save As Table from DataFrame Create Table with Generated Column and declared Schema Clone Delta Table Deep Clone Shallow Clone Incremental Cloning File Retention in cloned Tables ACID in Delta Table CRUD Operations Merge in Delta Lake Insert-Only Merge Overwrite in Delta Lake Copy Into for Incremental Load Files in Delta Lake Time Travel in Delta Lake Vacuum in Delta Lake Optimize Delta Tables Schema enforcement &amp;amp; evolution Delta table best practices Extract Table Metadata Design table schema File Statistics Config Stats on table Delta Lake is an open source storage layer that brings reliability to data lakes.</description>
+    </item>
+    
+  </channel>
+</rss>

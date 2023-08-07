@@ -1,8 +1,8 @@
 ---
 title: "Spark SQL Programming Primer"
 date: 2023-05-23 17:09:34
-featureImage: images/inpost/sparksql/0.webp
-postImage: images/inpost/sparksql/0.webp
+featureImage: images/single-blog/sparksql/0.webp
+postImage: images/single-blog/sparksql/0.webp
 categories: big-data
 tags: [spark]
 author: Anh Chu
@@ -15,7 +15,7 @@ author: Anh Chu
 
 SparkSQL is one of the 4 APIs in Spark ecosystems. SparkSQL provides structured data processing with interfaces such as SQL or Dataframe API using Python, Scala, R, Java programming languages
 
-{{< image image="images/inpost/sparksql/1.png" >}}
+{{< image image="images/single-blog/sparksql/1.png" >}}
 
 The same SparkSQL query can be expressed with SQL and DataFrame API. SQL queries, Python DataFrame and Scala DataFrame Queries will then be executed on the same engine. The queries will go through Query Plans, RDDs then Execution. SparkSQL always optimizes the queries before execution using **Catalyst Optimizer**
 
@@ -32,7 +32,7 @@ df = spark.table('<table>')
 		.orderBy('b')
 ```
 
-{{< image image="images/inpost/sparksql/2.png" >}}
+{{< image image="images/single-blog/sparksql/2.png" >}}
 
 ## DataFrame API in SparkSQL
 
@@ -114,9 +114,9 @@ $"columnName.field" //nested column array
 
 Column Operators & Methods
 
-{{< image image="images/inpost/sparksql/3.png" >}}
+{{< image image="images/single-blog/sparksql/3.png" >}}
 
-{{< image image="images/inpost/sparksql/4.png" >}}
+{{< image image="images/single-blog/sparksql/4.png" >}}
 
 ```python
 import pyspark.sql.functions.col
@@ -137,9 +137,9 @@ appleDF = eventsDF.select("user_id")
 
 ### Rows in DF
 
-{{< image image="images/inpost/sparksql/5.png" >}}
+{{< image image="images/single-blog/sparksql/5.png" >}}
 
-{{< image image="images/inpost/sparksql/6.png" >}}
+{{< image image="images/single-blog/sparksql/6.png" >}}
 
 ### Data Operations in Spark DataFrame
 There are 2 main types of operations you can do with Spark DataFrame. 
@@ -154,7 +154,7 @@ There are 2 main types of operations you can do with Spark DataFrame.
     
     `count` vs `collect`: `count` returns single number to the driver, `collect` returns collection of row objects (expensive and can cause out of memory)
     
-    {{< image image="images/inpost/sparksql/7.png" >}}
+    {{< image image="images/single-blog/sparksql/7.png" >}}
     
 
 Remember that when you specify transformation, your Spark code will not be executed until you call an action on it. Lazy evaluation provide fault tolerance as spark records transformation lineage to restart the job if there’s failure.
@@ -169,7 +169,7 @@ All aggregations methods require a `groupBy` method that returns a GroupedData o
 
 Use the grouped data method `agg` to apply these built-in aggregate functions
 
-{{< image image="images/inpost/sparksql/8.png" >}}
+{{< image image="images/single-blog/sparksql/8.png" >}}
 
 
 For example:
@@ -199,7 +199,7 @@ df.groupBy('col1')
 
 ### 2. Datetime functions
 
-{{< image image="images/inpost/sparksql/9.png" >}}
+{{< image image="images/single-blog/sparksql/9.png" >}}
 
 - Reformat the timestamp column to string representation
 
@@ -234,9 +234,9 @@ df.withColumns("add_2_day", F.date_add(F.col("timestamp"), 2))
 
 ### 3. Complex Data Types funtions
 
-{{< image image="images/inpost/sparksql/10.png" >}}
+{{< image image="images/single-blog/sparksql/10.png" >}}
 
-{{< image image="images/inpost/sparksql/11.png" >}}
+{{< image image="images/single-blog/sparksql/11.png" >}}
 
 
 Assume we have a DataFrame with `items` column as nested array. For example:

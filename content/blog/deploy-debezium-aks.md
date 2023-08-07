@@ -2,9 +2,8 @@
 title: "Deploy Debezium and Kafka on AKS using Strimzi Operator"
 date: 2023-01-07 00:19:27
 author: Anh Chu
-featureImage: /images/single-blog/aksdbz.png
-#images/allpost/vertical-aksdbz.png
-postImage: /images/single-blog/aksdbz.png
+featureImage: /images/single-blog/cdc/aksdbz.png
+postImage: /images/single-blog/cdc/aksdbz.png
 categories: data-engineering
 tags: [kafka, kubernetes, debezium, strimzi, change-data-capture, docker]
 ---
@@ -27,7 +26,7 @@ Follow this document to get your Kubernetes cluster ready on AKS: [Create an AKS
 
 After your aks cluster is created, you should see it on Azure Portal as below. For demo purpose, I created an AKS cluster called `anhaks` in `anhtest` resource group
 
-{{< image image="/images/inpost/cdc/aks.png" width=500  >}}
+{{< image image="/images/single-blog/cdc/aks.png" width=500  >}}
 
 
 ### Set up kubectl in local
@@ -311,7 +310,7 @@ For example
 
 After pushing the image to ACR, you should be able to see your image on Azure Portal
 
-{{< image image="/images/inpost/cdc/debezium-connect-cluster.png" width=500  >}}
+{{< image image="/images/single-blog/cdc/debezium-connect-cluster.png" width=500  >}}
 
 ### Step 3: Deploy kafka-connect resource
 

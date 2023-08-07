@@ -6,7 +6,16 @@
     <description>Recent content in Data, Coding &amp; More on anhcodes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 27 May 2023 21:48:00 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 07 Aug 2023 11:23:00 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Deep Dive Into Delta Lake</title>
+      <link>https://anhcodes.dev/blog/deep-dive-delta-lake/</link>
+      <pubDate>Mon, 07 Aug 2023 11:23:00 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/blog/deep-dive-delta-lake/</guid>
+      <description>Create Delta Tables Create Table as Select (CTAS) Create Tables with Options Save As Table from DataFrame Create Table with Generated Column and declared Schema Clone Delta Table Deep Clone Shallow Clone Incremental Cloning File Retention in cloned Tables ACID in Delta Table CRUD Operations Merge in Delta Lake Insert-Only Merge Overwrite in Delta Lake Copy Into for Incremental Load Files in Delta Lake Time Travel in Delta Lake Vacuum in Delta Lake Optimize Delta Tables Schema enforcement &amp;amp; evolution Delta table best practices Extract Table Metadata Design table schema File Statistics Config Stats on table Delta Lake is an open source storage layer that brings reliability to data lakes.</description>
+    </item>
+    
     <item>
       <title>Spark working internals, and why should you care?</title>
       <link>https://anhcodes.dev/blog/tune-spark/</link>
@@ -35,15 +44,6 @@ What is SparkSQL DataFrame API in SparkSQL Read and write data with Spark DataFr
       <description>You Spark job is running for a long time, what to do? Generally, long-running Spark jobs can be due to various factors. We like to call them the 5S - Spill, Skew, Shuffle, Storage, and Serialization. So, how do we identify the main culprit?
 🔎 Look for Skew: Are some of the tasks taking longer than others? Do you have a join operation?
 🔎 Look for Spill: Any out-of-memory errors? Do the executors have enough memory to finish their tasks?</description>
-    </item>
-    
-    <item>
-      <title>Create your own AI avatar with DreamBooth and Stable Diffusion</title>
-      <link>https://anhcodes.dev/blog/ai-avatar-sd-dreambooth/</link>
-      <pubDate>Fri, 05 May 2023 18:06:47 +0000</pubDate>
-      
-      <guid>https://anhcodes.dev/blog/ai-avatar-sd-dreambooth/</guid>
-      <description>Table of Content Table of Content What is Stable Diffusion? What is DreamBooth? Options for Creating Your Own Images A 3-Step Process to Create Your Own AI Avatar for Free Step 1: Train Your Own Model with DreamBooth in Google Colabs Step 2: Download and Import the Model into Stable Diffusion WebUI Step 3: Use text2image Option to Generate Your Images Challenges and tips What is Stable Diffusion? Stable Diffusion is a deep learning model that can generate detailed images based on text descriptions.</description>
     </item>
     
     <item>

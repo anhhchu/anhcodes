@@ -1,9 +1,8 @@
 ---
 title: "Best Practices in creating tables in Azure Synapse Analytics"
 date: 2022-11-15 23:24:30
-featureImage: images/single-blog/sql-pool.jpeg
-# images/allpost/sql-pool-vertical.jpeg
-postImage: images/single-blog/sql-pool.jpeg
+featureImage: images/single-blog/synapse/sql-pool.jpeg
+postImage: images/single-blog/synapse/sql-pool.jpeg
 categories: data-lakehouse
 tags: [azure-synapse-analytics]
 author: Anh Chu

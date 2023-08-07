@@ -1,8 +1,8 @@
 ---
 title: "Goodbye 2022! May 2023 Be Fabulous"
 date: 2023-01-01 18:49:15
-featureImage: images/single-blog/fireworks.gif
-postImage: images/single-blog/microsoft.jpg
+featureImage: images/single-blog/fy22/fireworks.gif
+postImage: images/single-blog/fy22/microsoft.jpg
 categories: life
 tags: [career, life]
 author: Anh Chu
@@ -11,7 +11,7 @@ draft: true
 
 2022 was kind to me with exciting changes and opportunities. Take a look at what I accomplished last year: 
 
-<!-- {{< blogsection title="My 2022 Highlights" image="images/single-blog/newyear/sunset.gif" >}}
+<!-- {{< blogsection title="My 2022 Highlights" image="images/single-blog/fy22/newyear/sunset.gif" >}}
 {{< /blogsection >}} -->
 
 🏆 Received Excellence Award at Walmart
@@ -38,7 +38,7 @@ draft: true
 
 ✍️ Started blogging
 
-<!-- {{< blogsection title="Goodbye 2022! May 2023 Be Fabulous" image="images/single-blog/newyear/sunset.gif" >}}
+<!-- {{< blogsection title="Goodbye 2022! May 2023 Be Fabulous" image="images/single-blog/fy22/newyear/sunset.gif" >}}
 {{< /blogsection >}} -->
 
 

@@ -17,8 +17,6 @@ skill:
     percent: 90
   - title: SQL & Tableau
     percent: 90
-  - title: Linux & Shell
-    percent: 90
   - title: Data Lakehouse & Database
     percent: 90
   - title: Data Streaming
@@ -26,7 +24,11 @@ skill:
   - title: Change Data Capture/Debezium
     percent: 70
   - title: Machine Learning
-    percent: 50
+    percent: 70
+  - title: MLflow
+    percent: 60
+  - title: Linux & Shell
+    percent: 80
   - title: Docker & Kubernetes
     percent: 40
   - title: Terraform

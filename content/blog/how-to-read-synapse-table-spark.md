@@ -1,10 +1,8 @@
 ---
 title: "How to read Azure Synapse Tables to Spark Dataframe"
 date: 2023-01-02 00:00:59
-featureImage: /images/single-blog/pyspark-synapse.png
-#images/allpost/pyspark-synapse-vertical.jpg
-# postImage: images/single-blog/feature-image.jpg
-postImage: /images/single-blog/pyspark-synapse.png
+featureImage: /images/single-blog/synapse/pyspark-synapse.png
+postImage: /images/single-blog/synapse/pyspark-synapse.png
 categories: data-lakehouse
 tags: [azure-synapse-analytics, how-to, pyspark]
 draft: true
@@ -18,7 +16,7 @@ To create Synapse Spark Pool in Azure Synapse, you can follow this [documentatio
 
 In Synapse Workspace, you can right-click the table in Dedicated SQL Pool database, and pick **Load to Dataframe** 
 
-{{< image image="/images/inpost/load-to-df.png" width=500 >}}
+{{< image image="/images/single-blog/load-to-df.png" width=500 >}}
 
 The notebook will automatically open up with 1 default code:
 
@@ -29,7 +27,7 @@ val df = spark.read.synapsesql("<sql-pool-database>.<schema_name>.<table_name>")
 {{< /highlight >}}
 
 
-{{< image image="images/inpost/scala-solution.png"  width="500" >}}
+{{< image image="images/single-blog/scala-solution.png"  width="500" >}}
 
 #### Option 2: Use Python
 
@@ -50,6 +48,6 @@ df = spark.read.option(Constants.SERVER, synapse_server) \
 
 {{< /highlight >}}
 
-{{< image image="images/inpost/python.png" width=500 >}}
+{{< image image="images/single-blog/python.png" width=500 >}}
 
 

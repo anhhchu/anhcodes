@@ -1,9 +1,8 @@
 ---
 title: "Query Performance Tuning in Dedicated SQL Pool (Azure Synapse Analytics)"
 date: 2022-12-15
-featureImage: /images/single-blog/query-performance.jpeg
-#/images/allpost/query-performance.jpeg
-postImage: /images/single-blog/query-performance.jpeg
+featureImage: /images/single-blog/synapse/query-performance.jpeg
+postImage: /images/single-blog/synapse/query-performance.jpeg
 categories: data-lakehouse
 tags: [azure-synapse-analytics]
 author: Anh Chu

@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Deep Dive Into Delta Lake</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <!-- Slick Carousel -->
+  <link rel="stylesheet" href="https://anhcodes.dev/plugins/slick/slick.css" />
+  <link rel="stylesheet" href="https://anhcodes.dev/plugins/slick/slick-theme.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://anhcodes.dev/plugins/font-awesome/css/font-awesome.min.css" />
+
+  <!-- Magnific Popup -->
+  <link rel="stylesheet" href="https://anhcodes.dev/plugins/magnafic-popup/magnific-popup.css" />
+
+  <!-- Stylesheets -->
+  
+  <link href="https://anhcodes.dev/scss/style.min.css" rel="stylesheet" />
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="https://anhcodes.dev/images/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="https://anhcodes.dev/images/favicon.png" type="image/x-icon" />
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G09NWG7ZSN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-G09NWG7ZSN');
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.37.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.11.0/dist/algoliasearch.umd.min.js"></script>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.4.5/themes/satellite-min.css" integrity="sha256-TehzF/2QvNKhGQrrNpoOb2Ck4iGZ1J/DI4pkd2oUsBc=" crossorigin="anonymous">  
+  
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a href="https://anhcodes.dev/" class="navbar-brand">
+      <img src="https://anhcodes.dev/images/favicon.png" alt="site-logo">
+    </a>
+    <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+      <ul class="nav navbar-nav main-navigation my-0 mx-auto">
+        
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#home"
+            class="nav-link text-dark text-sm-center p-2 ">Home</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#about"
+            class="nav-link text-dark text-sm-center p-2 ">About</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#portfolio"
+            class="nav-link text-dark text-sm-center p-2 ">Portfolio</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#resume"
+            class="nav-link text-dark text-sm-center p-2 ">Experiences</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#skills"
+            class="nav-link text-dark text-sm-center p-2 ">Skills</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#testimonial"
+            class="nav-link text-dark text-sm-center p-2 ">Testimonials</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#blog"
+            class="nav-link text-dark text-sm-center p-2 ">Blog</a>
+        </li>
+        
+      </ul>
+      <div class="navbar-nav">
+        <a href="https://anhcodes.dev/contact" class="btn btn-primary btn-zoom hire_button">Contact Me</a>
+      </div>
+    </div>
+  </div>
+</nav>
+  <div id="content">
+    
+
+<header class="breadCrumb">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 text-center">
+        <h3 class="breadCrumb__title">Deep Dive Into Delta Lake</h3>
+        <nav aria-label="breadcrumb" class="d-flex justify-content-center">
+          <ol class="breadcrumb align-items-center">
+            <li class="breadcrumb-item"><a href=https://anhcodes.dev/>Home</a></li>
+            <li class="breadcrumb-item"><a href=https://anhcodes.dev/blog>All Posts</a></li>
+            <li class="breadcrumb-item"><a href=https://anhcodes.dev//tags>All Tags</a></li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <ul class="post-meta">
+      <li>
+        <i class="fa fa-calendar"></i>
+        August 7, 2023
+      </li>
+      <li>
+        <i class="fa fa-clock-o"></i>
+        18 mins read
+      </li>
+      <li>
+        <i class="fa fa-user"></i>
+        Anh Chu
+      </li>
+    </ul>
+    <ul class="post-meta">
+      </li>
+      
+      <li>
+        <i class="fa fa-tag"></i>
+        
+          <a class="text-lowercase" href="https://anhcodes.dev/tags/spark-delta-lake/">spark delta-lake</a>
+        
+      </li>
+      
+    </ul>
+  </div>
+  </div>
+  </div>
+  </div>
+</header>
+
+<section class="section singleBlog">
+  <div class="svg-img">
+    <img src=https://anhcodes.dev/images/hero/hero-background-svg.svg alt="">
+  </div>
+  <div class="animate-shape">
+    <img src=https://anhcodes.dev/images/skill/skill-background-shape.svg alt="">
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="singleBlog__feature">
+          <img src=https://anhcodes.dev/images/single-blog/deep-dive-delta-lake/0.png alt="feature-image">
+          <center><figcaption style="font-size: 10px; margin-top: 20px;">  </figcaption></center>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-lg-12">
+        <div class="singleBlog__content">
+
+          
+
+          <div class="toc">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#create-delta-tables">Create Delta Tables</a>
+      <ul>
+        <li><a href="#create-table-as-select-ctas">Create Table as Select (CTAS)</a></li>
+        <li><a href="#create-tables-with-options">Create Tables with Options</a></li>
+        <li><a href="#save-as-table-from-dataframe">Save As Table from DataFrame</a></li>
+        <li><a href="#create-table-with-generated-column-and-declared-schema">Create Table with Generated Column and declared Schema</a></li>
+      </ul>
+    </li>
+    <li><a href="#clone-delta-table">Clone Delta Table</a>
+      <ul>
+        <li><a href="#deep-clone">Deep Clone</a></li>
+        <li><a href="#shallow-clone">Shallow Clone</a></li>
+        <li><a href="#incremental-cloning">Incremental Cloning</a></li>
+        <li><a href="#file-retention-in-cloned-tables">File Retention in cloned Tables</a></li>
+      </ul>
+    </li>
+    <li><a href="#acid-in-delta-table">ACID in Delta Table</a>
+      <ul>
+        <li><a href="#crud-operations">CRUD Operations</a></li>
+        <li><a href="#merge-in-delta-lake">Merge in Delta Lake</a></li>
+        <li><a href="#insert-only-merge">Insert-Only Merge</a></li>
+        <li><a href="#overwrite-in-delta-lake">Overwrite in Delta Lake</a></li>
+        <li><a href="#copy-into-for-incremental-load">Copy Into for Incremental Load</a></li>
+      </ul>
+    </li>
+    <li><a href="#files-in-delta-lake">Files in Delta Lake</a></li>
+    <li><a href="#time-travel-in-delta-lake">Time Travel in Delta Lake</a></li>
+    <li><a href="#vacuum-in-delta-lake">Vacuum in Delta Lake</a></li>
+    <li><a href="#optimize-delta-tables">Optimize Delta Tables</a></li>
+    <li><a href="#schema-enforcement--evolution">Schema enforcement &amp; evolution</a></li>
+    <li><a href="#delta-table-best-practices">Delta table best practices</a>
+      <ul>
+        <li><a href="#extract-table-metadata">Extract Table Metadata</a></li>
+        <li><a href="#design-table-schema">Design table schema</a></li>
+        <li><a href="#file-statistics">File Statistics</a></li>
+        <li><a href="#config-stats-on-table">Config Stats on table</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+  
+<p><a href="https://delta.io/">Delta Lake</a> is an <a href="https://github.com/delta-io/delta">open source storage layer</a> that brings reliability to <a href="https://databricks.com/discover/data-lakes/introduction">data lakes</a>. Delta Lake provides ACID transactions, scalable metadata handling, and unifies streaming and batch data processing. Delta Lake runs on top of your existing data lake and is fully compatible with Apache Spark APIs. Delta Lake uses versioned Parquet files to store your data in your cloud storage. Apart from the versions, Delta Lake also stores a transaction log to keep track of all the commits made to the table or blob store directory to provide ACID transactions. <strong>Delta Lake doesn’t care about number of partitions, only the number of files</strong></p>
+<ol>
+<li>allows time travel within a month → rollback to previous version to correct errors</li>
+<li>supports ACID → allow concurrent batch and streaming operations to write data with ACID guaranteed</li>
+<li>tracks audit history</li>
+<li>deletes and upserts into table</li>
+<li>supports many concurrent batch &amp; streaming jobs writing at the same time</li>
+<li>enable schema enforcement and schema evolution</li>
+</ol>
+<h2 id="create-delta-tables">Create Delta Tables</h2>
+<h3 id="create-table-as-select-ctas">Create Table as Select (CTAS)</h3>
+<p>CTAS statements automatically infer schema information from query results and do <strong>not</strong> support manual schema declaration.</p>
+<p>This means that CTAS statements are useful for external data ingestion from sources with well-defined schema, such as Parquet files and tables.</p>
+<p>If your source data is csv files, you may run into a few issues as CTAS statements also do not support specifying additional file options</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">CREATE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">OR</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">REPLACE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TABLE</span><span style="color:#a8757b"> </span>sales<span style="color:#a8757b"> </span><span style="color:#c2ffdf">AS</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">SELECT</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">*</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">FROM</span><span style="color:#a8757b"> </span>parquet.<span style="color:#ffb8d1">`</span>path<span style="color:#ffb8d1">/</span><span style="color:#c2ffdf">to</span><span style="color:#ffb8d1">/</span>parquet<span style="color:#ffb8d1">/</span>files<span style="color:#ffb8d1">`</span>;<span style="color:#a8757b">
+</span></span></span></code></pre></div><p>Below, we show evolving a CTAS statement to include a number of additional configurations and metadata.</p>
+<p>Our SELECT clause leverages two built-in Spark SQL commands useful for file ingestion:</p>
+<ul>
+<li>current_timestamp() records the timestamp when the logic is executed</li>
+<li>input_file_name() records the source data file for each record in the table</li>
+</ul>
+<p>We also include logic to create a new date column derived from timestamp data in the source.</p>
+<p>The CREATE TABLE clause contains several options:</p>
+<ul>
+<li>A COMMENT is added to allow for easier discovery of table contents</li>
+<li>A LOCATION is specified, which will result in an external (rather than managed) table</li>
+<li>The table is PARTITIONED BY a date column (using disk partitioning); this means that the data from each data will exist within its own directory in the target storage location</li>
+</ul>
+<p><strong>NOTE</strong>: Partitioning is shown here primarily to demonstrate syntax and impact. Most Delta Lake tables (especially small-to-medium sized data) will not benefit from partitioning. Because partitioning physically separates data files, this approach can result in a small files problem and prevent file compaction and efficient data skipping. The benefits observed in Hive or HDFS do not translate to Delta Lake, and you should consult with an experienced Delta Lake architect before partitioning tables.</p>
+<p><strong>As a best practice, you should default to non-partitioned tables for most use cases when working with Delta Lake.</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">CREATE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">OR</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">REPLACE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TABLE</span><span style="color:#a8757b"> </span>users_pii<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">COMMENT</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;Contains PII&#34;</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">LOCATION</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;${da.paths.working_dir}/tmp/users_pii&#34;</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span>PARTITIONED<span style="color:#a8757b"> </span><span style="color:#c2ffdf">BY</span><span style="color:#a8757b"> </span>(first_touch_date)<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">AS</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span><span style="color:#c2ffdf">SELECT</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">*</span>,<span style="color:#a8757b"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">    </span><span style="color:#c2ffdf">cast</span>(<span style="color:#c2ffdf">cast</span>(user_first_touch_timestamp<span style="color:#ffb8d1">/</span><span style="color:#c5a3ff">1</span>e6<span style="color:#a8757b"> </span><span style="color:#c2ffdf">AS</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TIMESTAMP</span>)<span style="color:#a8757b"> </span><span style="color:#c2ffdf">AS</span><span style="color:#a8757b"> </span>DATE)<span style="color:#a8757b"> </span>first_touch_date,<span style="color:#a8757b"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">    </span><span style="color:#c2ffdf">current_timestamp</span>()<span style="color:#a8757b"> </span>updated,<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">    </span>input_file_name()<span style="color:#a8757b"> </span>source_file<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span><span style="color:#c2ffdf">FROM</span><span style="color:#a8757b"> </span>parquet.<span style="color:#ffb8d1">`</span>dbfs:<span style="color:#ffb8d1">/</span>ecommerce<span style="color:#ffb8d1">/</span>raw<span style="color:#ffb8d1">/</span>users<span style="color:#ffb8d1">-</span>historical<span style="color:#ffb8d1">/`</span>;<span style="color:#a8757b">
+</span></span></span></code></pre></div><h3 id="create-tables-with-options">Create Tables with Options</h3>
+<p>To correctly ingest data from files such as csv to a Delta Lake table, we&rsquo;ll need to use a reference to the files that allows us to specify options.</p>
+<p>We can either create External Table or a Temp View , and then use this table or temp view as the source for a CTAS statement to successfully register the Delta table.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">CREATE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">OR</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">REPLACE</span><span style="color:#a8757b"> </span>TEMP<span style="color:#a8757b"> </span><span style="color:#c2ffdf">VIEW</span><span style="color:#a8757b"> </span>sales_tmp_vw<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span>(order_id<span style="color:#a8757b"> </span>LONG,<span style="color:#a8757b"> </span>email<span style="color:#a8757b"> </span>STRING,<span style="color:#a8757b"> </span>transactions_timestamp<span style="color:#a8757b"> </span>LONG,<span style="color:#a8757b"> </span>total_item_quantity<span style="color:#a8757b"> </span>INTEGER,<span style="color:#a8757b"> </span>purchase_revenue_in_usd<span style="color:#a8757b"> </span>DOUBLE,<span style="color:#a8757b"> </span>unique_items<span style="color:#a8757b"> </span>INTEGER,<span style="color:#a8757b"> </span>items<span style="color:#a8757b"> </span>STRING)<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">USING</span><span style="color:#a8757b"> </span>CSV<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">OPTIONS</span><span style="color:#a8757b"> </span>(<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span>path<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;path/to/file&#34;</span>,<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span>header<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;true&#34;</span>,<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span><span style="color:#c2ffdf">delimiter</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;|&#34;</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span>);<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">CREATE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TABLE</span><span style="color:#a8757b"> </span>sales_delta<span style="color:#a8757b"> </span><span style="color:#c2ffdf">AS</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span><span style="color:#c2ffdf">SELECT</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">*</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">FROM</span><span style="color:#a8757b"> </span>sales_tmp_vw;<span style="color:#a8757b">
+</span></span></span></code></pre></div><h3 id="save-as-table-from-dataframe">Save As Table from DataFrame</h3>
+<p>Create managed delta table from dataframe with table properties</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>(
+</span></span><span style="display:flex;"><span>df<span style="color:#ffb8d1">.</span>write
+</span></span><span style="display:flex;"><span>  <span style="color:#ffb8d1">.</span>option(<span style="color:#1bc5e0">&#34;delta.columnMapping.mode&#34;</span>, <span style="color:#1bc5e0">&#34;name&#34;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#ffb8d1">.</span>option(<span style="color:#1bc5e0">&#34;delta.minReaderVersion&#34;</span>, <span style="color:#1bc5e0">&#34;2&#34;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#ffb8d1">.</span>option(<span style="color:#1bc5e0">&#34;delta.minWriterVersion&#34;</span>, <span style="color:#1bc5e0">&#34;5&#34;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#ffb8d1">.</span>mode(<span style="color:#1bc5e0">&#34;overwrite&#34;</span>) 
+</span></span><span style="display:flex;"><span>  <span style="color:#ffb8d1">.</span>saveAsTable(<span style="color:#1bc5e0">&#34;table_name&#34;</span>)
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><h3 id="create-table-with-generated-column-and-declared-schema">Create Table with Generated Column and declared Schema</h3>
+<p>Generated columns are a special type of column whose values are automatically generated based on a user-specified function over other columns in the Delta table (introduced in DBR 8.3).</p>
+<p>The code below demonstrates creating a new table while:</p>
+<ol>
+<li>Specifying column names and types</li>
+<li>Adding a <a href="https://docs.databricks.com/delta/delta-batch.html#deltausegeneratedcolumns">generated column</a> to calculate the date</li>
+<li>Providing a descriptive column comment for the generated column</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">CREATE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">OR</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">REPLACE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TABLE</span><span style="color:#a8757b"> </span>purchase_dates<span style="color:#a8757b"> </span>(<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span>id<span style="color:#a8757b"> </span>STRING,<span style="color:#a8757b"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span>transaction_timestamp<span style="color:#a8757b"> </span>STRING,<span style="color:#a8757b"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span>price<span style="color:#a8757b"> </span>STRING,<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span>date<span style="color:#a8757b"> </span>DATE<span style="color:#a8757b"> </span><span style="color:#c2ffdf">GENERATED</span><span style="color:#a8757b"> </span>ALWAYS<span style="color:#a8757b"> </span><span style="color:#c2ffdf">AS</span><span style="color:#a8757b"> </span>(<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">    </span><span style="color:#c2ffdf">cast</span>(<span style="color:#c2ffdf">cast</span>(transaction_timestamp<span style="color:#ffb8d1">/</span><span style="color:#c5a3ff">1</span>e6<span style="color:#a8757b"> </span><span style="color:#c2ffdf">AS</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TIMESTAMP</span>)<span style="color:#a8757b"> </span><span style="color:#c2ffdf">AS</span><span style="color:#a8757b"> </span>DATE))<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">   </span><span style="color:#c2ffdf">COMMENT</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;generated based on `transactions_timestamp` column&#34;</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">	</span>)<span style="color:#a8757b">
+</span></span></span></code></pre></div><p>Because date is a generated column, if we write to purchase_dates without providing values for the date column, Delta Lake automatically computes them.</p>
+<p>If a field that would otherwise be generated is included in an insert to a table, this insert will fail with <code>DeltaInvariantViolationException</code> if the value provided does not exactly match the value that would be derived by the logic used to define the generated column.</p>
+<h2 id="clone-delta-table">Clone Delta Table</h2>
+<p>Delta Lake has two options for efficiently copying Delta Lake tables.</p>
+<h3 id="deep-clone">Deep Clone</h3>
+<p>DEEP CLONE fully copies data and metadata from a source table to a target. This copy occurs incrementally, so executing this command again can sync changes from the source to the target location.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">CREATE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">OR</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">REPLACE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TABLE</span><span style="color:#a8757b"> </span>purchases_clone<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span>DEEP<span style="color:#a8757b"> </span>CLONE<span style="color:#a8757b"> </span>purchases<span style="color:#a8757b">
+</span></span></span></code></pre></div><p>Because all the data files must be copied over, this can take quite a while for large datasets. Deep clone is used to create a backup of your dataset.</p>
+<h3 id="shallow-clone">Shallow Clone</h3>
+<p>If you wish to create a copy of a table quickly to test out applying changes without the risk of modifying the current table, SHALLOW CLONE can be a good option. Shallow clones just copy the Delta transaction logs, meaning that the data doesn&rsquo;t move.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">CREATE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">OR</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">REPLACE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TABLE</span><span style="color:#a8757b"> </span>purchases_shallow_clone<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span>SHALLOW<span style="color:#a8757b"> </span>CLONE<span style="color:#a8757b"> </span>purchases<span style="color:#a8757b">
+</span></span></span></code></pre></div><p>In either case, data modifications applied to the cloned version of the table will be tracked and stored separately from the source. Cloning is a great way to set up tables for testing SQL code while still in development.</p>
+<p>The transfer of <strong>comments</strong> and <strong>table</strong> <strong>properties</strong> does not depend on the <strong>type</strong> of clone. In either type of clones - <strong>deep</strong> and <strong>shallow,</strong> the <strong>table</strong> <strong>properties</strong> are passed to the <strong>clone</strong> as well whereas the <strong>comments</strong> are something <strong>native</strong> to a table. Thus, the <strong>comments</strong> added to a table are <strong>not</strong> passed on to the <strong>clones.</strong></p>
+<p>Any changes made to a shallow cloned table will write new data files to the specified target directory, meaning that you can safely test writes, updates, and deletes without risking corruption of your original table. The Delta logs will automatically reference the correct files (from the source table and this clone directory) to materialize the current view of your dev table.</p>
+<h3 id="incremental-cloning">Incremental Cloning</h3>
+<p>If you examine the files in your backup table, you&rsquo;ll see that you have the same number of files as your source table. Upon closer examination, you&rsquo;ll note that file names and sizes have also been preserved by the clone.</p>
+<p>This allows Delta Lake to incrementally apply changes to the backup table. When we re-execute our deep clone command, we only copy those files that were written during our most recent transaction.</p>
+<h3 id="file-retention-in-cloned-tables">File Retention in cloned Tables</h3>
+<p>Vacuum against the source table that remove files of a specified version will cause data loss in a shallow clone tables. However, because deep clone created a full copy of our files and associated metadata, we still have access to our deep clone table.</p>
+<p>One of the useful features of deep cloning is the ability to set different table properties for file and log retention. This allows production tables to have optimized performance while maintaining files for auditing and regulatory compliance.</p>
+<h2 id="acid-in-delta-table">ACID in Delta Table</h2>
+<h3 id="crud-operations">CRUD Operations</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">CREATE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TABLE</span><span style="color:#a8757b"> </span>students<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span>(id<span style="color:#a8757b"> </span>INT,<span style="color:#a8757b"> </span>name<span style="color:#a8757b"> </span>STRING,<span style="color:#a8757b"> </span>value<span style="color:#a8757b"> </span>DOUBLE);<span style="color:#a8757b">
+</span></span></span></code></pre></div><p>We can use INSERT INTO to atomically append new rows to an existing Delta table. This allows for incremental updates to existing tables, which is much more efficient than overwriting each time. <code>INSERT INTO</code> can cause duplicated records</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">INSERT</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">INTO</span><span style="color:#a8757b"> </span>students<span style="color:#a8757b"> </span><span style="color:#c2ffdf">VALUES</span><span style="color:#a8757b"> </span>(<span style="color:#c5a3ff">1</span>,<span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;Yve&#34;</span>,<span style="color:#a8757b"> </span><span style="color:#c5a3ff">1</span>.<span style="color:#c5a3ff">0</span>);<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">INSERT</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">INTO</span><span style="color:#a8757b"> </span>students<span style="color:#a8757b"> </span><span style="color:#c2ffdf">VALUES</span><span style="color:#a8757b"> </span>(<span style="color:#c5a3ff">2</span>,<span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;Omar&#34;</span>,<span style="color:#a8757b"> </span><span style="color:#c5a3ff">2</span>.<span style="color:#c5a3ff">5</span>);<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">INSERT</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">INTO</span><span style="color:#a8757b"> </span>students<span style="color:#a8757b"> </span><span style="color:#c2ffdf">VALUES</span><span style="color:#a8757b"> </span>(<span style="color:#c5a3ff">3</span>,<span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;Elia&#34;</span>,<span style="color:#a8757b"> </span><span style="color:#c5a3ff">3</span>.<span style="color:#c5a3ff">3</span>);<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">INSERT</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">INTO</span><span style="color:#a8757b"> </span>students<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">VALUES</span><span style="color:#a8757b"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span>(<span style="color:#c5a3ff">4</span>,<span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;Ted&#34;</span>,<span style="color:#a8757b"> </span><span style="color:#c5a3ff">4</span>.<span style="color:#c5a3ff">7</span>),<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span>(<span style="color:#c5a3ff">5</span>,<span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;Tiffany&#34;</span>,<span style="color:#a8757b"> </span><span style="color:#c5a3ff">5</span>.<span style="color:#c5a3ff">5</span>),<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span>(<span style="color:#c5a3ff">6</span>,<span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;Vini&#34;</span>,<span style="color:#a8757b"> </span><span style="color:#c5a3ff">6</span>.<span style="color:#c5a3ff">3</span>);<span style="color:#a8757b">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">UPDATE</span><span style="color:#a8757b"> </span>students<span style="color:#a8757b"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">SET</span><span style="color:#a8757b"> </span>value<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span>value<span style="color:#a8757b"> </span><span style="color:#ffb8d1">+</span><span style="color:#a8757b"> </span><span style="color:#c5a3ff">1</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">WHERE</span><span style="color:#a8757b"> </span>name<span style="color:#a8757b"> </span><span style="color:#c2ffdf">LIKE</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;T%&#34;</span>;<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">DELETE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">FROM</span><span style="color:#a8757b"> </span>students<span style="color:#a8757b"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">WHERE</span><span style="color:#a8757b"> </span>value<span style="color:#a8757b"> </span><span style="color:#ffb8d1">&gt;</span><span style="color:#a8757b"> </span><span style="color:#c5a3ff">6</span>;<span style="color:#a8757b">
+</span></span></span></code></pre></div><h3 id="merge-in-delta-lake">Merge in Delta Lake</h3>
+<p>You can upsert data from a source table, view, or DataFrame into a target Delta table using the MERGE SQL operation. Delta Lake supports inserts, updates and deletes in MERGE, and supports extended syntax beyond the SQL standards to facilitate advanced use cases.</p>
+<p>You can use MERGE INTO for below table modifications:</p>
+<ul>
+<li>Write a stream of schema changes into a table</li>
+<li>Write data to a table with automatic deduplication</li>
+<li>Write streaming aggregates in Update Mode</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>MERGE<span style="color:#a8757b"> </span><span style="color:#c2ffdf">INTO</span><span style="color:#a8757b"> </span>target<span style="color:#a8757b"> </span>a<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">USING</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">source</span><span style="color:#a8757b"> </span>b<span style="color:#a8757b"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">ON</span><span style="color:#a8757b"> </span><span style="color:#960050;background-color:#1e0010">{</span>merge_condition<span style="color:#960050;background-color:#1e0010">}</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">WHEN</span><span style="color:#a8757b"> </span>MATCHED<span style="color:#a8757b"> </span><span style="color:#c2ffdf">THEN</span><span style="color:#a8757b"> </span><span style="color:#960050;background-color:#1e0010">{</span>matched_action<span style="color:#960050;background-color:#1e0010">}</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">WHEN</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">NOT</span><span style="color:#a8757b"> </span>MATCHED<span style="color:#a8757b"> </span><span style="color:#c2ffdf">THEN</span><span style="color:#a8757b"> </span><span style="color:#960050;background-color:#1e0010">{</span>not_matched_action<span style="color:#960050;background-color:#1e0010">}</span><span style="color:#a8757b">
+</span></span></span></code></pre></div><p>An example for this pattern:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">CREATE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">OR</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">REPLACE</span><span style="color:#a8757b"> </span>TEMP<span style="color:#a8757b"> </span><span style="color:#c2ffdf">VIEW</span><span style="color:#a8757b"> </span>updates(id,<span style="color:#a8757b"> </span>name,<span style="color:#a8757b"> </span>value,<span style="color:#a8757b"> </span><span style="color:#c2ffdf">type</span>)<span style="color:#a8757b"> </span><span style="color:#c2ffdf">AS</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">VALUES</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span>(<span style="color:#c5a3ff">2</span>,<span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;Omar&#34;</span>,<span style="color:#a8757b"> </span><span style="color:#c5a3ff">15</span>.<span style="color:#c5a3ff">2</span>,<span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;update&#34;</span>),<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span>(<span style="color:#c5a3ff">3</span>,<span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;&#34;</span>,<span style="color:#a8757b"> </span><span style="color:#c2ffdf">null</span>,<span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;delete&#34;</span>),<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span>(<span style="color:#c5a3ff">7</span>,<span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;Blue&#34;</span>,<span style="color:#a8757b"> </span><span style="color:#c5a3ff">7</span>.<span style="color:#c5a3ff">7</span>,<span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;insert&#34;</span>),<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span>(<span style="color:#c5a3ff">11</span>,<span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;Diya&#34;</span>,<span style="color:#a8757b"> </span><span style="color:#c5a3ff">8</span>.<span style="color:#c5a3ff">8</span>,<span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;update&#34;</span>);<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span>MERGE<span style="color:#a8757b"> </span><span style="color:#c2ffdf">INTO</span><span style="color:#a8757b"> </span>students<span style="color:#a8757b"> </span>b<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">USING</span><span style="color:#a8757b"> </span>updates<span style="color:#a8757b"> </span>u<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">ON</span><span style="color:#a8757b"> </span>b.id<span style="color:#ffb8d1">=</span>u.id<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">WHEN</span><span style="color:#a8757b"> </span>MATCHED<span style="color:#a8757b"> </span><span style="color:#c2ffdf">AND</span><span style="color:#a8757b"> </span>u.<span style="color:#c2ffdf">type</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;update&#34;</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span><span style="color:#c2ffdf">THEN</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">UPDATE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">SET</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">*</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">WHEN</span><span style="color:#a8757b"> </span>MATCHED<span style="color:#a8757b"> </span><span style="color:#c2ffdf">AND</span><span style="color:#a8757b"> </span>u.<span style="color:#c2ffdf">type</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;delete&#34;</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span><span style="color:#c2ffdf">THEN</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">DELETE</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">WHEN</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">NOT</span><span style="color:#a8757b"> </span>MATCHED<span style="color:#a8757b"> </span><span style="color:#c2ffdf">AND</span><span style="color:#a8757b"> </span>u.<span style="color:#c2ffdf">type</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;insert&#34;</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span><span style="color:#c2ffdf">THEN</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">INSERT</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">*</span>;<span style="color:#a8757b">
+</span></span></span></code></pre></div><h3 id="insert-only-merge">Insert-Only Merge</h3>
+<p>A common ETL use case is to collect logs or other every-appending datasets into a Delta table through a series of append operations.</p>
+<p>Many source systems can generate duplicate records. With merge, you can avoid inserting the duplicate records by performing an insert-only merge.</p>
+<p>This optimized command uses the same MERGE syntax but only provided a WHEN NOT MATCHED clause.</p>
+<p>Below, we use this to confirm that records with the same user_id and event_timestamp aren&rsquo;t already in the events table.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>MERGE<span style="color:#a8757b"> </span><span style="color:#c2ffdf">INTO</span><span style="color:#a8757b"> </span>events<span style="color:#a8757b"> </span>a<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">USING</span><span style="color:#a8757b"> </span>events_update<span style="color:#a8757b"> </span>b<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">ON</span><span style="color:#a8757b"> </span>a.user_id<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span>b.user_id<span style="color:#a8757b"> </span><span style="color:#c2ffdf">AND</span><span style="color:#a8757b"> </span>a.event_timestamp<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span>b.event_timestamp<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">WHEN</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">NOT</span><span style="color:#a8757b"> </span>MATCHED<span style="color:#a8757b"> </span><span style="color:#c2ffdf">AND</span><span style="color:#a8757b"> </span>b.traffic_source<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#39;email&#39;</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">THEN</span><span style="color:#a8757b"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span><span style="color:#c2ffdf">INSERT</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">*</span><span style="color:#a8757b">
+</span></span></span></code></pre></div><h3 id="overwrite-in-delta-lake">Overwrite in Delta Lake</h3>
+<p>We can use overwrites to atomically replace all of the data in a table. There are multiple benefits to overwriting tables instead of deleting and recreating tables:</p>
+<ul>
+<li>Overwriting a table is much faster because it doesn’t need to list the directory recursively or delete any files.</li>
+<li>The old version of the table still exists; can easily retrieve the old data using Time Travel.</li>
+<li>It’s an atomic operation. Concurrent queries can still read the table while you are deleting the table.</li>
+<li>Due to ACID transaction guarantees, if overwriting the table fails, the table will be in its previous state.</li>
+</ul>
+<p>Spark SQL provides two easy methods to accomplish complete overwrites.</p>
+<ol>
+<li>CREATE OR REPLACE TABLE (CRAS) statements fully replace the contents of a table each time they execute.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">CREATE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">OR</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">REPLACE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TABLE</span><span style="color:#a8757b"> </span>events<span style="color:#a8757b"> </span><span style="color:#c2ffdf">AS</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">SELECT</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">*</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">FROM</span><span style="color:#a8757b"> </span>parquet.<span style="color:#ffb8d1">`</span>dbfs:<span style="color:#ffb8d1">/</span>ecommerce<span style="color:#ffb8d1">/</span>raw<span style="color:#ffb8d1">/</span>events<span style="color:#ffb8d1">-</span>historical<span style="color:#ffb8d1">`</span><span style="color:#a8757b">
+</span></span></span></code></pre></div><ol>
+<li>INSERT OVERWRITE provides a nearly identical outcome as above: data in the target table will be replaced by data from the query.
+<ul>
+<li>Can only overwrite an existing table, not create a new one like our CRAS statement</li>
+<li>Can overwrite only with new records that match the current table schema &ndash; and thus can be a &ldquo;safer&rdquo; technique for overwriting an existing table without disrupting downstream consumers</li>
+<li>Can overwrite individual partitions</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">INSERT</span><span style="color:#a8757b"> </span>OVERWRITE<span style="color:#a8757b"> </span>sales<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">SELECT</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">*</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">FROM</span><span style="color:#a8757b"> </span>parquet.<span style="color:#ffb8d1">`</span>dbfs:<span style="color:#ffb8d1">/</span>ecommerce<span style="color:#ffb8d1">/</span>raw<span style="color:#ffb8d1">/</span>sales<span style="color:#ffb8d1">-</span>historical<span style="color:#ffb8d1">/`</span><span style="color:#a8757b">
+</span></span></span></code></pre></div><p>A primary difference here has to do with how Delta Lake enforces schema on write.</p>
+<p>Whereas a CRAS statement will allow us to completely redefine the contents of our target table, INSERT OVERWRITE will fail if we try to change our schema (unless we provide optional settings).</p>
+<h3 id="copy-into-for-incremental-load">Copy Into for Incremental Load</h3>
+<p>COPY INTO provides SQL engineers an idempotent option to incrementally ingest data from external systems.</p>
+<p>Note that this operation does have some expectations:</p>
+<ul>
+<li>Data schema should be consistent</li>
+<li>Duplicate records should try to be excluded or handled downstream</li>
+<li><strong>COPY INTO</strong> must target an existing Delta table.</li>
+<li>The source file must specify the file’s format.</li>
+</ul>
+<p>This operation is potentially much cheaper than full table scans for data that grows predictably.</p>
+<p>While here we&rsquo;ll show simple execution on a static directory, the real value is in multiple executions over time picking up new files in the source automatically.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">COPY</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">INTO</span><span style="color:#a8757b"> </span>sales<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">FROM</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;dbfs:/ecommerce/raw/sales-30m&#34;</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span>FILEFORMAT<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span>PARQUET<span style="color:#a8757b">
+</span></span></span></code></pre></div><h2 id="files-in-delta-lake">Files in Delta Lake</h2>
+<p>Using DESCRIBE EXTENDED allows us to see important metadata about our table. While we&rsquo;ve so far been thinking about our table as just a relational entity within a schema, a Delta Lake table is actually backed by a collection of files stored in cloud object storage.</p>
+
+<div class="image">
+  <style>
+    .img-responsive {
+      display: block;
+      height: auto;
+      max-width: 100%;
+      cursor: pointer;
+    }
+  </style>
+  <p>
+    <center><img src="https://anhcodes.dev/images/single-blog/deep-dive-delta-lake/Untitled.png" alt="blog-img" class="img-responsive" onclick="openModal(this)"></center>
+  </p>
+</div>
+
+<script>
+function openModal(img) {
+  var modal = document.createElement('div');
+  modal.classList.add('modal');
+  modal.innerHTML = '<div class="modal-content"><img src="' + img.src + '"></div>';
+  document.body.appendChild(modal);
+  modal.addEventListener('click', closeModal);
+}
+
+function closeModal(event) {
+  if (event.target.classList.contains('modal')) {
+    document.body.removeChild(event.target);
+  }
+}
+</script>
+
+<style>
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 80%;
+  max-height: 80%;
+  overflow: auto;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+}
+</style>
+
+  
+<p>Note that our directory contains a number of Parquet data files and a directory named _delta_log.</p>
+<ul>
+<li>Records in Delta Lake tables are stored as data in Parquet files.</li>
+<li>Transactions to Delta Lake tables are recorded in the _delta_log.</li>
+<li>Each transaction results in a new JSON file being written to the Delta Lake transaction log. Here, we can see that there are 8 total transactions against this table (Delta Lake is 0 indexed).</li>
+</ul>
+
+<div class="image">
+  <style>
+    .img-responsive {
+      display: block;
+      height: auto;
+      max-width: 100%;
+      cursor: pointer;
+    }
+  </style>
+  <p>
+    <center><img src="https://anhcodes.dev/images/single-blog/deep-dive-delta-lake/Untitled1.png" alt="blog-img" class="img-responsive" onclick="openModal(this)"></center>
+  </p>
+</div>
+
+<script>
+function openModal(img) {
+  var modal = document.createElement('div');
+  modal.classList.add('modal');
+  modal.innerHTML = '<div class="modal-content"><img src="' + img.src + '"></div>';
+  document.body.appendChild(modal);
+  modal.addEventListener('click', closeModal);
+}
+
+function closeModal(event) {
+  if (event.target.classList.contains('modal')) {
+    document.body.removeChild(event.target);
+  }
+}
+</script>
+
+<style>
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 80%;
+  max-height: 80%;
+  overflow: auto;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+}
+</style>
+
+  
+<p>Rather than overwriting or immediately deleting files containing changed data, Delta Lake uses the transaction log to indicate whether or not files are valid in a current version of the table.</p>
+<p>Here, we&rsquo;ll look at the transaction log corresponding the MERGE statement above, where records were inserted, updated, and deleted.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ffb8d1">%</span>python
+</span></span><span style="display:flex;"><span>display(spark<span style="color:#ffb8d1">.</span>sql(<span style="color:#1bc5e0">f</span><span style="color:#1bc5e0">&#34;SELECT * FROM json.`dbfs:/students/_delta_log/00000000000000000007.json`&#34;</span>))
+</span></span></code></pre></div><p>The add column contains a list of all the new files written to our table; the remove column indicates those files that no longer should be included in our table. These removed files provide us with the ability to query previous versions of our table.</p>
+
+<div class="image">
+  <style>
+    .img-responsive {
+      display: block;
+      height: auto;
+      max-width: 100%;
+      cursor: pointer;
+    }
+  </style>
+  <p>
+    <center><img src="https://anhcodes.dev/images/single-blog/deep-dive-delta-lake/Untitled2.png" alt="blog-img" class="img-responsive" onclick="openModal(this)"></center>
+  </p>
+</div>
+
+<script>
+function openModal(img) {
+  var modal = document.createElement('div');
+  modal.classList.add('modal');
+  modal.innerHTML = '<div class="modal-content"><img src="' + img.src + '"></div>';
+  document.body.appendChild(modal);
+  modal.addEventListener('click', closeModal);
+}
+
+function closeModal(event) {
+  if (event.target.classList.contains('modal')) {
+    document.body.removeChild(event.target);
+  }
+}
+</script>
+
+<style>
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 80%;
+  max-height: 80%;
+  overflow: auto;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+}
+</style>
+
+  
+<p>When we query a Delta Lake table, the query engine uses the transaction logs to resolve all the files that are valid in the current version, and ignores all other data files.</p>
+<h2 id="time-travel-in-delta-lake">Time Travel in Delta Lake</h2>
+<p>Because all changes to the Delta Lake table are stored in the transaction log, we can easily review the <a href="https://docs.databricks.com/spark/2.x/spark-sql/language-manual/describe-history.html">table history</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">DESCRIBE</span><span style="color:#a8757b"> </span>HISTORY<span style="color:#a8757b"> </span>students<span style="color:#a8757b">
+</span></span></span></code></pre></div><p>The operationsParameters column will let you review predicates used for updates, deletes, and merges. The operationMetrics column indicates how many rows and files are added in each operation.</p>
+<p>DESCRIBE DETAIL allows us to see some other details about our Delta table, including the number of files. Here we see that our table currently contains 4 data files in its present version.</p>
+
+<div class="image">
+  <style>
+    .img-responsive {
+      display: block;
+      height: auto;
+      max-width: 100%;
+      cursor: pointer;
+    }
+  </style>
+  <p>
+    <center><img src="https://anhcodes.dev/images/single-blog/deep-dive-delta-lake/Untitled3.png" alt="blog-img" class="img-responsive" onclick="openModal(this)"></center>
+  </p>
+</div>
+
+<script>
+function openModal(img) {
+  var modal = document.createElement('div');
+  modal.classList.add('modal');
+  modal.innerHTML = '<div class="modal-content"><img src="' + img.src + '"></div>';
+  document.body.appendChild(modal);
+  modal.addEventListener('click', closeModal);
+}
+
+function closeModal(event) {
+  if (event.target.classList.contains('modal')) {
+    document.body.removeChild(event.target);
+  }
+}
+</script>
+
+<style>
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 80%;
+  max-height: 80%;
+  overflow: auto;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+}
+</style>
+
+  
+<p>However, there are 8 files in the table’s delta path. These files are removed data from the current version to allow time travel</p>
+
+<div class="image">
+  <style>
+    .img-responsive {
+      display: block;
+      height: auto;
+      max-width: 100%;
+      cursor: pointer;
+    }
+  </style>
+  <p>
+    <center><img src="https://anhcodes.dev/images/single-blog/deep-dive-delta-lake/Untitled4.png" alt="blog-img" class="img-responsive" onclick="openModal(this)"></center>
+  </p>
+</div>
+
+<script>
+function openModal(img) {
+  var modal = document.createElement('div');
+  modal.classList.add('modal');
+  modal.innerHTML = '<div class="modal-content"><img src="' + img.src + '"></div>';
+  document.body.appendChild(modal);
+  modal.addEventListener('click', closeModal);
+}
+
+function closeModal(event) {
+  if (event.target.classList.contains('modal')) {
+    document.body.removeChild(event.target);
+  }
+}
+</script>
+
+<style>
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 80%;
+  max-height: 80%;
+  overflow: auto;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+}
+</style>
+
+  
+<p>What&rsquo;s important to note about time travel is that we&rsquo;re not recreating a previous state of the table by undoing transactions against our current version; rather, we&rsquo;re just querying all those data files that were indicated as valid as of the specified version</p>
+<p>These time travel queries can be performed by specifying either the integer version or a timestamp.</p>
+<p><strong>NOTE</strong>: In most cases, you&rsquo;ll use a timestamp to recreate data at a time of interest.  You can also specify the version number</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">SELECT</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">*</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">FROM</span><span style="color:#a8757b"> </span>students<span style="color:#a8757b"> </span><span style="color:#c2ffdf">VERSION</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">AS</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">OF</span><span style="color:#a8757b"> </span><span style="color:#c5a3ff">3</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#b0bec5">-- OR
+</span></span></span><span style="display:flex;"><span><span style="color:#b0bec5"></span><span style="color:#c2ffdf">select</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">*</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">from</span><span style="color:#a8757b"> </span>students<span style="color:#ffb8d1">@</span>v3<span style="color:#a8757b">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ffb8d1">%</span>python
+</span></span><span style="display:flex;"><span><span style="color:#b0bec5"># Load delta table with a particular version</span>
+</span></span><span style="display:flex;"><span>delta_df <span style="color:#ffb8d1">=</span> (spark<span style="color:#ffb8d1">.</span>read
+</span></span><span style="display:flex;"><span>                 <span style="color:#ffb8d1">.</span>format(<span style="color:#1bc5e0">&#34;delta&#34;</span>)
+</span></span><span style="display:flex;"><span>                 <span style="color:#ffb8d1">.</span>option(<span style="color:#1bc5e0">&#34;versionAsOf&#34;</span>, <span style="color:#c5a3ff">0</span>)
+</span></span><span style="display:flex;"><span>                 <span style="color:#ffb8d1">.</span>load(<span style="color:#1bc5e0">&#39;path/to/delta&#39;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#b0bec5"># Load delta table with a particular timestamp</span>
+</span></span><span style="display:flex;"><span>timestamp <span style="color:#ffb8d1">=</span> spark<span style="color:#ffb8d1">.</span>sql(<span style="color:#1bc5e0">f</span><span style="color:#1bc5e0">&#34;DESCRIBE HISTORY delta.`</span><span style="color:#1bc5e0">{</span>path<span style="color:#ffb8d1">/</span>to<span style="color:#ffb8d1">/</span>delta<span style="color:#1bc5e0">}</span><span style="color:#1bc5e0">`&#34;</span>)<span style="color:#ffb8d1">.</span>orderBy(<span style="color:#1bc5e0">&#34;version&#34;</span>)<span style="color:#ffb8d1">.</span>first()<span style="color:#ffb8d1">.</span>timestamp
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>delta_df <span style="color:#ffb8d1">=</span> (spark<span style="color:#ffb8d1">.</span>read
+</span></span><span style="display:flex;"><span>                 <span style="color:#ffb8d1">.</span>format(<span style="color:#1bc5e0">&#34;delta&#34;</span>)
+</span></span><span style="display:flex;"><span>                 <span style="color:#ffb8d1">.</span>option(<span style="color:#1bc5e0">&#34;timestampAsOf&#34;</span>, timestamp)
+</span></span><span style="display:flex;"><span>                 <span style="color:#ffb8d1">.</span>load(<span style="color:#1bc5e0">&#39;path/to/delta&#39;</span>))
+</span></span></code></pre></div><p>In Delta, you can roll back a commit by <code>RESTORE TABLE</code>. Note that a RESTORE <a href="https://docs.databricks.com/spark/latest/spark-sql/language-manual/delta-restore.html">command</a> is recorded as a transaction; you won&rsquo;t be able to completely hide the fact that you accidentally deleted all the records in the table, but you will be able to undo the operation and bring your table back to a desired state.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>RESTORE<span style="color:#a8757b"> </span><span style="color:#c2ffdf">TABLE</span><span style="color:#a8757b"> </span>students<span style="color:#a8757b"> </span><span style="color:#c2ffdf">TO</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">VERSION</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">AS</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">OF</span><span style="color:#a8757b"> </span><span style="color:#c5a3ff">8</span><span style="color:#a8757b">
+</span></span></span></code></pre></div><h2 id="vacuum-in-delta-lake">Vacuum in Delta Lake</h2>
+<p>Databricks will automatically clean up stale files in Delta Lake tables.</p>
+<p>While Delta Lake versioning and time travel are great for querying recent versions and rolling back queries, keeping the data files for all versions of large production tables around indefinitely is very expensive (and can lead to compliance issues if PII is present).</p>
+<p>If you wish to manually purge old data files, this can be performed with the VACUUM operation.</p>
+<p>By default, VACUUM will prevent you from deleting files less than 7 days old, just to ensure that no long-running operations are still referencing any of the files to be deleted. If you run VACUUM on a Delta table, you lose the ability time travel back to a version older than the specified data retention period.</p>
+<p>Specify retention of 0 HOURS will keep only the current version. It’s very dangerous to run vacuum of 0 hours as it can result in data loss when new files are added while vacuum is still running. As the result, Databricks have safeguard in place to prevent users from doing this. Before running this Vacuum of 0 hours, you have to do the followings:</p>
+<ol>
+<li>Turn off a check to prevent premature deletion of data files</li>
+<li>Make sure that logging of VACUUM commands is enabled</li>
+<li>Use the DRY RUN version of vacuum to print out all records to be deleted</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ffb8d1">%</span><span style="color:#c2ffdf">sql</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">SET</span><span style="color:#a8757b"> </span>spark.databricks.delta.retentionDurationCheck.enabled<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">false</span>;<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">SET</span><span style="color:#a8757b"> </span>spark.databricks.delta.<span style="color:#c2ffdf">vacuum</span>.logging.enabled<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">true</span>;<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">VACUUM</span><span style="color:#a8757b"> </span>students<span style="color:#a8757b"> </span>RETAIN<span style="color:#a8757b"> </span><span style="color:#c5a3ff">0</span><span style="color:#a8757b"> </span>HOURS<span style="color:#a8757b"> </span>DRY<span style="color:#a8757b"> </span>RUN<span style="color:#a8757b">
+</span></span></span></code></pre></div>
+<div class="image">
+  <style>
+    .img-responsive {
+      display: block;
+      height: auto;
+      max-width: 100%;
+      cursor: pointer;
+    }
+  </style>
+  <p>
+    <center><img src="https://anhcodes.dev/images/single-blog/deep-dive-delta-lake/Untitled5.png" alt="blog-img" class="img-responsive" onclick="openModal(this)"></center>
+  </p>
+</div>
+
+<script>
+function openModal(img) {
+  var modal = document.createElement('div');
+  modal.classList.add('modal');
+  modal.innerHTML = '<div class="modal-content"><img src="' + img.src + '"></div>';
+  document.body.appendChild(modal);
+  modal.addEventListener('click', closeModal);
+}
+
+function closeModal(event) {
+  if (event.target.classList.contains('modal')) {
+    document.body.removeChild(event.target);
+  }
+}
+</script>
+
+<style>
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 80%;
+  max-height: 80%;
+  overflow: auto;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+}
+</style>
+
+  
+<p>By running VACUUM and deleting the files above, we will permanently remove access to versions of the table that require these files to materialize. Because VACUUM can be such a destructive act for important datasets, it&rsquo;s always a good idea to turn the retention duration check back on after vacuuming.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#b0bec5">-- You can run vacuum on the table or the delta storage path
+</span></span></span><span style="display:flex;"><span><span style="color:#b0bec5"></span><span style="color:#c2ffdf">VACUUM</span><span style="color:#a8757b"> </span>students<span style="color:#a8757b"> </span>RETAIN<span style="color:#a8757b"> </span><span style="color:#c5a3ff">0</span><span style="color:#a8757b"> </span>HOURS<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#b0bec5">-- Or
+</span></span></span><span style="display:flex;"><span><span style="color:#b0bec5"></span><span style="color:#c2ffdf">VACUUM</span><span style="color:#a8757b"> </span>delta.<span style="color:#ffb8d1">`&lt;</span>delta<span style="color:#ffb8d1">-</span><span style="color:#c2ffdf">table</span><span style="color:#ffb8d1">-</span>path<span style="color:#ffb8d1">&gt;`</span><span style="color:#a8757b"> </span>RETAIN<span style="color:#a8757b"> </span><span style="color:#c5a3ff">0</span><span style="color:#a8757b"> </span>HOURS<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#b0bec5">-- Reset retentionCheck
+</span></span></span><span style="display:flex;"><span><span style="color:#b0bec5"></span><span style="color:#c2ffdf">SET</span><span style="color:#a8757b"> </span>spark.databricks.delta.retentionDurationCheck.enabled<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">true</span>;<span style="color:#a8757b">
+</span></span></span></code></pre></div><h2 id="optimize-delta-tables">Optimize Delta Tables</h2>
+<p>In Delta Lake, it’s easy to run into small files issues. In most cases, we performed a number of operations where only one or several records were inserted.</p>
+<p>Files will be combined toward an optimal size (scaled based on the size of the table) by using the OPTIMIZE command. OPTIMIZE will replace existing data files by combining records and rewriting the results. OPTIMIZE created another version of our table</p>
+<p>When executing OPTIMIZE, users can optionally specify one or several fields for ZORDER indexing.  Z-Order speeds up data retrieval when filtering on provided fields by colocating data with similar values within data files.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>OPTIMIZE<span style="color:#a8757b"> </span>students<span style="color:#a8757b"> </span>ZORDER<span style="color:#a8757b"> </span><span style="color:#c2ffdf">BY</span><span style="color:#a8757b"> </span>id<span style="color:#a8757b">
+</span></span></span></code></pre></div><p>To modify metadata on the Delta table</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">ALTER</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TABLE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">table_name</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">SET</span><span style="color:#a8757b"> </span>TBLPROPERTIES<span style="color:#a8757b"> </span>(<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">   </span><span style="color:#1bc5e0">&#39;delta.columnMapping.mode&#39;</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#39;name&#39;</span>,<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">   </span><span style="color:#1bc5e0">&#39;delta.minReaderVersion&#39;</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#39;2&#39;</span>,<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">   </span><span style="color:#1bc5e0">&#39;delta.minWriterVersion&#39;</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#39;5&#39;</span>)<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">ALTER</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TABLE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">table_name</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">SET</span><span style="color:#a8757b"> </span>TBLPROPERTIES<span style="color:#a8757b"> </span>(<span style="color:#1bc5e0">&#39;delta.columnMapping.mode&#39;</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#39;name&#39;</span>)<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">alter</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">table</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">table_name</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">drop</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">column</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">column</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">alter</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">table</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">table_name</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">drop</span><span style="color:#a8757b"> </span>columns<span style="color:#a8757b"> </span>(column1,<span style="color:#a8757b"> </span>column2)<span style="color:#a8757b">
+</span></span></span></code></pre></div><h2 id="schema-enforcement--evolution">Schema enforcement &amp; evolution</h2>
+<p>Delta enforces your schema by default, require explicit config option to evolve it</p>
+<ol>
+<li>occurs on write, cancel the tranx if schema doesn’t match, raise exception</li>
+<li>write data cannot have addition columns, but can have less column, cannot have diff data types</li>
+<li>tables cannot have columns same name with different case</li>
+</ol>
+<p>With Schema evolution:</p>
+<ol>
+<li>schema enforcement will no longer alert</li>
+<li>.option(”mergeSchema”, “true”) → use with append or overwrite the table, read-compatible schema changes: existing data can still be read. We can add new column, change data types (non-nullable to nullable), upcasts from byte to integer (not to long type). You cannot drop column, or rename column</li>
+<li>.option(”overwriteSchema”, “true”) → use with overwrite the table, non-read compatible schema change. We can drop a column, change column data type in place, rename column name that differ by case</li>
+</ol>
+<h2 id="delta-table-best-practices">Delta table best practices</h2>
+<h3 id="extract-table-metadata">Extract Table Metadata</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#c2ffdf">def</span> <span style="color:#ceb1ff">parse_table_keys</span>(database, table<span style="color:#ffb8d1">=</span><span style="color:#c2ffdf">None</span>):
+</span></span><span style="display:flex;"><span>    table_keys <span style="color:#ffb8d1">=</span> {}
+</span></span><span style="display:flex;"><span>    <span style="color:#c2ffdf">if</span> table:
+</span></span><span style="display:flex;"><span>        query <span style="color:#ffb8d1">=</span> <span style="color:#1bc5e0">f</span><span style="color:#1bc5e0">&#34;SHOW TABLES IN db_name LIKE &#39;</span><span style="color:#1bc5e0">{</span>table<span style="color:#1bc5e0">}</span><span style="color:#1bc5e0">&#39;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#c2ffdf">else</span>:
+</span></span><span style="display:flex;"><span>        query <span style="color:#ffb8d1">=</span> <span style="color:#1bc5e0">f</span><span style="color:#1bc5e0">&#34;SHOW TABLES IN db_name&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#c2ffdf">for</span> table_item <span style="color:#ffb8d1">in</span> spark<span style="color:#ffb8d1">.</span>sql(query)<span style="color:#ffb8d1">.</span>collect():
+</span></span><span style="display:flex;"><span>        table_name <span style="color:#ffb8d1">=</span> table_item[<span style="color:#c5a3ff">1</span>]
+</span></span><span style="display:flex;"><span>        key_values <span style="color:#ffb8d1">=</span> spark<span style="color:#ffb8d1">.</span>sql(<span style="color:#1bc5e0">f</span><span style="color:#1bc5e0">&#34;DESCRIBE EXTENDED db_name.</span><span style="color:#1bc5e0">{</span>table_name<span style="color:#1bc5e0">}</span><span style="color:#1bc5e0">&#34;</span>)<span style="color:#ffb8d1">.</span>filter(<span style="color:#1bc5e0">&#34;col_name = &#39;Table Properties&#39;&#34;</span>)<span style="color:#ffb8d1">.</span>collect()[<span style="color:#c5a3ff">0</span>][<span style="color:#c5a3ff">1</span>][<span style="color:#c5a3ff">1</span>:<span style="color:#ffb8d1">-</span><span style="color:#c5a3ff">1</span>]<span style="color:#ffb8d1">.</span>split(<span style="color:#1bc5e0">&#34;,&#34;</span>)
+</span></span><span style="display:flex;"><span>        table_keys[table_name] <span style="color:#ffb8d1">=</span> [kv <span style="color:#c2ffdf">for</span> kv <span style="color:#ffb8d1">in</span> key_values <span style="color:#c2ffdf">if</span> <span style="color:#ffb8d1">not</span> kv<span style="color:#ffb8d1">.</span>startswith(<span style="color:#1bc5e0">&#34;delta.&#34;</span>)]
+</span></span><span style="display:flex;"><span>    <span style="color:#c2ffdf">return</span> table_keys
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>parse_table_keys(db_name)
+</span></span></code></pre></div><h3 id="design-table-schema">Design table schema</h3>
+<p>When configuring tables in Delta Lake, make sure you consider the following.</p>
+<ol>
+<li><strong>Precision</strong></li>
+</ol>
+<p>Both numeric and datetime types should be stored with the correct precision specified to:</p>
+<ul>
+<li>Ensure integrity with source systems</li>
+<li>Maintain precision and avoid rounding errors for downstream queries</li>
+<li>Avoid unnecessary storage costs (note the significant differences in bytes for <a href="https://spark.apache.org/docs/latest/sql-ref-datatypes.html">numeric types</a>)</li>
+</ul>
+<ol start="2">
+<li><strong>Datetime Filtering</strong></li>
+</ol>
+<p>If data will be frequently filtered by year, year &amp; month, day of week, date, or another datetime value, consider calculating these values at write time if not present in original data. (Pushdown filters work best on fields present in a table).</p>
+<ol start="3">
+<li>
+<p><strong>Case Sensitivity</strong>: Spark does not differentiate case by default.</p>
+</li>
+<li>
+<p><strong>Un-Nest Important Fields for Filtering</strong></p>
+</li>
+</ol>
+<p>Extract fields that might be useful for indexing or filtering to increase performance.</p>
+<ol start="5">
+<li><strong>Place Important Fields Early in the Schema</strong></li>
+</ol>
+<p>Fields that will be used for filtering and optimizations should appear at the beginning of the schema declaration.</p>
+<h3 id="file-statistics">File Statistics</h3>
+<p>By default, Delta Lake will capture statistics on the first 32 columns that appear in a table to allow for efficient file skipping. These statistics indicate:</p>
+<ul>
+<li>the total number of records per file</li>
+<li>minimum value in each column</li>
+<li>maximum value in each column</li>
+<li>null value counts for each of the columns</li>
+</ul>
+<p><strong>NOTE</strong>: These statistics are generally uninformative for string fields with very high cardinality (such as free text fields). You can omit these fields from statistic collection by <a href="https://docs.databricks.com/delta/optimizations/file-mgmt.html#data-skipping">moving them outside the first 32 columns or changing the number of columns on which statistics are collected</a>. Nested fields count when determining the first 32 columns, for example 4 struct fields with 8 nested fields will total to the 32 columns.</p>
+<h3 id="config-stats-on-table">Config Stats on table</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>files <span style="color:#ffb8d1">=</span> dbutils<span style="color:#ffb8d1">.</span>fs<span style="color:#ffb8d1">.</span>ls(<span style="color:#1bc5e0">f</span><span style="color:#1bc5e0">&#34;</span><span style="color:#1bc5e0">{</span>DA<span style="color:#ffb8d1">.</span>paths<span style="color:#ffb8d1">.</span>working_dir<span style="color:#1bc5e0">}</span><span style="color:#1bc5e0">/no_part_table/_delta_log&#34;</span>)
+</span></span><span style="display:flex;"><span>display(files)
+</span></span><span style="display:flex;"><span>display(spark<span style="color:#ffb8d1">.</span>read<span style="color:#ffb8d1">.</span>json(<span style="color:#1bc5e0">f</span><span style="color:#1bc5e0">&#34;</span><span style="color:#1bc5e0">{</span>DA<span style="color:#ffb8d1">.</span>paths<span style="color:#ffb8d1">.</span>working_dir<span style="color:#1bc5e0">}</span><span style="color:#1bc5e0">/no_part_table/_delta_log/00000000000000000000.json&#34;</span>))
+</span></span></code></pre></div><p>Note that columns used for Z-ordering need to have statistics collected. Even without additional optimization metrics, statistics will always be leveraged for file skipping.</p>
+<p><strong>NOTE</strong>: Calculating statistics on free-form text fields (product reviews, user messages, etc.) can be time consuming. For best performance, set these fields later in the schema and <a href="https://docs.databricks.com/delta/optimizations/file-mgmt.html#data-skipping">change the number of columns that statistics are collected on</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ffb8d1">%</span>sql
+</span></span><span style="display:flex;"><span>ANALYZE TABLE no_part_table 
+</span></span><span style="display:flex;"><span>COMPUTE STATISTICS FOR COLUMNS timestamp
+</span></span></code></pre></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  </div>
+  <section class="footer" id="contact">
+	<div class="footer__background_shape">
+		<svg viewBox="0 0 1920 79">
+			<path d="M0 0h1920v79L0 0z" data-name="Path 1450" />
+		</svg>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="footer__cta">
+					<div class="shape-1">
+						<svg xmlns="http://www.w3.org/2000/svg" width="357" height="315.029" viewBox="0 0 357 315.029">
+							<path data-name="Path 1449"
+								d="M76.1-157.222C91.746-135.8 87.2-94.273 99.993-61.945c12.7 32.328 42.661 55.459 39.248 73.282-3.318 17.823-40.007 30.337-65.6 43.325-25.5 12.988-39.912 26.545-60.01 42.566-20.1 16.116-46.074 34.6-63.328 27.682-17.349-6.921-25.976-39.153-59.915-59.82s-93.1-29.768-105.325-51.478 22.373-56.028 43.609-93.949c21.331-37.921 29.2-79.35 53.563-96.793 24.459-17.444 65.414-10.9 103.9-6.921 38.396 3.982 74.326 5.404 89.965 26.829z"
+								transform="translate(217.489 188.626)" />
+						</svg>
+					</div>
+					<div class="shape-2">
+						<svg xmlns="http://www.w3.org/2000/svg" width="357" height="315.029" viewBox="0 0 357 315.029">
+							<path data-name="Path 1449"
+								d="M76.1-157.222C91.746-135.8 87.2-94.273 99.993-61.945c12.7 32.328 42.661 55.459 39.248 73.282-3.318 17.823-40.007 30.337-65.6 43.325-25.5 12.988-39.912 26.545-60.01 42.566-20.1 16.116-46.074 34.6-63.328 27.682-17.349-6.921-25.976-39.153-59.915-59.82s-93.1-29.768-105.325-51.478 22.373-56.028 43.609-93.949c21.331-37.921 29.2-79.35 53.563-96.793 24.459-17.444 65.414-10.9 103.9-6.921 38.396 3.982 74.326 5.404 89.965 26.829z"
+								transform="translate(217.489 188.626)" />
+						</svg>
+					</div>
+					<div class="text-light footer__cta_content">
+						<span>Contact me</span>
+						<h2 class="mb-0">Let’s Work Together</h2>
+					</div>
+					<div class="footer__cta_action">
+						<a class="btn btn-light btn-zoom" href="https://anhcodes.dev/contact">Get in
+							touch</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+			
+			
+		<div class="row footer__footer">
+			<div class="col-lg-6">
+				<div class="footer__footer_copy text-light">
+					<p>©2023 - Made with ☕, Hugo, and Firebase by <a class="text-light" href="https://anhcodes.dev/" target="_blank">Anh Chu</a></p>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="footer__footer_social">
+					<ul class="unstyle-list">
+						
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://dev.to/anhcodes"><i
+									class="fa fa-code"></i></a>
+						</li>
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://www.linkedin.com/in/anhhchu/"><i
+									class="fa fa-linkedin-square"></i></a>
+						</li>
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://github.com/anhhchu"><i
+									class="fa fa-github-square"></i></a>
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script src="https://anhcodes.dev/plugins/jQuery/jquery.min.js"></script>
+<script src="https://anhcodes.dev/plugins/bootstrap/bootstrap.min.js"></script>
+<script src="https://anhcodes.dev/plugins/slick/slick.min.js"></script>
+<script src="https://anhcodes.dev/plugins/waypoint/jquery.waypoints.min.js"></script>
+<script src="https://anhcodes.dev/plugins/magnafic-popup/jquery.magnific-popup.min.js"></script>
+<script src="https://anhcodes.dev/plugins/tweenmax/TweenMax.min.js"></script>
+<script src="https://anhcodes.dev/plugins/imagesloaded/imagesloaded.min.js"></script>
+<script src="https://anhcodes.dev/plugins/masonry/masonry.min.js"></script>
+
+
+<script src="https://anhcodes.dev/js/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.37.1"></script>
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.11.0/dist/algoliasearch.umd.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.4.5/themes/satellite-min.css" integrity="sha256-TehzF/2QvNKhGQrrNpoOb2Ck4iGZ1J/DI4pkd2oUsBc=" crossorigin="anonymous">  
+
+</body>
+
+</html>

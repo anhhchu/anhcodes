@@ -1,8 +1,8 @@
 ---
 title: "Debug long running Spark job"
 date: 2023-05-22 17:09:41
-featureImage: images/inpost/debug-spark/0.png
-postImage: images/inpost/debug-spark/0.png
+featureImage: images/single-blog/debug-spark/0.png
+postImage: images/single-blog/debug-spark/0.png
 categories: big-data
 tags: [spark]
 author: Anh Chu
@@ -40,9 +40,9 @@ When a partition is bigger than the others, the executor will take longer to pro
 - If you see uneven Shuffle Read/Write Size in a stage’s Summary Metrics
 - Skew can cause Spill, so sometimes you will see Disk or Memory Spill as well. If Spill is caused by Skew, you have to fix Skew as the Root cause.
 
-{{< image image="images/inpost/debug-spark/1.png" >}}
+{{< image image="images/single-blog/debug-spark/1.png" >}}
 
-{{< image image="images/inpost/debug-spark/2.png" >}}
+{{< image image="images/single-blog/debug-spark/2.png" >}}
 
 ### How do you fix Skew?
 
@@ -78,9 +78,9 @@ This process occurs when a partition becomes too large to fit into RAM, and it m
 
 You can  find Spill indicators on SparkUI under each stage’s detail tabe or Aggregated Metrics by Executor. When data is spilled, both the size of the data in memory and on disk will be provided. Typically, the size on disk will be smaller due to compression that occurs when serializing data before it is written to disk.
 
-{{< image image="images/inpost/debug-spark/3.png" >}}
+{{< image image="images/single-blog/debug-spark/3.png" >}}
 
-{{< image image="images/inpost/debug-spark/4.png" >}}
+{{< image image="images/single-blog/debug-spark/4.png" >}}
 
 ### How do you fix Spill?
 
@@ -98,7 +98,7 @@ It's worth noting that ignoring spill may not always be a good idea, as even a s
 
 *TL,DR - Shuffle refers to the movement of data across executors, and it's inevitable with wide transformation jobs. To tune shuffle operations, think about how you can reduce the amount of data that get shuffled across the cluster network*  
 
-{{< image image="images/inpost/debug-spark/5.png" >}}
+{{< image image="images/single-blog/debug-spark/5.png" >}}
 
 Shuffle is the act of moving data between executors. If you have multiple data partitions in different executors on a Spark cluster, shuffle is necessary and inevitable. Most of the time, shuffle operations are actually quite fast. However, there are situations when shuffle can become the culprit of slowing down your Spark job. For example, moving data across the network is slow, and the more data you have to move, the slower it will get.  Moreover, Incorrect shuffles can cause Skew, and potentital Spill 
 
@@ -118,7 +118,7 @@ To reduce the impact of shuffle on your Spark job, try to reduce the amount of d
 #### 2. Limit shuffled data and tune the shuffle partitions
 - Use predicate push down and/or narrow the columns to reduce the amount of data being shuffled
 - Turn on Adaptive Query Execution (AQE) to dynamically coaslesce shuffle partitions at runtime to avoid empty partitions
-{{< image image="images/inpost/debug-spark/aqe-shuffle.png" >}}
+{{< image image="images/single-blog/debug-spark/aqe-shuffle.png" >}}
 - manage spark.conf.set(spark.sql.shuffle.partitions, {num_partitions}) to set the number of partitions to be shuffled
 
 #### 3. Try BroadcastHashJoin if possible
