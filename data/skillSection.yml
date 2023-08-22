@@ -8,7 +8,7 @@ content: >
 
 # image: images/skill/skills.png
 # image: images/arts/00003-3191627689.png
-image: images/arts/retro.png
+image: images/arts/art.png
 
 skill:
   - title: Data Engineering
