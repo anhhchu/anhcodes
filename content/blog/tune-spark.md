@@ -9,7 +9,7 @@ author: Anh Chu
 ---
 {{< table_of_contents >}}
 
-Most Big Data developers and Data Engineers start learning Spark by writing SparkSQL codes to perform ETL on DataFrame (I know I did). I also wrote a post about [SparkSQL Programming](https://anhcodes.dev/blog/spark-sql-programming/). However, we quickly learn that there’s more knowlege required to go from processing a few GBs of data to dealing with TBs and PBs of data, which is a challenge for big enterprises. Learning to write correct Spark codes is only a small part of the battle, you will need to understand the Spark Architecture and Spark working internals to correct tune Spark to handle true big data, and it’s the focus of this post. 
+Most Big Data developers and Data Engineers start learning Spark by writing SparkSQL codes to perform ETL on DataFrame (I know I did). I also wrote a post about [SparkSQL Programming](https://anhcodes.dev/blog/tune-spark-sql-programming/). However, we quickly learn that there’s more knowlege required to go from processing a few GBs of data to dealing with TBs and PBs of data, which is a challenge for big enterprises. Learning to write correct Spark codes is only a small part of the battle, you will need to understand the Spark Architecture and Spark working internals to correct tune Spark to handle true big data, and it’s the focus of this post. 
 
 ## Spark Architecture
 
@@ -25,7 +25,7 @@ A Spark cluster has, a driver and mutiple workers (think computers).
 - Each worker has multiple cores (think threads) that can run multiple tasks. Each task is a single unit of work, each task maps to a single core and works on a single partition of data at a given time (1 task, 1 partition, 1 slot, 1 core)
 - Besides, we also have a **cluster manager,** and **Spark Session** that runs Spark applications.
 
-{{< image image="images/single-blog/spark/1.png" >}}
+{{< image image="images/single-blog/tune-spark/1.png" >}}
 
 ### Spark Session
 
@@ -33,7 +33,7 @@ SparkSession is the single point of entry to all DataFrame API functionality. Sp
 
 SparkSession automatically created in a Databricks notebook as the variable `spark`.
 
-{{< image image="images/single-blog/spark/2.png" >}}
+{{< image image="images/single-blog/tune-spark/2.png" >}}
 
 ```python
 # In below code, the `spark` variable specifies a sparkSession
@@ -54,7 +54,7 @@ df = spark.sql('select * from <table>')
 
 Spark ecosystems have 4 APIs: SparkSQL, Spark Structured Streaming,  SparkML, and GraphX (I haven’t  used this before, not sure if it’s deprecated or not). Most of Spark developers started with SparkSQL APIs with ingestion and transformations on Spark DataFrame. However, Spark Structured Streaming and SparkML are pretty popular too, which we can discuss later in later posts. 
 
-{{< image image="images/single-blog/sparksql/1.png" >}}
+{{< image image="images/single-blog/tune-spark/1.png" >}}
 
 ## Computation in Spark
 
@@ -65,7 +65,7 @@ Spark parallelizes at 2 levels:
 - splitting work among workers, executors (or workers) will run the spark code on the data partitions it has
 - each executors have a number of slots/cores, each slot can execute a task on a data partition.
 
-Another characteristic of Spark is lazy execution. When you specify transformations on a Spark DataFrame, Spark records lineage and only start the computation when an action is triggered (refer to my previous post about [SparkSQL programming](https://anhcodes.dev/blog/spark-sql-programming/) for more information on transformations and actions)
+Another characteristic of Spark is lazy execution. When you specify transformations on a Spark DataFrame, Spark records lineage and only start the computation when an action is triggered (refer to my previous post about [SparkSQL programming](https://anhcodes.dev/blog/tune-spark-sql-programming/) for more information on transformations and actions)
 
 {{< image image="images/single-blog/tune-spark/3.png" >}}
 
@@ -81,11 +81,11 @@ The Catalyst Optimizer is a component of Spark SQL that performs optimization on
 
 Catalyst Optimizer is a rule based engine that takes the Logical Plan and rewrites it as an optimized Physical Plan. The Physical Plan is developed BEFORE a query is executed
 
-{{< image image="images/single-blog/spark/4.png" >}}
+{{< image image="images/single-blog/tune-spark/4.png" >}}
 
 To view the Catalyst Optimizier in action, use `df.explain(True)` to view the Logical and Physical Execution plans of a query. 
 
-{{< image image="images/single-blog/spark/5.png" >}}
+{{< image image="images/single-blog/tune-spark/5.png" >}}
 
 ### Adaptive Query Execution
 
@@ -95,7 +95,7 @@ For example, during runtime, based on the new information that is previously not
 
 This option is not turned on by default in Spark, you can enable by setting spark config: `spark.conf.set(spark.sql.adaptive.enabled, True)` , and it’s recommended to turn this on. However, If you run Spark on later version of Databricks Runtime, AQE is enabled by default. 
 
-{{< image image="images/single-blog/spark/6.png" >}}
+{{< image image="images/single-blog/tune-spark/6.png" >}}
 
 ## Shuffle, Partitioning and Caching in Spark
 
@@ -118,7 +118,7 @@ Check number of partitions in DataFrame when ingested from disk to memory with `
 
 - By default, each partition has the size of 128MB but you can set with `spark.sql.files.maxPartitionBytes`. A situation when setting this config can be beneficial is to write data to 1GB part files.
 
-{{< image image="images/single-blog/spark/7.png" >}}
+{{< image image="images/single-blog/tune-spark/7.png" >}}
 
 - Don’t allow partition size to increase >200MB per 8GB of core total memory, if more than that, increase number of partitions. It’s better to have many small partitions than too few large partitions.
 - It’s best to tune the number of partitions so it is at least a multiple of number of cores in your cluster. This allows for better paralellism. Run `df.rdd.getNumPartitions()` to check the number of partitions in memory.
@@ -131,13 +131,13 @@ Shuffle is one of the most expensive operation in Spark. In every wide transform
 - First stage will create shuffle files (shuffle write)
 - Subsequent stages will reuse those shuffle files (shuffle read)
     
-{{< image image="images/single-blog/spark/8.png" >}}
+{{< image image="images/single-blog/tune-spark/8.png" >}}
     
 - If cache is used, first stage can create shuffle files and cache the results, later stages can read from cache with improve the performance
     
-{{< image image="images/single-blog/spark/9.png" >}}
+{{< image image="images/single-blog/tune-spark/9.png" >}}
     
-{{< image image="images/single-blog/spark/10.png" >}}
+{{< image image="images/single-blog/tune-spark/10.png" >}}
     
 
 The issues with shuffle partitions are:
