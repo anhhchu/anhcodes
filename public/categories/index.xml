@@ -6,22 +6,22 @@
     <description>Recent content in Categories on anhcodes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 07 Aug 2023 11:23:00 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/categories/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>data-lakehouse</title>
-      <link>https://anhcodes.dev/categories/data-lakehouse/</link>
-      <pubDate>Mon, 07 Aug 2023 11:23:00 +0000</pubDate>
-      
-      <guid>https://anhcodes.dev/categories/data-lakehouse/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Sat, 27 May 2023 21:48:00 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>big-data</title>
       <link>https://anhcodes.dev/categories/big-data/</link>
       <pubDate>Sat, 27 May 2023 21:48:00 +0000</pubDate>
       
       <guid>https://anhcodes.dev/categories/big-data/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>data-lakehouse</title>
+      <link>https://anhcodes.dev/categories/data-lakehouse/</link>
+      <pubDate>Tue, 11 Apr 2023 22:13:33 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/categories/data-lakehouse/</guid>
       <description></description>
     </item>
     

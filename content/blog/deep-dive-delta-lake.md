@@ -6,6 +6,7 @@ postImage: images/single-blog/deep-dive-delta-lake/0.png
 categories: data-lakehouse
 tags: [spark delta-lake]
 author: Anh Chu
+draft: True
 ---
 
 {{< table_of_contents >}}
