@@ -6,10 +6,10 @@ postImage: images/single-blog/deep-dive-delta-lake/0.png
 categories: data-lakehouse
 tags: [spark delta-lake]
 author: Anh Chu
-draft: True
+toc: Table of Contents
+draft: False
 ---
 
-{{< table_of_contents >}}
 
 [Delta Lake](https://delta.io/) is an [open source storage layer](https://github.com/delta-io/delta) that brings reliability to [data lakes](https://databricks.com/discover/data-lakes/introduction). Delta Lake provides ACID transactions, scalable metadata handling, and unifies streaming and batch data processing. Delta Lake runs on top of your existing data lake and is fully compatible with Apache Spark APIs. Delta Lake uses versioned Parquet files to store your data in your cloud storage. Apart from the versions, Delta Lake also stores a transaction log to keep track of all the commits made to the table or blob store directory to provide ACID transactions. **Delta Lake doesn’t care about number of partitions, only the number of files**
 
@@ -28,14 +28,25 @@ CTAS statements automatically infer schema information from query results and do
 
 This means that CTAS statements are useful for external data ingestion from sources with well-defined schema, such as Parquet files and tables.
 
-If your source data is csv files, you may run into a few issues as CTAS statements also do not support specifying additional file options
-
 ```sql
 CREATE OR REPLACE TABLE sales AS
 SELECT * FROM parquet.`path/to/parquet/files`;
 ```
 
 Below, we show evolving a CTAS statement to include a number of additional configurations and metadata.
+
+```sql
+CREATE OR REPLACE TABLE users_pii
+COMMENT "Contains PII"
+LOCATION "/tmp/users_pii"
+PARTITIONED BY (first_touch_date)
+AS
+  SELECT *, 
+    cast(cast(user_first_touch_timestamp/1e6 AS TIMESTAMP) AS DATE) first_touch_date, 
+    current_timestamp() updated,
+    input_file_name() source_file
+  FROM parquet.`dbfs:/ecommerce/raw/users-historical/`;
+```
 
 Our SELECT clause leverages two built-in Spark SQL commands useful for file ingestion:
 
@@ -50,26 +61,15 @@ The CREATE TABLE clause contains several options:
 - A LOCATION is specified, which will result in an external (rather than managed) table
 - The table is PARTITIONED BY a date column (using disk partitioning); this means that the data from each data will exist within its own directory in the target storage location
 
-**NOTE**: Partitioning is shown here primarily to demonstrate syntax and impact. Most Delta Lake tables (especially small-to-medium sized data) will not benefit from partitioning. Because partitioning physically separates data files, this approach can result in a small files problem and prevent file compaction and efficient data skipping. The benefits observed in Hive or HDFS do not translate to Delta Lake, and you should consult with an experienced Delta Lake architect before partitioning tables.
+
+
+**NOTE**: Partitioning is shown here primarily to demonstrate syntax and impact. Most Delta Lake tables (especially small-to-medium sized data) will not benefit from partitioning. Because partitioning physically separates data files, this approach can result in a small files problem and prevent file compaction and efficient data skipping. The benefits observed in Hive or HDFS do not translate to Delta Lake. It's not recommended to partition table <1GB, and it's best to have at least 1GB of data in each partition on disk. 
 
 **As a best practice, you should default to non-partitioned tables for most use cases when working with Delta Lake.**
 
-```sql
-CREATE OR REPLACE TABLE users_pii
-COMMENT "Contains PII"
-LOCATION "${da.paths.working_dir}/tmp/users_pii"
-PARTITIONED BY (first_touch_date)
-AS
-  SELECT *, 
-    cast(cast(user_first_touch_timestamp/1e6 AS TIMESTAMP) AS DATE) first_touch_date, 
-    current_timestamp() updated,
-    input_file_name() source_file
-  FROM parquet.`dbfs:/ecommerce/raw/users-historical/`;
-```
-
 ### Create Tables with Options
 
-To correctly ingest data from files such as csv to a Delta Lake table, we'll need to use a reference to the files that allows us to specify options.
+If your source data is csv files, you may run into a few issues as CTAS statements also do not support specifying additional file options. To correctly ingest data from files such as csv to a Delta Lake table, we'll need to use a reference to the files that allows us to specify options.
 
 We can either create External Table or a Temp View , and then use this table or temp view as the source for a CTAS statement to successfully register the Delta table.
 
@@ -78,7 +78,7 @@ CREATE OR REPLACE TEMP VIEW sales_tmp_vw
   (order_id LONG, email STRING, transactions_timestamp LONG, total_item_quantity INTEGER, purchase_revenue_in_usd DOUBLE, unique_items INTEGER, items STRING)
 USING CSV
 OPTIONS (
-  path = "path/to/file",
+  path = "path/to/csv_file",
   header = "true",
   delimiter = "|"
 );
@@ -153,7 +153,7 @@ SHALLOW CLONE purchases
 
 In either case, data modifications applied to the cloned version of the table will be tracked and stored separately from the source. Cloning is a great way to set up tables for testing SQL code while still in development.
 
-The transfer of **comments** and **table** **properties** does not depend on the **type** of clone. In either type of clones - **deep** and **shallow,** the **table** **properties** are passed to the **clone** as well whereas the **comments** are something **native** to a table. Thus, the **comments** added to a table are **not** passed on to the **clones.**
+The transfer of **comments** and **table** **properties** does not depend on the **type** of clone. In either type of clones (**deep** and **shallow**),  the **table** **properties** are passed to the **clone** as well whereas the **comments** are something **native** to a table. Thus, the **comments** added to a table are **not** passed on to the **clones.**
 
 Any changes made to a shallow cloned table will write new data files to the specified target directory, meaning that you can safely test writes, updates, and deletes without risking corruption of your original table. The Delta logs will automatically reference the correct files (from the source table and this clone directory) to materialize the current view of your dev table.
 
@@ -171,7 +171,7 @@ One of the useful features of deep cloning is the ability to set different table
 
 ## ACID in Delta Table
 
-### CRUD Operations
+### CRUD (Create, Read, Update, Delete) Operations
 
 ```sql
 CREATE TABLE students
@@ -427,119 +427,4 @@ VACUUM delta.`<delta-table-path>` RETAIN 0 HOURS
 
 -- Reset retentionCheck
 SET spark.databricks.delta.retentionDurationCheck.enabled = true;
-```
-
-## Optimize Delta Tables
-
-In Delta Lake, it’s easy to run into small files issues. In most cases, we performed a number of operations where only one or several records were inserted.
-
-Files will be combined toward an optimal size (scaled based on the size of the table) by using the OPTIMIZE command. OPTIMIZE will replace existing data files by combining records and rewriting the results. OPTIMIZE created another version of our table
-
-When executing OPTIMIZE, users can optionally specify one or several fields for ZORDER indexing.  Z-Order speeds up data retrieval when filtering on provided fields by colocating data with similar values within data files.
-
-```sql
-OPTIMIZE students ZORDER BY id
-```
-
-To modify metadata on the Delta table
-
-```sql
-ALTER TABLE table_name SET TBLPROPERTIES (
-   'delta.columnMapping.mode' = 'name',
-   'delta.minReaderVersion' = '2',
-   'delta.minWriterVersion' = '5')
-
-ALTER TABLE table_name SET TBLPROPERTIES ('delta.columnMapping.mode' = 'name')
-
-alter table table_name drop column column
-
-alter table table_name drop columns (column1, column2)
-```
-
-## Schema enforcement & evolution
-
-Delta enforces your schema by default, require explicit config option to evolve it
-
-1. occurs on write, cancel the tranx if schema doesn’t match, raise exception
-2. write data cannot have addition columns, but can have less column, cannot have diff data types
-3. tables cannot have columns same name with different case
-
-With Schema evolution:
-
-1. schema enforcement will no longer alert
-2. .option(”mergeSchema”, “true”) → use with append or overwrite the table, read-compatible schema changes: existing data can still be read. We can add new column, change data types (non-nullable to nullable), upcasts from byte to integer (not to long type). You cannot drop column, or rename column
-3. .option(”overwriteSchema”, “true”) → use with overwrite the table, non-read compatible schema change. We can drop a column, change column data type in place, rename column name that differ by case
-
-## Delta table best practices
-
-### Extract Table Metadata
-
-```python
-def parse_table_keys(database, table=None):
-    table_keys = {}
-    if table:
-        query = f"SHOW TABLES IN db_name LIKE '{table}'"
-    else:
-        query = f"SHOW TABLES IN db_name"
-    for table_item in spark.sql(query).collect():
-        table_name = table_item[1]
-        key_values = spark.sql(f"DESCRIBE EXTENDED db_name.{table_name}").filter("col_name = 'Table Properties'").collect()[0][1][1:-1].split(",")
-        table_keys[table_name] = [kv for kv in key_values if not kv.startswith("delta.")]
-    return table_keys
-
-parse_table_keys(db_name)
-```
-
-### Design table schema
-
-When configuring tables in Delta Lake, make sure you consider the following.
-
-1. **Precision**
-
-Both numeric and datetime types should be stored with the correct precision specified to:
-  *  Ensure integrity with source systems
-  *  Maintain precision and avoid rounding errors for downstream queries
-  *  Avoid unnecessary storage costs (note the significant differences in bytes for [numeric types](https://spark.apache.org/docs/latest/sql-ref-datatypes.html))
-
-2. **Datetime Filtering**
-
-If data will be frequently filtered by year, year & month, day of week, date, or another datetime value, consider calculating these values at write time if not present in original data. (Pushdown filters work best on fields present in a table).
-
-3. **Case Sensitivity**: Spark does not differentiate case by default.
-
-4. **Un-Nest Important Fields for Filtering**
-
-Extract fields that might be useful for indexing or filtering to increase performance.
-
-5. **Place Important Fields Early in the Schema**
-
-Fields that will be used for filtering and optimizations should appear at the beginning of the schema declaration.
-
-### File Statistics
-
-By default, Delta Lake will capture statistics on the first 32 columns that appear in a table to allow for efficient file skipping. These statistics indicate:
-
-- the total number of records per file
-- minimum value in each column
-- maximum value in each column
-- null value counts for each of the columns
-
-**NOTE**: These statistics are generally uninformative for string fields with very high cardinality (such as free text fields). You can omit these fields from statistic collection by [moving them outside the first 32 columns or changing the number of columns on which statistics are collected](https://docs.databricks.com/delta/optimizations/file-mgmt.html#data-skipping). Nested fields count when determining the first 32 columns, for example 4 struct fields with 8 nested fields will total to the 32 columns.
-
-### Config Stats on table
-
-```python
-files = dbutils.fs.ls(f"{DA.paths.working_dir}/no_part_table/_delta_log")
-display(files)
-display(spark.read.json(f"{DA.paths.working_dir}/no_part_table/_delta_log/00000000000000000000.json"))
-```
-
-Note that columns used for Z-ordering need to have statistics collected. Even without additional optimization metrics, statistics will always be leveraged for file skipping.
-
-**NOTE**: Calculating statistics on free-form text fields (product reviews, user messages, etc.) can be time consuming. For best performance, set these fields later in the schema and [change the number of columns that statistics are collected on](https://docs.databricks.com/delta/optimizations/file-mgmt.html#data-skipping).
-
-```python
-%sql
-ANALYZE TABLE no_part_table 
-COMPUTE STATISTICS FOR COLUMNS timestamp
 ```

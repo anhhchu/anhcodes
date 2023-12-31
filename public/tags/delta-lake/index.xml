@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>delta-lake on anhcodes</title>
+    <link>https://anhcodes.dev/tags/delta-lake/</link>
+    <description>Recent content in delta-lake on anhcodes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 30 Dec 2023 16:02:25 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/tags/delta-lake/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Data Objects in Databricks</title>
+      <link>https://anhcodes.dev/blog/data-objects/</link>
+      <pubDate>Sat, 30 Dec 2023 16:02:25 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/blog/data-objects/</guid>
+      <description>Metastore and Catalog In Databricks, metadata of data Objects (tables, views, etc.) is registered in Metastore.
+Previously, Databricks uses Hive metastore by default to register schemas, tables, and views. However, it&amp;rsquo;s highly recommended to upgrade to Unity Catalog to access centralized access control, auditing, lineage, and data discovery capabilities.
+Catalog is a group of databases. If you want to use Unity Catalog, create and specify Catalog is required (Set up and manage Unity Catalog).</description>
+    </item>
+    
+  </channel>
+</rss>

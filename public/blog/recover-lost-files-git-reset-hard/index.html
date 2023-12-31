@@ -164,6 +164,14 @@
         <div class="singleBlog__content">
 
           
+            <h3>Table of Contents</h3>
+            <nav id="TableOfContents">
+  <ul>
+        <li><a href="#1-what-is-git-reset-hard-vs-soft">1. What is git reset (hard vs soft)</a></li>
+        <li><a href="#2-recover-files-after-git-reset---hard-in-3-scenarios">2. Recover files after <code>git reset --hard</code> in 3 scenarios</a></li>
+      </ul>
+</nav>
+          
 
           <p>While working on a recent project, I accidentally committed some files. Instead of using <code>git reset --soft &lt;prev-commit-id&gt;</code> to unstage them, I used <code>git reset --hard HEAD</code> and all of my new changes gone with the wind. After panicking for a few minutes, I determined to learn how <code>git reset</code> works and how I can revert the damages.</p>
 <h3 id="1-what-is-git-reset-hard-vs-soft">1. What is git reset (hard vs soft)</h3>

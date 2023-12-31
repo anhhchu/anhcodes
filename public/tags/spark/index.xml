@@ -13,7 +13,7 @@
       <pubDate>Sat, 27 May 2023 21:48:00 +0000</pubDate>
       
       <guid>https://anhcodes.dev/blog/tune-spark/</guid>
-      <description>Spark Architecture Spark Cluster Components Spark Session Spark APIs Computation in Spark Spark Catalyst Optimizer Adaptive Query Execution Shuffle, Partitioning and Caching in Spark Partitioning Shuffle Cache in Spark Most Big Data developers and Data Engineers start learning Spark by writing SparkSQL codes to perform ETL on DataFrame (I know I did). I also wrote a post about SparkSQL Programming. However, we quickly learn that there’s more knowlege required to go from processing a few GBs of data to dealing with TBs and PBs of data, which is a challenge for big enterprises.</description>
+      <description>Most Big Data developers and Data Engineers start learning Spark by writing SparkSQL codes to perform ETL on DataFrame (I know I did). I also wrote a post about SparkSQL Programming. However, we quickly learn that there’s more knowlege required to go from processing a few GBs of data to dealing with TBs and PBs of data, which is a challenge for big enterprises. Learning to write correct Spark codes is only a small part of the battle, you will need to understand the Spark Architecture and Spark working internals to correct tune Spark to handle true big data, and it’s the focus of this post.</description>
     </item>
     
     <item>
@@ -23,7 +23,7 @@
       
       <guid>https://anhcodes.dev/blog/spark-sql-programming/</guid>
       <description>TL,DR - SparkSQL is a huge component of Spark Programming. This post introduces programming in SparkSQL through Spark DataFrame API. It&amp;rsquo;s important to be aware of Spark SQL built-in functions to be a more efficient Spark programmer
-What is SparkSQL DataFrame API in SparkSQL Read and write data with Spark DataFrame Columns in DF Rows in DF Data Operations in Spark DataFrame SparkSQL Built-in Functions 1. Aggregation functions 2. Datetime functions 3.</description>
+What is SparkSQL SparkSQL is one of the 4 APIs in Spark ecosystems. SparkSQL provides structured data processing with interfaces such as SQL or Dataframe API using Python, Scala, R, Java programming languages</description>
     </item>
     
     <item>
@@ -32,7 +32,8 @@ What is SparkSQL DataFrame API in SparkSQL Read and write data with Spark DataFr
       <pubDate>Mon, 22 May 2023 17:09:41 +0000</pubDate>
       
       <guid>https://anhcodes.dev/blog/debug-spark/</guid>
-      <description>You Spark job is running for a long time, what to do? Generally, long-running Spark jobs can be due to various factors. We like to call them the 5S - Spill, Skew, Shuffle, Storage, and Serialization. So, how do we identify the main culprit?
+      <description>You Spark job is running for a long time, what to do?
+Generally, long-running Spark jobs can be due to various factors. We like to call them the 5S - Spill, Skew, Shuffle, Storage, and Serialization. So, how do we identify the main culprit?
 🔎 Look for Skew: Are some of the tasks taking longer than others? Do you have a join operation?
 🔎 Look for Spill: Any out-of-memory errors? Do the executors have enough memory to finish their tasks?</description>
     </item>

@@ -6,10 +6,11 @@ postImage: images/single-blog/sparksql/0.webp
 categories: big-data
 tags: [spark]
 author: Anh Chu
+toc: Table of Contents
 ---
 *TL,DR - SparkSQL is a huge component of Spark Programming. This post introduces programming in SparkSQL through Spark DataFrame API. It's important to be aware of Spark SQL built-in functions to be a more efficient Spark programmer*
 
-{{< table_of_contents >}}
+
 
 ## What is SparkSQL
 

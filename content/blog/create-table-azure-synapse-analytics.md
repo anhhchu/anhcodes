@@ -6,6 +6,9 @@ postImage: images/single-blog/synapse/sql-pool.jpeg
 categories: data-lakehouse
 tags: [azure-synapse-analytics]
 author: Anh Chu
+# toc: Table of Contents
+draft: True
+
 ---
 
 As Dedicated SQL pool uses a scaled-out node based architecture, when creating tables in Dedicated SQL Pool, remember to specify the distribution (sharding strategy) and index for your tables. 

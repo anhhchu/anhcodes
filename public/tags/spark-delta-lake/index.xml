@@ -13,7 +13,7 @@
       <pubDate>Mon, 07 Aug 2023 11:23:00 +0000</pubDate>
       
       <guid>https://anhcodes.dev/blog/deep-dive-delta-lake/</guid>
-      <description>Create Delta Tables Create Table as Select (CTAS) Create Tables with Options Save As Table from DataFrame Create Table with Generated Column and declared Schema Clone Delta Table Deep Clone Shallow Clone Incremental Cloning File Retention in cloned Tables ACID in Delta Table CRUD Operations Merge in Delta Lake Insert-Only Merge Overwrite in Delta Lake Copy Into for Incremental Load Files in Delta Lake Time Travel in Delta Lake Vacuum in Delta Lake Optimize Delta Tables Schema enforcement &amp;amp; evolution Delta table best practices Extract Table Metadata Design table schema File Statistics Config Stats on table Delta Lake is an open source storage layer that brings reliability to data lakes.</description>
+      <description>Delta Lake is an open source storage layer that brings reliability to data lakes. Delta Lake provides ACID transactions, scalable metadata handling, and unifies streaming and batch data processing. Delta Lake runs on top of your existing data lake and is fully compatible with Apache Spark APIs. Delta Lake uses versioned Parquet files to store your data in your cloud storage. Apart from the versions, Delta Lake also stores a transaction log to keep track of all the commits made to the table or blob store directory to provide ACID transactions.</description>
     </item>
     
   </channel>

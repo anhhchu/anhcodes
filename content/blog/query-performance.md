@@ -6,9 +6,9 @@ postImage: /images/single-blog/synapse/query-performance.jpeg
 categories: data-lakehouse
 tags: [azure-synapse-analytics]
 author: Anh Chu
+toc: Table of Contents
 ---
 
-{{< table_of_contents >}}
 
 ## 1. Best practices when Creating Tables
 

@@ -6,6 +6,7 @@ postImage: images/single-blog/git-reset/github-reset.png
 categories: software-engineering
 tags: [git]
 author: Anh Chu
+toc: Table of Contents
 ---
 
 While working on a recent project, I accidentally committed some files. Instead of using `git reset --soft <prev-commit-id>` to unstage them, I used `git reset --hard HEAD` and all of my new changes gone with the wind. After panicking for a few minutes, I determined to learn how `git reset` works and how I can revert the damages. 

@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Data Objects in Databricks</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <!-- Slick Carousel -->
+  <link rel="stylesheet" href="https://anhcodes.dev/plugins/slick/slick.css" />
+  <link rel="stylesheet" href="https://anhcodes.dev/plugins/slick/slick-theme.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://anhcodes.dev/plugins/font-awesome/css/font-awesome.min.css" />
+
+  <!-- Magnific Popup -->
+  <link rel="stylesheet" href="https://anhcodes.dev/plugins/magnafic-popup/magnific-popup.css" />
+
+  <!-- Stylesheets -->
+  
+  <link href="https://anhcodes.dev/scss/style.min.css" rel="stylesheet" />
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="https://anhcodes.dev/images/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="https://anhcodes.dev/images/favicon.png" type="image/x-icon" />
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G09NWG7ZSN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-G09NWG7ZSN');
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.37.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.11.0/dist/algoliasearch.umd.min.js"></script>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.4.5/themes/satellite-min.css" integrity="sha256-TehzF/2QvNKhGQrrNpoOb2Ck4iGZ1J/DI4pkd2oUsBc=" crossorigin="anonymous">  
+  
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a href="https://anhcodes.dev/" class="navbar-brand">
+      <img src="https://anhcodes.dev/images/favicon.png" alt="site-logo">
+    </a>
+    <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+      <ul class="nav navbar-nav main-navigation my-0 mx-auto">
+        
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#home"
+            class="nav-link text-dark text-sm-center p-2 ">Home</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#about"
+            class="nav-link text-dark text-sm-center p-2 ">About</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#resume"
+            class="nav-link text-dark text-sm-center p-2 ">Experiences</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#skills"
+            class="nav-link text-dark text-sm-center p-2 ">Skills</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#testimonial"
+            class="nav-link text-dark text-sm-center p-2 ">Testimonials</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#blog"
+            class="nav-link text-dark text-sm-center p-2 ">Blog</a>
+        </li>
+        
+      </ul>
+      <div class="navbar-nav">
+        <a href="https://anhcodes.dev/contact" class="btn btn-primary btn-zoom hire_button">Contact Me</a>
+      </div>
+    </div>
+  </div>
+</nav>
+  <div id="content">
+    
+
+<header class="breadCrumb">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 text-center">
+        <h3 class="breadCrumb__title">Data Objects in Databricks</h3>
+        <nav aria-label="breadcrumb" class="d-flex justify-content-center">
+          <ol class="breadcrumb align-items-center">
+            <li class="breadcrumb-item"><a href=https://anhcodes.dev/>Home</a></li>
+            <li class="breadcrumb-item"><a href=https://anhcodes.dev/blog>All Posts</a></li>
+            <li class="breadcrumb-item"><a href=https://anhcodes.dev//tags>All Tags</a></li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <ul class="post-meta">
+      <li>
+        <i class="fa fa-calendar"></i>
+        December 30, 2023
+      </li>
+      <li>
+        <i class="fa fa-clock-o"></i>
+        7 mins read
+      </li>
+      <li>
+        <i class="fa fa-user"></i>
+        Anh Chu
+      </li>
+    </ul>
+    <ul class="post-meta">
+      </li>
+      
+      <li>
+        <i class="fa fa-tag"></i>
+        
+          <a class="text-lowercase" href="https://anhcodes.dev/tags/delta-lake/">delta-lake</a>
+        
+      </li>
+      
+    </ul>
+  </div>
+  </div>
+  </div>
+  </div>
+</header>
+
+<section class="section singleBlog">
+  <div class="svg-img">
+    <img src=https://anhcodes.dev/images/hero/hero-background-svg.svg alt="">
+  </div>
+  <div class="animate-shape">
+    <img src=https://anhcodes.dev/images/skill/skill-background-shape.svg alt="">
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="singleBlog__feature">
+          <img src=https://anhcodes.dev/images/single-blog/databricks-data-objects/0.jpeg alt="feature-image">
+          <center><figcaption style="font-size: 10px; margin-top: 20px;">  </figcaption></center>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-lg-12">
+        <div class="singleBlog__content">
+
+          
+            <h3>Table of Contents</h3>
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#metastore-and-catalog">Metastore and Catalog</a></li>
+    <li><a href="#schemas-and-databases">Schemas and Databases</a>
+      <ul>
+        <li><a href="#schema-under-default-location">Schema under Default Location</a></li>
+        <li><a href="#schema-under-custom-location">Schema under Custom location</a></li>
+        <li><a href="#delete-schema-database">Delete Schema (Database)</a></li>
+      </ul>
+    </li>
+    <li><a href="#managed-table-vs-external-table">Managed Table vs External Table</a>
+      <ul>
+        <li><a href="#external-table">External Table</a></li>
+        <li><a href="#managed-table">Managed Table</a></li>
+      </ul>
+    </li>
+    <li><a href="#view">View</a></li>
+    <li><a href="#resources">Resources</a></li>
+  </ul>
+</nav>
+          
+
+          <h2 id="metastore-and-catalog">Metastore and Catalog</h2>
+
+<div class="image">
+  <style>
+    .img-responsive {
+      display: block;
+      height: auto;
+      max-width: 100%;
+      cursor: pointer;
+    }
+  </style>
+  <p>
+    <center><img src="https://anhcodes.dev/images/single-blog/databricks-data-objects/Untitled%202.png" alt="blog-img" class="img-responsive" onclick="openModal(this)"></center>
+  </p>
+</div>
+
+<script>
+function openModal(img) {
+  var modal = document.createElement('div');
+  modal.classList.add('modal');
+  modal.innerHTML = '<div class="modal-content"><img src="' + img.src + '"></div>';
+  document.body.appendChild(modal);
+  modal.addEventListener('click', closeModal);
+}
+
+function closeModal(event) {
+  if (event.target.classList.contains('modal')) {
+    document.body.removeChild(event.target);
+  }
+}
+</script>
+
+<style>
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 80%;
+  max-height: 80%;
+  overflow: auto;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+}
+</style>
+
+  
+<p>In Databricks, metadata of data Objects (tables, views, etc.) is registered in Metastore.</p>
+<p>Previously, Databricks uses Hive metastore by default to register schemas, tables, and views. However, it&rsquo;s highly recommended to upgrade to Unity Catalog to access centralized access control, auditing, lineage, and data discovery capabilities.</p>
+<p>Catalog is a group of databases. If you want to use Unity Catalog, create and specify Catalog is required (<a href="https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/get-started">Set up and manage Unity Catalog</a>). The Databricks workspace will need to have Unity Catalog enabled as well (<a href="https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/enable-workspaces">Enable a workspace for Unity Catalog</a>)</p>
+<p>Databases or Schemas are groups of tables, views, and functions.</p>
+<p>Tables are collections of rows and columns stored as files in an object storage. We have managed table, and external table</p>
+<ul>
+<li><strong>Managed tables</strong> have data files stored in a managed storage location that is configured into a metastore. When a managed table is dropped, data and its metadata will also be deleted</li>
+<li><strong>External tables</strong> have data files stored in a cloud storage location outside of a managed storage location, and only the table metadata is managed in the Metastore. Files for external tables will be persisted in the location provided at table creation, preventing users from inadvertently deleting underlying files.</li>
+</ul>
+<p>View is a saved query against once or more tables. Materialized view is only supported with Unity Catalog enabled workspace</p>
+<p>Functions are saved logics that return scala values or set of rows</p>
+<p>To List the information of these data objects, use below query:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ffb8d1">%</span><span style="color:#c2ffdf">sql</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">show</span><span style="color:#a8757b"> </span>catalogs<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">show</span><span style="color:#a8757b"> </span>schemas<span style="color:#a8757b"> </span><span style="color:#c2ffdf">in</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">&lt;</span><span style="color:#c2ffdf">catalog_name</span><span style="color:#ffb8d1">&gt;</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">show</span><span style="color:#a8757b"> </span>tables<span style="color:#a8757b"> </span><span style="color:#c2ffdf">in</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">&lt;</span><span style="color:#c2ffdf">schema_name</span><span style="color:#ffb8d1">&gt;</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">show</span><span style="color:#a8757b"> </span>views<span style="color:#a8757b"> </span><span style="color:#c2ffdf">in</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">&lt;</span><span style="color:#c2ffdf">schema_name</span><span style="color:#ffb8d1">&gt;</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">show</span><span style="color:#a8757b"> </span>functions<span style="color:#a8757b"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">describe</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">schema</span><span style="color:#a8757b"> </span>extended<span style="color:#a8757b"> </span><span style="color:#ffb8d1">&lt;</span><span style="color:#c2ffdf">schema_name</span><span style="color:#ffb8d1">&gt;</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">describe</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">table</span><span style="color:#a8757b"> </span>extended<span style="color:#a8757b"> </span><span style="color:#ffb8d1">&lt;</span><span style="color:#c2ffdf">table_name</span><span style="color:#ffb8d1">&gt;</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">describe</span><span style="color:#a8757b"> </span>detail<span style="color:#a8757b"> </span><span style="color:#ffb8d1">&lt;</span><span style="color:#c2ffdf">table_name</span><span style="color:#ffb8d1">&gt;</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">show</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">create</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">table</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">&lt;</span><span style="color:#c2ffdf">table_name</span><span style="color:#ffb8d1">&gt;</span><span style="color:#a8757b">
+</span></span></span></code></pre></div><h2 id="schemas-and-databases">Schemas and Databases</h2>
+<p>When create a schema (aka. database), you can use default storage location or provide location</p>
+<h3 id="schema-under-default-location">Schema under Default Location</h3>
+<p>The default location under <strong><code>dbfs:/user/hive/warehouse/</code></strong> and that the schema directory is the name of the schema with the <strong><code>.db</code></strong> extension.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">CREATE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">SCHEMA</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">IF</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">NOT</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">EXISTS</span><span style="color:#a8757b"> </span><span style="color:#960050;background-color:#1e0010">${</span>db_name<span style="color:#960050;background-color:#1e0010">}</span><span style="color:#a8757b">
+</span></span></span></code></pre></div><p>Running <code>describe schema extended</code> will provide details about the storage location of the schema</p>
+
+<div class="image">
+  <style>
+    .img-responsive {
+      display: block;
+      height: auto;
+      max-width: 100%;
+      cursor: pointer;
+    }
+  </style>
+  <p>
+    <center><img src="https://anhcodes.dev/images/single-blog/databricks-data-objects/Untitled%204.png" alt="blog-img" class="img-responsive" onclick="openModal(this)"></center>
+  </p>
+</div>
+
+<script>
+function openModal(img) {
+  var modal = document.createElement('div');
+  modal.classList.add('modal');
+  modal.innerHTML = '<div class="modal-content"><img src="' + img.src + '"></div>';
+  document.body.appendChild(modal);
+  modal.addEventListener('click', closeModal);
+}
+
+function closeModal(event) {
+  if (event.target.classList.contains('modal')) {
+    document.body.removeChild(event.target);
+  }
+}
+</script>
+
+<style>
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 80%;
+  max-height: 80%;
+  overflow: auto;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+}
+</style>
+
+  
+<p>By default, managed tables (data and metadata) in a schema without the location specified will be created in the <strong><code>dbfs:/user/hive/warehouse/&lt;schema_name&gt;.db/</code></strong> directory.</p>
+<h3 id="schema-under-custom-location">Schema under Custom location</h3>
+<p>If you want to create a Schema with a location, the LOCATION associated with a database is always considered a managed location. Make sure to use a new location for each database.  Do not register a database to a location that already contains data. Don&rsquo;t use a location nested under any database location</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">CREATE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">SCHEMA</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">IF</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">NOT</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">EXISTS</span><span style="color:#a8757b"> </span><span style="color:#960050;background-color:#1e0010">${</span>db_name<span style="color:#960050;background-color:#1e0010">}</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">LOCATION</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#39;path/to/empty/location&#39;</span>;<span style="color:#a8757b">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ffb8d1">%</span><span style="color:#c2ffdf">sql</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">CREATE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">DATABASE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">IF</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">NOT</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">EXISTS</span><span style="color:#a8757b"> </span><span style="color:#960050;background-color:#1e0010">${</span>da.db_name<span style="color:#960050;background-color:#1e0010">}</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">COMMENT</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;This is a test database&#34;</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">LOCATION</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;${da.paths.user_db}&#34;</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">WITH</span><span style="color:#a8757b"> </span>DBPROPERTIES<span style="color:#a8757b"> </span>(contains_pii<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">true</span>)<span style="color:#a8757b">
+</span></span></span></code></pre></div>
+<div class="image">
+  <style>
+    .img-responsive {
+      display: block;
+      height: auto;
+      max-width: 100%;
+      cursor: pointer;
+    }
+  </style>
+  <p>
+    <center><img src="https://anhcodes.dev/images/single-blog/databricks-data-objects/Untitled%205.png" alt="blog-img" class="img-responsive" onclick="openModal(this)"></center>
+  </p>
+</div>
+
+<script>
+function openModal(img) {
+  var modal = document.createElement('div');
+  modal.classList.add('modal');
+  modal.innerHTML = '<div class="modal-content"><img src="' + img.src + '"></div>';
+  document.body.appendChild(modal);
+  modal.addEventListener('click', closeModal);
+}
+
+function closeModal(event) {
+  if (event.target.classList.contains('modal')) {
+    document.body.removeChild(event.target);
+  }
+}
+</script>
+
+<style>
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 80%;
+  max-height: 80%;
+  overflow: auto;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+}
+</style>
+
+  
+<p>Managed table created in this Schema with Custom Location have data and metadata persisted in the path specified with the <strong><code>LOCATION</code></strong> keyword during schema creation.</p>
+<h3 id="delete-schema-database">Delete Schema (Database)</h3>
+<p>When schema is dropped, the schema folder, data files and log files are deleted</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ffb8d1">##</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">Delete</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">Database</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">and</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">all</span><span style="color:#a8757b"> </span>the<span style="color:#a8757b"> </span><span style="color:#c2ffdf">data</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">drop</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">schema</span><span style="color:#a8757b"> </span><span style="color:#960050;background-color:#1e0010">${</span>db_name<span style="color:#960050;background-color:#1e0010">}</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">cascade</span><span style="color:#a8757b">
+</span></span></span></code></pre></div><p>When table is dropped, the table folder, data files and log files are deleted; but the schema location remained</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">drop</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">table</span><span style="color:#a8757b"> </span><span style="color:#960050;background-color:#1e0010">${</span><span style="color:#c2ffdf">table_name</span><span style="color:#960050;background-color:#1e0010">}</span><span style="color:#a8757b">
+</span></span></span></code></pre></div><h2 id="managed-table-vs-external-table">Managed Table vs External Table</h2>
+
+<div class="image">
+  <style>
+    .img-responsive {
+      display: block;
+      height: auto;
+      max-width: 100%;
+      cursor: pointer;
+    }
+  </style>
+  <p>
+    <center><img src="https://anhcodes.dev/images/single-blog/databricks-data-objects/Untitled%203.png" alt="blog-img" class="img-responsive" onclick="openModal(this)"></center>
+  </p>
+</div>
+
+<script>
+function openModal(img) {
+  var modal = document.createElement('div');
+  modal.classList.add('modal');
+  modal.innerHTML = '<div class="modal-content"><img src="' + img.src + '"></div>';
+  document.body.appendChild(modal);
+  modal.addEventListener('click', closeModal);
+}
+
+function closeModal(event) {
+  if (event.target.classList.contains('modal')) {
+    document.body.removeChild(event.target);
+  }
+}
+</script>
+
+<style>
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 80%;
+  max-height: 80%;
+  overflow: auto;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+}
+</style>
+
+  
+<h3 id="external-table">External Table</h3>
+<h4 id="query-files-directly-from-storage">Query files directly from storage</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ffb8d1">##</span><span style="color:#a8757b"> </span>query<span style="color:#a8757b"> </span>files<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">select</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">*</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">from</span><span style="color:#a8757b"> </span>csv.<span style="color:#ffb8d1">`</span><span style="color:#960050;background-color:#1e0010">${</span>csv_path<span style="color:#960050;background-color:#1e0010">}</span><span style="color:#ffb8d1">`</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">select</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">*</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">from</span><span style="color:#a8757b"> </span>json.<span style="color:#ffb8d1">`</span><span style="color:#960050;background-color:#1e0010">${</span>json_path<span style="color:#960050;background-color:#1e0010">}</span><span style="color:#ffb8d1">`</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">select</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">*</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">from</span><span style="color:#a8757b"> </span>text.<span style="color:#ffb8d1">`</span><span style="color:#960050;background-color:#1e0010">${</span>text_path<span style="color:#960050;background-color:#1e0010">}</span><span style="color:#ffb8d1">`</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#ffb8d1">##</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">Using</span><span style="color:#a8757b"> </span>binaryFile<span style="color:#a8757b"> </span><span style="color:#c2ffdf">to</span><span style="color:#a8757b"> </span>query<span style="color:#a8757b"> </span>a<span style="color:#a8757b"> </span>dir<span style="color:#a8757b"> </span>will<span style="color:#a8757b"> </span>provide<span style="color:#a8757b"> </span>file<span style="color:#a8757b"> </span>metadata<span style="color:#a8757b"> </span>alongside<span style="color:#a8757b"> </span>the<span style="color:#a8757b"> </span>binary<span style="color:#a8757b"> </span>representation<span style="color:#a8757b"> </span><span style="color:#c2ffdf">of</span><span style="color:#a8757b"> </span>the<span style="color:#a8757b"> </span>file<span style="color:#a8757b"> </span>contents<span style="color:#a8757b"> </span>such<span style="color:#a8757b"> </span>path,<span style="color:#a8757b"> </span>modificationTime,<span style="color:#a8757b"> </span><span style="color:#c2ffdf">length</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">and</span><span style="color:#a8757b"> </span>Content<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">select</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">*</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">from</span><span style="color:#a8757b"> </span>binaryFile.<span style="color:#ffb8d1">`</span><span style="color:#960050;background-color:#1e0010">${</span>unstructured_data<span style="color:#960050;background-color:#1e0010">}</span><span style="color:#ffb8d1">`</span><span style="color:#a8757b">
+</span></span></span></code></pre></div><p><strong><code>CONVERT TO DELTA</code></strong> is an important command that can be used to <strong>convert parquet file(s) to a Delta table</strong>. This helps in accessing the data as a table and taking advantage of Delta tables.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">CONVERT</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TO</span><span style="color:#a8757b"> </span>DELTA<span style="color:#a8757b"> </span>database_name.<span style="color:#c2ffdf">table_name</span>;<span style="color:#a8757b"> </span><span style="color:#b0bec5">-- only for Parquet tables
+</span></span></span><span style="display:flex;"><span><span style="color:#b0bec5"></span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">CONVERT</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TO</span><span style="color:#a8757b"> </span>DELTA<span style="color:#a8757b"> </span>parquet.<span style="color:#ffb8d1">`</span>s3:<span style="color:#ffb8d1">//</span>my<span style="color:#ffb8d1">-</span>bucket<span style="color:#ffb8d1">/</span>path<span style="color:#ffb8d1">/</span><span style="color:#c2ffdf">to</span><span style="color:#ffb8d1">/</span><span style="color:#c2ffdf">table</span><span style="color:#ffb8d1">`</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span>PARTITIONED<span style="color:#a8757b"> </span><span style="color:#c2ffdf">BY</span><span style="color:#a8757b"> </span>(date<span style="color:#a8757b"> </span>DATE);<span style="color:#a8757b"> </span><span style="color:#b0bec5">-- if the table is partitioned
+</span></span></span><span style="display:flex;"><span><span style="color:#b0bec5"></span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">CONVERT</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TO</span><span style="color:#a8757b"> </span>DELTA<span style="color:#a8757b"> </span>iceberg.<span style="color:#ffb8d1">`</span>s3:<span style="color:#ffb8d1">//</span>my<span style="color:#ffb8d1">-</span>bucket<span style="color:#ffb8d1">/</span>path<span style="color:#ffb8d1">/</span><span style="color:#c2ffdf">to</span><span style="color:#ffb8d1">/</span><span style="color:#c2ffdf">table</span><span style="color:#ffb8d1">`</span>;<span style="color:#a8757b"> </span><span style="color:#b0bec5">-- uses Iceberg manifest for metadata
+</span></span></span></code></pre></div><h4 id="create-externals-tables-from-files">Create Externals Tables from Files</h4>
+<p>Sometimes, query files (such as csv) is not advisable because of unpredictable schema format. In these cases, we can create external tables with schema specified</p>
+<p><code>create table table_name (&lt;schema&gt;) using datasource options (key1 = val1, key2 = val2, ...) location = &quot;path/to/data&quot;)</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">CREATE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TABLE</span><span style="color:#a8757b"> </span>parquet_external<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span>(field_name1<span style="color:#a8757b"> </span>INT,<span style="color:#a8757b"> </span>field_name2<span style="color:#a8757b"> </span>STRING)<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">using</span><span style="color:#a8757b"> </span>parquet<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">LOCATION</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;/path/to/existing/data&#34;</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">CREATE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TABLE</span><span style="color:#a8757b"> </span>json_external<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span>(field_name1<span style="color:#a8757b"> </span>INT,<span style="color:#a8757b"> </span>field_name2<span style="color:#a8757b"> </span>STRING)<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">using</span><span style="color:#a8757b"> </span>json<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">LOCATION</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;/path/to/existing/data&#34;</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">create</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">table</span><span style="color:#a8757b"> </span>csv_external<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span>(col1<span style="color:#a8757b"> </span>string,<span style="color:#a8757b"> </span>col2<span style="color:#a8757b"> </span>long,<span style="color:#a8757b"> </span>col3<span style="color:#a8757b"> </span><span style="color:#c2ffdf">timestamp</span>,<span style="color:#a8757b"> </span>col4<span style="color:#a8757b"> </span>integer)<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">using</span><span style="color:#a8757b"> </span>csv<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">options</span><span style="color:#a8757b"> </span>(header<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#39;true&#39;</span>,<span style="color:#a8757b"> </span><span style="color:#c2ffdf">delimiter</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#39;|&#39;</span>)<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">location</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;${csv_path}&#34;</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">CREATE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TABLE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">table_name</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">USING</span><span style="color:#a8757b"> </span>DELTA<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">LOCATION</span><span style="color:#a8757b"> </span>parquet.<span style="color:#ffb8d1">`/</span>path<span style="color:#ffb8d1">/</span><span style="color:#c2ffdf">to</span><span style="color:#ffb8d1">/</span><span style="color:#c2ffdf">existing</span><span style="color:#ffb8d1">/</span><span style="color:#c2ffdf">data</span><span style="color:#ffb8d1">`</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#b0bec5">-- create external table with table properties
+</span></span></span><span style="display:flex;"><span><span style="color:#b0bec5"></span><span style="color:#c2ffdf">CREATE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TABLE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">IF</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">NOT</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">EXISTS</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">schema</span>.pii_table<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span>(id<span style="color:#a8757b"> </span>INT,<span style="color:#a8757b"> </span>name<span style="color:#a8757b"> </span>STRING<span style="color:#a8757b"> </span><span style="color:#c2ffdf">COMMENT</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;PII&#34;</span>)<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">COMMENT</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;Contains PII&#34;</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">LOCATION</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;path_to_table/pii&#34;</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span>TBLPROPERTIES<span style="color:#a8757b"> </span>(<span style="color:#1bc5e0">&#39;contains_pii&#39;</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">True</span>)<span style="color:#a8757b">
+</span></span></span></code></pre></div><p>With external tables created using above method, data is not moved during table declaration. We still point the queries to files stored in the file paths. Metadata and options passed during table declaration will be persisted to the metastore, so data in the specified location will be read with these options.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ffb8d1">%</span><span style="color:#c2ffdf">sql</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">describe</span><span style="color:#a8757b"> </span>extended<span style="color:#a8757b"> </span><span style="color:#ffb8d1">&lt;</span>external_table<span style="color:#ffb8d1">&gt;</span><span style="color:#a8757b">
+</span></span></span></code></pre></div><p>When external table is dropped, data in the specified location is still persisted. That means if you recreate the external table and point it to the same location, data will show for that table</p>
+<p>However, if data in the external tables are not registered as a Delta Lake tables, we may see older cached versions of the data, and freshenesss is not guarantee. The reason is Spark automatically cache underlying data in local storage to ensure optimal performance on subsequent queries. We need to refresh cache by running <code>REFRESH TABLE &lt;table_name&gt;</code>but this will invalidate cache and cause long running query.</p>
+<p>You can also read a dataframe from a file location and write it to another</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ffb8d1">%</span>python
+</span></span><span style="display:flex;"><span>spark<span style="color:#ffb8d1">.</span>read
+</span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>option(<span style="color:#1bc5e0">&#34;headers&#34;</span>, <span style="color:#1bc5e0">&#34;true&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>option(<span style="color:#1bc5e0">&#34;delimiters&#34;</span>, <span style="color:#1bc5e0">&#34;|&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>csv(<span style="color:#1bc5e0">&#34;/path/to/existing/data&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>write
+</span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>mode(<span style="color:#1bc5e0">&#34;append&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>format(<span style="color:#1bc5e0">&#34;csv&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>option(<span style="color:#1bc5e0">&#34;path&#34;</span>, <span style="color:#1bc5e0">&#34;/path/to/empty/location&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>saveAsTable(<span style="color:#1bc5e0">&#34;table_name&#34;</span>) 
+</span></span></code></pre></div><h4 id="create-external-tables-from-sql-databases">Create External Tables from SQL databases</h4>
+<p>We can also create external tables from SQL databases using JDBC connection. However, make sure to use <strong>single-node cluster</strong> because the client running in the executors will not be connect to the driver on a multiple-node cluster. We can move the entire source table to Databricks then run queries on this table; or push down the query to external SQL database then transfer the result back to Databricks.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">create</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">table</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">using</span><span style="color:#a8757b"> </span>jdbc<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">options</span><span style="color:#a8757b"> </span>(<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">	</span>url<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;jdbc:{databaseServer}://{jdbcHost}:{jdbcPort}&#34;</span>,<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">	</span>dbtable<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;{jdbcDatabase}.table&#34;</span>,<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">	</span><span style="color:#c2ffdf">user</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;{Username}&#34;</span>,<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">	</span>password<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;{jdbcPassword}&#34;</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span>)<span style="color:#a8757b">
+</span></span></span></code></pre></div><p>Using this method, table is listed as Managed, but data is not persisted locally. We can test using below script</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ffb8d1">import</span> spark.sql.functions <span style="color:#c2ffdf">as</span> F
+</span></span><span style="display:flex;"><span>location <span style="color:#ffb8d1">=</span> spark<span style="color:#ffb8d1">.</span>sql(<span style="color:#1bc5e0">&#34;DESCRIBE EXTENDED table_name&#34;</span>)<span style="color:#ffb8d1">.</span>filter(F<span style="color:#ffb8d1">.</span>col(<span style="color:#1bc5e0">&#34;col_name&#34;</span>) <span style="color:#ffb8d1">==</span> <span style="color:#1bc5e0">&#34;Location&#34;</span>)<span style="color:#ffb8d1">.</span>first()[<span style="color:#1bc5e0">&#34;data_type&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#b0bec5">## use dbutils to check the files in this storage location</span>
+</span></span><span style="display:flex;"><span>dbutils<span style="color:#ffb8d1">.</span>fs<span style="color:#ffb8d1">.</span>ls(location)
+</span></span></code></pre></div><p>This method can incur significant overhead due to network transfer latency of moving data across public internet, execution of query logic in source systems is not optimized.</p>
+<h3 id="managed-table">Managed Table</h3>
+<p>Files associated with managed tables will be stored to this location on the root DBFS storage linked to the workspace, and will be deleted when a table is dropped.</p>
+<p>Additional storage credentials are not needed to manage access to the underlying cloud storage for a managed table.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">CREATE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">or</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">replace</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TABLE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">table_name</span><span style="color:#a8757b"> </span>(field_name1<span style="color:#a8757b"> </span>INT,<span style="color:#a8757b"> </span>field_name2<span style="color:#a8757b"> </span>STRING)<span style="color:#a8757b"> </span>partitioned<span style="color:#a8757b"> </span><span style="color:#c2ffdf">by</span><span style="color:#a8757b"> </span>(field_name1,<span style="color:#a8757b"> </span>field_name2)<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">CREATE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TABLE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">table_name</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">AS</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">SELECT</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">*</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">FROM</span><span style="color:#a8757b"> </span>another_table<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">CREATE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TABLE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">table_name</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">AS</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">SELECT</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">*</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">FROM</span><span style="color:#a8757b"> </span>parquet.<span style="color:#ffb8d1">`</span>path<span style="color:#ffb8d1">/</span><span style="color:#c2ffdf">to</span><span style="color:#ffb8d1">/</span>file<span style="color:#ffb8d1">`</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span>df.<span style="color:#c2ffdf">write</span>.saveAsTable(<span style="color:#1bc5e0">&#34;table_name&#34;</span>)<span style="color:#a8757b">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#b0bec5">-- create managed table with property
+</span></span></span><span style="display:flex;"><span><span style="color:#b0bec5"></span><span style="color:#ffb8d1">%</span><span style="color:#c2ffdf">sql</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">CREATE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TABLE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">IF</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">NOT</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">EXISTS</span><span style="color:#a8757b"> </span><span style="color:#960050;background-color:#1e0010">${</span>da.db_name<span style="color:#960050;background-color:#1e0010">}</span>.pii_test<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span>(id<span style="color:#a8757b"> </span>INT,<span style="color:#a8757b"> </span>name<span style="color:#a8757b"> </span>STRING<span style="color:#a8757b"> </span><span style="color:#c2ffdf">COMMENT</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;PII&#34;</span>)<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">COMMENT</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;Contains PII&#34;</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span>TBLPROPERTIES<span style="color:#a8757b"> </span>(<span style="color:#1bc5e0">&#39;contains_pii&#39;</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">True</span>)<span style="color:#a8757b">
+</span></span></span></code></pre></div><p>To access tables information</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#ffb8d1">%</span><span style="color:#c2ffdf">sql</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">Describe</span><span style="color:#a8757b"> </span>extended<span style="color:#a8757b"> </span><span style="color:#ffb8d1">&lt;</span><span style="color:#c2ffdf">table</span><span style="color:#ffb8d1">&gt;</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">describe</span><span style="color:#a8757b"> </span>history<span style="color:#a8757b"> </span><span style="color:#ffb8d1">&lt;</span><span style="color:#c2ffdf">table</span><span style="color:#ffb8d1">&gt;</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">describe</span><span style="color:#a8757b"> </span>detail<span style="color:#a8757b"> </span><span style="color:#ffb8d1">&lt;</span><span style="color:#c2ffdf">table</span><span style="color:#ffb8d1">&gt;</span><span style="color:#a8757b">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#b0bec5">## Extract table information</span>
+</span></span><span style="display:flex;"><span><span style="color:#ffb8d1">%</span>python
+</span></span><span style="display:flex;"><span>table_location <span style="color:#ffb8d1">=</span> spark<span style="color:#ffb8d1">.</span>sql(<span style="color:#1bc5e0">&#34;describe detail </span><span style="color:#1bc5e0">{table}</span><span style="color:#1bc5e0">&#34;</span>)<span style="color:#ffb8d1">.</span>select(<span style="color:#1bc5e0">&#34;location&#34;</span>)<span style="color:#ffb8d1">.</span>first()[<span style="color:#c5a3ff">0</span>]
+</span></span><span style="display:flex;"><span>dbutils<span style="color:#ffb8d1">.</span>fs<span style="color:#ffb8d1">.</span>ls(table_location)
+</span></span></code></pre></div><h2 id="view">View</h2>
+<ul>
+<li>The regular <strong>view</strong> is associated with the current database. This view will be available to any user that can access this database and will persist between sessions.</li>
+<li>The <strong>temp view</strong> is not associated with any database. The temp view is ephemeral and is only accessible in the current SparkSession.</li>
+<li>The <strong>global temp view</strong> does not appear in our catalog. <strong>Global temp views will always register to the <code>global_temp</code> database</strong>. The <strong><code>global_temp</code></strong> database is ephemeral but tied to the lifetime of the cluster; however, it is only accessible by notebooks attached to the same cluster on which it was created.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">create</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">or</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">replace</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">view</span><span style="color:#a8757b"> </span><span style="color:#960050;background-color:#1e0010">{</span>name<span style="color:#960050;background-color:#1e0010">}</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">as</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">select</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">*</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">from</span><span style="color:#a8757b"> </span><span style="color:#960050;background-color:#1e0010">{</span><span style="color:#c2ffdf">table</span><span style="color:#960050;background-color:#1e0010">}</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">create</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">or</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">replace</span><span style="color:#a8757b"> </span>temp<span style="color:#a8757b"> </span><span style="color:#c2ffdf">view</span><span style="color:#a8757b"> </span><span style="color:#960050;background-color:#1e0010">{</span>name<span style="color:#960050;background-color:#1e0010">}</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">create</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">or</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">replace</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">global</span><span style="color:#a8757b"> </span>temp<span style="color:#a8757b"> </span><span style="color:#c2ffdf">view</span><span style="color:#a8757b"> </span><span style="color:#960050;background-color:#1e0010">{</span>name<span style="color:#960050;background-color:#1e0010">}</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">SELECT</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">*</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">FROM</span><span style="color:#a8757b"> </span>global_temp.view_name<span style="color:#a8757b">
+</span></span></span></code></pre></div><h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://docs.databricks.com/user-guide/tables.html">Schemas and Tables - Databricks Docs</a></li>
+<li><a href="https://docs.databricks.com/user-guide/tables.html##managed-and-unmanaged-tables">Managed and Unmanaged Tables</a></li>
+<li><a href="https://docs.databricks.com/user-guide/tables.html##create-a-table-using-the-ui">Creating a Table with the UI</a></li>
+<li><a href="https://docs.databricks.com/user-guide/tables.html##create-a-local-table">Create a Local Table</a></li>
+<li><a href="https://spark.apache.org/docs/latest/sql-data-sources-load-save-functions.html##saving-to-persistent-tables">Saving to Persistent Tables</a></li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  </div>
+  <section class="footer" id="contact">
+	<div class="footer__background_shape">
+		<svg viewBox="0 0 1920 79">
+			<path d="M0 0h1920v79L0 0z" data-name="Path 1450" />
+		</svg>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="footer__cta">
+					<div class="shape-1">
+						<svg xmlns="http://www.w3.org/2000/svg" width="357" height="315.029" viewBox="0 0 357 315.029">
+							<path data-name="Path 1449"
+								d="M76.1-157.222C91.746-135.8 87.2-94.273 99.993-61.945c12.7 32.328 42.661 55.459 39.248 73.282-3.318 17.823-40.007 30.337-65.6 43.325-25.5 12.988-39.912 26.545-60.01 42.566-20.1 16.116-46.074 34.6-63.328 27.682-17.349-6.921-25.976-39.153-59.915-59.82s-93.1-29.768-105.325-51.478 22.373-56.028 43.609-93.949c21.331-37.921 29.2-79.35 53.563-96.793 24.459-17.444 65.414-10.9 103.9-6.921 38.396 3.982 74.326 5.404 89.965 26.829z"
+								transform="translate(217.489 188.626)" />
+						</svg>
+					</div>
+					<div class="shape-2">
+						<svg xmlns="http://www.w3.org/2000/svg" width="357" height="315.029" viewBox="0 0 357 315.029">
+							<path data-name="Path 1449"
+								d="M76.1-157.222C91.746-135.8 87.2-94.273 99.993-61.945c12.7 32.328 42.661 55.459 39.248 73.282-3.318 17.823-40.007 30.337-65.6 43.325-25.5 12.988-39.912 26.545-60.01 42.566-20.1 16.116-46.074 34.6-63.328 27.682-17.349-6.921-25.976-39.153-59.915-59.82s-93.1-29.768-105.325-51.478 22.373-56.028 43.609-93.949c21.331-37.921 29.2-79.35 53.563-96.793 24.459-17.444 65.414-10.9 103.9-6.921 38.396 3.982 74.326 5.404 89.965 26.829z"
+								transform="translate(217.489 188.626)" />
+						</svg>
+					</div>
+					<div class="text-light footer__cta_content">
+						<span>Contact me</span>
+						<h2 class="mb-0">Let’s Work Together</h2>
+					</div>
+					<div class="footer__cta_action">
+						<a class="btn btn-light btn-zoom" href="https://anhcodes.dev/contact">Get in
+							touch</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+			
+			
+		<div class="row footer__footer">
+			<div class="col-lg-6">
+				<div class="footer__footer_copy text-light">
+					<p>©2023 - Made with ☕, Hugo, and Firebase by <a class="text-light" href="https://anhcodes.dev/" target="_blank">Anh Chu</a></p>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="footer__footer_social">
+					<ul class="unstyle-list">
+						
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://dev.to/anhcodes"><i
+									class="fa fa-code"></i></a>
+						</li>
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://www.linkedin.com/in/anhhchu/"><i
+									class="fa fa-linkedin-square"></i></a>
+						</li>
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://github.com/anhhchu"><i
+									class="fa fa-github-square"></i></a>
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script src="https://anhcodes.dev/plugins/jQuery/jquery.min.js"></script>
+<script src="https://anhcodes.dev/plugins/bootstrap/bootstrap.min.js"></script>
+<script src="https://anhcodes.dev/plugins/slick/slick.min.js"></script>
+<script src="https://anhcodes.dev/plugins/waypoint/jquery.waypoints.min.js"></script>
+<script src="https://anhcodes.dev/plugins/magnafic-popup/jquery.magnific-popup.min.js"></script>
+<script src="https://anhcodes.dev/plugins/tweenmax/TweenMax.min.js"></script>
+<script src="https://anhcodes.dev/plugins/imagesloaded/imagesloaded.min.js"></script>
+<script src="https://anhcodes.dev/plugins/masonry/masonry.min.js"></script>
+
+
+<script src="https://anhcodes.dev/js/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.37.1"></script>
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.11.0/dist/algoliasearch.umd.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.4.5/themes/satellite-min.css" integrity="sha256-TehzF/2QvNKhGQrrNpoOb2Ck4iGZ1J/DI4pkd2oUsBc=" crossorigin="anonymous">  
+
+</body>
+
+</html>

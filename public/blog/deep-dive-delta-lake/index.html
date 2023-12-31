@@ -119,7 +119,7 @@
       </li>
       <li>
         <i class="fa fa-clock-o"></i>
-        18 mins read
+        14 mins read
       </li>
       <li>
         <i class="fa fa-user"></i>
@@ -164,9 +164,8 @@
         <div class="singleBlog__content">
 
           
-
-          <div class="toc">
-    <nav id="TableOfContents">
+            <h3>Table of Contents</h3>
+            <nav id="TableOfContents">
   <ul>
     <li><a href="#create-delta-tables">Create Delta Tables</a>
       <ul>
@@ -186,7 +185,7 @@
     </li>
     <li><a href="#acid-in-delta-table">ACID in Delta Table</a>
       <ul>
-        <li><a href="#crud-operations">CRUD Operations</a></li>
+        <li><a href="#crud-create-read-update-delete-operations">CRUD (Create, Read, Update, Delete) Operations</a></li>
         <li><a href="#merge-in-delta-lake">Merge in Delta Lake</a></li>
         <li><a href="#insert-only-merge">Insert-Only Merge</a></li>
         <li><a href="#overwrite-in-delta-lake">Overwrite in Delta Lake</a></li>
@@ -196,21 +195,11 @@
     <li><a href="#files-in-delta-lake">Files in Delta Lake</a></li>
     <li><a href="#time-travel-in-delta-lake">Time Travel in Delta Lake</a></li>
     <li><a href="#vacuum-in-delta-lake">Vacuum in Delta Lake</a></li>
-    <li><a href="#optimize-delta-tables">Optimize Delta Tables</a></li>
-    <li><a href="#schema-enforcement--evolution">Schema enforcement &amp; evolution</a></li>
-    <li><a href="#delta-table-best-practices">Delta table best practices</a>
-      <ul>
-        <li><a href="#extract-table-metadata">Extract Table Metadata</a></li>
-        <li><a href="#design-table-schema">Design table schema</a></li>
-        <li><a href="#file-statistics">File Statistics</a></li>
-        <li><a href="#config-stats-on-table">Config Stats on table</a></li>
-      </ul>
-    </li>
   </ul>
 </nav>
-</div>
-  
-<p><a href="https://delta.io/">Delta Lake</a> is an <a href="https://github.com/delta-io/delta">open source storage layer</a> that brings reliability to <a href="https://databricks.com/discover/data-lakes/introduction">data lakes</a>. Delta Lake provides ACID transactions, scalable metadata handling, and unifies streaming and batch data processing. Delta Lake runs on top of your existing data lake and is fully compatible with Apache Spark APIs. Delta Lake uses versioned Parquet files to store your data in your cloud storage. Apart from the versions, Delta Lake also stores a transaction log to keep track of all the commits made to the table or blob store directory to provide ACID transactions. <strong>Delta Lake doesn’t care about number of partitions, only the number of files</strong></p>
+          
+
+          <p><a href="https://delta.io/">Delta Lake</a> is an <a href="https://github.com/delta-io/delta">open source storage layer</a> that brings reliability to <a href="https://databricks.com/discover/data-lakes/introduction">data lakes</a>. Delta Lake provides ACID transactions, scalable metadata handling, and unifies streaming and batch data processing. Delta Lake runs on top of your existing data lake and is fully compatible with Apache Spark APIs. Delta Lake uses versioned Parquet files to store your data in your cloud storage. Apart from the versions, Delta Lake also stores a transaction log to keep track of all the commits made to the table or blob store directory to provide ACID transactions. <strong>Delta Lake doesn’t care about number of partitions, only the number of files</strong></p>
 <ol>
 <li>allows time travel within a month → rollback to previous version to correct errors</li>
 <li>supports ACID → allow concurrent batch and streaming operations to write data with ACID guaranteed</li>
@@ -223,11 +212,20 @@
 <h3 id="create-table-as-select-ctas">Create Table as Select (CTAS)</h3>
 <p>CTAS statements automatically infer schema information from query results and do <strong>not</strong> support manual schema declaration.</p>
 <p>This means that CTAS statements are useful for external data ingestion from sources with well-defined schema, such as Parquet files and tables.</p>
-<p>If your source data is csv files, you may run into a few issues as CTAS statements also do not support specifying additional file options</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">CREATE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">OR</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">REPLACE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TABLE</span><span style="color:#a8757b"> </span>sales<span style="color:#a8757b"> </span><span style="color:#c2ffdf">AS</span><span style="color:#a8757b">
 </span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">SELECT</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">*</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">FROM</span><span style="color:#a8757b"> </span>parquet.<span style="color:#ffb8d1">`</span>path<span style="color:#ffb8d1">/</span><span style="color:#c2ffdf">to</span><span style="color:#ffb8d1">/</span>parquet<span style="color:#ffb8d1">/</span>files<span style="color:#ffb8d1">`</span>;<span style="color:#a8757b">
 </span></span></span></code></pre></div><p>Below, we show evolving a CTAS statement to include a number of additional configurations and metadata.</p>
-<p>Our SELECT clause leverages two built-in Spark SQL commands useful for file ingestion:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">CREATE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">OR</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">REPLACE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TABLE</span><span style="color:#a8757b"> </span>users_pii<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">COMMENT</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;Contains PII&#34;</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">LOCATION</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;/tmp/users_pii&#34;</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span>PARTITIONED<span style="color:#a8757b"> </span><span style="color:#c2ffdf">BY</span><span style="color:#a8757b"> </span>(first_touch_date)<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">AS</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span><span style="color:#c2ffdf">SELECT</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">*</span>,<span style="color:#a8757b"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">    </span><span style="color:#c2ffdf">cast</span>(<span style="color:#c2ffdf">cast</span>(user_first_touch_timestamp<span style="color:#ffb8d1">/</span><span style="color:#c5a3ff">1</span>e6<span style="color:#a8757b"> </span><span style="color:#c2ffdf">AS</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TIMESTAMP</span>)<span style="color:#a8757b"> </span><span style="color:#c2ffdf">AS</span><span style="color:#a8757b"> </span>DATE)<span style="color:#a8757b"> </span>first_touch_date,<span style="color:#a8757b"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">    </span><span style="color:#c2ffdf">current_timestamp</span>()<span style="color:#a8757b"> </span>updated,<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">    </span>input_file_name()<span style="color:#a8757b"> </span>source_file<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span><span style="color:#c2ffdf">FROM</span><span style="color:#a8757b"> </span>parquet.<span style="color:#ffb8d1">`</span>dbfs:<span style="color:#ffb8d1">/</span>ecommerce<span style="color:#ffb8d1">/</span>raw<span style="color:#ffb8d1">/</span>users<span style="color:#ffb8d1">-</span>historical<span style="color:#ffb8d1">/`</span>;<span style="color:#a8757b">
+</span></span></span></code></pre></div><p>Our SELECT clause leverages two built-in Spark SQL commands useful for file ingestion:</p>
 <ul>
 <li>current_timestamp() records the timestamp when the logic is executed</li>
 <li>input_file_name() records the source data file for each record in the table</li>
@@ -239,26 +237,16 @@
 <li>A LOCATION is specified, which will result in an external (rather than managed) table</li>
 <li>The table is PARTITIONED BY a date column (using disk partitioning); this means that the data from each data will exist within its own directory in the target storage location</li>
 </ul>
-<p><strong>NOTE</strong>: Partitioning is shown here primarily to demonstrate syntax and impact. Most Delta Lake tables (especially small-to-medium sized data) will not benefit from partitioning. Because partitioning physically separates data files, this approach can result in a small files problem and prevent file compaction and efficient data skipping. The benefits observed in Hive or HDFS do not translate to Delta Lake, and you should consult with an experienced Delta Lake architect before partitioning tables.</p>
+<p><strong>NOTE</strong>: Partitioning is shown here primarily to demonstrate syntax and impact. Most Delta Lake tables (especially small-to-medium sized data) will not benefit from partitioning. Because partitioning physically separates data files, this approach can result in a small files problem and prevent file compaction and efficient data skipping. The benefits observed in Hive or HDFS do not translate to Delta Lake. It&rsquo;s not recommended to partition table &lt;1GB, and it&rsquo;s best to have at least 1GB of data in each partition on disk.</p>
 <p><strong>As a best practice, you should default to non-partitioned tables for most use cases when working with Delta Lake.</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">CREATE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">OR</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">REPLACE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TABLE</span><span style="color:#a8757b"> </span>users_pii<span style="color:#a8757b">
-</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">COMMENT</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;Contains PII&#34;</span><span style="color:#a8757b">
-</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">LOCATION</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;${da.paths.working_dir}/tmp/users_pii&#34;</span><span style="color:#a8757b">
-</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span>PARTITIONED<span style="color:#a8757b"> </span><span style="color:#c2ffdf">BY</span><span style="color:#a8757b"> </span>(first_touch_date)<span style="color:#a8757b">
-</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">AS</span><span style="color:#a8757b">
-</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span><span style="color:#c2ffdf">SELECT</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">*</span>,<span style="color:#a8757b"> 
-</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">    </span><span style="color:#c2ffdf">cast</span>(<span style="color:#c2ffdf">cast</span>(user_first_touch_timestamp<span style="color:#ffb8d1">/</span><span style="color:#c5a3ff">1</span>e6<span style="color:#a8757b"> </span><span style="color:#c2ffdf">AS</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TIMESTAMP</span>)<span style="color:#a8757b"> </span><span style="color:#c2ffdf">AS</span><span style="color:#a8757b"> </span>DATE)<span style="color:#a8757b"> </span>first_touch_date,<span style="color:#a8757b"> 
-</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">    </span><span style="color:#c2ffdf">current_timestamp</span>()<span style="color:#a8757b"> </span>updated,<span style="color:#a8757b">
-</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">    </span>input_file_name()<span style="color:#a8757b"> </span>source_file<span style="color:#a8757b">
-</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span><span style="color:#c2ffdf">FROM</span><span style="color:#a8757b"> </span>parquet.<span style="color:#ffb8d1">`</span>dbfs:<span style="color:#ffb8d1">/</span>ecommerce<span style="color:#ffb8d1">/</span>raw<span style="color:#ffb8d1">/</span>users<span style="color:#ffb8d1">-</span>historical<span style="color:#ffb8d1">/`</span>;<span style="color:#a8757b">
-</span></span></span></code></pre></div><h3 id="create-tables-with-options">Create Tables with Options</h3>
-<p>To correctly ingest data from files such as csv to a Delta Lake table, we&rsquo;ll need to use a reference to the files that allows us to specify options.</p>
+<h3 id="create-tables-with-options">Create Tables with Options</h3>
+<p>If your source data is csv files, you may run into a few issues as CTAS statements also do not support specifying additional file options. To correctly ingest data from files such as csv to a Delta Lake table, we&rsquo;ll need to use a reference to the files that allows us to specify options.</p>
 <p>We can either create External Table or a Temp View , and then use this table or temp view as the source for a CTAS statement to successfully register the Delta table.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">CREATE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">OR</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">REPLACE</span><span style="color:#a8757b"> </span>TEMP<span style="color:#a8757b"> </span><span style="color:#c2ffdf">VIEW</span><span style="color:#a8757b"> </span>sales_tmp_vw<span style="color:#a8757b">
 </span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span>(order_id<span style="color:#a8757b"> </span>LONG,<span style="color:#a8757b"> </span>email<span style="color:#a8757b"> </span>STRING,<span style="color:#a8757b"> </span>transactions_timestamp<span style="color:#a8757b"> </span>LONG,<span style="color:#a8757b"> </span>total_item_quantity<span style="color:#a8757b"> </span>INTEGER,<span style="color:#a8757b"> </span>purchase_revenue_in_usd<span style="color:#a8757b"> </span>DOUBLE,<span style="color:#a8757b"> </span>unique_items<span style="color:#a8757b"> </span>INTEGER,<span style="color:#a8757b"> </span>items<span style="color:#a8757b"> </span>STRING)<span style="color:#a8757b">
 </span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">USING</span><span style="color:#a8757b"> </span>CSV<span style="color:#a8757b">
 </span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">OPTIONS</span><span style="color:#a8757b"> </span>(<span style="color:#a8757b">
-</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span>path<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;path/to/file&#34;</span>,<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span>path<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;path/to/csv_file&#34;</span>,<span style="color:#a8757b">
 </span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span>header<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;true&#34;</span>,<span style="color:#a8757b">
 </span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span><span style="color:#c2ffdf">delimiter</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#34;|&#34;</span><span style="color:#a8757b">
 </span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span>);<span style="color:#a8757b">
@@ -305,7 +293,7 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">CREATE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">OR</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">REPLACE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TABLE</span><span style="color:#a8757b"> </span>purchases_shallow_clone<span style="color:#a8757b">
 </span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span>SHALLOW<span style="color:#a8757b"> </span>CLONE<span style="color:#a8757b"> </span>purchases<span style="color:#a8757b">
 </span></span></span></code></pre></div><p>In either case, data modifications applied to the cloned version of the table will be tracked and stored separately from the source. Cloning is a great way to set up tables for testing SQL code while still in development.</p>
-<p>The transfer of <strong>comments</strong> and <strong>table</strong> <strong>properties</strong> does not depend on the <strong>type</strong> of clone. In either type of clones - <strong>deep</strong> and <strong>shallow,</strong> the <strong>table</strong> <strong>properties</strong> are passed to the <strong>clone</strong> as well whereas the <strong>comments</strong> are something <strong>native</strong> to a table. Thus, the <strong>comments</strong> added to a table are <strong>not</strong> passed on to the <strong>clones.</strong></p>
+<p>The transfer of <strong>comments</strong> and <strong>table</strong> <strong>properties</strong> does not depend on the <strong>type</strong> of clone. In either type of clones (<strong>deep</strong> and <strong>shallow</strong>),  the <strong>table</strong> <strong>properties</strong> are passed to the <strong>clone</strong> as well whereas the <strong>comments</strong> are something <strong>native</strong> to a table. Thus, the <strong>comments</strong> added to a table are <strong>not</strong> passed on to the <strong>clones.</strong></p>
 <p>Any changes made to a shallow cloned table will write new data files to the specified target directory, meaning that you can safely test writes, updates, and deletes without risking corruption of your original table. The Delta logs will automatically reference the correct files (from the source table and this clone directory) to materialize the current view of your dev table.</p>
 <h3 id="incremental-cloning">Incremental Cloning</h3>
 <p>If you examine the files in your backup table, you&rsquo;ll see that you have the same number of files as your source table. Upon closer examination, you&rsquo;ll note that file names and sizes have also been preserved by the clone.</p>
@@ -314,7 +302,7 @@
 <p>Vacuum against the source table that remove files of a specified version will cause data loss in a shallow clone tables. However, because deep clone created a full copy of our files and associated metadata, we still have access to our deep clone table.</p>
 <p>One of the useful features of deep cloning is the ability to set different table properties for file and log retention. This allows production tables to have optimized performance while maintaining files for auditing and regulatory compliance.</p>
 <h2 id="acid-in-delta-table">ACID in Delta Table</h2>
-<h3 id="crud-operations">CRUD Operations</h3>
+<h3 id="crud-create-read-update-delete-operations">CRUD (Create, Read, Update, Delete) Operations</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">CREATE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TABLE</span><span style="color:#a8757b"> </span>students<span style="color:#a8757b">
 </span></span></span><span style="display:flex;"><span><span style="color:#a8757b">  </span>(id<span style="color:#a8757b"> </span>INT,<span style="color:#a8757b"> </span>name<span style="color:#a8757b"> </span>STRING,<span style="color:#a8757b"> </span>value<span style="color:#a8757b"> </span>DOUBLE);<span style="color:#a8757b">
 </span></span></span></code></pre></div><p>We can use INSERT INTO to atomically append new rows to an existing Delta table. This allows for incremental updates to existing tables, which is much more efficient than overwriting each time. <code>INSERT INTO</code> can cause duplicated records</p>
@@ -821,97 +809,7 @@ function closeModal(event) {
 </span></span></span><span style="display:flex;"><span><span style="color:#a8757b">
 </span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#b0bec5">-- Reset retentionCheck
 </span></span></span><span style="display:flex;"><span><span style="color:#b0bec5"></span><span style="color:#c2ffdf">SET</span><span style="color:#a8757b"> </span>spark.databricks.delta.retentionDurationCheck.enabled<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">true</span>;<span style="color:#a8757b">
-</span></span></span></code></pre></div><h2 id="optimize-delta-tables">Optimize Delta Tables</h2>
-<p>In Delta Lake, it’s easy to run into small files issues. In most cases, we performed a number of operations where only one or several records were inserted.</p>
-<p>Files will be combined toward an optimal size (scaled based on the size of the table) by using the OPTIMIZE command. OPTIMIZE will replace existing data files by combining records and rewriting the results. OPTIMIZE created another version of our table</p>
-<p>When executing OPTIMIZE, users can optionally specify one or several fields for ZORDER indexing.  Z-Order speeds up data retrieval when filtering on provided fields by colocating data with similar values within data files.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>OPTIMIZE<span style="color:#a8757b"> </span>students<span style="color:#a8757b"> </span>ZORDER<span style="color:#a8757b"> </span><span style="color:#c2ffdf">BY</span><span style="color:#a8757b"> </span>id<span style="color:#a8757b">
-</span></span></span></code></pre></div><p>To modify metadata on the Delta table</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">ALTER</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TABLE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">table_name</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">SET</span><span style="color:#a8757b"> </span>TBLPROPERTIES<span style="color:#a8757b"> </span>(<span style="color:#a8757b">
-</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">   </span><span style="color:#1bc5e0">&#39;delta.columnMapping.mode&#39;</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#39;name&#39;</span>,<span style="color:#a8757b">
-</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">   </span><span style="color:#1bc5e0">&#39;delta.minReaderVersion&#39;</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#39;2&#39;</span>,<span style="color:#a8757b">
-</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">   </span><span style="color:#1bc5e0">&#39;delta.minWriterVersion&#39;</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#39;5&#39;</span>)<span style="color:#a8757b">
-</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">
-</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">ALTER</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TABLE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">table_name</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">SET</span><span style="color:#a8757b"> </span>TBLPROPERTIES<span style="color:#a8757b"> </span>(<span style="color:#1bc5e0">&#39;delta.columnMapping.mode&#39;</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#39;name&#39;</span>)<span style="color:#a8757b">
-</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">
-</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">alter</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">table</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">table_name</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">drop</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">column</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">column</span><span style="color:#a8757b">
-</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">
-</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">alter</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">table</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">table_name</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">drop</span><span style="color:#a8757b"> </span>columns<span style="color:#a8757b"> </span>(column1,<span style="color:#a8757b"> </span>column2)<span style="color:#a8757b">
-</span></span></span></code></pre></div><h2 id="schema-enforcement--evolution">Schema enforcement &amp; evolution</h2>
-<p>Delta enforces your schema by default, require explicit config option to evolve it</p>
-<ol>
-<li>occurs on write, cancel the tranx if schema doesn’t match, raise exception</li>
-<li>write data cannot have addition columns, but can have less column, cannot have diff data types</li>
-<li>tables cannot have columns same name with different case</li>
-</ol>
-<p>With Schema evolution:</p>
-<ol>
-<li>schema enforcement will no longer alert</li>
-<li>.option(”mergeSchema”, “true”) → use with append or overwrite the table, read-compatible schema changes: existing data can still be read. We can add new column, change data types (non-nullable to nullable), upcasts from byte to integer (not to long type). You cannot drop column, or rename column</li>
-<li>.option(”overwriteSchema”, “true”) → use with overwrite the table, non-read compatible schema change. We can drop a column, change column data type in place, rename column name that differ by case</li>
-</ol>
-<h2 id="delta-table-best-practices">Delta table best practices</h2>
-<h3 id="extract-table-metadata">Extract Table Metadata</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#c2ffdf">def</span> <span style="color:#ceb1ff">parse_table_keys</span>(database, table<span style="color:#ffb8d1">=</span><span style="color:#c2ffdf">None</span>):
-</span></span><span style="display:flex;"><span>    table_keys <span style="color:#ffb8d1">=</span> {}
-</span></span><span style="display:flex;"><span>    <span style="color:#c2ffdf">if</span> table:
-</span></span><span style="display:flex;"><span>        query <span style="color:#ffb8d1">=</span> <span style="color:#1bc5e0">f</span><span style="color:#1bc5e0">&#34;SHOW TABLES IN db_name LIKE &#39;</span><span style="color:#1bc5e0">{</span>table<span style="color:#1bc5e0">}</span><span style="color:#1bc5e0">&#39;&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#c2ffdf">else</span>:
-</span></span><span style="display:flex;"><span>        query <span style="color:#ffb8d1">=</span> <span style="color:#1bc5e0">f</span><span style="color:#1bc5e0">&#34;SHOW TABLES IN db_name&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#c2ffdf">for</span> table_item <span style="color:#ffb8d1">in</span> spark<span style="color:#ffb8d1">.</span>sql(query)<span style="color:#ffb8d1">.</span>collect():
-</span></span><span style="display:flex;"><span>        table_name <span style="color:#ffb8d1">=</span> table_item[<span style="color:#c5a3ff">1</span>]
-</span></span><span style="display:flex;"><span>        key_values <span style="color:#ffb8d1">=</span> spark<span style="color:#ffb8d1">.</span>sql(<span style="color:#1bc5e0">f</span><span style="color:#1bc5e0">&#34;DESCRIBE EXTENDED db_name.</span><span style="color:#1bc5e0">{</span>table_name<span style="color:#1bc5e0">}</span><span style="color:#1bc5e0">&#34;</span>)<span style="color:#ffb8d1">.</span>filter(<span style="color:#1bc5e0">&#34;col_name = &#39;Table Properties&#39;&#34;</span>)<span style="color:#ffb8d1">.</span>collect()[<span style="color:#c5a3ff">0</span>][<span style="color:#c5a3ff">1</span>][<span style="color:#c5a3ff">1</span>:<span style="color:#ffb8d1">-</span><span style="color:#c5a3ff">1</span>]<span style="color:#ffb8d1">.</span>split(<span style="color:#1bc5e0">&#34;,&#34;</span>)
-</span></span><span style="display:flex;"><span>        table_keys[table_name] <span style="color:#ffb8d1">=</span> [kv <span style="color:#c2ffdf">for</span> kv <span style="color:#ffb8d1">in</span> key_values <span style="color:#c2ffdf">if</span> <span style="color:#ffb8d1">not</span> kv<span style="color:#ffb8d1">.</span>startswith(<span style="color:#1bc5e0">&#34;delta.&#34;</span>)]
-</span></span><span style="display:flex;"><span>    <span style="color:#c2ffdf">return</span> table_keys
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>parse_table_keys(db_name)
-</span></span></code></pre></div><h3 id="design-table-schema">Design table schema</h3>
-<p>When configuring tables in Delta Lake, make sure you consider the following.</p>
-<ol>
-<li><strong>Precision</strong></li>
-</ol>
-<p>Both numeric and datetime types should be stored with the correct precision specified to:</p>
-<ul>
-<li>Ensure integrity with source systems</li>
-<li>Maintain precision and avoid rounding errors for downstream queries</li>
-<li>Avoid unnecessary storage costs (note the significant differences in bytes for <a href="https://spark.apache.org/docs/latest/sql-ref-datatypes.html">numeric types</a>)</li>
-</ul>
-<ol start="2">
-<li><strong>Datetime Filtering</strong></li>
-</ol>
-<p>If data will be frequently filtered by year, year &amp; month, day of week, date, or another datetime value, consider calculating these values at write time if not present in original data. (Pushdown filters work best on fields present in a table).</p>
-<ol start="3">
-<li>
-<p><strong>Case Sensitivity</strong>: Spark does not differentiate case by default.</p>
-</li>
-<li>
-<p><strong>Un-Nest Important Fields for Filtering</strong></p>
-</li>
-</ol>
-<p>Extract fields that might be useful for indexing or filtering to increase performance.</p>
-<ol start="5">
-<li><strong>Place Important Fields Early in the Schema</strong></li>
-</ol>
-<p>Fields that will be used for filtering and optimizations should appear at the beginning of the schema declaration.</p>
-<h3 id="file-statistics">File Statistics</h3>
-<p>By default, Delta Lake will capture statistics on the first 32 columns that appear in a table to allow for efficient file skipping. These statistics indicate:</p>
-<ul>
-<li>the total number of records per file</li>
-<li>minimum value in each column</li>
-<li>maximum value in each column</li>
-<li>null value counts for each of the columns</li>
-</ul>
-<p><strong>NOTE</strong>: These statistics are generally uninformative for string fields with very high cardinality (such as free text fields). You can omit these fields from statistic collection by <a href="https://docs.databricks.com/delta/optimizations/file-mgmt.html#data-skipping">moving them outside the first 32 columns or changing the number of columns on which statistics are collected</a>. Nested fields count when determining the first 32 columns, for example 4 struct fields with 8 nested fields will total to the 32 columns.</p>
-<h3 id="config-stats-on-table">Config Stats on table</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>files <span style="color:#ffb8d1">=</span> dbutils<span style="color:#ffb8d1">.</span>fs<span style="color:#ffb8d1">.</span>ls(<span style="color:#1bc5e0">f</span><span style="color:#1bc5e0">&#34;</span><span style="color:#1bc5e0">{</span>DA<span style="color:#ffb8d1">.</span>paths<span style="color:#ffb8d1">.</span>working_dir<span style="color:#1bc5e0">}</span><span style="color:#1bc5e0">/no_part_table/_delta_log&#34;</span>)
-</span></span><span style="display:flex;"><span>display(files)
-</span></span><span style="display:flex;"><span>display(spark<span style="color:#ffb8d1">.</span>read<span style="color:#ffb8d1">.</span>json(<span style="color:#1bc5e0">f</span><span style="color:#1bc5e0">&#34;</span><span style="color:#1bc5e0">{</span>DA<span style="color:#ffb8d1">.</span>paths<span style="color:#ffb8d1">.</span>working_dir<span style="color:#1bc5e0">}</span><span style="color:#1bc5e0">/no_part_table/_delta_log/00000000000000000000.json&#34;</span>))
-</span></span></code></pre></div><p>Note that columns used for Z-ordering need to have statistics collected. Even without additional optimization metrics, statistics will always be leveraged for file skipping.</p>
-<p><strong>NOTE</strong>: Calculating statistics on free-form text fields (product reviews, user messages, etc.) can be time consuming. For best performance, set these fields later in the schema and <a href="https://docs.databricks.com/delta/optimizations/file-mgmt.html#data-skipping">change the number of columns that statistics are collected on</a>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ffb8d1">%</span>sql
-</span></span><span style="display:flex;"><span>ANALYZE TABLE no_part_table 
-</span></span><span style="display:flex;"><span>COMPUTE STATISTICS FOR COLUMNS timestamp
-</span></span></code></pre></div>
+</span></span></span></code></pre></div>
         </div>
       </div>
     </div>

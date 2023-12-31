@@ -14,7 +14,8 @@
       
       <guid>https://anhcodes.dev/blog/deploy-debezium-aks/</guid>
       <description>This tutorial follows Debezium official documentation Deploying Debezium on Kubernetes, but modified for Azure Kubernetes Service and Azure Container Registry.
-Table of Content Table of Content 1. Prerequisites Azure CLI Azure Kubernetes Cluster Set up kubectl in local Interact with your AKS cluster in your terminal 2. Deploy strimzi operator 3. Create secrets and roles 4. Deploy kafka cluster 5. Deploy the database (mysql) 6. Deploy Kafka Connect Cluster Step 1: Create a secret for your container registry in the same k8s namespace Step 2: Modify the KafkaConnect Manifest yaml to build and push image to Container Registry.</description>
+Table of Content 1. Prerequisites You need an Azure account, Azure subscription, and Azure resource group before getting started. You also need to have some understanding of CLI, Docker, Kafka, Debezium, and Kubernetes
+Azure CLI If you haven&amp;rsquo;t set up your Azure CLI environment, follow this documentation to set it up.</description>
     </item>
     
   </channel>

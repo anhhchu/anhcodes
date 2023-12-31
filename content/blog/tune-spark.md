@@ -1,13 +1,14 @@
 ---
 title: "Spark working internals, and why should you care?"
 date: 2023-05-27 21:48:00
-featureImage: images/single-blog/tune-spark/spark.jpeg
-postImage: images/single-blog/tune-spark/spark.jpeg
+featureImage: images/single-blog/tune-spark/wormhole.gif
+postImage: images/single-blog/tune-spark/wormhole.gif
 categories: big-data
 tags: [spark]
 author: Anh Chu
+toc: Table of Contents
 ---
-{{< table_of_contents >}}
+
 
 Most Big Data developers and Data Engineers start learning Spark by writing SparkSQL codes to perform ETL on DataFrame (I know I did). I also wrote a post about [SparkSQL Programming](https://anhcodes.dev/blog/tune-spark-sql-programming/). However, we quickly learn that there’s more knowlege required to go from processing a few GBs of data to dealing with TBs and PBs of data, which is a challenge for big enterprises. Learning to write correct Spark codes is only a small part of the battle, you will need to understand the Spark Architecture and Spark working internals to correct tune Spark to handle true big data, and it’s the focus of this post. 
 

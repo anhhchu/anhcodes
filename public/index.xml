@@ -6,14 +6,34 @@
     <description>Recent content on anhcodes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 27 May 2023 21:48:00 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 30 Dec 2023 16:02:25 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Data Objects in Databricks</title>
+      <link>https://anhcodes.dev/blog/data-objects/</link>
+      <pubDate>Sat, 30 Dec 2023 16:02:25 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/blog/data-objects/</guid>
+      <description>Metastore and Catalog In Databricks, metadata of data Objects (tables, views, etc.) is registered in Metastore.
+Previously, Databricks uses Hive metastore by default to register schemas, tables, and views. However, it&amp;rsquo;s highly recommended to upgrade to Unity Catalog to access centralized access control, auditing, lineage, and data discovery capabilities.
+Catalog is a group of databases. If you want to use Unity Catalog, create and specify Catalog is required (Set up and manage Unity Catalog).</description>
+    </item>
+    
+    <item>
+      <title>Deep Dive Into Delta Lake</title>
+      <link>https://anhcodes.dev/blog/deep-dive-delta-lake/</link>
+      <pubDate>Mon, 07 Aug 2023 11:23:00 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/blog/deep-dive-delta-lake/</guid>
+      <description>Delta Lake is an open source storage layer that brings reliability to data lakes. Delta Lake provides ACID transactions, scalable metadata handling, and unifies streaming and batch data processing. Delta Lake runs on top of your existing data lake and is fully compatible with Apache Spark APIs. Delta Lake uses versioned Parquet files to store your data in your cloud storage. Apart from the versions, Delta Lake also stores a transaction log to keep track of all the commits made to the table or blob store directory to provide ACID transactions.</description>
+    </item>
+    
     <item>
       <title>Spark working internals, and why should you care?</title>
       <link>https://anhcodes.dev/blog/tune-spark/</link>
       <pubDate>Sat, 27 May 2023 21:48:00 +0000</pubDate>
       
       <guid>https://anhcodes.dev/blog/tune-spark/</guid>
-      <description>Spark Architecture Spark Cluster Components Spark Session Spark APIs Computation in Spark Spark Catalyst Optimizer Adaptive Query Execution Shuffle, Partitioning and Caching in Spark Partitioning Shuffle Cache in Spark Most Big Data developers and Data Engineers start learning Spark by writing SparkSQL codes to perform ETL on DataFrame (I know I did). I also wrote a post about SparkSQL Programming. However, we quickly learn that there’s more knowlege required to go from processing a few GBs of data to dealing with TBs and PBs of data, which is a challenge for big enterprises.</description>
+      <description>Most Big Data developers and Data Engineers start learning Spark by writing SparkSQL codes to perform ETL on DataFrame (I know I did). I also wrote a post about SparkSQL Programming. However, we quickly learn that there’s more knowlege required to go from processing a few GBs of data to dealing with TBs and PBs of data, which is a challenge for big enterprises. Learning to write correct Spark codes is only a small part of the battle, you will need to understand the Spark Architecture and Spark working internals to correct tune Spark to handle true big data, and it’s the focus of this post.</description>
     </item>
     
     <item>
@@ -23,7 +43,7 @@
       
       <guid>https://anhcodes.dev/blog/spark-sql-programming/</guid>
       <description>TL,DR - SparkSQL is a huge component of Spark Programming. This post introduces programming in SparkSQL through Spark DataFrame API. It&amp;rsquo;s important to be aware of Spark SQL built-in functions to be a more efficient Spark programmer
-What is SparkSQL DataFrame API in SparkSQL Read and write data with Spark DataFrame Columns in DF Rows in DF Data Operations in Spark DataFrame SparkSQL Built-in Functions 1. Aggregation functions 2. Datetime functions 3.</description>
+What is SparkSQL SparkSQL is one of the 4 APIs in Spark ecosystems. SparkSQL provides structured data processing with interfaces such as SQL or Dataframe API using Python, Scala, R, Java programming languages</description>
     </item>
     
     <item>
@@ -32,7 +52,8 @@ What is SparkSQL DataFrame API in SparkSQL Read and write data with Spark DataFr
       <pubDate>Mon, 22 May 2023 17:09:41 +0000</pubDate>
       
       <guid>https://anhcodes.dev/blog/debug-spark/</guid>
-      <description>You Spark job is running for a long time, what to do? Generally, long-running Spark jobs can be due to various factors. We like to call them the 5S - Spill, Skew, Shuffle, Storage, and Serialization. So, how do we identify the main culprit?
+      <description>You Spark job is running for a long time, what to do?
+Generally, long-running Spark jobs can be due to various factors. We like to call them the 5S - Spill, Skew, Shuffle, Storage, and Serialization. So, how do we identify the main culprit?
 🔎 Look for Skew: Are some of the tasks taking longer than others? Do you have a join operation?
 🔎 Look for Spill: Any out-of-memory errors? Do the executors have enough memory to finish their tasks?</description>
     </item>
@@ -47,23 +68,14 @@ What is SparkSQL DataFrame API in SparkSQL Read and write data with Spark DataFr
     </item>
     
     <item>
-      <title>The beauty of a data lakehouse</title>
-      <link>https://anhcodes.dev/blog/data-lakehouse/</link>
-      <pubDate>Tue, 11 Apr 2023 16:26:45 +0000</pubDate>
-      
-      <guid>https://anhcodes.dev/blog/data-lakehouse/</guid>
-      <description>Choosing Enterprise Data Solution is a key challenge for modern businesses. With the explosion of data in recent years, organizations need to be able to store, manage, and analyze vast amounts of information to gain insights and make informed decisions. Data lakes, data warehouses, and data lakehouses are three popular solutions for managing data. However, Data Lakehouse has recently become a trend in distributed data management system
-The battle: Data Warehouse vs Data Lake vs Data Lakehouse A data warehouse is a centralized repository that stores structured, processed data from a variety of sources.</description>
-    </item>
-    
-    <item>
       <title>Deploy Debezium and Kafka on AKS using Strimzi Operator</title>
       <link>https://anhcodes.dev/blog/deploy-debezium-aks/</link>
       <pubDate>Sat, 07 Jan 2023 00:19:27 +0000</pubDate>
       
       <guid>https://anhcodes.dev/blog/deploy-debezium-aks/</guid>
       <description>This tutorial follows Debezium official documentation Deploying Debezium on Kubernetes, but modified for Azure Kubernetes Service and Azure Container Registry.
-Table of Content Table of Content 1. Prerequisites Azure CLI Azure Kubernetes Cluster Set up kubectl in local Interact with your AKS cluster in your terminal 2. Deploy strimzi operator 3. Create secrets and roles 4. Deploy kafka cluster 5. Deploy the database (mysql) 6. Deploy Kafka Connect Cluster Step 1: Create a secret for your container registry in the same k8s namespace Step 2: Modify the KafkaConnect Manifest yaml to build and push image to Container Registry.</description>
+Table of Content 1. Prerequisites You need an Azure account, Azure subscription, and Azure resource group before getting started. You also need to have some understanding of CLI, Docker, Kafka, Debezium, and Kubernetes
+Azure CLI If you haven&amp;rsquo;t set up your Azure CLI environment, follow this documentation to set it up.</description>
     </item>
     
     <item>
@@ -82,27 +94,9 @@ Table of Content Table of Content 1. Prerequisites Azure CLI Azure Kubernetes Cl
       <pubDate>Thu, 15 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://anhcodes.dev/blog/query-performance/</guid>
-      <description>1. Best practices when Creating Tables 2. Identify slow-running QID and analyze compilation 3. Analyze the distributed query plan 4. Analyze a specific query plan 5. Analyze impacts of concurrent workload 1. Best practices when Creating Tables When creating table in Dedicated SQL Pool, choose the correct Distribution Column and Index for best query performance. Follow Best Practices in creating tables in Azure Synapse Analytics
-Remember to create and Update Stats on your new tables Table statistics for dedicated SQL pool in Azure Synapse Analytics</description>
-    </item>
-    
-    <item>
-      <title>Best Practices in creating tables in Azure Synapse Analytics</title>
-      <link>https://anhcodes.dev/blog/create-table-azure-synapse-analytics/</link>
-      <pubDate>Tue, 15 Nov 2022 23:24:30 +0000</pubDate>
-      
-      <guid>https://anhcodes.dev/blog/create-table-azure-synapse-analytics/</guid>
-      <description>As Dedicated SQL pool uses a scaled-out node based architecture, when creating tables in Dedicated SQL Pool, remember to specify the distribution (sharding strategy) and index for your tables.
-Dedicated SQL Pool Architecture Choosing Distribution: The data is sharded into distributions to optimize the performance of the system. You can choose which sharding pattern to use to distribute the data when you define the table. These sharding patterns are supported:</description>
-    </item>
-    
-    <item>
-      <title>Azure Synapse Analytics - Data Lakehouse on Azure</title>
-      <link>https://anhcodes.dev/blog/synapse/</link>
-      <pubDate>Tue, 15 Nov 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://anhcodes.dev/blog/synapse/</guid>
-      <description>Table of Contents Table of Contents What is Azure Synapse Analytics? What is Dedicated SQL Pool? What is Serverless SQL Pool? Dedicated vs Serverless SQL Pool Comparison Azure Synapse Analytics, AWS Redshift, Google Big Query Comparison What is Azure Synapse Analytics? Azure Synapse Analytics is an integrated data platform that brings together SQL technologies used in enterprise data warehousing such as Dedicated SQL Pool and Serverless SQL Pool, Synapse Spark Pool used for big data, Data Explorer for log and time series analytics, Synapse Pipelines for data integration and ETL/ELT, and deep integration with other Azure services such as Power BI, CosmosDB, and AzureML.</description>
+      <description>1. Best practices when Creating Tables When creating table in Dedicated SQL Pool, choose the correct Distribution Column and Index for best query performance. Follow Best Practices in creating tables in Azure Synapse Analytics
+Remember to create and Update Stats on your new tables Table statistics for dedicated SQL pool in Azure Synapse Analytics
+2. Identify slow-running QID and analyze compilation To best determine what is causing any given query&amp;rsquo;s slow performance, you will need to identify an example long-running query:</description>
     </item>
     
     <item>

@@ -11,10 +11,6 @@ author: Anh Chu
 draft: True
 ---
 
-## Table of Content
-
-{{< table_of_contents >}}
-
 ## What is Stable Diffusion?
 
 Stable Diffusion is a deep learning model that can generate detailed images based on text descriptions. Developed in collaboration with academic researchers and non-profit organizations by Stability AI, it is a kind of deep generative neural network known as a latent diffusion model. It can be applied to various tasks such as inpainting, outpainting, and generating image-to-image translations guided by a text prompt. Notably, Stable Diffusion's code and model weights have been publicly released and it can run on most consumer hardware equipped with a modest GPU with at least 8 GB VRAM. This makes it accessible to a wider range of users who can utilize the model to generate photo-realistic images based on text descriptions.

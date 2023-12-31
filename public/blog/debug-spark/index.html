@@ -154,7 +154,7 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="singleBlog__feature">
-          <img src=https://anhcodes.dev/images/single-blog/debug-spark/0.png alt="feature-image">
+          <img src=https://anhcodes.dev/images/single-blog/debug-spark/bear_debug.jpeg alt="feature-image">
           <center><figcaption style="font-size: 10px; margin-top: 20px;">  </figcaption></center>
         </div>
       </div>
@@ -164,17 +164,8 @@
         <div class="singleBlog__content">
 
           
-
-          <p>You Spark job is running for a long time, what to do? Generally, long-running Spark jobs can be due to various factors. We like to call them the 5S - Spill, Skew, Shuffle, Storage, and Serialization. So, how do we identify the main culprit?</p>
-<p>🔎 Look for Skew: Are some of the tasks taking longer than others? Do you have a join operation?</p>
-<p>🔎 Look for Spill: Any out-of-memory errors? Do the executors have enough memory to finish their tasks? Got any disk spills?</p>
-<p>🔎 Look for Shuffle: Large amounts of data being shuffled across executors? Do you have a join operation?</p>
-<p>🔎 Look for Storage Issues: Do you have small files or highly nested directory structure?</p>
-<p>🔎 Look for inefficient Spark code, or serialization issues.</p>
-<p>Now, the solution may vary depending on the root cause. Most of the times, the root cause indicators will show up in the SparkUI and it’s important that you understand how to read it.</p>
-<p>In general, always try to cut down the time Spark takes to load data into memory, parallelize tasks across executors, and scale the memory according to data size.</p>
-<div class="toc">
-    <nav id="TableOfContents">
+            <h3>Table of Contents</h3>
+            <nav id="TableOfContents">
   <ul>
     <li><a href="#skew-imbalance-partitions">Skew [imbalance partitions]</a>
       <ul>
@@ -204,8 +195,17 @@
     <li><a href="#reference">Reference</a></li>
   </ul>
 </nav>
-</div>
-  
+          
+
+          <p>You Spark job is running for a long time, what to do?</p>
+<p>Generally, long-running Spark jobs can be due to various factors. We like to call them the 5S - Spill, Skew, Shuffle, Storage, and Serialization. So, how do we identify the main culprit?</p>
+<p>🔎 Look for Skew: Are some of the tasks taking longer than others? Do you have a join operation?</p>
+<p>🔎 Look for Spill: Any out-of-memory errors? Do the executors have enough memory to finish their tasks? Got any disk spills?</p>
+<p>🔎 Look for Shuffle: Large amounts of data being shuffled across executors? Do you have a join operation?</p>
+<p>🔎 Look for Storage Issues: Do you have small files or highly nested directory structure?</p>
+<p>🔎 Look for inefficient Spark code, or serialization issues.</p>
+<p>Now, the solution may vary depending on the root cause. Most of the times, the root cause indicators will show up in the SparkUI and it’s important that you understand how to read it.</p>
+<p>In general, always try to cut down the time Spark takes to load data into memory, parallelize tasks across executors, and scale the memory according to data size.</p>
 <h2 id="skew-imbalance-partitions">Skew [imbalance partitions]</h2>
 <p><em>TL,DR - Skew is caused by imbalance partitions. To fix Skew, try to repartition data, or set SkewHint when reading in data from disk to memory. If Skew is caused by partition imbalance after shuffling stage, enable SkewJoin option with Adaptive Query Execution, and set the correct shuffle partitions size. In most cases, turning on Adaptive Query Execution can help mitigate Skew issue.</em></p>
 <p>Let&rsquo;s talk about one of the most common issues you might encounter in Spark - &ldquo;skew&rdquo;. Skew refers to an imbalance in partition sizes, which can also lead to a spill. When you read in data in Spark, it&rsquo;s typically divided into partitions of 128 MB, distributed evenly according to the <code>maxPartitionBytes</code> setting. However, during transformations, Spark will need to shuffle your data, and some partitions may end up having significantly more data than others, creating skew in your data.</p>

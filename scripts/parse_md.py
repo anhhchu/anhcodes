@@ -17,7 +17,7 @@ def parse_md(md_path):
     # Remove data block between --- and ---
     markdown_content = re.sub(r'^---\n.*?\n---\n', '', markdown_content, flags=re.DOTALL | re.MULTILINE)
 
-    # Remove {{< table_of_contents >}}
+    # Remove 
     markdown_content = re.sub(r'{{<\s*table_of_contents\s*>}}\n?', '', markdown_content)
 
     # Replace image blocks with URL

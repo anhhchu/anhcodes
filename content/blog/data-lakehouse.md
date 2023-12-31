@@ -6,6 +6,7 @@ postImage: /images/single-blog/data-lakehouse.png
 categories: data-lakehouse
 tags: [data-warehouse, data-lakehouse, data-lake]
 author: Anh Chu
+draft: True
 ---
 
 Choosing Enterprise Data Solution is a key challenge for modern businesses. With the explosion of data in recent years, organizations need to be able to store, manage, and analyze vast amounts of information to gain insights and make informed decisions. Data lakes, data warehouses, and data lakehouses are three popular solutions for managing data. However, Data Lakehouse has recently become a trend in distributed data management system 

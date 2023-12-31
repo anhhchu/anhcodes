@@ -1,14 +1,17 @@
 ---
 title: "Debug long running Spark job"
 date: 2023-05-22 17:09:41
-featureImage: images/single-blog/debug-spark/0.png
-postImage: images/single-blog/debug-spark/0.png
+featureImage: images/single-blog/debug-spark/bear_debug.jpeg
+postImage: images/single-blog/debug-spark/bear_debug.jpeg
 categories: big-data
 tags: [spark]
 author: Anh Chu
+toc: Table of Contents
 ---
 
-You Spark job is running for a long time, what to do? Generally, long-running Spark jobs can be due to various factors. We like to call them the 5S - Spill, Skew, Shuffle, Storage, and Serialization. So, how do we identify the main culprit?
+You Spark job is running for a long time, what to do?
+
+ Generally, long-running Spark jobs can be due to various factors. We like to call them the 5S - Spill, Skew, Shuffle, Storage, and Serialization. So, how do we identify the main culprit?
 
 🔎 Look for Skew: Are some of the tasks taking longer than others? Do you have a join operation?
 
@@ -24,7 +27,7 @@ Now, the solution may vary depending on the root cause. Most of the times, the r
 
 In general, always try to cut down the time Spark takes to load data into memory, parallelize tasks across executors, and scale the memory according to data size. 
 
-{{< table_of_contents >}}
+
 
 ## Skew [imbalance partitions]
 

@@ -154,7 +154,7 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="singleBlog__feature">
-          <img src=https://anhcodes.dev/images/single-blog/tune-spark/spark.jpeg alt="feature-image">
+          <img src=https://anhcodes.dev/images/single-blog/tune-spark/wormhole.gif alt="feature-image">
           <center><figcaption style="font-size: 10px; margin-top: 20px;">  </figcaption></center>
         </div>
       </div>
@@ -164,9 +164,8 @@
         <div class="singleBlog__content">
 
           
-
-          <div class="toc">
-    <nav id="TableOfContents">
+            <h3>Table of Contents</h3>
+            <nav id="TableOfContents">
   <ul>
     <li><a href="#spark-architecture">Spark Architecture</a>
       <ul>
@@ -187,12 +186,10 @@
         <li><a href="#shuffle">Shuffle</a></li>
         <li><a href="#cache-in-spark">Cache in Spark</a></li>
       </ul>
-    </li>
-  </ul>
 </nav>
-</div>
-  
-<p>Most Big Data developers and Data Engineers start learning Spark by writing SparkSQL codes to perform ETL on DataFrame (I know I did). I also wrote a post about <a href="https://anhcodes.dev/blog/tune-spark-sql-programming/">SparkSQL Programming</a>. However, we quickly learn that there’s more knowlege required to go from processing a few GBs of data to dealing with TBs and PBs of data, which is a challenge for big enterprises. Learning to write correct Spark codes is only a small part of the battle, you will need to understand the Spark Architecture and Spark working internals to correct tune Spark to handle true big data, and it’s the focus of this post.</p>
+          
+
+          <p>Most Big Data developers and Data Engineers start learning Spark by writing SparkSQL codes to perform ETL on DataFrame (I know I did). I also wrote a post about <a href="https://anhcodes.dev/blog/tune-spark-sql-programming/">SparkSQL Programming</a>. However, we quickly learn that there’s more knowlege required to go from processing a few GBs of data to dealing with TBs and PBs of data, which is a challenge for big enterprises. Learning to write correct Spark codes is only a small part of the battle, you will need to understand the Spark Architecture and Spark working internals to correct tune Spark to handle true big data, and it’s the focus of this post.</p>
 <h2 id="spark-architecture">Spark Architecture</h2>
 <p>First, let this sink in: Spark is an <strong>in-memory</strong>, <strong>parallel processing engine</strong> that is very <strong>scalable.</strong>  The more data you have, the more powerful Spark can become that sets it apart from other processing engines. Spark is faster than Map Reduce paradigm because it processes data in memory, which means that it can reduce the disk IO that normally slows down Map Reduce jobs. Spark is fast because of the ability to process data in parallel.</p>
 <p>Parallelism is key enabler of Spark efficiency. The Spark Architecture is designed so that you can add new computers to process growing amount of big data in parallel.</p>

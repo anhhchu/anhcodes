@@ -6,13 +6,14 @@ featureImage: /images/single-blog/cdc/aksdbz.png
 postImage: /images/single-blog/cdc/aksdbz.png
 categories: data-engineering
 tags: [kafka, kubernetes, debezium, strimzi, change-data-capture, docker]
+toc: Table of Contents
 ---
 
 This tutorial follows Debezium official documentation [Deploying Debezium on Kubernetes](https://debezium.io/documentation/reference/stable/operations/kubernetes.html), but modified for Azure Kubernetes Service and Azure Container Registry.
 
 ## Table of Content
 
-{{< table_of_contents >}}
+
 
 ## 1. Prerequisites
 
