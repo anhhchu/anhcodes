@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Simple way to write Spark Dataframe from Azure Databricks to Azure Synapse</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <!-- Slick Carousel -->
+  <link rel="stylesheet" href="https://anhcodes.dev/plugins/slick/slick.css" />
+  <link rel="stylesheet" href="https://anhcodes.dev/plugins/slick/slick-theme.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://anhcodes.dev/plugins/font-awesome/css/font-awesome.min.css" />
+
+  <!-- Magnific Popup -->
+  <link rel="stylesheet" href="https://anhcodes.dev/plugins/magnafic-popup/magnific-popup.css" />
+
+  <!-- Stylesheets -->
+  
+  <link href="https://anhcodes.dev/scss/style.min.css" rel="stylesheet" />
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="https://anhcodes.dev/images/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="https://anhcodes.dev/images/favicon.png" type="image/x-icon" />
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G09NWG7ZSN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-G09NWG7ZSN');
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.37.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.11.0/dist/algoliasearch.umd.min.js"></script>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.4.5/themes/satellite-min.css" integrity="sha256-TehzF/2QvNKhGQrrNpoOb2Ck4iGZ1J/DI4pkd2oUsBc=" crossorigin="anonymous">  
+  
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a href="https://anhcodes.dev/" class="navbar-brand">
+      <img src="https://anhcodes.dev/images/favicon.png" alt="site-logo">
+    </a>
+    <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+      <ul class="nav navbar-nav main-navigation my-0 mx-auto">
+        
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#home"
+            class="nav-link text-dark text-sm-center p-2 ">Home</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#about"
+            class="nav-link text-dark text-sm-center p-2 ">About</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#resume"
+            class="nav-link text-dark text-sm-center p-2 ">Experiences</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#skills"
+            class="nav-link text-dark text-sm-center p-2 ">Skills</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#testimonial"
+            class="nav-link text-dark text-sm-center p-2 ">Testimonials</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://anhcodes.dev/#blog"
+            class="nav-link text-dark text-sm-center p-2 ">Blog</a>
+        </li>
+        
+      </ul>
+      <div class="navbar-nav">
+        <a href="https://anhcodes.dev/contact" class="btn btn-primary btn-zoom hire_button">Contact Me</a>
+      </div>
+    </div>
+  </div>
+</nav>
+  <div id="content">
+    
+
+<header class="breadCrumb">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 text-center">
+        <h3 class="breadCrumb__title">Simple way to write Spark Dataframe from Azure Databricks to Azure Synapse</h3>
+        <nav aria-label="breadcrumb" class="d-flex justify-content-center">
+          <ol class="breadcrumb align-items-center">
+            <li class="breadcrumb-item"><a href=https://anhcodes.dev/>Home</a></li>
+            <li class="breadcrumb-item"><a href=https://anhcodes.dev/blog>All Posts</a></li>
+            <li class="breadcrumb-item"><a href=https://anhcodes.dev//tags>All Tags</a></li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <ul class="post-meta">
+      <li>
+        <i class="fa fa-calendar"></i>
+        January 2, 2024
+      </li>
+      <li>
+        <i class="fa fa-clock-o"></i>
+        3 mins read
+      </li>
+      <li>
+        <i class="fa fa-user"></i>
+        Anh Chu
+      </li>
+    </ul>
+    <ul class="post-meta">
+      </li>
+      
+      <li>
+        <i class="fa fa-tag"></i>
+        
+          <a class="text-lowercase" href="https://anhcodes.dev/tags/spark-delta-lake-tutorial/">spark delta-lake tutorial</a>
+        
+      </li>
+      
+    </ul>
+  </div>
+  </div>
+  </div>
+  </div>
+</header>
+
+<section class="section singleBlog">
+  <div class="svg-img">
+    <img src=https://anhcodes.dev/images/hero/hero-background-svg.svg alt="">
+  </div>
+  <div class="animate-shape">
+    <img src=https://anhcodes.dev/images/skill/skill-background-shape.svg alt="">
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="singleBlog__feature">
+          <img src=https://anhcodes.dev/images/single-blog/databricks-to-synapse/0.png alt="feature-image">
+          <center><figcaption style="font-size: 10px; margin-top: 20px;">  </figcaption></center>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-lg-12">
+        <div class="singleBlog__content">
+
+          
+            <h3>Table of Contents</h3>
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#step-1-generate-test-data">Step 1: Generate test data</a></li>
+    <li><a href="#step-2-create-customized-login">Step 2: Create customized login</a></li>
+    <li><a href="#step-3-use-etl-login-with-largerc-to-write-data">Step 3: Use etl login with largerc to write data</a></li>
+  </ul>
+</nav>
+          
+
+          <h2 id="step-1-generate-test-data">Step 1: Generate test data</h2>
+<p>Below spark code generates a dataframe of 3 columns and 100M rows (around 2GB of data)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ffb8d1">import</span> random
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ffb8d1">from</span> pyspark.sql.functions <span style="color:#ffb8d1">import</span> rand, randn, col, lit
+</span></span><span style="display:flex;"><span><span style="color:#ffb8d1">from</span> pyspark.sql.types <span style="color:#ffb8d1">import</span> StructType, StructField, TimestampType, StringType, DecimalType, IntegerType
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>schema <span style="color:#ffb8d1">=</span> StructType([
+</span></span><span style="display:flex;"><span>  StructField(<span style="color:#1bc5e0">&#34;purchase_ts&#34;</span>, TimestampType(), <span style="color:#c2ffdf">True</span>),
+</span></span><span style="display:flex;"><span>  StructField(<span style="color:#1bc5e0">&#34;customer_id&#34;</span>, IntegerType(), <span style="color:#c2ffdf">True</span>),
+</span></span><span style="display:flex;"><span>  StructField(<span style="color:#1bc5e0">&#34;purchase_amount&#34;</span>, DecimalType(<span style="color:#c5a3ff">18</span>,<span style="color:#c5a3ff">2</span>), <span style="color:#c2ffdf">True</span>)
+</span></span><span style="display:flex;"><span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#b0bec5"># Modified customer_name to use a random name from the customers list</span>
+</span></span><span style="display:flex;"><span>df <span style="color:#ffb8d1">=</span> spark<span style="color:#ffb8d1">.</span>range(<span style="color:#c5a3ff">100000000</span>)\
+</span></span><span style="display:flex;"><span>  <span style="color:#ffb8d1">.</span>withColumn(<span style="color:#1bc5e0">&#39;purchase_ts&#39;</span>, (rand()<span style="color:#ffb8d1">*</span><span style="color:#c5a3ff">1262275200</span> <span style="color:#ffb8d1">+</span> <span style="color:#c5a3ff">1577836800</span>)<span style="color:#ffb8d1">.</span>cast(<span style="color:#1bc5e0">&#39;timestamp&#39;</span>))\
+</span></span><span style="display:flex;"><span>  <span style="color:#ffb8d1">.</span>withColumn(<span style="color:#1bc5e0">&#39;customer_id&#39;</span>, (rand()<span style="color:#ffb8d1">*</span>(<span style="color:#c5a3ff">100000000</span><span style="color:#ffb8d1">-</span><span style="color:#c5a3ff">1</span>)<span style="color:#ffb8d1">+</span><span style="color:#c5a3ff">1</span>)<span style="color:#ffb8d1">.</span>cast(<span style="color:#1bc5e0">&#39;integer&#39;</span>))\
+</span></span><span style="display:flex;"><span>  <span style="color:#ffb8d1">.</span>withColumn(<span style="color:#1bc5e0">&#39;purchase_amount&#39;</span>, (rand()<span style="color:#ffb8d1">*</span>(<span style="color:#c5a3ff">1001</span><span style="color:#ffb8d1">-</span><span style="color:#c5a3ff">1</span>)<span style="color:#ffb8d1">+</span><span style="color:#c5a3ff">1</span>)<span style="color:#ffb8d1">.</span>cast(<span style="color:#1bc5e0">&#39;decimal(18,2)&#39;</span>))\
+</span></span><span style="display:flex;"><span>  <span style="color:#ffb8d1">.</span>drop(<span style="color:#1bc5e0">&#39;id&#39;</span>)\
+</span></span><span style="display:flex;"><span>  <span style="color:#ffb8d1">.</span>select(<span style="color:#1bc5e0">&#39;purchase_ts&#39;</span>, <span style="color:#1bc5e0">&#39;customer_id&#39;</span>, <span style="color:#1bc5e0">&#39;purchase_amount&#39;</span>
+</span></span></code></pre></div><h2 id="step-2-create-customized-login">Step 2: Create customized login</h2>
+<ol>
+<li>In Synapse studio, use master database to create etl login</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">IF</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">NOT</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">EXISTS</span><span style="color:#a8757b"> </span>(<span style="color:#c2ffdf">SELECT</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">*</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">FROM</span><span style="color:#a8757b"> </span>sys.sql_logins<span style="color:#a8757b"> </span><span style="color:#c2ffdf">WHERE</span><span style="color:#a8757b"> </span>name<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#39;etl&#39;</span>)<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">BEGIN</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">CREATE</span><span style="color:#a8757b"> </span>LOGIN<span style="color:#a8757b"> </span>[etl]<span style="color:#a8757b"> </span><span style="color:#c2ffdf">WITH</span><span style="color:#a8757b"> </span>PASSWORD<span style="color:#ffb8d1">=</span><span style="color:#1bc5e0">&#39;&lt;password&gt;&#39;</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">END</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span>;<span style="color:#a8757b">
+</span></span></span></code></pre></div><ol start="2">
+<li>save elt login password to azure keyvault</li>
+</ol>
+
+<div class="image">
+  <style>
+    .img-responsive {
+      display: block;
+      height: auto;
+      max-width: 100%;
+      cursor: pointer;
+    }
+  </style>
+  <p>
+    <center><img src="https://anhcodes.dev/images/single-blog/databricks-to-synapse/Untitled.png" alt="blog-img" class="img-responsive" onclick="openModal(this)"></center>
+  </p>
+</div>
+
+<script>
+function openModal(img) {
+  var modal = document.createElement('div');
+  modal.classList.add('modal');
+  modal.innerHTML = '<div class="modal-content"><img src="' + img.src + '"></div>';
+  document.body.appendChild(modal);
+  modal.addEventListener('click', closeModal);
+}
+
+function closeModal(event) {
+  if (event.target.classList.contains('modal')) {
+    document.body.removeChild(event.target);
+  }
+}
+</script>
+
+<style>
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 80%;
+  max-height: 80%;
+  overflow: auto;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+}
+</style>
+
+  
+<ol start="3">
+<li>In Synapse studio, create user etl from etl login (use regular database)</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">IF</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">NOT</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">EXISTS</span><span style="color:#a8757b"> </span>(<span style="color:#c2ffdf">SELECT</span><span style="color:#a8757b"> </span><span style="color:#ffb8d1">*</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">FROM</span><span style="color:#a8757b"> </span>sys.database_principals<span style="color:#a8757b"> </span><span style="color:#c2ffdf">WHERE</span><span style="color:#a8757b"> </span>name<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#39;etl&#39;</span>)<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">BEGIN</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">CREATE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">USER</span><span style="color:#a8757b"> </span>[etl]<span style="color:#a8757b"> </span><span style="color:#c2ffdf">FOR</span><span style="color:#a8757b"> </span>LOGIN<span style="color:#a8757b"> </span>[etl]<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">END</span>;<span style="color:#a8757b">
+</span></span></span></code></pre></div><ol start="4">
+<li>In Synapse Studio, create workload classifier and specify the workload_group for etl user. You can also specify</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#b0bec5">-- DROP WORKLOAD CLASSIFIER [wgcETL];
+</span></span></span><span style="display:flex;"><span><span style="color:#b0bec5"></span><span style="color:#c2ffdf">CREATE</span><span style="color:#a8757b"> </span>WORKLOAD<span style="color:#a8757b"> </span>CLASSIFIER<span style="color:#a8757b"> </span>[wgcETL]<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">WITH</span><span style="color:#a8757b"> </span>(WORKLOAD_GROUP<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#39;largerc&#39;</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">      </span>,MEMBERNAME<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#39;etl&#39;</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">      </span>,IMPORTANCE<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span>normal);<span style="color:#a8757b">
+</span></span></span></code></pre></div><ol start="5">
+<li>grant db_owner role to etl user</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">EXEC</span><span style="color:#a8757b"> </span>sp_addrolemember<span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#39;db_owner&#39;</span>,<span style="color:#a8757b"> </span><span style="color:#1bc5e0">&#39;etl&#39;</span>;<span style="color:#a8757b">
+</span></span></span></code></pre></div><h2 id="step-3-use-etl-login-with-largerc-to-write-data">Step 3: Use etl login with largerc to write data</h2>
+<ul>
+<li>etl user login password can be retrieved from azure key vault secret scope <code>dbutils.secrets.get(scope='anhkeyvault', key='etl')</code>. To register azure keyvault as secret scope on Databricks, follow this <a href="https://learn.microsoft.com/en-us/azure/databricks/security/secrets/secret-scopes#--create-an-azure-key-vault-backed-secret-scope">instruction</a>.</li>
+<li>If target table does not exist in Synapse, a new table is created with round robin distribution</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>(
+</span></span><span style="display:flex;"><span>df<span style="color:#ffb8d1">.</span>write
+</span></span><span style="display:flex;"><span>  <span style="color:#ffb8d1">.</span>format(<span style="color:#1bc5e0">&#34;com.databricks.spark.sqldw&#34;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#ffb8d1">.</span>option(<span style="color:#1bc5e0">&#34;url&#34;</span>, <span style="color:#1bc5e0">f</span><span style="color:#1bc5e0">&#34;jdbc:sqlserver://anhsynapse.sql.azuresynapse.net:1433;database=anh_dedicated_sql;user=etl@anhsynapse;password=</span><span style="color:#1bc5e0">{</span>dbutils<span style="color:#ffb8d1">.</span>secrets<span style="color:#ffb8d1">.</span>get(scope<span style="color:#ffb8d1">=</span><span style="color:#1bc5e0">&#39;anhkeyvault&#39;</span>, key<span style="color:#ffb8d1">=</span><span style="color:#1bc5e0">&#39;etl&#39;</span>)<span style="color:#1bc5e0">}</span><span style="color:#1bc5e0">;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.sql.azuresynapse.net;loginTimeout=30;&#34;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#ffb8d1">.</span>option(<span style="color:#1bc5e0">&#34;forwardSparkAzureStorageCredentials&#34;</span>, <span style="color:#1bc5e0">&#34;true&#34;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#ffb8d1">.</span>option(<span style="color:#1bc5e0">&#34;dbTable&#34;</span>, <span style="color:#1bc5e0">&#34;dbo.purchases&#34;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#ffb8d1">.</span>option(<span style="color:#1bc5e0">&#34;tempDir&#34;</span>, <span style="color:#1bc5e0">&#34;abfss://temp@anhadls.dfs.core.windows.net/databricks&#34;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#ffb8d1">.</span>mode(<span style="color:#1bc5e0">&#34;append&#34;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#ffb8d1">.</span>save()
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><ul>
+<li>
+<p>Under the hood:</p>
+<ul>
+<li>this code will export the dataframe into parquet snappy format to the specified tempDir cloud storage location. In this case, It took about 33 secs for Spark to export this 2GB of data into 4 snappy parquet files on ADLS cloud storage</li>
+</ul>
+
+    <div class="image">
+      <style>
+        .img-responsive {
+          display: block;
+          height: auto;
+          max-width: 100%;
+          cursor: pointer;
+        }
+      </style>
+      <p>
+        <center><img src="https://anhcodes.dev/images/single-blog/databricks-to-synapse/Untitled%201.png" alt="blog-img" class="img-responsive" onclick="openModal(this)"></center>
+      </p>
+    </div>
+    
+    <script>
+    function openModal(img) {
+      var modal = document.createElement('div');
+      modal.classList.add('modal');
+      modal.innerHTML = '<div class="modal-content"><img src="' + img.src + '"></div>';
+      document.body.appendChild(modal);
+      modal.addEventListener('click', closeModal);
+    }
+    
+    function closeModal(event) {
+      if (event.target.classList.contains('modal')) {
+        document.body.removeChild(event.target);
+      }
+    }
+    </script>
+    
+    <style>
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .modal-content {
+      max-width: 80%;
+      max-height: 80%;
+      overflow: auto;
+    }
+    
+    .modal-content img {
+      width: 100%;
+      height: auto;
+    }
+    </style>
+    
+      
+<ul>
+<li>
+<p>After that, Azure Synapse will leverage <code>COPY</code> statement to transfer large volumes of data efficiently between an Azure Databricks cluster and an Azure Synapse instance using an Azure Data Lake Storage Gen2 storage account for temporary staging (read more <a href="https://learn.microsoft.com/en-us/azure/databricks/connect/external-systems/synapse-analytics#python">here</a>)</p>
+</li>
+<li>
+<p>You can go to Query Activity tab in your dedicated sql pool portal to monitor the query. Based on this view, it took around 2 mins to copy around 2GB from cloud storage to Synapse</p>
+</li>
+</ul>
+
+    <div class="image">
+      <style>
+        .img-responsive {
+          display: block;
+          height: auto;
+          max-width: 100%;
+          cursor: pointer;
+        }
+      </style>
+      <p>
+        <center><img src="https://anhcodes.dev/images/single-blog/databricks-to-synapse/Untitled%202.png" alt="blog-img" class="img-responsive" onclick="openModal(this)"></center>
+      </p>
+    </div>
+    
+    <script>
+    function openModal(img) {
+      var modal = document.createElement('div');
+      modal.classList.add('modal');
+      modal.innerHTML = '<div class="modal-content"><img src="' + img.src + '"></div>';
+      document.body.appendChild(modal);
+      modal.addEventListener('click', closeModal);
+    }
+    
+    function closeModal(event) {
+      if (event.target.classList.contains('modal')) {
+        document.body.removeChild(event.target);
+      }
+    }
+    </script>
+    
+    <style>
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .modal-content {
+      max-width: 80%;
+      max-height: 80%;
+      overflow: auto;
+    }
+    
+    .modal-content img {
+      width: 100%;
+      height: auto;
+    }
+    </style>
+    
+      
+</li>
+<li>
+<p>You can also create a hash distributed table with below query in Synapse studio</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">CREATE</span><span style="color:#a8757b"> </span><span style="color:#c2ffdf">TABLE</span><span style="color:#a8757b"> </span>[dbo].[purchases2]<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span>(<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">    </span>[purchase_ts]<span style="color:#a8757b"> </span>[datetime2](<span style="color:#c5a3ff">7</span>)<span style="color:#a8757b">  </span><span style="color:#c2ffdf">NULL</span>,<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">    </span>[customer_id]<span style="color:#a8757b"> </span>[int]<span style="color:#a8757b">  </span><span style="color:#c2ffdf">NULL</span>,<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">    </span>[purchase_amount]<span style="color:#a8757b"> </span>[decimal](<span style="color:#c5a3ff">18</span>,<span style="color:#c5a3ff">2</span>)<span style="color:#a8757b">  </span><span style="color:#c2ffdf">NULL</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span>)<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">WITH</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span>(<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">    </span>DISTRIBUTION<span style="color:#a8757b"> </span><span style="color:#ffb8d1">=</span><span style="color:#a8757b"> </span>hash(customer_id),<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">    </span>CLUSTERED<span style="color:#a8757b"> </span>COLUMNSTORE<span style="color:#a8757b"> </span><span style="color:#c2ffdf">INDEX</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span>)<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">GO</span><span style="color:#a8757b">
+</span></span></span></code></pre></div></li>
+<li>
+<p>To check distribution of Synapse tables, run below query in Synapse studio</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#c2ffdf">SELECT</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">       </span>OBJECT_SCHEMA_NAME(<span style="color:#a8757b"> </span>object_id<span style="color:#a8757b"> </span>)<span style="color:#a8757b"> </span>schemaName,<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">       </span>OBJECT_NAME(<span style="color:#a8757b"> </span>object_id<span style="color:#a8757b"> </span>)<span style="color:#a8757b"> </span>tableName,<span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b">       </span><span style="color:#ffb8d1">*</span><span style="color:#a8757b">
+</span></span></span><span style="display:flex;"><span><span style="color:#a8757b"></span><span style="color:#c2ffdf">FROM</span><span style="color:#a8757b"> </span>sys.pdw_table_distribution_properties;<span style="color:#a8757b">
+</span></span></span></code></pre></div>
+    <div class="image">
+      <style>
+        .img-responsive {
+          display: block;
+          height: auto;
+          max-width: 100%;
+          cursor: pointer;
+        }
+      </style>
+      <p>
+        <center><img src="https://anhcodes.dev/images/single-blog/databricks-to-synapse/Untitled%203.png" alt="blog-img" class="img-responsive" onclick="openModal(this)"></center>
+      </p>
+    </div>
+    
+    <script>
+    function openModal(img) {
+      var modal = document.createElement('div');
+      modal.classList.add('modal');
+      modal.innerHTML = '<div class="modal-content"><img src="' + img.src + '"></div>';
+      document.body.appendChild(modal);
+      modal.addEventListener('click', closeModal);
+    }
+    
+    function closeModal(event) {
+      if (event.target.classList.contains('modal')) {
+        document.body.removeChild(event.target);
+      }
+    }
+    </script>
+    
+    <style>
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .modal-content {
+      max-width: 80%;
+      max-height: 80%;
+      overflow: auto;
+    }
+    
+    .modal-content img {
+      width: 100%;
+      height: auto;
+    }
+    </style>
+    
+      
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  </div>
+  <section class="footer" id="contact">
+	<div class="footer__background_shape">
+		<svg viewBox="0 0 1920 79">
+			<path d="M0 0h1920v79L0 0z" data-name="Path 1450" />
+		</svg>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="footer__cta">
+					<div class="shape-1">
+						<svg xmlns="http://www.w3.org/2000/svg" width="357" height="315.029" viewBox="0 0 357 315.029">
+							<path data-name="Path 1449"
+								d="M76.1-157.222C91.746-135.8 87.2-94.273 99.993-61.945c12.7 32.328 42.661 55.459 39.248 73.282-3.318 17.823-40.007 30.337-65.6 43.325-25.5 12.988-39.912 26.545-60.01 42.566-20.1 16.116-46.074 34.6-63.328 27.682-17.349-6.921-25.976-39.153-59.915-59.82s-93.1-29.768-105.325-51.478 22.373-56.028 43.609-93.949c21.331-37.921 29.2-79.35 53.563-96.793 24.459-17.444 65.414-10.9 103.9-6.921 38.396 3.982 74.326 5.404 89.965 26.829z"
+								transform="translate(217.489 188.626)" />
+						</svg>
+					</div>
+					<div class="shape-2">
+						<svg xmlns="http://www.w3.org/2000/svg" width="357" height="315.029" viewBox="0 0 357 315.029">
+							<path data-name="Path 1449"
+								d="M76.1-157.222C91.746-135.8 87.2-94.273 99.993-61.945c12.7 32.328 42.661 55.459 39.248 73.282-3.318 17.823-40.007 30.337-65.6 43.325-25.5 12.988-39.912 26.545-60.01 42.566-20.1 16.116-46.074 34.6-63.328 27.682-17.349-6.921-25.976-39.153-59.915-59.82s-93.1-29.768-105.325-51.478 22.373-56.028 43.609-93.949c21.331-37.921 29.2-79.35 53.563-96.793 24.459-17.444 65.414-10.9 103.9-6.921 38.396 3.982 74.326 5.404 89.965 26.829z"
+								transform="translate(217.489 188.626)" />
+						</svg>
+					</div>
+					<div class="text-light footer__cta_content">
+						<span>Contact me</span>
+						<h2 class="mb-0">Let’s Work Together</h2>
+					</div>
+					<div class="footer__cta_action">
+						<a class="btn btn-light btn-zoom" href="https://anhcodes.dev/contact">Get in
+							touch</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+			
+			
+		<div class="row footer__footer">
+			<div class="col-lg-6">
+				<div class="footer__footer_copy text-light">
+					<p>©2024 - Made with ☕, Hugo, and Firebase by <a class="text-light" href="https://anhcodes.dev/" target="_blank">Anh Chu</a></p>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="footer__footer_social">
+					<ul class="unstyle-list">
+						
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://dev.to/anhcodes"><i
+									class="fa fa-code"></i></a>
+						</li>
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://www.linkedin.com/in/anhhchu/"><i
+									class="fa fa-linkedin-square"></i></a>
+						</li>
+						
+						<li class="d-inline-block mx-2"><a class="text-light" target="_blank" href="https://github.com/anhhchu"><i
+									class="fa fa-github-square"></i></a>
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script src="https://anhcodes.dev/plugins/jQuery/jquery.min.js"></script>
+<script src="https://anhcodes.dev/plugins/bootstrap/bootstrap.min.js"></script>
+<script src="https://anhcodes.dev/plugins/slick/slick.min.js"></script>
+<script src="https://anhcodes.dev/plugins/waypoint/jquery.waypoints.min.js"></script>
+<script src="https://anhcodes.dev/plugins/magnafic-popup/jquery.magnific-popup.min.js"></script>
+<script src="https://anhcodes.dev/plugins/tweenmax/TweenMax.min.js"></script>
+<script src="https://anhcodes.dev/plugins/imagesloaded/imagesloaded.min.js"></script>
+<script src="https://anhcodes.dev/plugins/masonry/masonry.min.js"></script>
+
+
+<script src="https://anhcodes.dev/js/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.37.1"></script>
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.11.0/dist/algoliasearch.umd.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.4.5/themes/satellite-min.css" integrity="sha256-TehzF/2QvNKhGQrrNpoOb2Ck4iGZ1J/DI4pkd2oUsBc=" crossorigin="anonymous">  
+
+</body>
+
+</html>

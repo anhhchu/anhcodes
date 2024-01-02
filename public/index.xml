@@ -6,7 +6,17 @@
     <description>Recent content on anhcodes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 30 Dec 2023 16:02:25 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 02 Jan 2024 17:01:45 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Simple way to write Spark Dataframe from Azure Databricks to Azure Synapse</title>
+      <link>https://anhcodes.dev/blog/databricks-to-synapse/</link>
+      <pubDate>Tue, 02 Jan 2024 17:01:45 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/blog/databricks-to-synapse/</guid>
+      <description>Step 1: Generate test data Below spark code generates a dataframe of 3 columns and 100M rows (around 2GB of data)
+import random from pyspark.sql.functions import rand, randn, col, lit from pyspark.sql.types import StructType, StructField, TimestampType, StringType, DecimalType, IntegerType schema = StructType([ StructField(&amp;#34;purchase_ts&amp;#34;, TimestampType(), True), StructField(&amp;#34;customer_id&amp;#34;, IntegerType(), True), StructField(&amp;#34;purchase_amount&amp;#34;, DecimalType(18,2), True) ]) # Modified customer_name to use a random name from the customers list df = spark.range(100000000)\ .withColumn(&amp;#39;purchase_ts&amp;#39;, (rand()*1262275200 + 1577836800).</description>
+    </item>
+    
     <item>
       <title>Data Objects in Databricks</title>
       <link>https://anhcodes.dev/blog/data-objects/</link>

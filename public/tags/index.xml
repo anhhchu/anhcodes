@@ -6,7 +6,16 @@
     <description>Recent content in Tags on anhcodes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 30 Dec 2023 16:02:25 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 02 Jan 2024 17:01:45 +0000</lastBuildDate><atom:link href="https://anhcodes.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>spark delta-lake tutorial</title>
+      <link>https://anhcodes.dev/tags/spark-delta-lake-tutorial/</link>
+      <pubDate>Tue, 02 Jan 2024 17:01:45 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/tags/spark-delta-lake-tutorial/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>delta-lake</title>
       <link>https://anhcodes.dev/tags/delta-lake/</link>
