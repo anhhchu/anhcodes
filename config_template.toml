@@ -1,8 +1,9 @@
-baseURL = "https://xxxx/"
+# Clone this file to config.toml and edit to customize your site
+baseURL = "https://xxxx/" # set this to your host website, for example, "https://example.com"
 languageCode = "en-us"
 paginate = 27
 theme = "portio"
-title = "xxxx"
+title = "xxxx" # for example, "My personal website"
 # Main Menu
 [[menu.main]]
 name = "Home"
