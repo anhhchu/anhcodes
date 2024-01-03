@@ -167,14 +167,23 @@
             <h3>Table of Contents</h3>
             <nav id="TableOfContents">
   <ul>
-    <li><a href="#step-1-generate-test-data">Step 1: Generate test data</a></li>
+    <li><a href="#reprequisites">Reprequisites</a></li>
+    <li><a href="#step-1-generate-spark-dataframe-in-databricks-notebook">Step 1: Generate Spark dataframe in Databricks notebook</a></li>
     <li><a href="#step-2-create-customized-login">Step 2: Create customized login</a></li>
     <li><a href="#step-3-use-etl-login-with-largerc-to-write-data">Step 3: Use etl login with largerc to write data</a></li>
   </ul>
 </nav>
           
 
-          <h2 id="step-1-generate-test-data">Step 1: Generate test data</h2>
+          <h2 id="reprequisites">Reprequisites</h2>
+<p>To follow along with this tutorial, you will need:</p>
+<ol>
+<li>Azure subscription</li>
+<li><a href="https://learn.microsoft.com/en-us/azure/synapse-analytics/quickstart-create-workspace">Synapse workspace</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/synapse-analytics/quickstart-create-sql-pool-studio">Dedicated SQL Pool</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/databricks/getting-started/">Azure Databricks workspace in the same subscription</a></li>
+</ol>
+<h2 id="step-1-generate-spark-dataframe-in-databricks-notebook">Step 1: Generate Spark dataframe in Databricks notebook</h2>
 <p>Below spark code generates a dataframe of 3 columns and 100M rows (around 2GB of data)</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ffb8d1">import</span> random
 </span></span><span style="display:flex;"><span>
@@ -187,7 +196,6 @@
 </span></span><span style="display:flex;"><span>  StructField(<span style="color:#1bc5e0">&#34;purchase_amount&#34;</span>, DecimalType(<span style="color:#c5a3ff">18</span>,<span style="color:#c5a3ff">2</span>), <span style="color:#c2ffdf">True</span>)
 </span></span><span style="display:flex;"><span>])
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#b0bec5"># Modified customer_name to use a random name from the customers list</span>
 </span></span><span style="display:flex;"><span>df <span style="color:#ffb8d1">=</span> spark<span style="color:#ffb8d1">.</span>range(<span style="color:#c5a3ff">100000000</span>)\
 </span></span><span style="display:flex;"><span>  <span style="color:#ffb8d1">.</span>withColumn(<span style="color:#1bc5e0">&#39;purchase_ts&#39;</span>, (rand()<span style="color:#ffb8d1">*</span><span style="color:#c5a3ff">1262275200</span> <span style="color:#ffb8d1">+</span> <span style="color:#c5a3ff">1577836800</span>)<span style="color:#ffb8d1">.</span>cast(<span style="color:#1bc5e0">&#39;timestamp&#39;</span>))\
 </span></span><span style="display:flex;"><span>  <span style="color:#ffb8d1">.</span>withColumn(<span style="color:#1bc5e0">&#39;customer_id&#39;</span>, (rand()<span style="color:#ffb8d1">*</span>(<span style="color:#c5a3ff">100000000</span><span style="color:#ffb8d1">-</span><span style="color:#c5a3ff">1</span>)<span style="color:#ffb8d1">+</span><span style="color:#c5a3ff">1</span>)<span style="color:#ffb8d1">.</span>cast(<span style="color:#1bc5e0">&#39;integer&#39;</span>))\

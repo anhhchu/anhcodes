@@ -10,7 +10,14 @@ toc: Table of Contents
 draft: False
 ---
 
-## Step 1: Generate test data
+## Reprequisites
+To follow along with this tutorial, you will need:
+1. Azure subscription
+2. [Synapse workspace](https://learn.microsoft.com/en-us/azure/synapse-analytics/quickstart-create-workspace)
+3. [Dedicated SQL Pool](https://learn.microsoft.com/en-us/azure/synapse-analytics/quickstart-create-sql-pool-studio)
+4. [Azure Databricks workspace in the same subscription](https://learn.microsoft.com/en-us/azure/databricks/getting-started/) 
+
+## Step 1: Generate Spark dataframe in Databricks notebook
 
 Below spark code generates a dataframe of 3 columns and 100M rows (around 2GB of data)
 
@@ -26,7 +33,6 @@ schema = StructType([
   StructField("purchase_amount", DecimalType(18,2), True)
 ])
 
-# Modified customer_name to use a random name from the customers list
 df = spark.range(100000000)\
   .withColumn('purchase_ts', (rand()*1262275200 + 1577836800).cast('timestamp'))\
   .withColumn('customer_id', (rand()*(100000000-1)+1).cast('integer'))\
