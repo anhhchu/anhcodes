@@ -97,5 +97,5 @@ i  You can manage your secrets at https://github.com/<user>/<repo>/settings/secr
           active = true
   ```
 4. Copy config_template.toml to config.toml and modify it to personalize your site.
-5. To upload your modifications to GitHub, execute sh deploy.sh "<your_git_commit_message>". This script will update all changes to the public repository with hugo -t portio, commit, and push your modifications to the master branch of your repository.
+5. To upload your modifications to GitHub, execute `sh deploy.sh "<your_git_commit_message>"`. This script will update all changes to the public repository with `hugo -t portio`, commit, and push your modifications to the master branch of your repository.
 6. Feel free to tailor the website to your liking. Enjoy using it!
