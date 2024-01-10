@@ -170,7 +170,8 @@
     <li><a href="#what-is-sparksql">What is SparkSQL</a></li>
     <li><a href="#dataframe-api-in-sparksql">DataFrame API in SparkSQL</a>
       <ul>
-        <li><a href="#read-and-write-data-with-spark-dataframe">Read and write data with Spark DataFrame</a></li>
+        <li><a href="#read-files-with-spark-dataframe">Read files with Spark DataFrame</a></li>
+        <li><a href="#write-dataframe">Write dataframe</a></li>
         <li><a href="#columns-in-df">Columns in DF</a></li>
         <li><a href="#rows-in-df">Rows in DF</a></li>
         <li><a href="#data-operations-in-spark-dataframe">Data Operations in Spark DataFrame</a></li>
@@ -316,9 +317,9 @@ function closeModal(event) {
   
 <h2 id="dataframe-api-in-sparksql">DataFrame API in SparkSQL</h2>
 <p>DataFrame is immutable collections of data grouped into named columns. Schema defines the column names and data types of a DataFrame.</p>
-<h3 id="read-and-write-data-with-spark-dataframe">Read and write data with Spark DataFrame</h3>
+<h3 id="read-files-with-spark-dataframe">Read files with Spark DataFrame</h3>
 <p>You can read data almost all file formats such as CSV, JSON, Parquet, Delta, etc.  into Spark DataFrame</p>
-<p>You can either choose to inferSchema from the files (expensive with JSON and CSV), or specify schema explitcitly (more efficient)</p>
+<p>You can either choose to inferSchema from the files (expensive with JSON and CSV), or specify schema explitcitly. It&rsquo;s much more efficient to specify schema explicitly, especially for csv and json.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#b0bec5">## Read data from parquet files to dataframe</span>
 </span></span><span style="display:flex;"><span>df <span style="color:#ffb8d1">=</span> spark<span style="color:#ffb8d1">.</span>read<span style="color:#ffb8d1">.</span>parquet(<span style="color:#1bc5e0">&#39;path/to/parquet_files&#39;</span>)<span style="color:#ffb8d1">.</span>option(<span style="color:#1bc5e0">&#39;inferSchema&#39;</span>, <span style="color:#c2ffdf">True</span>)
 </span></span><span style="display:flex;"><span>
@@ -336,13 +337,27 @@ function closeModal(event) {
 </span></span><span style="display:flex;"><span>ddlSchema <span style="color:#ffb8d1">=</span> <span style="color:#1bc5e0">&#34;col1 string, col2 integer&#34;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>df <span style="color:#ffb8d1">=</span> spark<span style="color:#ffb8d1">.</span>read<span style="color:#ffb8d1">.</span>csv(<span style="color:#1bc5e0">&#39;path/to/csv_files&#39;</span>, sep<span style="color:#ffb8d1">=</span><span style="color:#1bc5e0">&#39;t&#39;</span>, header<span style="color:#ffb8d1">=</span><span style="color:#c2ffdf">True</span>, schema<span style="color:#ffb8d1">=</span>ddlSchema)
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#b0bec5">## Write dataframe to parquet files</span>
+</span></span></code></pre></div><p>You can use the StructType Scala method toDDL to have a DDL-formatted string created for you.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#ffb8d1">%</span>scala
+</span></span><span style="display:flex;"><span>spark<span style="color:#ffb8d1">.</span>read<span style="color:#ffb8d1">.</span>json<span style="color:#ffb8d1">(</span><span style="color:#1bc5e0">&#34;/mnt/training/ecommerce/events/events-500k.json&#34;</span><span style="color:#ffb8d1">).</span>schema<span style="color:#ffb8d1">.</span>toDDL
+</span></span></code></pre></div><p>And then use a Python cell to copy and paste the previously generated schema in scala to read the files into dataframe</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>DDLSchema <span style="color:#ffb8d1">=</span> <span style="color:#1bc5e0">&#34;`device` STRING,`ecommerce` STRUCT&lt;`purchase_revenue_in_usd`: DOUBLE, `total_item_quantity`: BIGINT, `unique_items`: BIGINT&gt;,`event_name` STRING,`event_previous_timestamp` BIGINT,`event_timestamp` BIGINT,`geo` STRUCT&lt;`city`: STRING, `state`: STRING&gt;,`items` ARRAY&lt;STRUCT&lt;`coupon`: STRING, `item_id`: STRING, `item_name`: STRING, `item_revenue_in_usd`: DOUBLE, `price_in_usd`: DOUBLE, `quantity`: BIGINT&gt;&gt;,`traffic_source` STRING,`user_first_touch_timestamp` BIGINT,`user_id` STRING&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>eventsDF <span style="color:#ffb8d1">=</span> (spark
+</span></span><span style="display:flex;"><span>            <span style="color:#ffb8d1">.</span>read
+</span></span><span style="display:flex;"><span>            <span style="color:#ffb8d1">.</span>schema(DDLSchema)
+</span></span><span style="display:flex;"><span>            <span style="color:#ffb8d1">.</span>json(<span style="color:#1bc5e0">&#34;/mnt/training/ecommerce/events/events-500k.json&#34;</span>)
+</span></span><span style="display:flex;"><span>           )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>eventsDF<span style="color:#ffb8d1">.</span>display()
+</span></span></code></pre></div><h3 id="write-dataframe">Write dataframe</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#b0bec5">## Write data to file</span>
 </span></span><span style="display:flex;"><span>df<span style="color:#ffb8d1">.</span>write
 </span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>option(<span style="color:#1bc5e0">&#39;compression&#39;</span>, <span style="color:#1bc5e0">&#39;snappy&#39;</span>)
 </span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>mode(<span style="color:#1bc5e0">&#39;overwrite&#39;</span>)
 </span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>parquet(<span style="color:#1bc5e0">&#39;path/to/storage&#39;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#b0bec5">## Write data to table</span>
+</span></span><span style="display:flex;"><span><span style="color:#b0bec5">## Write data to table. If mode(&#39;overwrite&#39;), rewrite the whole table. If mode(&#39;append&#39;), append data to table</span>
 </span></span><span style="display:flex;"><span>df<span style="color:#ffb8d1">.</span>write
 </span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>mode(<span style="color:#1bc5e0">&#39;overwrite&#39;</span>)
 </span></span><span style="display:flex;"><span>	<span style="color:#ffb8d1">.</span>saveAsTable(<span style="color:#1bc5e0">&#39;&lt;table_name&gt;&#39;</span>)
@@ -353,7 +368,7 @@ function closeModal(event) {
 </span></span></code></pre></div><h3 id="columns-in-df">Columns in DF</h3>
 <p>There are many ways to pick a column in DF depending on which language API you use</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#433e56;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#b0bec5">## Multi ways of extracting columns from Spark DF </span>
-</span></span><span style="display:flex;"><span><span style="color:#b0bec5">## Python</span>
+</span></span><span style="display:flex;"><span><span style="color:#ffb8d1">%</span>python
 </span></span><span style="display:flex;"><span>df[<span style="color:#1bc5e0">&#39;columnName&#39;</span>]
 </span></span><span style="display:flex;"><span>df<span style="color:#ffb8d1">.</span>columnName
 </span></span><span style="display:flex;"><span>

@@ -6,18 +6,16 @@ postImage: images/single-blog/synapse/sql-pool.jpeg
 categories: data-lakehouse
 tags: [azure-synapse-analytics, big-query,redshift]
 author: Anh Chu
-draft: true
+draft: false
+toc: Table of Contents
 ---
-
-## Table of Contents
-
 
 
 ## What is Azure Synapse Analytics?
 
 Azure Synapse Analytics is an integrated data platform that brings together SQL technologies used in enterprise data warehousing such as `Dedicated SQL Pool and Serverless SQL Pool`, `Synapse Spark Pool` used for big data, `Data Explorer` for log and time series analytics, `Synapse Pipelines` for data integration and ETL/ELT, and deep integration with other Azure services such as Power BI, CosmosDB, and AzureML. 
 
-☝🏼[Table of Content](#table-of-contents)
+
 
 ## What is Dedicated SQL Pool?
 
@@ -28,7 +26,7 @@ Azure Synapse Analytics is an integrated data platform that brings together SQL 
 
 Users can connect to Dedicated SQL Pool using Azure Data Studio (on Mac and Windows), SQL Server Management Studio (for Windows), and Azure Synapse Workspace web interface. 
 
-☝🏼[Table of Content](#table-of-contents)
+
 
 ## What is Serverless SQL Pool?
 
@@ -41,7 +39,7 @@ optimization, or dynamic data masking or column level encryption for permission 
 
 Serverless SQL Pool is suitable for adhoc, simple queries when users must have access to data in our data lake storage account. While dedicated pool can be use for more complex queries suitable for analytics purpose, you also can connect to dedicated SQL pool using a SQL client like Azure Data Studio or SQL Server Management Studio.
 
-☝🏼[Table of Content](#table-of-contents)
+
 
 ## Dedicated vs Serverless SQL Pool Comparison
 
@@ -58,20 +56,3 @@ Serverless SQL Pool is suitable for adhoc, simple queries when users must have a
 | Suitable for adhoc lightweight queries that do summaries, not heavy analytics queries. Users need access to data lake. Synapse Workspace required to access​ |   _ | Suitable for complex queries that serve analytics purpose. Can be connected from client such as Azure Data Studio​ |
 {{< /bootstrap-table >}}
 
-☝🏼[Table of Content](#table-of-contents)
-
-## Azure Synapse Analytics, AWS Redshift, Google Big Query Comparison
-
-Azure Synapse Analytics, Amazon Redshift, and Google BigQuery are all cloud-based data warehousing platforms that allow you to analyze large datasets using SQL and other query languages
-
-{{< bootstrap-table "table table-light table-striped table-bordered" >}}
-|  |Redshift  | Azure Synapse Analytics |Google BigQuery|
-|:--|:--|:--|:--|
-|Architecture | Dedicated clusters with nodes bundled of CPU, storage, memory and IOPS| Dedicated SQL Pool is similar to Redshift but compute and storage are scaled and billed separately. <br> Serverless SQL Pool is similar to Google Big Query|Uses a "serverless" architecture, no provisioning or managing servers or infrastructure required.|
-|Scalability & Query Optimization|All 3 platforms use Massively Parallel Processing MPP + columnar storage for query performance|
-| SQL Dialect | PostgreSQL  | T-SQL | Google BigQuery SQL|
-|Data Lake Integration| Use the Amazon Redshift Data Lake Export feature to export data from Redshift to Amazon S3. Then use Amazon EMR (Elastic MapReduce), a managed big data processing service, to process and analyze the data in the data lake.|You can use both Serverless, Dedicated SQL Pool and Synapse Spark Pool to analyze data in Data Lake within the Azure Synapse Workspace|BigQuery can integrate with Google Cloud's data lake storage service, allowing you to analyze data stored in a data lake using SQL.|
-| Data Masking | native starting November 2022| native dynamic data masking solution | Support dynamic data masking |
-{{< /bootstrap-table >}}
-
-☝🏼[Table of Content](#table-of-contents)

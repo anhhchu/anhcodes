@@ -39,11 +39,11 @@ df = spark.table('<table>')
 
 DataFrame is immutable collections of data grouped into named columns. Schema defines the column names and data types of a DataFrame. 
 
-### Read and write data with Spark DataFrame
+### Read files with Spark DataFrame
 
 You can read data almost all file formats such as CSV, JSON, Parquet, Delta, etc.  into Spark DataFrame 
 
-You can either choose to inferSchema from the files (expensive with JSON and CSV), or specify schema explitcitly (more efficient)
+You can either choose to inferSchema from the files (expensive with JSON and CSV), or specify schema explitcitly. It's much more efficient to specify schema explicitly, especially for csv and json.
 
 ```python
 ## Read data from parquet files to dataframe
@@ -68,14 +68,36 @@ ddlSchema = "col1 string, col2 integer"
 df = spark.read.csv('path/to/csv_files', sep='t', header=True, schema=ddlSchema)
 ```
 
+You can use the StructType Scala method toDDL to have a DDL-formatted string created for you. 
+```scala
+%scala
+spark.read.json("/mnt/training/ecommerce/events/events-500k.json").schema.toDDL
+```
+
+And then use a Python cell to copy and paste the previously generated schema in scala to read the files into dataframe
+
 ```python
-## Write dataframe to parquet files
+DDLSchema = "`device` STRING,`ecommerce` STRUCT<`purchase_revenue_in_usd`: DOUBLE, `total_item_quantity`: BIGINT, `unique_items`: BIGINT>,`event_name` STRING,`event_previous_timestamp` BIGINT,`event_timestamp` BIGINT,`geo` STRUCT<`city`: STRING, `state`: STRING>,`items` ARRAY<STRUCT<`coupon`: STRING, `item_id`: STRING, `item_name`: STRING, `item_revenue_in_usd`: DOUBLE, `price_in_usd`: DOUBLE, `quantity`: BIGINT>>,`traffic_source` STRING,`user_first_touch_timestamp` BIGINT,`user_id` STRING"
+
+eventsDF = (spark
+            .read
+            .schema(DDLSchema)
+            .json("/mnt/training/ecommerce/events/events-500k.json")
+           )
+
+eventsDF.display()
+```
+
+### Write dataframe
+
+```python
+## Write data to file
 df.write
 	.option('compression', 'snappy')
 	.mode('overwrite')
 	.parquet('path/to/storage')
 
-## Write data to table
+## Write data to table. If mode('overwrite'), rewrite the whole table. If mode('append'), append data to table
 df.write
 	.mode('overwrite')
 	.saveAsTable('<table_name>')
@@ -94,7 +116,7 @@ There are many ways to pick a column in DF depending on which language API you u
 
 ```python
 ## Multi ways of extracting columns from Spark DF 
-## Python
+%python
 df['columnName']
 df.columnName
 

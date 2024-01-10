@@ -124,5 +124,23 @@
       <description></description>
     </item>
     
+    <item>
+      <title>big-query</title>
+      <link>https://anhcodes.dev/tags/big-query/</link>
+      <pubDate>Tue, 15 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/tags/big-query/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>redshift</title>
+      <link>https://anhcodes.dev/tags/redshift/</link>
+      <pubDate>Tue, 15 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://anhcodes.dev/tags/redshift/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
