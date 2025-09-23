@@ -50,12 +50,6 @@
     <loc>https://anhcodes.dev/blog/debug-spark/</loc>
     <lastmod>2023-05-22T17:09:41+00:00</lastmod>
   </url><url>
-    <loc>https://anhcodes.dev/tags/databricks/</loc>
-    <lastmod>2023-04-11T22:13:33+00:00</lastmod>
-  </url><url>
-    <loc>https://anhcodes.dev/blog/dbfs/</loc>
-    <lastmod>2023-04-11T22:13:33+00:00</lastmod>
-  </url><url>
     <loc>https://anhcodes.dev/tags/change-data-capture/</loc>
     <lastmod>2023-01-07T00:19:27+00:00</lastmod>
   </url><url>
@@ -89,26 +83,13 @@
     <loc>https://anhcodes.dev/categories/software-engineering/</loc>
     <lastmod>2022-12-27T11:30:20+00:00</lastmod>
   </url><url>
-    <loc>https://anhcodes.dev/tags/azure-synapse-analytics/</loc>
-    <lastmod>2022-12-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://anhcodes.dev/blog/query-performance/</loc>
-    <lastmod>2022-12-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://anhcodes.dev/blog/synapse/</loc>
-    <lastmod>2022-11-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://anhcodes.dev/tags/big-query/</loc>
-    <lastmod>2022-11-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://anhcodes.dev/tags/redshift/</loc>
-    <lastmod>2022-11-15T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://anhcodes.dev/contact/</loc>
   </url><url>
     <loc>https://anhcodes.dev/portfolio/flower-classifier/</loc>
   </url><url>
     <loc>https://anhcodes.dev/portfolio/</loc>
+  </url><url>
+    <loc>https://anhcodes.dev/portfolio/predict-churn/</loc>
   </url><url>
     <loc>https://anhcodes.dev/portfolio/stock-prediction/</loc>
   </url>

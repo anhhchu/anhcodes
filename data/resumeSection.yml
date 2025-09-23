@@ -13,10 +13,15 @@ tab2Target: education
 
 education:
   - content: >
+      #### Specialist Solutions Architect| Databricks
+
+      Led technical strategy and execution for enterprise data modernization initiatives, partnering with strategic customers to deliver end-to-end solutions spanning architectural design, data engineering, big data streaming, and model deployment on Databricks data lakehouse.
+    time: 2024-current
+  - content: >
       #### Sr Specialist Solutions Engineer | Databricks
 
-      Provided technical leadership to guide strategic customers in achieving successful implementations of enterprise data modernization projects from architectural design to data engineering to model deployment using Data Lakehouse, Big Data Streaming, Data Engineering and cloud data platform products
-    time: 2023-current
+      Provided technical guidance customers in achieving successful implementations of enterprise data modernization projects from architectural design to data engineering to model deployment using Data Lakehouse, Big Data Streaming, Data Engineering and cloud data platform products
+    time: 2023-2024
   - content: >
       #### Software Engineer | Microsoft
 
@@ -28,16 +33,6 @@ education:
 
       Built and maintained back-end data solution for an end-to-end analytical Supply Chain web application to track inventory and transportation from Suppliers to Stores for international markets
     time: 2020-2022
-  - content: >
-      #### Tableau Systems Analyst | NTT Data Services
-
-      Delivered analytical projects to provide data democratization to the healthcare account IT service team. Designed and distributed ~50 operations and financial KPI reports to executives and leadership team
-    time: 2017-2020
-  - content: >
-      #### Business Analyst | E2Open Inc
-
-      Developed financial and supply chain KPI dashboards using Excel (VBA) and QlikView for sales consultants in the USA and EU to leverage the service quality and product offerings to potential and existing clients
-    time: 2017-2017
 
 experience:
 

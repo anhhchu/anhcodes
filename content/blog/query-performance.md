@@ -7,6 +7,7 @@ categories: data-lakehouse
 tags: [azure-synapse-analytics]
 author: Anh Chu
 toc: Table of Contents
+draft: true
 ---
 
 

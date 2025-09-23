@@ -6,7 +6,7 @@ postImage: images/single-blog/synapse/sql-pool.jpeg
 categories: data-lakehouse
 tags: [azure-synapse-analytics, big-query,redshift]
 author: Anh Chu
-draft: false
+draft: true
 toc: Table of Contents
 ---
 

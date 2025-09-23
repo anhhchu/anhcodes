@@ -38,35 +38,5 @@ Catalog is a group of databases. If you want to use Unity Catalog, create and sp
       <description>Delta Lake is an open source storage layer that brings reliability to data lakes. Delta Lake provides ACID transactions, scalable metadata handling, and unifies streaming and batch data processing. Delta Lake runs on top of your existing data lake and is fully compatible with Apache Spark APIs. Delta Lake uses versioned Parquet files to store your data in your cloud storage. Apart from the versions, Delta Lake also stores a transaction log to keep track of all the commits made to the table or blob store directory to provide ACID transactions.</description>
     </item>
     
-    <item>
-      <title>Navigate Databricks FileSystem</title>
-      <link>https://anhcodes.dev/blog/dbfs/</link>
-      <pubDate>Tue, 11 Apr 2023 22:13:33 +0000</pubDate>
-      
-      <guid>https://anhcodes.dev/blog/dbfs/</guid>
-      <description> View Fullscreen View on Github </description>
-    </item>
-    
-    <item>
-      <title>Query Performance Tuning in Dedicated SQL Pool (Azure Synapse Analytics)</title>
-      <link>https://anhcodes.dev/blog/query-performance/</link>
-      <pubDate>Thu, 15 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://anhcodes.dev/blog/query-performance/</guid>
-      <description>1. Best practices when Creating Tables When creating table in Dedicated SQL Pool, choose the correct Distribution Column and Index for best query performance. Follow Best Practices in creating tables in Azure Synapse Analytics
-Remember to create and Update Stats on your new tables Table statistics for dedicated SQL pool in Azure Synapse Analytics
-2. Identify slow-running QID and analyze compilation To best determine what is causing any given query&amp;rsquo;s slow performance, you will need to identify an example long-running query:</description>
-    </item>
-    
-    <item>
-      <title>Azure Synapse Analytics - Data Lakehouse on Azure</title>
-      <link>https://anhcodes.dev/blog/synapse/</link>
-      <pubDate>Tue, 15 Nov 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://anhcodes.dev/blog/synapse/</guid>
-      <description>What is Azure Synapse Analytics? Azure Synapse Analytics is an integrated data platform that brings together SQL technologies used in enterprise data warehousing such as Dedicated SQL Pool and Serverless SQL Pool, Synapse Spark Pool used for big data, Data Explorer for log and time series analytics, Synapse Pipelines for data integration and ETL/ELT, and deep integration with other Azure services such as Power BI, CosmosDB, and AzureML.
-What is Dedicated SQL Pool?</description>
-    </item>
-    
   </channel>
 </rss>

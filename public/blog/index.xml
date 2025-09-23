@@ -70,15 +70,6 @@ Generally, long-running Spark jobs can be due to various factors. We like to cal
     </item>
     
     <item>
-      <title>Navigate Databricks FileSystem</title>
-      <link>https://anhcodes.dev/blog/dbfs/</link>
-      <pubDate>Tue, 11 Apr 2023 22:13:33 +0000</pubDate>
-      
-      <guid>https://anhcodes.dev/blog/dbfs/</guid>
-      <description> View Fullscreen View on Github </description>
-    </item>
-    
-    <item>
       <title>Deploy Debezium and Kafka on AKS using Strimzi Operator</title>
       <link>https://anhcodes.dev/blog/deploy-debezium-aks/</link>
       <pubDate>Sat, 07 Jan 2023 00:19:27 +0000</pubDate>
@@ -97,27 +88,6 @@ Azure CLI If you haven&amp;rsquo;t set up your Azure CLI environment, follow thi
       <guid>https://anhcodes.dev/blog/recover-lost-files-git-reset-hard/</guid>
       <description>While working on a recent project, I accidentally committed some files. Instead of using git reset --soft &amp;lt;prev-commit-id&amp;gt; to unstage them, I used git reset --hard HEAD and all of my new changes gone with the wind. After panicking for a few minutes, I determined to learn how git reset works and how I can revert the damages.
 1. What is git reset (hard vs soft) git reset --hard resets the current branch tip, and also deletes any changes in the working directory and staging area (although files under git stash will not be affected).</description>
-    </item>
-    
-    <item>
-      <title>Query Performance Tuning in Dedicated SQL Pool (Azure Synapse Analytics)</title>
-      <link>https://anhcodes.dev/blog/query-performance/</link>
-      <pubDate>Thu, 15 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://anhcodes.dev/blog/query-performance/</guid>
-      <description>1. Best practices when Creating Tables When creating table in Dedicated SQL Pool, choose the correct Distribution Column and Index for best query performance. Follow Best Practices in creating tables in Azure Synapse Analytics
-Remember to create and Update Stats on your new tables Table statistics for dedicated SQL pool in Azure Synapse Analytics
-2. Identify slow-running QID and analyze compilation To best determine what is causing any given query&amp;rsquo;s slow performance, you will need to identify an example long-running query:</description>
-    </item>
-    
-    <item>
-      <title>Azure Synapse Analytics - Data Lakehouse on Azure</title>
-      <link>https://anhcodes.dev/blog/synapse/</link>
-      <pubDate>Tue, 15 Nov 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://anhcodes.dev/blog/synapse/</guid>
-      <description>What is Azure Synapse Analytics? Azure Synapse Analytics is an integrated data platform that brings together SQL technologies used in enterprise data warehousing such as Dedicated SQL Pool and Serverless SQL Pool, Synapse Spark Pool used for big data, Data Explorer for log and time series analytics, Synapse Pipelines for data integration and ETL/ELT, and deep integration with other Azure services such as Power BI, CosmosDB, and AzureML.
-What is Dedicated SQL Pool?</description>
     </item>
     
   </channel>

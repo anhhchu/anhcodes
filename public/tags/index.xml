@@ -44,15 +44,6 @@
     </item>
     
     <item>
-      <title>databricks</title>
-      <link>https://anhcodes.dev/tags/databricks/</link>
-      <pubDate>Tue, 11 Apr 2023 22:13:33 +0000</pubDate>
-      
-      <guid>https://anhcodes.dev/tags/databricks/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>change-data-capture</title>
       <link>https://anhcodes.dev/tags/change-data-capture/</link>
       <pubDate>Sat, 07 Jan 2023 00:19:27 +0000</pubDate>
@@ -112,33 +103,6 @@
       <pubDate>Tue, 27 Dec 2022 11:30:20 +0000</pubDate>
       
       <guid>https://anhcodes.dev/tags/git/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>azure-synapse-analytics</title>
-      <link>https://anhcodes.dev/tags/azure-synapse-analytics/</link>
-      <pubDate>Thu, 15 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://anhcodes.dev/tags/azure-synapse-analytics/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>big-query</title>
-      <link>https://anhcodes.dev/tags/big-query/</link>
-      <pubDate>Tue, 15 Nov 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://anhcodes.dev/tags/big-query/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>redshift</title>
-      <link>https://anhcodes.dev/tags/redshift/</link>
-      <pubDate>Tue, 15 Nov 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://anhcodes.dev/tags/redshift/</guid>
       <description></description>
     </item>
     
