@@ -60,14 +60,14 @@ export const experience: Role[] = [
 export type Skill = { title: string; percent: number };
 
 export const skills: Skill[] = [
+  { title: "Databricks", percent: 100 },
   { title: "Data Engineering", percent: 90 },
-  { title: "Databricks", percent: 90 },
+  { title: "Data Warehouse · Semantic Modelling", percent: 90 },
   { title: "Python · Spark · SQL", percent: 90 },
-  { title: "Databases", percent: 90 },
-  { title: "Linux & Shell", percent: 80 },
-  { title: "Data Streaming", percent: 70 },
+  { title: "Databases · OLTP", percent: 80 },
+  { title: "Streaming", percent: 70 },
+  { title: "Machine Learning", percent: 60 },
   { title: "GenAI", percent: 60 },
-  { title: "MLflow", percent: 60 },
 ];
 
 export type Project = {

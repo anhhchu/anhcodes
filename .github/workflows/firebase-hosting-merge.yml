@@ -6,6 +6,10 @@ name: Deploy to Firebase Hosting on merge
   push:
     branches:
       - master
+# action-hosting-deploy still declares node20; force JS actions onto node24
+# to clear the deprecation warning (a no-op once node24 is the runner default).
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest

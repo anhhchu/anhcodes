@@ -19,9 +19,9 @@ export function Skills() {
                 {skill.percent}%
               </span>
             </div>
-            <div className="h-px w-full bg-line">
+            <div className="h-0.5 w-full overflow-hidden rounded-full bg-line">
               <div
-                className="h-px bg-ink"
+                className="h-0.5 rounded-full bg-ink"
                 style={{ width: `${skill.percent}%` }}
               />
             </div>
