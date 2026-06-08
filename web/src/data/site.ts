@@ -15,7 +15,7 @@ export const hero = {
 export const about = {
   eyebrow: "About",
   title: "Lifelong learner, Nature wanderer.",
-  body: "I'm an engineer with a deep curiosity for how things work and a love for building systems that last. By night, I'm tinkering with new tools and chasing the next thing to learn. And when I step away from the keyboard, you'll find me out on a trail, or hiking in the Pacific Northwest.",
+  body: "I'm an engineer with a deep curiosity for how things work and a love for building systems that last. By night, I'm tinkering with new tools and chasing the next thing to learn. And when I step away from the keyboard, you'll find me out on a trail, or camping in the Pacific Northwest.",
   image: "/images/logo-noborder.png",
 };
 
@@ -158,9 +158,8 @@ export const testimonials: Testimonial[] = [
 
 export const contact = {
   eyebrow: "Contact",
-  title: "Let's build something reliable.",
+  title: "Let's build something great.",
   body: "Have a data platform problem, an interesting role, or just want to talk shop about Spark and lakehouses? My inbox is open.",
-  email: "anhhchu12@gmail.com",
 };
 
 export const socials = [

@@ -19,7 +19,7 @@ export default function ResumePage() {
   return (
     <article className="resume mx-auto max-w-3xl px-6 pt-16 pb-12">
       {/* Header */}
-      <header className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+      <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <h1 className="font-display text-5xl font-semibold tracking-tight text-ink">
             {resume.name}
@@ -41,7 +41,7 @@ export default function ResumePage() {
           </div>
         </div>
         <PrintButton />
-      </header>
+      </div>
 
       {/* Summary */}
       <p className="mt-10 text-lg leading-relaxed text-muted">{resume.summary}</p>
