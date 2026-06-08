@@ -1,6 +1,6 @@
-# anhcodes.dev
+# Personal Blog
 
-Personal website and blog of **Anh Chu** — a data engineer/architect — covering portfolio, experience, and writing about Spark, Delta Lake, and Databricks.
+Personal website and blog, covering portfolio, experience, and writing about Spark, Delta Lake, and Databricks.
 
 🔗 **Live site:** https://anhcodes.dev/
 
