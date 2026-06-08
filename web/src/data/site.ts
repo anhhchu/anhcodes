@@ -83,7 +83,7 @@ export const projects: Project[] = [
     title: "Lakebase POC Accelerator",
     service: "Lakebase · OLTP · Reverse ETL",
     description:
-      "A Python accelerator that streamlines testing and deployment of customer OLTP workloads to Lakebase — Databricks' managed Postgres — with a focus on reverse ETL use cases.",
+      "A Databricks Application that streamlines testing and deployment of customer OLTP workloads to Lakebase — Databricks' managed Postgres — with a focus on reverse ETL use cases.",
     thumbnail: "/images/portfolio/lakebase.jpeg",
     href: "https://github.com/databricks-solutions/lakebase-poc-accelerator",
   },
