@@ -199,7 +199,14 @@ body {
 /* no-print controls, and use a plain white background.                 */
 /* ------------------------------------------------------------------ */
 @page {
-  margin: 0; /* removes the browser's date/title header & footer */
+  /* Vertical margin gives every page after the first some top/bottom
+     breathing room (otherwise page 2+ content starts flush at the edge).
+     Horizontal stays 0 — the .resume padding handles left/right. */
+  margin: 0.5in 0;
+}
+@page :first {
+  /* First page top spacing comes from .resume's padding-top instead. */
+  margin-top: 0;
 }
 @media print {
   body > header,
