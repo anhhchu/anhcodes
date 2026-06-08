@@ -8,17 +8,20 @@ jobs:
     if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
           cache-dependency-path: web/package-lock.json
+      - name: Install dependencies
+        working-directory: web
+        # --no-audit/--no-fund skip the registry audit+fund network calls,
+        # which can stall or crash `npm ci` ("Exit handler never called!") in CI.
+        run: npm ci --no-audit --no-fund
       - name: Build Next.js site
         working-directory: web
-        run: |
-          npm ci
-          npm run build
+        run: npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
