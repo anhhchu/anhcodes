@@ -168,3 +168,96 @@ export const socials = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/anhhchu/" },
   { label: "dev.to", href: "https://dev.to/anhcodes" },
 ];
+
+export const resume = {
+  name: "Anh Chu",
+  title: "Data Architect · Solutions Architect",
+  location: "Seattle, Washington",
+  summary:
+    "Data Architect passionate about working with data and bringing insights closer to business users. Experience across data engineering, big data, data science, data warehousing, and back-end databases on GCP, Azure, and AWS.",
+  links: [
+    { label: "anhcodes.dev", href: "https://anhcodes.dev" },
+    { label: "github.com/anhhchu", href: "https://github.com/anhhchu" },
+    { label: "in/anhhchu", href: "https://www.linkedin.com/in/anhhchu/" },
+  ],
+  experience: [
+    {
+      title: "Specialist Solutions Architect",
+      org: "Databricks",
+      period: "Aug 2024 — Present",
+      summary:
+        "Deliver technical leadership to enterprise clients on architecting and implementing data modernization solutions, specializing in Delta Lake, big data platforms, Apache Spark, SQL optimization, and advanced data engineering practices.",
+      bullets: [
+        "Lead data modernization for strategic enterprise accounts, from architecture to production.",
+        "Design scalable lakehouse solutions on Delta Lake, Spark, and Databricks.",
+        "Tune Spark and SQL workloads to cut cost and accelerate pipelines.",
+        "Partner cross-functionally to drive platform adoption and business outcomes.",
+      ],
+    },
+    {
+      title: "Sr Specialist Solutions Engineer",
+      org: "Databricks",
+      period: "Mar 2023 — Present",
+      summary:
+        "Provide technical guidance to strategic customers in designing and implementing enterprise data modernization projects using Delta Lake, big data, Spark and SQL optimization, and data engineering.",
+      bullets: [],
+    },
+    {
+      title: "Software Engineer",
+      org: "Microsoft",
+      period: "Feb 2022 — Mar 2023",
+      summary:
+        "Software Engineer building, configuring, and managing back-end infrastructure for a video-powered social-learning platform owned by Microsoft.",
+      bullets: [
+        "Migrated the data warehouse from AWS Redshift to a Synapse lakehouse, end to end.",
+        "Cut query times 4–5× through data-loading and table-design optimization.",
+        "Built batch and streaming pipelines from transactional and telemetry sources into the lakehouse.",
+        "Streamed CDC with Debezium, Kafka, and Azure EventHub; transformed data in Synapse Spark.",
+        "Shipped a reliable lakehouse→CRM sync via REST API, with validation and monitoring.",
+        "Operated the Azure platform — storage, database, warehouse, Kubernetes, CI/CD — for high availability.",
+      ],
+    },
+    {
+      title: "Software Engineer II",
+      org: "Walmart Global Tech",
+      period: "Jan 2020 — Feb 2022",
+      summary:
+        "Software Engineer building an end-to-end analytical Supply Chain web application to track inventory and transportation from Suppliers to Stores for international markets.",
+      bullets: [
+        "Led 4 engineers migrating an on-prem Teradata warehouse to GCP across 10 markets (BigQuery, Dataproc, PySpark, Airflow).",
+        "Boosted application performance 70% via caching, indexing, and in-database aggregation.",
+        "Cut codebase complexity 80% through refactoring, SQL cleanup, and CI/CD.",
+        "Built reverse-ETL pipelines serving warehouse analytics metrics back into the app's MSSQL database for in-product supply-chain insights.",
+        "Shipped new supply-chain metrics with SQL and Spark, validated for data quality.",
+      ],
+    },
+  ],
+  education: [
+    {
+      degree: "M.S. in Computer Science",
+      org: "Harrisburg University of Science & Technology",
+    },
+    {
+      degree: "M.S. in Supply Chain Management",
+      org: "University of Texas at Dallas",
+    },
+  ],
+  skills: [
+    {
+      category: "Data Engineering",
+      items: ["PySpark", "Delta Lake", "Spark Streaming", "Kafka", "Airflow", "Databricks"],
+    },
+    {
+      category: "Data Science & ML",
+      items: ["Machine Learning", "Spark ML", "MLflow", "GenAI", "Tableau"],
+    },
+    {
+      category: "Languages & Query",
+      items: ["Python", "SQL", "Linux / Shell"],
+    },
+    {
+      category: "Cloud & Platforms",
+      items: ["Azure Synapse", "AWS Redshift", "BigQuery", "Docker", "Kubernetes"],
+    },
+  ],
+};

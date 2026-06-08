@@ -194,3 +194,22 @@ body {
   filter: none;
 }
 
+/* ------------------------------------------------------------------ */
+/* Print: produce a clean résumé PDF — drop the site chrome and any     */
+/* no-print controls, and use a plain white background.                 */
+/* ------------------------------------------------------------------ */
+@media print {
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+  .resume {
+    padding-top: 0;
+    max-width: none;
+  }
+}
+

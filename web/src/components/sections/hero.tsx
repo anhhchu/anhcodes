@@ -17,14 +17,12 @@ export function Hero() {
           >
             Read the blog
           </Link>
-          <a
-            href={hero.resumeUrl}
-            target="_blank"
-            rel="noreferrer"
+          <Link
+            href="/resume"
             className="border border-ink px-8 py-3.5 text-lg italic text-ink transition-colors hover:bg-ink hover:text-canvas"
           >
-            Download résumé
-          </a>
+            View résumé
+          </Link>
         </div>
       </DataFlow>
     </section>
