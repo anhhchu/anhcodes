@@ -14,8 +14,8 @@ export const hero = {
 
 export const about = {
   eyebrow: "About",
-  title: "Curious engineer, lifelong learner, nature wanderer.",
-  body: "I'm an engineer with a deep curiosity for how things work and a love for building systems that last. By night, I'm tinkering with new tools and chasing the next thing to learn. And when I step away from the keyboard, you'll find me out on a trail, biking around Lake Washington, or camping somewhere in the Pacific Northwest.",
+  title: "Lifelong learner, Nature wanderer.",
+  body: "I'm an engineer with a deep curiosity for how things work and a love for building systems that last. By night, I'm tinkering with new tools and chasing the next thing to learn. And when I step away from the keyboard, you'll find me out on a trail, or hiking in the Pacific Northwest.",
   image: "/images/logo-noborder.png",
 };
 

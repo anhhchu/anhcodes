@@ -41,7 +41,7 @@ export default async function PostPage({
   return (
     <article className="mx-auto max-w-2xl px-6 pt-16 pb-12">
       <Link
-        href="/blog"
+        href="/"
         className="text-sm italic text-muted transition-colors hover:text-ink"
       >
         ← All writing
@@ -63,14 +63,14 @@ export default async function PostPage({
       </header>
 
       {post.cover && (
-        <div className="relative mb-12 aspect-video w-full overflow-hidden border border-line">
+        <div className="group relative mb-12 aspect-video w-full overflow-hidden border border-line">
           <Image
             src={post.cover}
             alt={post.title}
             fill
             priority
             sizes="(max-width: 768px) 100vw, 672px"
-            className="object-cover"
+            className="cover-duo object-cover"
             unoptimized={post.cover.endsWith(".gif")}
           />
         </div>
@@ -84,7 +84,7 @@ export default async function PostPage({
       <footer className="mt-16 border-t border-line pt-8">
         <p className="italic text-muted">
           Written by {post.author}. Thanks for reading —{" "}
-          <Link href="/#contact" className="text-ink underline">
+          <Link href="/about#contact" className="text-ink underline">
             get in touch
           </Link>
           .

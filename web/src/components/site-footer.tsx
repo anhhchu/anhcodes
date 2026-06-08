@@ -4,7 +4,7 @@ import { LogoMark } from "./logo-mark";
 const socials = [
   { label: "GitHub", href: "https://github.com/anhhchu" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/anhhchu/" },
-  { label: "dev.to", href: "https://dev.to/anhhchu" },
+  { label: "dev.to", href: "https://dev.to/anhcodes" },
 ];
 
 export function SiteFooter() {

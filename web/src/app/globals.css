@@ -179,3 +179,18 @@ body {
   height: 100%;
   border: 1px solid var(--color-line);
 }
+
+/* ------------------------------------------------------------------ */
+/* Cover images: unify mismatched photos/screenshots into one warm     */
+/* monochrome tone so they fit the editorial palette. Hovering the      */
+/* enclosing `.group` fades each image back to full color.              */
+/* ------------------------------------------------------------------ */
+.cover-duo {
+  filter: grayscale(1) sepia(0.45) saturate(1.5) hue-rotate(-12deg)
+    brightness(1.03) contrast(0.96);
+  transition: filter 0.5s ease;
+}
+.group:hover .cover-duo {
+  filter: none;
+}
+

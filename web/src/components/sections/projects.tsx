@@ -25,7 +25,7 @@ export function Projects() {
                 alt={project.title}
                 fill
                 sizes="(max-width: 640px) 100vw, 50vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                className="cover-duo object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </div>
             <p className="mt-4 text-sm uppercase italic tracking-[0.15em] text-muted">

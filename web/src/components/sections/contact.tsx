@@ -1,5 +1,7 @@
 import { contact, socials } from "@/data/site";
 
+const linkedin = socials.find((s) => s.label === "LinkedIn");
+
 export function Contact() {
   return (
     <section
@@ -17,15 +19,21 @@ export function Contact() {
           {contact.body}
         </p>
 
-        <a
-          href={`mailto:${contact.email}`}
-          className="mt-10 inline-block bg-canvas px-8 py-3.5 text-lg italic text-ink transition-opacity hover:opacity-85"
-        >
-          {contact.email}
-        </a>
+        {linkedin && (
+          <a
+            href={linkedin.href}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-10 inline-block bg-canvas px-8 py-3.5 text-lg italic text-ink transition-opacity hover:opacity-85"
+          >
+            Connect on LinkedIn
+          </a>
+        )}
 
         <div className="mt-10 flex justify-center gap-7">
-          {socials.map((s) => (
+          {socials
+            .filter((s) => s.label !== "LinkedIn")
+            .map((s) => (
             <a
               key={s.href}
               href={s.href}
