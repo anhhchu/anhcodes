@@ -8,7 +8,7 @@ tags: ["spark"]
 author: "Anh Chu"
 draft: false
 ---
-Most Big Data developers and Data Engineers start learning Spark by writing SparkSQL codes to perform ETL on DataFrame (I know I did). I also wrote a post about [SparkSQL Programming](https://anhcodes.dev/blog/tune-spark-sql-programming/). However, we quickly learn that there’s more knowlege required to go from processing a few GBs of data to dealing with TBs and PBs of data, which is a challenge for big enterprises. Learning to write correct Spark codes is only a small part of the battle, you will need to understand the Spark Architecture and Spark working internals to correct tune Spark to handle true big data, and it’s the focus of this post. 
+Most Big Data developers and Data Engineers start learning Spark by writing SparkSQL codes to perform ETL on DataFrame (I know I did). I also wrote a post about [SparkSQL Programming](/blog/spark-sql-programming/). However, we quickly learn that there’s more knowlege required to go from processing a few GBs of data to dealing with TBs and PBs of data, which is a challenge for big enterprises. Learning to write correct Spark codes is only a small part of the battle, you will need to understand the Spark Architecture and Spark working internals to correct tune Spark to handle true big data, and it’s the focus of this post. 
 
 ## Spark Architecture
 
@@ -64,7 +64,7 @@ Spark parallelizes at 2 levels:
 - splitting work among workers, executors (or workers) will run the spark code on the data partitions it has
 - each executors have a number of slots/cores, each slot can execute a task on a data partition.
 
-Another characteristic of Spark is lazy execution. When you specify transformations on a Spark DataFrame, Spark records lineage and only start the computation when an action is triggered (refer to my previous post about [SparkSQL programming](https://anhcodes.dev/blog/tune-spark-sql-programming/) for more information on transformations and actions)
+Another characteristic of Spark is lazy execution. When you specify transformations on a Spark DataFrame, Spark records lineage and only start the computation when an action is triggered (refer to my previous post about [SparkSQL programming](/blog/spark-sql-programming/) for more information on transformations and actions)
 
 <img src="/images/single-blog/tune-spark/3.png" alt="" loading="lazy" />
 
