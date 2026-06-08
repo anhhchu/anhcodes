@@ -1,21 +1,31 @@
 import type { Metadata } from "next";
-import { Fraunces, Newsreader } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
+// Fonts are self-hosted (src/fonts/) rather than fetched from Google at
+// build time — next/font/google's build-time fetch hangs in CI. Both are
+// variable woff2 files (latin subset), so one file covers the weight range.
+
 // Display serif — high-contrast, editorial headlines
-const display = Fraunces({
-  subsets: ["latin"],
-  style: ["normal", "italic"],
+const display = localFont({
+  src: [
+    { path: "../fonts/fraunces-latin-normal.woff2", style: "normal" },
+    { path: "../fonts/fraunces-latin-italic.woff2", style: "italic" },
+  ],
+  weight: "100 900",
   variable: "--font-display",
   display: "swap",
 });
 
 // Body / UI serif — readable, with italics for labels
-const serif = Newsreader({
-  subsets: ["latin"],
-  style: ["normal", "italic"],
+const serif = localFont({
+  src: [
+    { path: "../fonts/newsreader-latin-normal.woff2", style: "normal" },
+    { path: "../fonts/newsreader-latin-italic.woff2", style: "italic" },
+  ],
+  weight: "200 800",
   variable: "--font-serif",
   display: "swap",
 });
