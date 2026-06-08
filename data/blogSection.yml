@@ -1,9 +1,0 @@
----
-enable: true
-topTitle: Blog
-title: >
-  ## Recent Articles
-
-  I blog about SQL, Spark, Data Processing, Data Storage, Data Analytics, and Distributed System on GCP and Azure Cloud.
-
-buttonTarget: blog

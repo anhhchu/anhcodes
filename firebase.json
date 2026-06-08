@@ -1,24 +1,24 @@
 {
   "hosting": {
-    "public": "public",    
+    "public": "web/out",
     "site": "anhcodesdev",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
     ],
-    "rewrites": [
+    "cleanUrls": true,
+    "trailingSlash": true,
+    "headers": [
       {
         "source": "**",
-        "destination": "/index.html"
+        "headers": [
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }
+        ]
       }
-    ],
-    "headers": [ {
-      "source" : "**",
-      "headers" : [ {
-        "key" : "Access-Control-Allow-Origin",
-        "value" : "*"
-      } ]
-    }]
+    ]
   }
 }

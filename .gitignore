@@ -64,3 +64,4 @@ node_modules/
 .env
 config.toml
 themes/*
+CLAUDE.md
