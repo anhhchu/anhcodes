@@ -1,0 +1,181 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/*  Design tokens — editorial / "OpenWeb" aesthetic                     */
+/*  High-contrast display serif, warm blush canvas, near-black ink.    */
+/* ------------------------------------------------------------------ */
+@theme {
+  /* Palette */
+  --color-canvas: #f3e8e4; /* warm blush background */
+  --color-surface: #faf4f1; /* lighter cards / device mockups */
+  --color-ink: #16130f; /* near-black text & buttons */
+  --color-muted: #6b625b; /* secondary serif text */
+  --color-line: #d8c9c3; /* hairline rules */
+
+  /* Type families (wired to next/font in layout.tsx) */
+  --font-display: var(--font-display); /* Fraunces — headlines */
+  --font-serif: var(--font-serif); /* Newsreader — body + UI labels */
+
+  /* Editorial type scale */
+  --text-hero: clamp(2.75rem, 8vw, 7rem);
+  --text-hero--line-height: 0.98;
+  --text-display: clamp(2rem, 5vw, 3.75rem);
+  --text-display--line-height: 1.02;
+}
+
+:root {
+  --background: var(--color-canvas);
+  --foreground: var(--color-ink);
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Display serif gets tight tracking + optical refinements */
+.font-display {
+  font-feature-settings: "ss01";
+  letter-spacing: -0.015em;
+}
+
+/* Selection in ink */
+::selection {
+  background: var(--color-ink);
+  color: var(--color-canvas);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Article prose — rendered Markdown for blog posts                    */
+/* ------------------------------------------------------------------ */
+.prose {
+  font-size: 1.1875rem;
+  line-height: 1.75;
+  color: var(--color-ink);
+}
+.prose > * + * {
+  margin-top: 1.4em;
+}
+.prose h2,
+.prose h3,
+.prose h4 {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--color-ink);
+  line-height: 1.15;
+}
+.prose h2 {
+  font-size: 1.9rem;
+  margin-top: 2.4em;
+}
+.prose h3 {
+  font-size: 1.45rem;
+  margin-top: 1.8em;
+}
+/* Autolinked headings (rehype-autolink-headings, behavior:"wrap") */
+.prose h2 a,
+.prose h3 a,
+.prose h4 a {
+  color: inherit;
+  text-decoration: none;
+}
+.prose a {
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.prose a:hover {
+  text-decoration-color: var(--color-muted);
+}
+.prose strong {
+  font-weight: 600;
+}
+.prose ul,
+.prose ol {
+  padding-left: 1.4em;
+}
+.prose ul {
+  list-style: disc;
+}
+.prose ol {
+  list-style: decimal;
+}
+.prose li + li {
+  margin-top: 0.4em;
+}
+.prose blockquote {
+  border-left: 3px solid var(--color-ink);
+  padding-left: 1.1em;
+  font-style: italic;
+  color: var(--color-muted);
+}
+.prose img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 2em auto;
+  border: 1px solid var(--color-line);
+  border-radius: 2px;
+}
+.prose hr {
+  border: 0;
+  border-top: 1px solid var(--color-line);
+  margin: 2.5em 0;
+}
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.prose th,
+.prose td {
+  border: 1px solid var(--color-line);
+  padding: 0.5em 0.75em;
+  text-align: left;
+}
+.prose th {
+  background: var(--color-surface);
+  font-weight: 600;
+}
+/* Inline code */
+.prose :not(pre) > code {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.875em;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 3px;
+  padding: 0.1em 0.35em;
+}
+/* Fenced code blocks (rehype-pretty-code + Shiki) */
+.prose pre {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 4px;
+  padding: 1.1em 1.25em;
+  overflow-x: auto;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.prose pre code {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  counter-reset: line;
+}
+.video-embed {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  margin: 2em 0;
+}
+.video-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--color-line);
+}
