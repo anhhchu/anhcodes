@@ -92,7 +92,7 @@ export const projects: Project[] = [
     service: "Performance Engineering · Benchmarking",
     description:
       "A Python-based accelerator that streamlines data generation and query performance evaluation across Databricks SQL warehouse types. Automated workflows, TPC-DS/TPC-H support, and an AI/BI metrics dashboard.",
-    thumbnail: "/images/portfolio/seattle.jpeg",
+    thumbnail: "/images/portfolio/metimur.jpeg",
     href: "https://github.com/anhhchu/metimur",
   },
   {
