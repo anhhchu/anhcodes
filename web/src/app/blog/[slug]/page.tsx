@@ -1,8 +1,25 @@
+import fs from "node:fs";
+import path from "node:path";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllSlugs, getPost, formatDate } from "@/lib/posts";
+
+// Read a PNG's intrinsic width/height from its IHDR header so the cover can be
+// rendered at its natural aspect ratio instead of being cropped into a 16:9 box.
+function getImageSize(cover: string): { width: number; height: number } | null {
+  try {
+    if (!cover.toLowerCase().endsWith(".png")) return null;
+    const file = path.join(process.cwd(), "public", cover);
+    const buf = fs.readFileSync(file);
+    // PNG: 8-byte signature, then IHDR with width@16 and height@20 (big-endian).
+    if (buf.length < 24 || buf.toString("ascii", 12, 16) !== "IHDR") return null;
+    return { width: buf.readUInt32BE(16), height: buf.readUInt32BE(20) };
+  } catch {
+    return null;
+  }
+}
 
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
@@ -38,6 +55,8 @@ export default async function PostPage({
   const post = await getPost(slug);
   if (!post) notFound();
 
+  const coverSize = post.cover ? getImageSize(post.cover) : null;
+
   return (
     <article className="mx-auto max-w-2xl px-6 pt-16 pb-12">
       <Link
@@ -62,19 +81,35 @@ export default async function PostPage({
         </h1>
       </header>
 
-      {post.cover && (
-        <div className="group relative mb-12 aspect-video w-full overflow-hidden border border-line">
-          <Image
-            src={post.cover}
-            alt={post.title}
-            fill
-            priority
-            sizes="(max-width: 768px) 100vw, 672px"
-            className="cover-duo object-cover"
-            unoptimized={post.cover.endsWith(".gif")}
-          />
-        </div>
-      )}
+      {post.cover &&
+        (coverSize ? (
+          // Known dimensions: render at the image's natural aspect ratio so the
+          // whole cover is visible (no cropping), e.g. wide banner thumbnails.
+          <div className="group relative mb-12 w-full overflow-hidden border border-line">
+            <Image
+              src={post.cover}
+              alt={post.title}
+              width={coverSize.width}
+              height={coverSize.height}
+              priority
+              sizes="(max-width: 768px) 100vw, 672px"
+              className="cover-duo h-auto w-full"
+              unoptimized={post.cover.endsWith(".gif")}
+            />
+          </div>
+        ) : (
+          <div className="group relative mb-12 aspect-video w-full overflow-hidden border border-line">
+            <Image
+              src={post.cover}
+              alt={post.title}
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 672px"
+              className="cover-duo object-cover"
+              unoptimized={post.cover.endsWith(".gif")}
+            />
+          </div>
+        ))}
 
       <div
         className="prose"
