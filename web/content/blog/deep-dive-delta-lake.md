@@ -4,7 +4,7 @@ date: "2023-08-07T11:23:00.000Z"
 description: "Delta Lake is an open source storage layer that brings reliability to data lakes. Delta Lake provides ACID transactions, scalable metadata handling, and unifies streaming and batch data processing. Delta Lake runs…"
 cover: "/images/single-blog/deep-dive-delta-lake/0.png"
 categories: ["data-lakehouse"]
-tags: ["spark", "delta-lake"]
+tags: ["spark", "delta-lake", "databricks"]
 author: "Anh Chu"
 draft: false
 ---

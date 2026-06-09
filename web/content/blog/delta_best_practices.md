@@ -4,7 +4,7 @@ date: "2023-12-30T16:02:25.000Z"
 description: "In Delta Lake, it’s easy to run into small files issues. In most cases, we performed a number of operations where only one or several records were inserted. Files will be combined…"
 cover: "/images/single-blog/delta-best-practices/0.jpg"
 categories: ["data-lakehouse"]
-tags: ["spark", "delta-lake"]
+tags: ["spark", "delta-lake", "databricks"]
 author: "Anh Chu"
 draft: true
 ---

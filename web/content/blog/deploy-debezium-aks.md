@@ -4,15 +4,11 @@ date: "2023-01-07T00:19:27.000Z"
 description: "This tutorial follows Debezium official documentation Deploying Debezium on Kubernetes, but modified for Azure Kubernetes Service and Azure Container Registry. You need an Azure account, Azure subscription, and Azure resource group before…"
 cover: "/images/single-blog/cdc/aksdbz.png"
 categories: ["data-engineering"]
-tags: ["kafka", "kubernetes", "debezium" "change-data-capture", "docker"]
+tags: ["kafka", "kubernetes", "debezium", "change-data-capture", "docker"]
 author: "Anh Chu"
 draft: false
 ---
 This tutorial follows Debezium official documentation [Deploying Debezium on Kubernetes](https://debezium.io/documentation/reference/stable/operations/kubernetes.html), but modified for Azure Kubernetes Service and Azure Container Registry.
-
-## Table of Content
-
-
 
 ## 1. Prerequisites
 
