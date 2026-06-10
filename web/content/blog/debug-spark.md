@@ -3,7 +3,7 @@ title: "Debug long running Spark job"
 date: "2023-05-22T17:09:41.000Z"
 description: "You Spark job is running for a long time, what to do? Generally, longrunning Spark jobs can be due to various factors. We like to call them the 5S Spill, Skew, Shuffle,…"
 cover: "/images/single-blog/debug-spark/bear_debug.jpeg"
-categories: ["big-data"]
+categories: ["big-data", "data-engineering"]
 tags: ["spark"]
 author: "Anh Chu"
 draft: false

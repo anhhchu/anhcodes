@@ -4,7 +4,7 @@ date: "2026-02-12T00:00:00.000Z"
 description: "An end-to-end, copy-pasteable runbook for setting up Databricks file events on AWS using your own SQS queue (Provided queue mode), direct S3 → SQS notifications, Unity Catalog external locations, file arrival triggers, and Auto Loader."
 cover: "/images/single-blog/databricks-managed-file-events-aws-s3-sqs/thumbnail.png"
 categories: ["data-engineering"]
-tags: ["databricks", "auto-loader", "unity-catalog", "aws", "sqs"]
+tags: ["databricks", "auto-loader", "unity-catalog", "aws", "sqs", "data-engineering"]
 author: "Anh Chu"
 draft: false
 ---

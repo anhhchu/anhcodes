@@ -11,7 +11,7 @@ export default function Home() {
           Writing
         </h1>
         <p className="mt-5 text-xl text-muted">
-          Field notes on data engineering, big data, and the systems behind them.
+          Field notes on data engineering, big data, data warehouse, GenAI, and the systems behind them.
         </p>
       </header>
 

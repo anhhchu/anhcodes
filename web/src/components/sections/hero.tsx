@@ -18,6 +18,12 @@ export function Hero() {
             Read the blog
           </Link>
           <Link
+            href="/projects"
+            className="border border-ink px-8 py-3.5 text-lg italic text-ink transition-colors hover:bg-ink hover:text-canvas"
+          >
+            View projects
+          </Link>
+          <Link
             href="/resume"
             className="border border-ink px-8 py-3.5 text-lg italic text-ink transition-colors hover:bg-ink hover:text-canvas"
           >

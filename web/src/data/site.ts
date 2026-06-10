@@ -183,7 +183,7 @@ export const resume = {
     {
       title: "Specialist Solutions Architect",
       org: "Databricks",
-      period: "Aug 2024 — Present",
+      period: "2024 — Present",
       summary:
         "Deliver technical leadership to enterprise clients on architecting and implementing data modernization solutions, specializing in Delta Lake, big data platforms, Apache Spark, SQL optimization, and advanced data engineering practices.",
       bullets: [
@@ -196,7 +196,7 @@ export const resume = {
     {
       title: "Sr Specialist Solutions Engineer",
       org: "Databricks",
-      period: "Mar 2023 — Present",
+      period: "2023 — 2024",
       summary:
         "Provide technical guidance to strategic customers in designing and implementing enterprise data modernization projects using Delta Lake, big data, Spark and SQL optimization, and data engineering.",
       bullets: [],
@@ -204,9 +204,9 @@ export const resume = {
     {
       title: "Software Engineer",
       org: "Microsoft",
-      period: "Feb 2022 — Mar 2023",
+      period: "2022 — 2023",
       summary:
-        "Software Engineer building, configuring, and managing back-end infrastructure for a video-powered social-learning platform owned by Microsoft.",
+        "Data Engineer building, configuring, and managing back-end infrastructure for a video-powered social-learning platform owned by Microsoft.",
       bullets: [
         "Migrated the data warehouse from AWS Redshift to a Synapse lakehouse, end to end.",
         "Cut query times 4–5× through data-loading and table-design optimization.",
@@ -217,11 +217,11 @@ export const resume = {
       ],
     },
     {
-      title: "Software Engineer II",
+      title: "Software Engineer",
       org: "Walmart Global Tech",
-      period: "Jan 2020 — Feb 2022",
+      period: "2020 — 2022",
       summary:
-        "Software Engineer building an end-to-end analytical Supply Chain web application to track inventory and transportation from Suppliers to Stores for international markets.",
+        "Data Engineer building an end-to-end analytical Supply Chain web application to track inventory and transportation from Suppliers to Stores for international markets.",
       bullets: [
         "Led 4 engineers migrating an on-prem Teradata warehouse to GCP across 10 markets (BigQuery, Dataproc, PySpark, Airflow).",
         "Boosted application performance 70% via caching, indexing, and in-database aggregation.",
@@ -234,21 +234,25 @@ export const resume = {
   education: [
     {
       degree: "M.S. in Computer Science",
-      org: "Harrisburg University of Science & Technology",
+      org: "Harrisburg University of Science and Technology",
     },
     {
       degree: "M.S. in Supply Chain Management",
       org: "University of Texas at Dallas",
-    },
+    }
   ],
   skills: [
     {
       category: "Data Engineering",
-      items: ["PySpark", "Delta Lake", "Spark Streaming", "Kafka", "Airflow", "Databricks"],
+      items: ["PySpark", "Delta Lake","Iceberg", "Spark Streaming", "Kafka", "CDC"],
+    },
+    {
+      category: "Data Warehousing & Database",
+      items: ["Data Warehousing", "Semantic Modeling", "Postgres", "MSSQL Server","Dimensional Modeling", "dbt", "Power BI", "Tableau"],
     },
     {
       category: "Data Science & ML",
-      items: ["Machine Learning", "Spark ML", "MLflow", "GenAI", "Tableau"],
+      items: ["Machine Learning", "Spark ML", "MLflow", "GenAI"],
     },
     {
       category: "Languages & Query",
@@ -256,7 +260,7 @@ export const resume = {
     },
     {
       category: "Cloud & Platforms",
-      items: ["Azure Synapse", "AWS Redshift", "BigQuery", "Docker", "Kubernetes"],
+      items: ["Databricks","Snowflake","Azure", "AWS", "BigQuery"],
     },
   ],
 };
