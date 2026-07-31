@@ -85,7 +85,7 @@ export default async function PostPage({
         (coverSize ? (
           // Known dimensions: render at the image's natural aspect ratio so the
           // whole cover is visible (no cropping), e.g. wide banner thumbnails.
-          <div className="group relative mb-12 w-full overflow-hidden border border-line">
+          <div className="group relative mb-12 w-full overflow-hidden rounded-sm border border-line shadow-[0_4px_20px_0_rgba(22,19,15,0.18)]">
             <Image
               src={post.cover}
               alt={post.title}
@@ -98,7 +98,7 @@ export default async function PostPage({
             />
           </div>
         ) : (
-          <div className="group relative mb-12 aspect-video w-full overflow-hidden border border-line">
+          <div className="group relative mb-12 aspect-video w-full overflow-hidden rounded-sm border border-line shadow-[0_4px_20px_0_rgba(22,19,15,0.18)]">
             <Image
               src={post.cover}
               alt={post.title}
