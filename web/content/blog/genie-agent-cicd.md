@@ -80,7 +80,14 @@ The same pattern applies to your own data: replace `samples.tpcds_sf1` with your
 
 ## Prerequisites
 
-### 1. Install the Databricks CLI
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/anhhchu/genie-agent-cicd
+cd genie-agent-cicd
+```
+
+### 2. Install the Databricks CLI
 
 The bundle commands require Databricks CLI v0.205 or later.
 
@@ -105,7 +112,7 @@ Verify the installation:
 databricks --version
 ```
 
-### 2. Configure workspace profiles
+### 3. Configure workspace profiles
 
 Each target in `databricks.yml` maps to a named profile in `~/.databrickscfg`. Set up one profile per workspace using OAuth (recommended):
 
@@ -146,12 +153,6 @@ targets:
       schema: genie
 ```
 
-### 3. Clone the repo
-
-```bash
-git clone https://github.com/anhhchu/genie-agent-cicd
-cd genie-agent-cicd
-```
 
 ## Step 1: Create a unified base view (multi-fact workaround)
 

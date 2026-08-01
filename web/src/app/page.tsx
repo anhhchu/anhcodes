@@ -5,7 +5,7 @@ export default function Home() {
   const posts = getAllPosts();
 
   return (
-    <div className="mx-auto max-w-3xl px-6 pt-20 pb-12">
+    <div className="mx-auto max-w-4xl px-6 pt-20 pb-12">
       <header className="mb-12 text-center">
         <h1 className="font-display text-display font-semibold tracking-tight text-ink">
           Writing

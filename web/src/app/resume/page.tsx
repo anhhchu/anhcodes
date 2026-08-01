@@ -17,7 +17,7 @@ function SectionHeading({ children }: { children: string }) {
 
 export default function ResumePage() {
   return (
-    <article className="resume mx-auto max-w-3xl px-6 pt-16 pb-12">
+    <article className="resume mx-auto max-w-4xl px-6 pt-16 pb-12">
       {/* Header */}
       <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
         <div>

@@ -58,7 +58,7 @@ export default async function PostPage({
   const coverSize = post.cover ? getImageSize(post.cover) : null;
 
   return (
-    <article className="mx-auto max-w-2xl px-6 pt-16 pb-12">
+    <article className="mx-auto max-w-4xl px-6 pt-16 pb-12">
       <Link
         href="/"
         className="text-sm italic text-muted transition-colors hover:text-ink"
