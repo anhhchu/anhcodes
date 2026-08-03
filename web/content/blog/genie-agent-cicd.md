@@ -245,7 +245,7 @@ python3 prebuild.py --target dev
 
 The script reads `catalog` and `schema` directly from the target's variables in `databricks.yml` and writes substituted copies of all three files to `build/`. The bundle resources point to `build/`, and `build/` is gitignored — only the placeholder source files are committed.
 
-## Step 3: Export your Genie Agent from the workspace
+## Step 3: Export your Genie Agent from the workspace (optional)
 
 If you already have a Genie Agent configured in the UI, the CLI can export it directly into your bundle. First, find the space ID in the browser URL:
 
