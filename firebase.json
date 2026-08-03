@@ -2,6 +2,7 @@
   "hosting": {
     "public": "web/out",
     "site": "anhcodesdev",
+    "limit": 5,
     "ignore": [
       "firebase.json",
       "**/.*",
