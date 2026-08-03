@@ -1,5 +1,5 @@
 ---
-title: "Managing Databricks Genie Agents as Code with Databricks Declarative Automation Bundles (DAB)"
+title: "Managing Databricks Genie Agents as Code with Databricks Declarative Automation Bundles (DABs)"
 date: "2026-07-31T00:00:00.000Z"
 description: "How to version-control, review, and promote a Databricks Genie Agent and Unity Catalog metric view across environments using Declarative Automation Bundles — with a prebuild script that stamps environment-specific catalog and schema values at deploy time."
 cover: "/images/single-blog/genie-agent-cicd/thumbnail.png"
@@ -13,7 +13,7 @@ Databricks Genie Agents (formerly Genie Spaces) are domain-specific, no-code cha
 
 If your team is editing agent instructions directly in the Genie UI, you have no version history, no code review, and no reliable path to promote changes from dev to production. One wrong update and there's no rollback.
 
-In this post I'll show how to solve that using **Declarative Automation Bundles (DAB)** to manage a Genie Agent and its underlying Unity Catalog metric view entirely as code.
+In this post I'll show how to solve that using **Declarative Automation Bundles (DABs)** to manage a Genie Agent and its underlying Unity Catalog metric view entirely as code.
 
 ## The problem with UI-only Genie Agent management
 
@@ -30,13 +30,13 @@ When all of this lives only in the UI, you get:
 - No audit trail for who changed what and when
 - No peer review before changes hit production
 - No reliable way to promote the exact same configuration from dev to prod
-- No rollback if a bad instruction update breaks query behaviour
+- No rollback if a bad instruction update breaks query behavior
 
-The fix: treat the Genie Agent like any other piece of software, version-controlled, reviewed, and deployed through a pipeline.
+The fix: treat the Genie Agent like any other piece of software: version-controlled, reviewed, and deployed through a pipeline.
 
 ## Solution overview: Declarative Automation Bundles
 
-Declarative Automation Bundles (DAB) is Databricks' infrastructure-as-code framework. It supports jobs, pipelines, dashboards, and as of CLI v1.10, **Genie spaces** as first-class resources.
+Declarative Automation Bundles (DABs) is Databricks' infrastructure-as-code framework. It supports jobs, pipelines, dashboards, and as of CLI v1.10, **Genie Agents** as first-class resources.
 
 The approach has two key pieces:
 
@@ -89,7 +89,7 @@ cd genie-agent-cicd
 
 ### 2. Install the Databricks CLI
 
-The bundle commands require Databricks CLI v0.205 or later.
+The bundle commands require Databricks CLI v1.10 or later.
 
 **macOS:**
 ```bash
@@ -124,7 +124,7 @@ databricks auth login --host https://<dev-workspace>.cloud.databricks.com --prof
 databricks auth login --host https://<prod-workspace>.cloud.databricks.com --profile PROD
 ```
 
-Both commands open a browser for OAuth login and write the credentials to `~/.databrickscfg`:
+Both commands open a browser for OAuth login and write the credentials to `~/.databrickscfg` (substitute the hostname for your cloud — Azure workspaces use `adb-<id>.<region>.azuredatabricks.net`, GCP workspaces use `<id>.gcp.databricks.com`):
 
 ```ini
 [DEFAULT]
@@ -202,7 +202,7 @@ The metric view YAML defines dimensions, measures, and their synonyms. Synonyms 
 # src/metric-view.yaml
 version: 1.1
 
-source: <your_catalog>.<your_schema>.tpcds_all_sales
+source: ${catalog}.${schema}.tpcds_all_sales
 
 dimensions:
   - name: Channel
@@ -261,10 +261,14 @@ databricks bundle generate genie-space \
   --key tpcds_retail
 ```
 
+The `--key` value (`tpcds_retail`) becomes the resource key in the generated YAML and the identifier used when re-exporting or referencing the resource later.
+
 This generates two files:
 
 - `src/tpcds_retail.geniespace.json` — the full agent configuration
-- `resources/tpcds_retail.genie_space.yml` — the DAB resource definition
+- `resources/tpcds_retail.genie_space.yml` — the DABs resource definition
+
+After the initial export, `src/tpcds_retail.geniespace.json` becomes your source of truth — edit it directly for subsequent changes rather than re-running generate.
 
 The `.geniespace.json` file is structured JSON, not a raw blob, so every section is directly editable:
 
@@ -345,8 +349,8 @@ targets:
 ```bash
 # Generate build/ for dev and deploy
 python3 prebuild.py --target dev
-databricks bundle deploy
-databricks bundle run metric_view
+databricks bundle deploy --target dev
+databricks bundle run metric_view --target dev
 
 # Promote to prod — prebuild stamps prod catalog/schema into build/ first
 python3 prebuild.py --target prod
@@ -429,11 +433,11 @@ Each agent's files are completely independent — `src/finance_agent.geniespace.
 
 **The metric view YAML is human-friendly.** Dimensions, measures, and synonyms are readable and diff well in pull requests. A reviewer can see exactly which synonym was added or which measure expression changed.
 
-**The `.geniespace.json` is structured JSON, not a blob.** When DAB introduced the `genie-space` resource type, it made the agent config a proper file rather than a stringified JSON-inside-JSON. Every section (instructions, snippets, benchmarks, column configs) is a first-class JSON object you can edit and review.
+**The `.geniespace.json` is structured JSON, not a blob.** When DABs introduced the `genie-space` resource type, it made the agent config a proper file rather than a stringified JSON-inside-JSON. Every section (instructions, snippets, benchmarks, column configs) is a first-class JSON object you can edit and review.
 
 **`databricks.yml` is the single source of environment config.** Catalog and schema are declared once per target. `prebuild.py` reads them and stamps the values into `build/` before each deploy — no hardcoded values in committed files, no manual reset when switching between dev and prod.
 
-**The separation is clean.** The metric view (semantic layer) and the agent config (behaviour layer) are in separate files with separate edit workflows. Changing a synonym does not require touching the agent instructions. Adding a benchmark question does not require regenerating SQL.
+**The separation is clean.** The metric view (semantic layer) and the agent config (behavior layer) are in separate files with separate edit workflows. Changing a synonym does not require touching the agent instructions. Adding a benchmark question does not require regenerating SQL.
 
 ## Get started
 
@@ -441,4 +445,4 @@ The full working example is available on GitHub:
 
 **[github.com/anhhchu/genie-agent-cicd](https://github.com/anhhchu/genie-agent-cicd)**
 
-It includes the TPC-DS retail sales Genie Agent and metric view as a ready-to-deploy example. Clone it, swap in your workspace and catalog, import your own Genie Agent with `bundle generate`, and you have a CI/CD-ready Genie Agent in minutes.
+It includes the TPC-DS retail sales Genie Agent and metric view as a ready-to-deploy example. Clone it, swap in your workspace and catalog, import your own Genie Agent with `bundle generate genie-space`, and you have a CI/CD-ready Genie Agent in minutes.
