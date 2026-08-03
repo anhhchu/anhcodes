@@ -155,17 +155,45 @@ body {
 }
 /* Fenced code blocks (rehype-pretty-code + Shiki) */
 .prose pre {
-  background: var(--color-surface);
+  background: #faf4f2;
   border: 1px solid var(--color-line);
   border-radius: 4px;
   padding: 1.1em 1.25em;
   overflow-x: auto;
   font-size: 0.9rem;
   line-height: 1.6;
+  position: relative;
 }
 .prose pre code {
   font-family: var(--font-mono, ui-monospace, monospace);
   counter-reset: line;
+}
+
+/* Copy button */
+.copy-btn {
+  position: absolute;
+  top: 0.55em;
+  right: 0.55em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 4px;
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+  color: var(--color-muted);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s, background 0.15s, color 0.15s;
+}
+.prose pre:hover .copy-btn,
+.copy-btn:focus {
+  opacity: 1;
+}
+.copy-btn:hover {
+  background: var(--color-line);
+  color: var(--color-ink);
 }
 .video-embed {
   position: relative;

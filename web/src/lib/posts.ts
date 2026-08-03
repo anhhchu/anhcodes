@@ -76,7 +76,7 @@ async function markdownToHtml(md: string): Promise<string> {
     .use(rehypeSlug)
     .use(rehypeAutolinkHeadings, { behavior: "wrap" })
     .use(rehypePrettyCode, {
-      theme: "github-light",
+      theme: "gruvbox-light-soft",
       keepBackground: false,
     })
     .use(rehypeStringify, { allowDangerousHtml: true })

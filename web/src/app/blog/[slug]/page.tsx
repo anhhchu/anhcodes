@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllSlugs, getPost, formatDate } from "@/lib/posts";
+import { PostBody } from "@/components/post-body";
 
 // Read a PNG's intrinsic width/height from its IHDR header so the cover can be
 // rendered at its natural aspect ratio instead of being cropped into a 16:9 box.
@@ -111,10 +112,7 @@ export default async function PostPage({
           </div>
         ))}
 
-      <div
-        className="prose"
-        dangerouslySetInnerHTML={{ __html: post.html }}
-      />
+      <PostBody html={post.html} />
 
       <footer className="mt-16 border-t border-line pt-8">
         <p className="italic text-muted">
