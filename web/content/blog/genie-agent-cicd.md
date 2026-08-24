@@ -1,11 +1,18 @@
 ---
 title: "Managing Databricks Genie Agents as Code with Databricks Declarative Automation Bundles (DABs)"
+
 date: "2026-07-31T00:00:00.000Z"
+
 description: "How to version-control, review, and promote a Databricks Genie Agent and Unity Catalog metric view across environments using Declarative Automation Bundles — with a prebuild script that stamps environment-specific catalog and schema values at deploy time."
+
 cover: "/images/single-blog/genie-agent-cicd/thumbnail.png"
+
 categories: ["analytics"]
+
 tags: ["databricks", "genie-agents", "dab", "unity-catalog", "metric-views", "ci-cd"]
+
 author: "Anh Chu"
+
 draft: false
 ---
 
@@ -13,63 +20,61 @@ Databricks Genie Agents (formerly Genie Spaces) are domain-specific, no-code cha
 
 If your team is editing agent instructions directly in the Genie UI, you have no version history, no code review, and no reliable path to promote changes from dev to production. One wrong update and there's no rollback.
 
-In this post I'll show how to solve that using **Declarative Automation Bundles (DABs)** to manage a Genie Agent and its underlying Unity Catalog metric view entirely as code.
+In this post I'll show how to solve that using **[Declarative Automation Bundles (DABs)](https://docs.databricks.com/aws/en/dev-tools/bundles/resources#genie_space)** to manage a Genie Agent and its underlying Unity Catalog metric view entirely as code.
 
 ## The problem with UI-only Genie Agent management
-
-A Genie Agent ready for production carries a surprising amount of configuration:
-
+A production-ready Genie Agent carries a surprising amount of configuration:
 - **Text instructions**: rules governing how the agent interprets questions, resolves ambiguity, and formats responses
 - **SQL filter snippets**: pre-built filters users can reference naturally ("show me US revenue")
 - **Example queries**: Q&A pairs that teach the agent how to respond to common questions
 - **Benchmark questions**: ground truth SQL used to evaluate answer quality
 - **Column configs**: controls format assistance (how values are displayed) and entity matching (so "germany" resolves to `Germany` in the Country dimension); entity matching requires format assistance to be enabled on the column
-
 When all of this lives only in the UI, you get:
-
 - No audit trail for who changed what and when
 - No peer review before changes hit production
 - No reliable way to promote the exact same configuration from dev to prod
 - No rollback if a bad instruction update breaks query behavior
-
 The fix: treat the Genie Agent like any other piece of software: version-controlled, reviewed, and deployed through a pipeline.
 
 ## Solution overview: Declarative Automation Bundles
-
 Declarative Automation Bundles (DABs) is Databricks' infrastructure-as-code framework. It supports jobs, pipelines, dashboards, and as of CLI v1.10, **Genie Agents** as first-class resources.
 
 The approach has two key pieces:
-
-1. **UC Metric View**: the semantic layer that backs the Genie Agent, defined in YAML
-2. **Genie Agent**: the agent configuration (instructions, snippets, benchmarks), exported from the workspace and committed as JSON
-
+- **UC Metric View**: the semantic layer that backs the Genie Agent, defined in YAML
+- **Genie Agent**: the agent configuration (instructions, snippets, benchmarks), exported from the workspace and committed as JSON
 Both are versioned in git and deployed via `databricks bundle deploy`.
 
 ## Repository structure
-
-The full example is on GitHub: **[github.com/anhhchu/genie-agent-cicd](https://github.com/anhhchu/genie-agent-cicd)**
-
+The full example is on GitHub: [https://github.com/databricks-solutions/databricks-blogposts/tree/main/2026-08-genie-agent-cicd](https://github.com/databricks-solutions/databricks-blogposts/tree/main/2026-08-genie-agent-cicd)
 ```
 genie-agent-cicd/
 ├── databricks.yml                        # bundle config, targets (dev/prod)
-├── prebuild_notebook.py                  # resolves catalog/schema — runs locally OR in Databricks
+├── prebuild_notebook.py                  # substitutes {schema} into Genie Agent JSON — runs locally OR in Databricks
 │
 ├── resources/
 │   ├── metric_view.job.yml               # job: CREATE OR REPLACE metric view
 │   └── tpcds_retail.genie_space.yml      # Genie Agent resource definition
 │
-├── src/                                  # source of truth — uses ${catalog}/${schema} placeholders
-│   ├── metric-view.yaml                  # metric view dimensions and measures (edit this)
-│   └── tpcds_retail.geniespace.json      # Genie Agent content (edit this)
+├── src/                                  # source of truth — uses {schema} placeholders
+│   ├── metric-view.yaml                  # metric view dimensions and measures (edit this; substitution handled by DABs at run time)
+│   ├── create_metric_view.py             # notebook that runs CREATE OR REPLACE; receives catalog/schema as job parameters
+│   └── tpcds_retail.geniespace.json      # Genie Agent content (edit this; substitution handled by prebuild_notebook.py)
 │
 └── build/                                # generated by prebuild_notebook.py — gitignored
-    └── tpcds_retail.geniespace.json
+   └── tpcds_retail.geniespace.json
 ```
+Two files are the source of truth: `src/metric-view.yaml` defines the semantic layer (dimensions, measures, synonyms), and `src/tpcds_retail.geniespace.json` holds the agent configuration (instructions, SQL snippets, benchmarks). A small Python script (prebuild_notebook.py) substitutes ${catalog} and ${schema} placeholders into the Genie Agent JSON before deployment. A separate notebook (src/create_metric_view.py) handles the metric view: it reads src/metric-view.yaml at runtime and substitutes catalog/schema from job parameters before running the DDL. The Genie Agent and metric view are both deployed via `databricks bundle deploy`, with the metric view applied by running the bundle job.
 
-Two files are the source of truth: `src/metric-view.yaml` defines the semantic layer (dimensions, measures, synonyms), and `src/tpcds_retail.geniespace.json` holds the agent configuration (instructions, SQL snippets, benchmarks). A small Python script (`prebuild_notebook.py`) substitutes `${catalog}` and `${schema}` placeholders into the Genie Agent JSON before deployment. The Genie Agent and metric view are both deployed via `databricks bundle deploy`, with the metric view applied by running the bundle job.
+## Why this pattern works
+**The metric view YAML is human-friendly.** The inline source query, joins, dimensions, and measures are all readable and diff well in pull requests. A reviewer can see exactly which UNION ALL branch changed, which join was added, or which synonym was modified.
+
+**The `.geniespace.json` is structured JSON, not a blob.** When DABs introduced the `genie-space` resource type, it made the agent config a proper file rather than a stringified JSON-inside-JSON. Every section (instructions, snippets, benchmarks, column configs) is a first-class JSON object you can edit and review.
+
+**`databricks.yml` is the single source of environment config.** Catalog and schema are declared once per target. prebuild_notebook.py reads them and stamps the Genie Agent JSON into build/ before each deploy. For the metric view, catalog and schema are injected at runtime as job parameters — no hardcoded values in committed files, no manual reset when switching between dev and prod.
+
+**The separation is clean.** The metric view (semantic layer) and the agent config (behavior layer) are in separate files with separate edit workflows. Changing a synonym does not require touching the agent instructions. Adding a benchmark question does not require regenerating SQL.
 
 ## Example dataset
-
 The walkthrough below uses **`samples.tpcds_sf1`**, a TPC-DS retail benchmark dataset that comes pre-loaded in every Databricks workspace. It contains three sales fact tables (`store_sales`, `catalog_sales`, `web_sales`) plus standard dimension tables (`date_dim`, `item`, `customer`). No data setup is required. You can follow every step using this dataset as-is.
 
 The same pattern applies to your own data: replace `samples.tpcds_sf1` with your source tables, and replace `<your_catalog>.<your_schema>` with the catalog and schema where you want the base view and metric view to live.
@@ -77,62 +82,48 @@ The same pattern applies to your own data: replace `samples.tpcds_sf1` with your
 ## Prerequisites
 
 ### 1. Clone the repo
-
-```bash
-git clone https://github.com/anhhchu/genie-agent-cicd
-cd genie-agent-cicd
+```
+git clone https://github.com/databricks-solutions/databricks-blogposts.git
+cd 2026-08-genie-agent-cicd
 ```
 
 ### 2. Install the Databricks CLI
-
 The bundle commands require Databricks CLI v1.10 or later.
-
 **macOS:**
-```bash
+```
 brew tap databricks/tap
 brew install databricks
 ```
-
 **Linux / macOS (curl):**
-```bash
+```
 curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
 ```
-
 **Windows:**
-```bash
+```
 winget install Databricks.DatabricksCLI
 ```
-
 Verify the installation:
-```bash
+```
 databricks --version
 ```
 
 ### 3. Configure workspace profiles
-
 Each target in `databricks.yml` maps to a named profile in `~/.databrickscfg`. Set up one profile per workspace using OAuth (recommended):
-
-```bash
+```
 # Dev workspace
 databricks auth login --host https://<dev-workspace>.cloud.databricks.com --profile DEFAULT
-
 # Prod workspace
 databricks auth login --host https://<prod-workspace>.cloud.databricks.com --profile PROD
 ```
-
 Both commands open a browser for OAuth login and write the credentials to `~/.databrickscfg` (substitute the hostname for your cloud — Azure workspaces use `adb-<id>.<region>.azuredatabricks.net`, GCP workspaces use `<id>.gcp.databricks.com`):
-
-```ini
+```
 [DEFAULT]
 host = https://<dev-workspace>.cloud.databricks.com
-
 [PROD]
 host = https://<prod-workspace>.cloud.databricks.com
 ```
-
 Then update `databricks.yml` to reference the correct profile per target:
-
-```yaml
+```
 targets:
   dev:
     workspace:
@@ -140,135 +131,79 @@ targets:
     variables:
       catalog: dev_catalog
       schema: genie
-
   prod:
     workspace:
       profile: PROD
     variables:
       catalog: prod_catalog
       schema: genie
+
 ```
 
+## Step 1: Understand the multi-fact pattern
+TPC-DS contains three sales fact tables — store_sales, catalog_sales, and web_sales — all representing the same business event: a sale line. When the analysis treats them as one unified sales process, normalize them with UNION ALL.
 
-## Step 1: Create a unified base view (multi-fact workaround)
+The metric view's source: field accepts an inline SQL query, so the UNION ALL lives directly in the YAML — no pre-built base view needed. Each branch is explicitly enumerated (no SELECT *), date roles and customer roles are declared once, and a channel column is added to preserve provenance.
 
-Unity Catalog metric views currently support a **single source table or view**. The TPC-DS schema has three separate fact tables: `store_sales`, `catalog_sales`, and `web_sales`. To use all three as the basis for one metric view, first create a base view that unions them:
-
-```sql
-CREATE VIEW <your_catalog>.<your_schema>.tpcds_all_sales AS
-WITH s AS (
-  SELECT 'Store'   AS channel, ss_sold_date_sk AS sold_date_sk, ss_item_sk AS item_sk,
-         ss_customer_sk AS customer_sk, ss_ticket_number AS order_number,
-         ss_quantity AS quantity, ss_ext_sales_price AS ext_sales_price,
-         ss_ext_discount_amt AS ext_discount_amt, ss_net_paid AS net_paid, ss_net_profit AS net_profit
-  FROM samples.tpcds_sf1.store_sales
-  UNION ALL
-  SELECT 'Catalog', cs_sold_date_sk, cs_item_sk, cs_bill_customer_sk, cs_order_number,
-         cs_quantity, cs_ext_sales_price, cs_ext_discount_amt, cs_net_paid, cs_net_profit
-  FROM samples.tpcds_sf1.catalog_sales
-  UNION ALL
-  SELECT 'Web', ws_sold_date_sk, ws_item_sk, ws_bill_customer_sk, ws_order_number,
-         ws_quantity, ws_ext_sales_price, ws_ext_discount_amt, ws_net_paid, ws_net_profit
-  FROM samples.tpcds_sf1.web_sales
-)
-SELECT
-  s.channel, s.order_number, s.quantity, s.ext_sales_price,
-  s.ext_discount_amt, s.net_paid, s.net_profit, s.customer_sk,
-  d.d_date AS sold_date, d.d_year AS sold_year, d.d_moy AS sold_month, d.d_qoy AS sold_quarter,
-  i.i_category AS category, i.i_brand AS brand, i.i_class AS class, i.i_product_name AS product_name
-FROM s
-JOIN samples.tpcds_sf1.date_dim d ON s.sold_date_sk = d.d_date_sk
-JOIN samples.tpcds_sf1.item i     ON s.item_sk = i.i_item_sk
-```
-
-This view does three things:
-- **Unions the three sales fact tables** and tags each row with a `channel` column (`Store`, `Catalog`, `Web`)
-- **Joins the date dimension** to produce human-readable date columns (`sold_date`, `sold_year`, `sold_month`, `sold_quarter`)
-- **Joins the item dimension** to pull in `category`, `brand`, `class`, and `product_name`
-
-The result is a single flat view with one row per sales line item, exactly what a metric view source needs.
-
-> **Note:** Metric views are designed around a single logical source. Directly joining multiple independent fact tables inside a single metric view can cause fan-out and incorrect aggregations. The officially recommended approach is to create a bridge/base SQL view that flattens the facts to a well-defined grain first — which is exactly what `tpcds_all_sales` does. For multi-grain analysis (e.g., orders + returns at different grains), consider [Dashboard Relationships](https://docs.databricks.com/aws/en/dashboards/manage/data-modeling/dashboard-relationships) instead.
+Key design decisions in the union:
+- Use UNION ALL, not UNION — two identical-looking lines can be separate real events.
+- Enumerate every column explicitly — union alignment is positional; implicit projections hide semantic mapping errors.
+- Channel-prefix order IDs — store ticket #1 and catalog order #1 are different orders; CONCAT('store:', CAST(ss_ticket_number AS STRING)) prevents silent double-counting in COUNT(DISTINCT order_id).
+- Date role: sold date, not ship date — ss_sold_date_sk / cs_sold_date_sk / ws_sold_date_sk consistently; ws_ship_date_sk is excluded.
+- Customer role: billing customer — catalog and web use the billing customer FK, not shipping.
+The dimension tables (date_dim, item) join many-to-one to the normalized union source, declared in the metric view's joins: block with rely.at_most_one_match: true. Databricks evaluates only the joins a query actually needs — no pre-flattening required.
 
 ## Step 2: Define your UC metric view in YAML
+A Unity Catalog metric view is a governed semantic layer — a special view type that separates how metrics are defined from how they're queried. Unlike a regular view that pre-aggregates at a fixed grain, a metric view lets callers choose which dimensions to group by at query time while guaranteeing the aggregation math is always correct. This makes it the ideal backing store for a Genie Agent: the agent uses your pre-vetted measure expressions, and the synonyms you define map natural-language terms like “revenue” or “sales” to the right SQL.
 
-The metric view YAML defines dimensions, measures, and their synonyms. Synonyms are critical: they teach the Genie Agent which natural-language terms map to which columns.
-
-```yaml
-# src/metric-view.yaml
-version: 1.1
-
-source: ${catalog}.${schema}.tpcds_all_sales
-
-dimensions:
-  - name: Channel
-    expr: channel
-    comment: "Sales channel: Store, Catalog, or Web"
-    synonyms:
-      - sales channel
-      - division
-      - segment
-
-  - name: Category
-    expr: category
-    synonyms:
-      - product category
-      - department
-
-measures:
-  - name: Total Sales
-    expr: SUM(net_paid)
-    comment: "Total revenue after discounts, before tax"
-    synonyms:
-      - revenue
-      - net sales
-      - sales
-
-  - name: Profit Margin
-    expr: "SUM(net_profit) / NULLIF(SUM(net_paid), 0)"
-    comment: "Net profit as a fraction of total sales (0.15 = 15%)"
-    synonyms:
-      - margin
-      - profitability
+You create a metric view with the **WITH METRICS LANGUAGE YAML** DDL — the YAML spec is embedded inline between $$ markers. The **metric view YAML** defines dimensions, measures, and their configurations (synonyms, etc.).  See the `src/metric-view.yaml` for detail.
 ```
-
-Source files use `${catalog}` and `${schema}` as placeholders — no environment-specific values are hardcoded. When you're ready to deploy, run `prebuild_notebook.py` to stamp the resolved values into `build/`:
-
-```bash
-python3 prebuild_notebook.py --target dev
-# ✓ build/ ready (target: dev, my_catalog.my_schema)
+CREATE OR REPLACE VIEW <your_catalog>.<your_schema>.tpcds_retail_metrics
+WITH METRICS
+LANGUAGE YAML
+AS $$
+  version: 1.1
+  source: |    -- inline UNION ALL of store_sales, catalog_sales, web_sales
+    SELECT ... FROM ${catalog}.${schema}.store_sales UNION ALL ...
+  dimensions:
+    - name: Channel
+      expr: source.channel
+      synonyms: [sales channel, division]
+  measures:
+    - name: Total Sales
+      expr: SUM(source.net_paid)
+      synonyms: [revenue, net sales, sales]
+$$
 ```
+Querying a metric view requires wrapping every measure in MEASURE():
+```
+SELECT Channel, MEASURE(`Total Sales`) AS revenue
+FROM <your_catalog>.<your_schema>.tpcds_retail_metrics
+GROUP BY ALL
 
-The script reads `catalog` and `schema` directly from the target's variables in `databricks.yml` and writes a substituted copy of the Genie Agent JSON to `build/`. The bundle resources point to `build/`, and `build/` is gitignored — only the placeholder source files are committed.
+```
+Source files use `${catalog}` and `${schema}` as placeholders, no environment-specific values are hardcoded.  Then `metric_view.job.yml` injects `catalog` and `schema` as job parameters at run time via DABs variable substitution.
 
-## Step 3: Export your Genie Agent from the workspace (optional)
-
+## Step 3: Export your Genie Agent from the workspace
 If you already have a Genie Agent configured in the UI, the CLI can export it directly into your bundle. First, find the space ID in the browser URL:
-
 ```
 https://<workspace>.cloud.databricks.com/genie/spaces/<SPACE_ID>
 ```
-
 Then run:
-
-```bash
+```
 databricks bundle generate genie-space \
   --existing-id <SPACE_ID> \
   --key tpcds_retail
 ```
-
 The `--key` value (`tpcds_retail`) becomes the resource key in the generated YAML and the identifier used when re-exporting or referencing the resource later.
 
 This generates two files:
-
 - `src/tpcds_retail.geniespace.json` — the full agent configuration
 - `resources/tpcds_retail.genie_space.yml` — the DABs resource definition
-
 After the initial export, `src/tpcds_retail.geniespace.json` becomes your source of truth — edit it directly for subsequent changes rather than re-running generate.
 
 The `.geniespace.json` file is structured JSON, not a raw blob, so every section is directly editable:
-
-```json
+```
 {
   "version": 2,
   "instructions": {
@@ -297,23 +232,36 @@ The `.geniespace.json` file is structured JSON, not a raw blob, so every section
     ]
   }
 }
+
 ```
 
-## Step 4: Configure the bundle for multiple environments
+### Managing multiple Genie Agents
+Each agent uses its own `--key`, so multiple agents coexist in the same bundle without conflict:
+```
+databricks bundle generate genie-space \
+  --existing-id <SPACE_ID_B> \
+  --key finance_agent
+```
+Add the new resource to `databricks.yml`:
+```
+include:
+  - resources/metric_view.job.yml
+  - resources/tpcds_retail.genie_space.yml
+  - resources/finance_agent.genie_space.yml
+```
+Each agent's files are completely independent — `src/finance_agent.geniespace.json` and `resources/finance_agent.genie_space.yml`.
 
+## Step 4: Configure the bundle for multiple environments
 `databricks.yml` defines targets for each environment. A single `--target` flag promotes the exact same configuration to a different workspace with a different catalog.
 
 The `warehouse_id` variable is declared at the top level with no default — each target sets its own lookup by warehouse name, which resolves against that target's workspace at deploy time:
-
-```yaml
+```
 bundle:
   name: genie_agent_cicd
   engine: direct  # required for genie_spaces
-
 variables:
   warehouse_id:
     description: SQL warehouse used to create the metric view and Genie Agent.
-
 targets:
   dev:
     default: true
@@ -326,7 +274,6 @@ targets:
       warehouse_id:
         lookup:
           warehouse: Serverless Starter Warehouse
-
   prod:
     mode: production
     workspace:
@@ -338,16 +285,15 @@ targets:
       warehouse_id:
         lookup:
           warehouse: <prod_warehouse_name>
+
 ```
 
 ## Step 5: Deploy
 
-The prebuild step substitutes `${catalog}`/`${schema}` into the Genie Agent JSON. It must run **before** `bundle deploy`.
-
-**Option A — Local CLI (laptop):**
-
-```bash
-# Generate build/ for dev and deploy
+### Option A — Local CLI (laptop):
+Generate build/ for dev and deploy
+```
+# The prebuild step substitutes ${catalog}/${schema} into the Genie Agent JSON. It must run before bundle deploy.
 python3 prebuild_notebook.py --target dev
 databricks bundle deploy --target dev
 databricks bundle run metric_view --target dev
@@ -357,48 +303,38 @@ python3 prebuild_notebook.py --target prod
 python3 prebuild_notebook.py --verify prod   # CI guard: exits non-zero on mismatch
 databricks bundle deploy --target prod
 databricks bundle run metric_view --target prod
+
 ```
 
-**Option B — Databricks notebook (no CLI needed):**
-
-Run `prebuild_notebook` interactively in the workspace — set the `target` widget to `dev` or `prod` and run all cells. It resolves paths from the notebook's workspace location.
-
-That's it. The Genie Agent and metric view are now live in the target workspace. Because `prebuild_notebook.py` writes to `build/` each time, there's no risk of committing environment-specific values or having to manually reset between targets.
-
-## Deploying from the Databricks workspace UI
-
+### Option B — Deploying from the Databricks workspace UI
 If you don't want to install the CLI locally, Databricks supports deploying bundles directly from the workspace. This is especially useful for team members who prefer a UI-driven workflow or don't have a local development environment set up.
-
 **Prerequisites:**
 - Workspace files must be enabled
-- The bundle must be cloned as a Git folder in the workspace (via **Workspace > Git folders > Clone**)
+- The bundle must be cloned as a Git folder in the workspace (via Workspace > Git folders > Clone)
 - Serverless compute must be enabled
-
 **Workflow:**
-
 1. Clone the repo into your workspace as a Git folder
-2. Open the bundle's Git folder — Databricks automatically detects `databricks.yml` and shows a bundle management UI
-3. Select the target (`dev` or `prod`) from the dropdown
-4. Run `prebuild_notebook` as a notebook in the workspace (set the `target` widget and run all cells) to generate `build/`
-5. Click **Deploy** to deploy the bundle to the selected target
-6. Click **Run** next to `metric_view` to apply the metric view DDL
+2. Open the bundle's Git folder — Databricks automatically detects databricks.yml and shows a bundle management UI
+3. Select the target (dev or prod) from the dropdown
+4. Run prebuild_notebook as a notebook in the workspace (set the target widget and run all cells) to generate `build/`. It resolves paths from the notebook's workspace location.
+Run prebuild_notebook interactively in the workspace — set the target widget to dev or prod and run all cells.
 
-<img src="/images/single-blog/genie-agent-cicd/dab-from-workspace.png" alt="Deploying a Declarative Automation Bundle from the Databricks workspace UI" loading="lazy" />
+That's it. The Genie Agent and metric view now live in the target workspace. Because `prebuild_notebook.py` writes to `build/` each time, there's no risk of committing environment-specific values or having to manually reset between targets.
+5. Click Deploy to deploy the bundle to the selected target. Click Run next to metric_view to apply the metric view DDL
+![Deploy to dev dialog showing 2 resources — tpcds_retail Genie space and metric view job](/images/single-blog/genie-agent-cicd/dab-from-workspace.png)
 
-**Limitations to be aware of:**
+**Limitations:**
 - Cross-workspace deployment (e.g., promoting from dev to prod in a different workspace) is not available from the UI editor — use the CLI or a CI/CD pipeline for cross-workspace promotion
 - Python for DABs is not supported in workspace mode
-- Bundles inherit permissions from their parent Git folder
+- Bundles inherit permissions from their parent Git folder.
 
-The workspace UI is a good fit for day-to-day iteration within a single environment. For multi-environment promotion and CI/CD pipelines, the CLI path (Option A above) remains the recommended approach.
+The workspace UI is a good fit for day-to-day iteration within a single environment. For multi-environment promotion and CI/CD pipelines, the CLI path remains the recommended approach.
 
-## Day-2 workflows
+## Iterating on Your Genie Agent
 
 ### Updating the Genie Agent instructions
-
 Edit `src/tpcds_retail.geniespace.json` — for example, to add a new SQL filter snippet (use `${catalog}.${schema}` for any table references):
-
-```json
+```
 "sql_snippets": {
   "filters": [
     {
@@ -410,71 +346,33 @@ Edit `src/tpcds_retail.geniespace.json` — for example, to add a new SQL filter
   ]
 }
 ```
-
 Then:
-
-```bash
+```
 python3 prebuild_notebook.py --target dev
 databricks bundle deploy
+
 ```
 
-### Updating a dimension or measure
-
-Edit `src/metric-view.yaml`, then:
-
-```bash
-python3 prebuild_notebook.py --target dev
+### Updating a dimension or measure in metric view
+Edit src/metric-view.yaml, then deploy and re-run the job to apply the DDL:
+```
 databricks bundle deploy
 databricks bundle run metric_view
+
 ```
 
 ### Pulling UI changes back into source control
-
 If someone made changes directly in the Genie UI (it happens), re-export:
-
-```bash
+```
 databricks bundle generate genie-space \
   --existing-id <SPACE_ID> \
   --key tpcds_retail
+
 ```
 
-Review the diff with `git diff` before committing.
-
-## Managing multiple Genie Agents
-
-Each agent uses its own `--key`, so multiple agents coexist in the same bundle without conflict:
-
-```bash
-databricks bundle generate genie-space \
-  --existing-id <SPACE_ID_B> \
-  --key finance_agent
-```
-
-Add the new resource to `databricks.yml`:
-
-```yaml
-include:
-  - resources/metric_view.job.yml
-  - resources/tpcds_retail.genie_space.yml
-  - resources/finance_agent.genie_space.yml
-```
-
-Each agent's files are completely independent — `src/finance_agent.geniespace.json` and `resources/finance_agent.genie_space.yml`.
-
-## Why this pattern works
-
-**The metric view YAML is human-friendly.** Dimensions, measures, and synonyms are readable and diff well in pull requests. A reviewer can see exactly which synonym was added or which measure expression changed.
-
-**The `.geniespace.json` is structured JSON, not a blob.** When DABs introduced the `genie-space` resource type, it made the agent config a proper file rather than a stringified JSON-inside-JSON. Every section (instructions, snippets, benchmarks, column configs) is a first-class JSON object you can edit and review.
-
-**`databricks.yml` is the single source of environment config.** Catalog and schema are declared once per target. `prebuild_notebook.py` reads them and stamps the values into `build/` before each deploy — no hardcoded values in committed files, no manual reset when switching between dev and prod.
-
-**The separation is clean.** The metric view (semantic layer) and the agent config (behavior layer) are in separate files with separate edit workflows. Changing a synonym does not require touching the agent instructions. Adding a benchmark question does not require regenerating SQL.
-
-## Get started
-
+## Getting started
 The full working example is available on GitHub:
 
-**[github.com/anhhchu/genie-agent-cicd](https://github.com/anhhchu/genie-agent-cicd)**
+[https://github.com/databricks-solutions/databricks-blogposts/tree/main/2026-08-genie-agent-cicd](https://github.com/databricks-solutions/databricks-blogposts/tree/main/2026-08-genie-agent-cicd)
 
-It includes the TPC-DS retail sales Genie Agent and metric view as a ready-to-deploy example. Clone it, swap in your workspace and catalog, import your own Genie Agent with `bundle generate genie-space`, and you have a CI/CD-ready Genie Agent in minutes.
+It includes the TPC-DS retail sales Genie Agent and metric view as a ready-to-deploy example. Clone it, swap in your workspace and catalog, import your own Genie Agent with bundle generate genie-space, and you have a CI/CD-ready Genie Agent in minutes.
