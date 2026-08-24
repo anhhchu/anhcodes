@@ -315,20 +315,20 @@ databricks bundle run metric_view --target prod
 
 ### Option B — Deploying from the Databricks workspace UI
 If you don't want to install the CLI locally, Databricks supports deploying bundles directly from the workspace. This is especially useful for team members who prefer a UI-driven workflow or don't have a local development environment set up.
+
 **Prerequisites:**
 - Workspace files must be enabled
 - The bundle must be cloned as a Git folder in the workspace (via Workspace > Git folders > Clone)
 - Serverless compute must be enabled
+
 **Workflow:**
 1. Clone the repo into your workspace as a Git folder
 2. Open the bundle's Git folder — Databricks automatically detects databricks.yml and shows a bundle management UI
 3. Select the target (dev or prod) from the dropdown
-4. Run prebuild_notebook as a notebook in the workspace (set the target widget and run all cells) to generate `build/`. It resolves paths from the notebook's workspace location.
-Run prebuild_notebook interactively in the workspace — set the target widget to dev or prod and run all cells.
-
-That's it. The Genie Agent and metric view now live in the target workspace. Because `prebuild_notebook.py` writes to `build/` each time, there's no risk of committing environment-specific values or having to manually reset between targets.
+4. Run prebuild_notebook as a notebook in the workspace (set the target widget and run all cells) to generate `build/`. It resolves paths from the notebook's workspace location. That's it. The Genie Agent and metric view now live in the target workspace. Because `prebuild_notebook.py` writes to `build/` each time, there's no risk of committing environment-specific values or having to manually reset between targets.
 5. Click Deploy to deploy the bundle to the selected target. Click Run next to metric_view to apply the metric view DDL
-![Deploy to dev dialog showing 2 resources — tpcds_retail Genie space and metric view job](/images/single-blog/genie-agent-cicd/dab-from-workspace.png)
+
+![Deploy to dev dialog showing 2 resources — tpcds_retail Genie agent and metric view job](/images/single-blog/genie-agent-cicd/dab-from-workspace.png)
 
 **Limitations:**
 - Cross-workspace deployment (e.g., promoting from dev to prod in a different workspace) is not available from the UI editor — use the CLI or a CI/CD pipeline for cross-workspace promotion
